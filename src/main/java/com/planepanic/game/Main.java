@@ -1,8 +1,8 @@
-package uk.co.thomasc.seprsaw;
+package com.planepanic.game;
 
-import uk.co.thomasc.seprsaw.gfx.DrawThread;
-import uk.co.thomasc.seprsaw.gfx.Image;
-import uk.co.thomasc.seprsaw.gfx.Resources;
+import com.planepanic.game.gfx.DrawThread;
+import com.planepanic.game.gfx.Image;
+import com.planepanic.game.gfx.Resources;
 
 /**
  * Example main

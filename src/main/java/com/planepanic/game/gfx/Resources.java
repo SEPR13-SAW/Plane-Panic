@@ -1,4 +1,4 @@
-package uk.co.thomasc.seprsaw.gfx;
+package com.planepanic.game.gfx;
 
 import java.io.IOException;
 
@@ -8,7 +8,8 @@ import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
 
-import uk.co.thomasc.seprsaw.Config;
+import com.planepanic.game.Config;
+
 
 /**
  * Resources/Textures available

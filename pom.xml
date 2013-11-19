@@ -78,7 +78,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>uk.co.thomasc.seprsaw.Main</mainClass>
+							<mainClass>com.planepanic.game.Main</mainClass>
 							<classpathPrefix>lib/</classpathPrefix>
 						</manifest>
 					</archive>

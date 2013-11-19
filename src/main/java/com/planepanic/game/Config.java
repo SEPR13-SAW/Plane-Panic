@@ -1,4 +1,4 @@
-package uk.co.thomasc.seprsaw;
+package com.planepanic.game;
 
 /**
  * Configuration options

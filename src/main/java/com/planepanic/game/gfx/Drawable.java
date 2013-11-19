@@ -1,4 +1,4 @@
-package uk.co.thomasc.seprsaw.gfx;
+package com.planepanic.game.gfx;
 
 import lombok.Getter;
 import lombok.Setter;

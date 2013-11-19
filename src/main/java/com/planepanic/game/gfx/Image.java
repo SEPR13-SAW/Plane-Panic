@@ -1,4 +1,4 @@
-package uk.co.thomasc.seprsaw.gfx;
+package com.planepanic.game.gfx;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.opengl.Texture;

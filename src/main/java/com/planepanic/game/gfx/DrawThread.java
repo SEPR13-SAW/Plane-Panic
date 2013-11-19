@@ -1,4 +1,4 @@
-package uk.co.thomasc.seprsaw.gfx;
+package com.planepanic.game.gfx;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,7 +11,8 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 
-import uk.co.thomasc.seprsaw.Config;
+import com.planepanic.game.Config;
+
 
 /**
  * Thread in charge of the screen
