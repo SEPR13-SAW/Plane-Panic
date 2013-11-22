@@ -2,6 +2,10 @@ package com.planepanic.game.model;
 
 import lombok.Getter;
 
+/**
+ * A class to represent waypoints.
+ * @author Jonathan
+ */
 public final class Waypoint extends Drawable {
 	@Getter private final String name;
 
