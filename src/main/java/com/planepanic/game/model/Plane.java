@@ -7,7 +7,7 @@ import lombok.Setter;
  * Plane class.
  * @author Jonathan
  */
-public final class Plane {
+public final class Plane extends Drawable {
 	@Getter private final PlaneType type;
 	@Getter private final int passengers;
 	@Getter @Setter private double fuel, velocity;
