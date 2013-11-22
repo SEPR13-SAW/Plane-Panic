@@ -1,5 +1,7 @@
 package com.planepanic.game.model;
 
+import com.planepanic.game.gfx.Drawable;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,5 +20,17 @@ public final class Plane extends Drawable {
 		this.fuel = fuel;
 
 		this.velocity = 0;
+	}
+
+	@Override
+	public void draw2d() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void draw3d() {
+		// TODO Auto-generated method stub
+		
 	}
 }

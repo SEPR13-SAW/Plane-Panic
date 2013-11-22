@@ -1,5 +1,7 @@
 package com.planepanic.game.model;
 
+import com.planepanic.game.gfx.Drawable;
+
 import lombok.Getter;
 
 /**
@@ -15,5 +17,17 @@ public final class Runway extends Drawable {
 		this.endX = endX;
 		this.endY = endY;
 		this.name = name;
+	}
+
+	@Override
+	public void draw2d() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void draw3d() {
+		// TODO Auto-generated method stub
+		
 	}
 }
