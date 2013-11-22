@@ -1,6 +1,7 @@
 package com.planepanic.game.model;
 
 import com.planepanic.game.gfx.Drawable;
+import com.planepanic.game.model.orders.Vector2d;
 
 import lombok.Getter;
 
@@ -10,12 +11,11 @@ import lombok.Getter;
  */
 public final class Runway extends Drawable {
 	@Getter private final String name;
-	@Getter private final double endX, endY;
+	@Getter private final Vector2d end;
 
-	public Runway(double startX, double startY, double endX, double endY, String name) {
-		super(startX, startY);
-		this.endX = endX;
-		this.endY = endY;
+	public Runway(Vector2d start, Vector2d end, String name) {
+		super(start);
+		this.end = end;
 		this.name = name;
 	}
 

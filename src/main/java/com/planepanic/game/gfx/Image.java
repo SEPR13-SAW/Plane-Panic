@@ -19,7 +19,7 @@ public class Image extends Drawable {
 	public void draw2d() {
 		Color.white.bind();
 		texture.bind();
-		DrawUtil.drawImg((int) x, (int) y, texture.getTextureWidth(), texture.getTextureHeight());
+		DrawUtil.drawImg((int) position.getX(), (int) position.getY(), texture.getTextureWidth(), texture.getTextureHeight());
 	}
 
 	@Override

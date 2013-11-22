@@ -1,6 +1,7 @@
 package com.planepanic.game.model;
 
 import com.planepanic.game.gfx.Drawable;
+import com.planepanic.game.model.orders.Vector2d;
 
 import lombok.Getter;
 
@@ -11,8 +12,8 @@ import lombok.Getter;
 public final class Waypoint extends Drawable {
 	@Getter private final String name;
 
-	public Waypoint(double x, double y, String name) {
-		super(x, y);
+	public Waypoint(Vector2d position, String name) {
+		super(position);
 		this.name = name;
 	}
 

@@ -1,6 +1,11 @@
 package com.planepanic.game.model;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 import com.planepanic.game.gfx.Drawable;
+import com.planepanic.game.model.orders.Order;
+import com.planepanic.game.model.orders.Vector2d;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,14 +17,17 @@ import lombok.Setter;
 public final class Plane extends Drawable {
 	@Getter private final PlaneType type;
 	@Getter private final int passengers;
-	@Getter @Setter private double fuel, velocity;
+	@Getter @Setter private double fuel;
+	@Getter @Setter private Vector2d velocity;
+
+	@Getter private final Queue<Order> orders = new ArrayDeque<>(64);
 
 	public Plane(PlaneType type, int passengers, double fuel) {
 		this.type = type;
 		this.passengers = passengers;
 		this.fuel = fuel;
 
-		this.velocity = 0;
+		this.velocity = new Vector2d();
 	}
 
 	@Override
