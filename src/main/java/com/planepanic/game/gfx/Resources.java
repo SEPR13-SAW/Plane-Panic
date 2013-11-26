@@ -27,7 +27,7 @@ public enum Resources {
 	
 	public void load() {
 		try {
-			texture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("resources/" + file));
+			texture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(file));
 			
 			if (Config.DEBUG) {
 				System.out.println("Texture loaded: "+texture);
