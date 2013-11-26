@@ -1,12 +1,25 @@
 package com.planepanic.game.gfx;
 
+import java.awt.Font;
+
 import org.lwjgl.opengl.GL11;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.TrueTypeFont;
+
+import com.planepanic.game.model.orders.Vector2d;
 
 /**
  * Helpers to get things done in OpenGL
  * @author Thomas Cheyney
  */
 public class DrawUtil {
+	
+	private static TrueTypeFont ttf;
+	
+	static {
+		Font font = new Font("Verdana", Font.BOLD, 32);
+		ttf = new TrueTypeFont(font, true);
+	}
 	
 	public static float getRed(int color) {
 		return ((color >> 16) & 0x000000FF) / 255f;
@@ -24,7 +37,7 @@ public class DrawUtil {
 		GL11.glColor3f(getRed(color),getGreen(color),getBlue(color));
 	}
 	
-	public static void drawSquare(int x, int y, int w, int h) {
+	public static void drawSquare(float x, float y, float w, float h) {		
 		GL11.glBegin(GL11.GL_QUADS);
 		GL11.glVertex2f(x,y);
 		GL11.glVertex2f(x+w,y);
@@ -33,7 +46,8 @@ public class DrawUtil {
 		GL11.glEnd();
 	}
 	
-	public static void drawImg(int x, int y, int w, int h) {
+	public static void drawImg(float x, float y, float w, float h) {
+		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glBegin(GL11.GL_QUADS);
 		GL11.glTexCoord2f(0,0);
 		GL11.glVertex2f(x,y);
@@ -44,6 +58,21 @@ public class DrawUtil {
 		GL11.glTexCoord2f(0,1);
 		GL11.glVertex2f(x,y+h);
 		GL11.glEnd();
+		GL11.glDisable(GL11.GL_TEXTURE_2D);
+	}
+	
+	public static Vector2d getSize(String text) {
+		return new Vector2d(ttf.getWidth(text), ttf.getHeight(text));
+	}
+	
+	public static void drawString(float x, float y, String text) {
+		drawString(x, y, text, 0xFFFFFF);
+	}
+	
+	public static void drawString(float x, float y, String text, int color) {
+		GL11.glEnable(GL11.GL_TEXTURE_2D);
+		ttf.drawString(x, y, text, new Color(color));
+		GL11.glDisable(GL11.GL_TEXTURE_2D);
 	}
 	
 }

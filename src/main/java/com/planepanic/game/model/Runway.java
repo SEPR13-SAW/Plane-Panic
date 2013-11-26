@@ -30,4 +30,9 @@ public final class Runway extends Drawable {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public boolean onClick() {
+		return false;
+	}
 }

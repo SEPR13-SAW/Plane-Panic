@@ -41,4 +41,9 @@ public final class Plane extends Drawable {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public boolean onClick() {
+		return false;
+	}
 }
