@@ -14,12 +14,12 @@ public final class RelativeHeading extends Order {
 
 	@Override
 	public boolean isComplete(Plane plane) {
-		return plane.getPosition().angleCloseEnough(startAngle + delta);
+		return plane.getPosition().angleCloseEnough(this.startAngle + this.delta);
 	}
 
 	@Override
 	public void tick(Plane plane) {
-		//TODO
+		// TODO
 	}
 
 }

@@ -14,12 +14,12 @@ public final class FlyBy extends Order {
 
 	@Override
 	public boolean isComplete(Plane plane) {
-		return plane.closeEnough(waypoint);
+		return plane.closeEnough(this.waypoint);
 	}
 
 	@Override
 	public void tick(Plane plane) {
-		//TODO
+		// TODO
 	}
 
 }

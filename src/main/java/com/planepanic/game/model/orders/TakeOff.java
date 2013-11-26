@@ -14,12 +14,12 @@ public final class TakeOff extends Order {
 
 	@Override
 	public boolean isComplete(Plane plane) {
-		return !plane.closeEnough(runway);
+		return !plane.closeEnough(this.runway);
 	}
 
 	@Override
 	public void tick(Plane plane) {
-		//TODO
+		// TODO
 	}
 
 }

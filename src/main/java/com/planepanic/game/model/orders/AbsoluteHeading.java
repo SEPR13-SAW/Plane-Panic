@@ -13,12 +13,12 @@ public final class AbsoluteHeading extends Order {
 
 	@Override
 	public boolean isComplete(Plane plane) {
-		return plane.getPosition().angleCloseEnough(angle);
+		return plane.getPosition().angleCloseEnough(this.angle);
 	}
 
 	@Override
 	public void tick(Plane plane) {
-		//TODO
+		// TODO
 	}
 
 }

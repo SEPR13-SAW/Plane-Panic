@@ -18,10 +18,10 @@ public final class Vector2d {
 	}
 
 	public double getAngle() {
-		return Math.atan2(y, x);
+		return Math.atan2(this.y, this.x);
 	}
 
 	public boolean angleCloseEnough(double angle) {
-		return (((Math.abs(angle - getAngle()) + (Math.PI*2)) % (Math.PI*2)) < MAXIMUM_CLOSE_ANGLE);
+		return (Math.abs(angle - this.getAngle()) + Math.PI * 2) % (Math.PI * 2) < this.MAXIMUM_CLOSE_ANGLE;
 	}
 }

@@ -7,13 +7,14 @@ import com.planepanic.game.model.orders.Vector2d;
 
 /**
  * Example main
+ * 
  * @author Thomas Cheyney
  */
 public class Main {
-	
+
 	public static void main(String[] args) throws Exception {
 		DrawThread draw = new DrawThread();
-		
+
 		draw.start();
 		Thread.sleep(1000);
 		Button startGame = (Button) new Button("Start Game").setCallback(new Runnable() {
@@ -26,5 +27,5 @@ public class Main {
 		TextBox title = (TextBox) new TextBox("Plane Panic").setPosition(new Vector2d(536, 100));
 		draw.draw(title);
 	}
-	
+
 }

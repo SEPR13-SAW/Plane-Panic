@@ -3,15 +3,16 @@ package com.planepanic.game.model;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import com.planepanic.game.gfx.Drawable;
 import com.planepanic.game.model.orders.Order;
 import com.planepanic.game.model.orders.Vector2d;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * Plane class.
+ * 
  * @author Jonathan
  */
 public final class Plane extends Drawable {
@@ -33,13 +34,13 @@ public final class Plane extends Drawable {
 	@Override
 	public void draw2d() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void draw3d() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

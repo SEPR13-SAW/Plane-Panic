@@ -7,33 +7,34 @@ import com.planepanic.game.model.orders.Vector2d;
 
 /**
  * A simple drawable
+ * 
  * @author Thomas Cheyney
  */
 public class Image extends Drawable {
 
 	private Texture texture;
-	
+
 	public Image(Resources res) {
-		texture = res.getTexture();
-		setHitboxSize(new Vector2d(texture.getTextureWidth(), texture.getTextureHeight()));
+		this.texture = res.getTexture();
+		this.setHitboxSize(new Vector2d(this.texture.getTextureWidth(), this.texture.getTextureHeight()));
 	}
-	
+
 	@Override
 	public void draw2d() {
 		Color.white.bind();
-		texture.bind();
-		DrawUtil.drawImg((float) position.getX(), (float) position.getY(), (float) getHitboxSize().getX(), (float) getHitboxSize().getY());
+		this.texture.bind();
+		DrawUtil.drawImg((float) this.position.getX(), (float) this.position.getY(), (float) this.getHitboxSize().getX(), (float) this.getHitboxSize().getY());
 	}
 
 	@Override
 	public void draw3d() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public boolean onClick() {
 		return false;
 	}
-	
+
 }
