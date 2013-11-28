@@ -1,20 +1,20 @@
 package com.planepanic.game.model;
 
-import lombok.Getter;
-
 import com.planepanic.game.model.orders.Vector2d;
 
 /**
- * A class to represent waypoints.
+ * A class to represent Entry points.
  * 
- * @author Jonathan, Mantas
+ * @author Mantas
  */
-public final class Waypoint extends PointOfInterest {
-	@Getter private final String name;
+public final class EntryPoint extends PointOfInterest{
 
-	public Waypoint(Vector2d position, String name) {
+	public EntryPoint(Vector2d position) {
 		super(position);
-		this.name = name;
+	}
+	
+	public void addPlane(){
+		// TODO make it do something
 	}
 
 	@Override
@@ -34,3 +34,6 @@ public final class Waypoint extends PointOfInterest {
 		return false;
 	}
 }
+
+
+	
