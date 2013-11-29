@@ -53,8 +53,8 @@ public final class Plane extends Drawable {
 		int index = rng.nextInt(PlaneType.values().length);
 		PlaneType type = PlaneType.values()[index];
 
-		int passengers = type.getMaxPassengers()/2 + rng.nextInt(type.getMaxPassengers()/2);
-		double fuel = type.getMaxFuel()/2 + rng.nextDouble()*type.getMaxFuel()/2;
+		int passengers = type.getMaxPassengers() / 2 + rng.nextInt(type.getMaxPassengers() / 2);
+		double fuel = type.getMaxFuel() / 2 + rng.nextDouble() * type.getMaxFuel() / 2;
 
 		return new Plane(type, passengers, fuel);
 	}

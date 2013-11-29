@@ -7,13 +7,13 @@ import com.planepanic.game.model.orders.Vector2d;
  * 
  * @author Mantas
  */
-public final class ExitPoint extends PointOfInterest{
+public final class ExitPoint extends PointOfInterest {
 
 	public ExitPoint(Vector2d position) {
 		super(position);
 	}
-	
-	public void removePlane(){
+
+	public void removePlane() {
 		// TODO make it do something
 	}
 

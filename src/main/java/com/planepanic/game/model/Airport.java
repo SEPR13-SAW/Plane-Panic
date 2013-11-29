@@ -1,4 +1,3 @@
-
 package com.planepanic.game.model;
 
 import java.util.ArrayList;
@@ -11,14 +10,14 @@ import com.planepanic.game.model.orders.Vector2d;
  * 
  * @author Mantas, Jonathan
  */
-public final class Airport extends PointOfInterest{
+public final class Airport extends PointOfInterest {
 	private List<Plane> planeList = new ArrayList<>();
-	
+
 	public Airport(Vector2d position) {
 		super(position);
 	}
-	
-	public void addPlane(Plane plane){
+
+	public void addPlane(Plane plane) {
 		this.planeList.add(plane);
 	}
 

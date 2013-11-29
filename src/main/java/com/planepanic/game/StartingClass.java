@@ -15,27 +15,27 @@ public class StartingClass {
 	private GameState currentGameState = GameState.INITIAL;
 	
 	public GameState getCurentState() {
-		return currentGameState;
+		return this.currentGameState;
 	}
 	
 	public GameState startGame() {
-		currentGameState = GameState.RUNNING;
-		return currentGameState;
+		this.currentGameState = GameState.RUNNING;
+		return this.currentGameState;
 	}
 
 	public GameState gameOver() {
-		currentGameState = GameState.GAMEOVER;
-		return currentGameState;
+		this.currentGameState = GameState.GAMEOVER;
+		return this.currentGameState;
 	}
 	
 	public GameState pauseGame() {
-		currentGameState = GameState.PAUSED;
-		return currentGameState;
+		this.currentGameState = GameState.PAUSED;
+		return this.currentGameState;
 	}
 	
 	public GameState reInitialise() {
-		currentGameState = GameState.INITIAL;
-		return currentGameState;
+		this.currentGameState = GameState.INITIAL;
+		return this.currentGameState;
 	}
 	
 	

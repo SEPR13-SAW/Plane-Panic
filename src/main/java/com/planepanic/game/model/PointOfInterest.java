@@ -9,13 +9,12 @@ import com.planepanic.game.model.orders.Vector2d;
  * @author Mantas
  */
 
-public abstract class PointOfInterest extends Drawable{
-	
+public abstract class PointOfInterest extends Drawable {
+
 	public PointOfInterest(Vector2d position) {
 		super(position);
 	}
-	
-	
+
 	@Override
 	public abstract void draw2d();
 

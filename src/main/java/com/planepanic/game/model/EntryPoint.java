@@ -7,13 +7,13 @@ import com.planepanic.game.model.orders.Vector2d;
  * 
  * @author Mantas
  */
-public final class EntryPoint extends PointOfInterest{
+public final class EntryPoint extends PointOfInterest {
 
 	public EntryPoint(Vector2d position) {
 		super(position);
 	}
-	
-	public void addPlane(Plane plane){
+
+	public void addPlane(Plane plane) {
 		// TODO make it do something
 	}
 
@@ -34,6 +34,3 @@ public final class EntryPoint extends PointOfInterest{
 		return false;
 	}
 }
-
-
-	
