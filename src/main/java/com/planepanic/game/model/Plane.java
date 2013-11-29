@@ -2,6 +2,7 @@ package com.planepanic.game.model;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
+import java.util.Random;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -46,5 +47,15 @@ public final class Plane extends Drawable {
 	@Override
 	public boolean onClick() {
 		return false;
+	}
+
+	public static Plane randomPlane(Random rng) {
+		int index = rng.nextInt(PlaneType.values().length);
+		PlaneType type = PlaneType.values()[index];
+
+		int passengers = type.getMaxPassengers()/2 + rng.nextInt(type.getMaxPassengers()/2);
+		double fuel = type.getMaxFuel()/2 + rng.nextDouble()*type.getMaxFuel()/2;
+
+		return new Plane(type, passengers, fuel);
 	}
 }

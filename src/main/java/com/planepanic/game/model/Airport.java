@@ -2,24 +2,24 @@
 package com.planepanic.game.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.planepanic.game.model.orders.Vector2d;
+
 /**
- * A class to represent Entry points.
+ * A class to represent Airport Entry points.
  * 
- * @author Mantas
+ * @author Mantas, Jonathan
  */
 public final class Airport extends PointOfInterest{
-	private ArrayList<Plane> planeList = new ArrayList<Plane>();
+	private List<Plane> planeList = new ArrayList<>();
 	
 	public Airport(Vector2d position) {
 		super(position);
 	}
 	
-	public void addPlane(){
-		this.planeList.add(new Plane(null, 0, 0));
-		// TODO make it do something
-		
+	public void addPlane(Plane plane){
+		this.planeList.add(plane);
 	}
 
 	@Override

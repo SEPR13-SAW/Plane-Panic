@@ -13,7 +13,7 @@ public final class EntryPoint extends PointOfInterest{
 		super(position);
 	}
 	
-	public void addPlane(){
+	public void addPlane(Plane plane){
 		// TODO make it do something
 	}
 
