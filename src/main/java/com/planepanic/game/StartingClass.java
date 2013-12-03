@@ -1,5 +1,8 @@
 package com.planepanic.game;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Starting Class with Enumerated Values for Readability. Allows for reading and altering of the Current Game State.
  * 
@@ -11,11 +14,16 @@ public class StartingClass {
 	private enum GameState {
 		RUNNING, PAUSED, GAMEOVER, INITIAL;	
 	}
+
+	private enum Difficulty {
+		EASY, MEDIUM, HARD;
+	}
 	
-	private GameState currentGameState = GameState.INITIAL;
-	
-	public GameState getCurentState() {
-		return this.currentGameState;
+	@Getter private GameState currentGameState = GameState.INITIAL;
+	@Getter private final Difficulty difficulty;
+
+	public StartingClass(Difficulty difficulty) {
+		this.difficulty = difficulty;
 	}
 	
 	public GameState startGame() {
