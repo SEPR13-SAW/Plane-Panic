@@ -11,8 +11,10 @@ import lombok.Setter;
  */
 
 public class Player {
-
 	@Getter @Setter private int score = 0;
-	@Getter @Setter private String playerName = "Doge";
+	@Getter private final String name;
 
+	public Player(String name) {
+		this.name = name;
+	}
 }
