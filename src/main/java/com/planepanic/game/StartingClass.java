@@ -26,24 +26,20 @@ public class StartingClass {
 		this.difficulty = difficulty;
 	}
 	
-	public GameState startGame() {
+	public void startGame() {
 		this.currentGameState = GameState.RUNNING;
-		return this.currentGameState;
 	}
 
-	public GameState gameOver() {
+	public void gameOver() {
 		this.currentGameState = GameState.GAMEOVER;
-		return this.currentGameState;
 	}
 	
-	public GameState pauseGame() {
+	public void pauseGame() {
 		this.currentGameState = GameState.PAUSED;
-		return this.currentGameState;
 	}
 	
-	public GameState reInitialise() {
+	public void reInitialise() {
 		this.currentGameState = GameState.INITIAL;
-		return this.currentGameState;
 	}
 	
 	
