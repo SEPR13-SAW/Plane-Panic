@@ -3,8 +3,6 @@ package com.planepanic.game.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.planepanic.game.model.orders.Vector2d;
-
 /**
  * A class to represent Airport Entry points.
  * 

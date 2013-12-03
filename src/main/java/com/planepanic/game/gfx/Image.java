@@ -3,7 +3,7 @@ package com.planepanic.game.gfx;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.opengl.Texture;
 
-import com.planepanic.game.model.orders.Vector2d;
+import com.planepanic.game.model.Vector2d;
 
 /**
  * A simple drawable

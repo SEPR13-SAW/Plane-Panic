@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 
 import com.planepanic.game.gfx.DrawUtil;
 import com.planepanic.game.gfx.Drawable;
-import com.planepanic.game.model.orders.Vector2d;
+import com.planepanic.game.model.Vector2d;
 
 public class Button extends Drawable {
 

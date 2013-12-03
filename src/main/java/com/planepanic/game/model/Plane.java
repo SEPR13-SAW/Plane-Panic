@@ -9,7 +9,6 @@ import lombok.Setter;
 
 import com.planepanic.game.gfx.Drawable;
 import com.planepanic.game.model.orders.Order;
-import com.planepanic.game.model.orders.Vector2d;
 
 /**
  * Plane class.

@@ -1,4 +1,4 @@
-package com.planepanic.game.model.orders;
+package com.planepanic.game.model;
 
 import lombok.Getter;
 import lombok.Setter;

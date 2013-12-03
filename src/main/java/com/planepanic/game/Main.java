@@ -3,7 +3,7 @@ package com.planepanic.game;
 import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.ui.Button;
 import com.planepanic.game.gfx.ui.TextBox;
-import com.planepanic.game.model.orders.Vector2d;
+import com.planepanic.game.model.Vector2d;
 
 /**
  * Example main

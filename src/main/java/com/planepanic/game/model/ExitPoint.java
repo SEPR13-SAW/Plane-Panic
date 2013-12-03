@@ -1,6 +1,5 @@
 package com.planepanic.game.model;
 
-import com.planepanic.game.model.orders.Vector2d;
 
 /**
  * A class to represent Entry points.

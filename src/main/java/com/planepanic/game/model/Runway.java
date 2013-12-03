@@ -3,7 +3,6 @@ package com.planepanic.game.model;
 import lombok.Getter;
 
 import com.planepanic.game.gfx.Drawable;
-import com.planepanic.game.model.orders.Vector2d;
 
 /**
  * A class to represent runways.

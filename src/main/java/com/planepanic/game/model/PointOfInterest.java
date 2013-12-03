@@ -1,7 +1,6 @@
 package com.planepanic.game.model;
 
 import com.planepanic.game.gfx.Drawable;
-import com.planepanic.game.model.orders.Vector2d;
 
 /**
  * An abstract class to represent Points of Interest.

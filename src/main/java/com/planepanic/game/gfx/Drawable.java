@@ -7,7 +7,7 @@ import lombok.experimental.Accessors;
 import org.lwjgl.input.Mouse;
 
 import com.planepanic.game.Config;
-import com.planepanic.game.model.orders.Vector2d;
+import com.planepanic.game.model.Vector2d;
 
 /**
  * An abstract class used to represent objects which can be drawn to the screen.
