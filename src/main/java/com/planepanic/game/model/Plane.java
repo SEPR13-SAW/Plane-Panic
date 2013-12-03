@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import com.planepanic.game.gfx.Drawable;
+import com.planepanic.game.model.orders.FlyOver;
 import com.planepanic.game.model.orders.Order;
 
 /**
@@ -56,6 +57,10 @@ public final class Plane extends Drawable {
 		Order order = getCurrentOrder();
 		order.tick(this);
 		if (order.isComplete(this)) orders.poll();
+	}
+
+	public void addOrder(Order order) {
+		orders.add(order);
 	}
 
 	public static Plane randomPlane(Random rng) {
