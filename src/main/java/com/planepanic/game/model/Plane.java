@@ -49,6 +49,10 @@ public final class Plane extends Drawable {
 		return false;
 	}
 
+	public Order getCurrentOrder() {
+		return orders.peek();
+	}
+
 	public static Plane randomPlane(Random rng) {
 		int index = rng.nextInt(PlaneType.values().length);
 		PlaneType type = PlaneType.values()[index];
