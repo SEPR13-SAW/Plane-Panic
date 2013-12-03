@@ -12,7 +12,7 @@ import lombok.Setter;
 
 public class Player {
 
-	@Getter @Setter public int score = 0;
-	@Getter @Setter public String playerName = "Doge";
+	@Getter @Setter private int score = 0;
+	@Getter @Setter private String playerName = "Doge";
 
 }
