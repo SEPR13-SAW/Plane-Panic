@@ -1,7 +1,6 @@
 package com.planepanic.game;
 
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Starting Class with Enumerated Values for Readability. Allows for reading and altering of the Current Game State.

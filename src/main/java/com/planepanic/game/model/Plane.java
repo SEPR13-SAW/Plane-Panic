@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import com.planepanic.game.gfx.Drawable;
-import com.planepanic.game.model.orders.FlyOver;
 import com.planepanic.game.model.orders.Order;
 
 /**
