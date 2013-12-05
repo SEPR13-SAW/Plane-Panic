@@ -28,10 +28,10 @@ public class Main {
 		draw.draw(startGame);
 		TextBox title = (TextBox) new TextBox("Plane Panic").setPosition(new Vector2d(536, 100));
 		draw.draw(title);
-		EntryPoint entry = new EntryPoint(new Vector2d(0, 0));
+		EntryPoint entry = new EntryPoint(new Vector2d(50, 50));
 		Plane plane = entry.addPlane();
 		
-		draw.draw(plane.getSprite());
+		draw.draw(plane);
 	}
 	
 
