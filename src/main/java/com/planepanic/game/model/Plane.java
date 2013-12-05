@@ -35,6 +35,7 @@ public final class Plane extends Drawable {
 		this.fuel = fuel;
 		this.velocity = new Vector2d();
 		this.sprite = sprite;
+		this.sprite.setPosition(super.getPosition());
 	}
 
 	@Override
