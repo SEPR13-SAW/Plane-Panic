@@ -4,6 +4,8 @@ import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.ui.Button;
 import com.planepanic.game.gfx.ui.TextBox;
 import com.planepanic.game.model.Vector2d;
+import com.planepanic.game.model.EntryPoint;
+import com.planepanic.game.model.Plane;
 
 /**
  * Example main
@@ -26,6 +28,11 @@ public class Main {
 		draw.draw(startGame);
 		TextBox title = (TextBox) new TextBox("Plane Panic").setPosition(new Vector2d(536, 100));
 		draw.draw(title);
+		EntryPoint entry = new EntryPoint(new Vector2d(0, 0));
+		Plane plane = entry.addPlane();
+		
+		draw.draw(plane.getSprite());
 	}
+	
 
 }
