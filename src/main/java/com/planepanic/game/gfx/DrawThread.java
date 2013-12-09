@@ -2,7 +2,9 @@ package com.planepanic.game.gfx;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import lombok.Getter;
@@ -35,7 +37,7 @@ public class DrawThread extends Thread {
 	}
 
 	@Getter private boolean running = true;
-	private Set<Drawable> drawObjects = new HashSet<Drawable>();
+	private Map<RenderPriority, Set<Drawable>> drawObjects = new HashMap<RenderPriority, Set<Drawable>>();
 	private boolean mouseWasUp = true;
 	private Screen currentScreen;
 
@@ -100,20 +102,30 @@ public class DrawThread extends Thread {
 			}
 
 			// Clear the canvas
-			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_STENCIL_BUFFER_BIT);
+			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_STENCIL_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 
 			if (Mouse.isButtonDown(0) && this.mouseWasUp) {
-				for (Drawable obj : this.drawObjects) {
-					if (obj.clickHandler()) {
-						break;
+				for (int i = 4; i >= 0; i--) {
+					RenderPriority priority = RenderPriority.getRenderPriorityFromId(i);
+					if (this.drawObjects.containsKey(priority)) {
+						for (Drawable obj : this.drawObjects.get(priority)) {
+							if (obj.clickHandler()) {
+								break;
+							}
+						}
 					}
 				}
 			}
 			this.mouseWasUp = !Mouse.isButtonDown(0);
 
 			// Draw the objects
-			for (Drawable obj : this.drawObjects) {
-				obj.draw2d();
+			for (int i = 0; i <= 4; i++) {
+				RenderPriority priority = RenderPriority.getRenderPriorityFromId(i);
+				if (this.drawObjects.containsKey(priority)) {
+					for (Drawable obj : this.drawObjects.get(priority)) {
+						obj.draw2d();
+					}
+				}
 			}
 
 			// Update the output
@@ -126,7 +138,14 @@ public class DrawThread extends Thread {
 	}
 
 	public void draw(Drawable obj) {
-		this.drawObjects.add(obj);
+		draw(obj, RenderPriority.Normal);
+	}
+	
+	public void draw(Drawable obj, RenderPriority priority) {
+		if (!this.drawObjects.containsKey(priority)) {
+			this.drawObjects.put(priority, new HashSet<Drawable>());
+		}
+		this.drawObjects.get(priority).add(obj);
 	}
 
 	public void clearScreen() {
@@ -135,6 +154,7 @@ public class DrawThread extends Thread {
 
 	public void changeScreen(Screen screen) {
 		this.currentScreen = screen;
+		this.currentScreen.resize();
 	}
 
 }
