@@ -16,12 +16,6 @@ public final class Waypoint extends PointOfInterest {
 	}
 
 	@Override
-	public void draw2d() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void draw3d() {
 		// TODO Auto-generated method stub
 

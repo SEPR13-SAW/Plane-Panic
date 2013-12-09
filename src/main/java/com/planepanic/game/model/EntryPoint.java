@@ -2,7 +2,6 @@ package com.planepanic.game.model;
 
 import java.util.Random;
 
-
 /**
  * A class to represent Entry points.
  * 
@@ -15,22 +14,17 @@ public final class EntryPoint extends PointOfInterest {
 	}
 
 	public Plane addPlane() {
-		return Plane.randomPlane(new Random(), this.position);
-	}
-
-	@Override
-	public void draw2d() {
-		// TODO Auto-generated method stub
+		return Plane.randomPlane(new Random(), this.position.clone());
 	}
 
 	@Override
 	public void draw3d() {
-
+		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public boolean onClick() {
+	protected boolean onClick() {
 		return false;
 	}
 }

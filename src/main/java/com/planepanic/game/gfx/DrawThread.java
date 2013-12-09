@@ -90,4 +90,8 @@ public class DrawThread extends Thread {
 		this.drawObjects.add(obj);
 	}
 
+	public void clearScreen() {
+		this.drawObjects.clear();
+	}
+
 }

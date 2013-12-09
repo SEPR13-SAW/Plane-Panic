@@ -3,7 +3,6 @@ package com.planepanic.game;
 import lombok.Getter;
 import lombok.Setter;
 
-
 /**
  * Player class containing name and score
  * 

@@ -1,6 +1,5 @@
 package com.planepanic.game.model;
 
-
 /**
  * A class to represent Entry points.
  * 
@@ -14,12 +13,6 @@ public final class ExitPoint extends PointOfInterest {
 
 	public void removePlane() {
 		// TODO make it do something
-	}
-
-	@Override
-	public void draw2d() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override

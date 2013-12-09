@@ -39,7 +39,11 @@ public class DrawUtil {
 	}
 
 	public static void drawSquare(float x, float y, float w, float h) {
-		GL11.glBegin(GL11.GL_QUADS);
+		DrawUtil.drawSquare(x, y, w, h, true);
+	}
+
+	public static void drawSquare(float x, float y, float w, float h, boolean filled) {
+		GL11.glBegin(filled ? GL11.GL_QUADS : GL11.GL_LINE_LOOP);
 		GL11.glVertex2f(x, y);
 		GL11.glVertex2f(x + w, y);
 		GL11.glVertex2f(x + w, y + h);
@@ -47,19 +51,49 @@ public class DrawUtil {
 		GL11.glEnd();
 	}
 
-	public static void drawImg(float x, float y, float w, float h) {
+	public static void drawCircle(float x, float y, float w, float h) {
+		DrawUtil.drawSquare(x, y, w, h, true);
+	}
+
+	public static void drawCircle(float x, float y, float r, boolean filled) {
+		GL11.glBegin(filled ? GL11.GL_TRIANGLE_FAN : GL11.GL_LINE_LOOP);
+		for (int i = 0; i < 360; i += 5) {
+			GL11.glVertex2f((float) (x + Math.sin(Math.toRadians(i)) * r), (float) (y + Math.cos(Math.toRadians(i)) * r));
+		}
+		GL11.glEnd();
+	}
+
+	public static void rotate(float r) {
+		GL11.glPushMatrix();
+		GL11.glRotatef(r, 0, 0, 1);
+	}
+
+	public static void pop() {
+		GL11.glPopMatrix();
+	}
+
+	public static void drawImg(float x, float y, float w, float h, float tw, float th, float r) {
+		GL11.glPushMatrix();
+		GL11.glTranslatef(x, y, 0);
+		GL11.glRotatef(r, 0, 0, 1);
+
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glBegin(GL11.GL_QUADS);
+
 		GL11.glTexCoord2f(0, 0);
-		GL11.glVertex2f(x, y);
+		GL11.glVertex2f(-w / 2, -h / 2);
 		GL11.glTexCoord2f(1, 0);
-		GL11.glVertex2f(x + w, y);
+		GL11.glVertex2f(-w / 2 + tw, -h / 2);
 		GL11.glTexCoord2f(1, 1);
-		GL11.glVertex2f(x + w, y + h);
+		GL11.glVertex2f(-w / 2 + tw, -h / 2 + th);
 		GL11.glTexCoord2f(0, 1);
-		GL11.glVertex2f(x, y + h);
+		GL11.glVertex2f(-w / 2, -h / 2 + th);
+
 		GL11.glEnd();
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
+
+		GL11.glPopMatrix();
+		GL11.glPopMatrix();
 	}
 
 	public static Vector2d getSize(String text) {

@@ -18,7 +18,6 @@ import com.planepanic.game.Config;
 public enum Resources {
 	TEST("achbg.png"), PLANE("temp.png");
 
-
 	@Getter private Texture texture;
 	private String file;
 

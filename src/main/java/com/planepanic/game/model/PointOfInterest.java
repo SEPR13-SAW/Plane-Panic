@@ -1,5 +1,6 @@
 package com.planepanic.game.model;
 
+import com.planepanic.game.gfx.DrawUtil;
 import com.planepanic.game.gfx.Drawable;
 
 /**
@@ -15,12 +16,9 @@ public abstract class PointOfInterest extends Drawable {
 	}
 
 	@Override
-	public abstract void draw2d();
-
-	@Override
-	public abstract void draw3d();
-
-	@Override
-	public abstract boolean onClick();
+	public void draw2d() {
+		DrawUtil.setColor(0xFF4B2B);
+		DrawUtil.drawCircle((float) this.getPosition().getX(), (float) this.getPosition().getY(), 10f, false);
+	}
 
 }
