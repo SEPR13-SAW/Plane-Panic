@@ -7,8 +7,10 @@ package com.planepanic.game;
  */
 public class Config {
 
+	public static final boolean FULLSCREEN = false;
 	public static final int WINDOW_WIDTH = 1280;
 	public static final int WINDOW_HEIGHT = 720;
+
 	public static final String TITLE = "SAW";
 
 	public static final int FRAMERATE = 60;

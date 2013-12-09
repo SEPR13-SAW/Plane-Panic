@@ -6,7 +6,6 @@ import lombok.experimental.Accessors;
 
 import org.lwjgl.input.Mouse;
 
-import com.planepanic.game.Config;
 import com.planepanic.game.model.Vector2d;
 
 /**
@@ -70,7 +69,7 @@ public abstract class Drawable {
 
 	protected boolean isMouseOver() {
 		int x = Mouse.getX();
-		int y = Config.WINDOW_HEIGHT - Mouse.getY();
+		int y = DrawThread.height - Mouse.getY();
 		return x > this.getPosition().getX() && x < this.getPosition().getX() + this.getHitboxSize().getX() && y > this.getPosition().getY() && y < this.getPosition().getY() + this.getHitboxSize().getY();
 	}
 

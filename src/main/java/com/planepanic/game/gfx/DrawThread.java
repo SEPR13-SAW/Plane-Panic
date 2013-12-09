@@ -1,5 +1,7 @@
 package com.planepanic.game.gfx;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,6 +15,7 @@ import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 
 import com.planepanic.game.Config;
+import com.planepanic.game.gfx.screens.Screen;
 
 /**
  * Thread in charge of the screen
@@ -21,16 +24,38 @@ import com.planepanic.game.Config;
  */
 public class DrawThread extends Thread {
 
+	public static DrawThread draw;
+
+	public static DrawThread getInstance() {
+		if (DrawThread.draw == null) {
+			DrawThread.draw = new DrawThread();
+			DrawThread.draw.start();
+		}
+		return DrawThread.draw;
+	}
+
 	@Getter private boolean running = true;
 	private Set<Drawable> drawObjects = new HashSet<Drawable>();
 	private boolean mouseWasUp = true;
+	private Screen currentScreen;
+
+	public static int width = 1280;
+	public static int height = 720;
 
 	private void init() {
 		try {
-			DisplayMode chosenMode = new DisplayMode(Config.WINDOW_WIDTH, Config.WINDOW_HEIGHT);
-			Display.setDisplayMode(chosenMode);
+			if (Config.FULLSCREEN) {
+				Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+				DrawThread.width = (int) screenSize.getWidth();
+				DrawThread.height = (int) screenSize.getHeight();
+			} else {
+				DrawThread.width = Config.WINDOW_WIDTH;
+				DrawThread.height = Config.WINDOW_HEIGHT;
+				Display.setDisplayMode(new DisplayMode(DrawThread.width, DrawThread.height));
+			}
+			Display.setResizable(true);
 			Display.setTitle(Config.TITLE);
-			Display.setFullscreen(false);
+			Display.setFullscreen(Config.FULLSCREEN);
 			Display.create();
 
 			// Load resources
@@ -41,7 +66,7 @@ public class DrawThread extends Thread {
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
-			GL11.glOrtho(0, Config.WINDOW_WIDTH, Config.WINDOW_HEIGHT, 0, 1, -1);
+			GL11.glOrtho(0, DrawThread.width, DrawThread.height, 0, 1, -1);
 			GL11.glClearColor(0, 0, 0, 0);
 		} catch (LWJGLException e) {
 			Sys.alert("Error", "Unable to create display.");
@@ -60,6 +85,20 @@ public class DrawThread extends Thread {
 	public void run() {
 		this.init();
 		while (this.running) {
+			if (Display.wasResized()) {
+				DrawThread.width = Display.getWidth();
+				DrawThread.height = Display.getHeight();
+
+				GL11.glMatrixMode(GL11.GL_PROJECTION);
+				GL11.glLoadIdentity();
+				GL11.glViewport(0, 0, DrawThread.width, DrawThread.height);
+				GL11.glOrtho(0, DrawThread.width, DrawThread.height, 0, 1, -1);
+				GL11.glMatrixMode(GL11.GL_MODELVIEW);
+				GL11.glLoadIdentity();
+
+				this.currentScreen.resize();
+			}
+
 			// Clear the canvas
 			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_STENCIL_BUFFER_BIT);
 
@@ -92,6 +131,10 @@ public class DrawThread extends Thread {
 
 	public void clearScreen() {
 		this.drawObjects.clear();
+	}
+
+	public void changeScreen(Screen screen) {
+		this.currentScreen = screen;
 	}
 
 }
