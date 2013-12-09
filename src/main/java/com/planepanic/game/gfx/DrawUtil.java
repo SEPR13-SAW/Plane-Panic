@@ -1,6 +1,8 @@
 package com.planepanic.game.gfx;
 
 import java.awt.Font;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.Color;
@@ -15,11 +17,14 @@ import com.planepanic.game.model.Vector2d;
  */
 public class DrawUtil {
 
-	private static TrueTypeFont ttf;
+	private static Map<Integer, TrueTypeFont> ttf = new HashMap<Integer, TrueTypeFont>();
 
-	static {
-		Font font = new Font("Verdana", Font.BOLD, 32);
-		DrawUtil.ttf = new TrueTypeFont(font, true);
+	private static TrueTypeFont getFont(int size) {
+		if (!ttf.containsKey(size)) {
+			Font font = new Font("Verdana", Font.BOLD, size);
+			DrawUtil.ttf.put(size, new TrueTypeFont(font, true));
+		}
+		return ttf.get(size);
 	}
 
 	public static float getRed(int color) {
@@ -97,16 +102,24 @@ public class DrawUtil {
 	}
 
 	public static Vector2d getSize(String text) {
-		return new Vector2d(DrawUtil.ttf.getWidth(text), DrawUtil.ttf.getHeight(text));
+		return getSize(text, 32);
+	}
+	
+	public static Vector2d getSize(String text, int size) {
+		return new Vector2d(DrawUtil.getFont(size).getWidth(text), DrawUtil.getFont(size).getHeight(text));
 	}
 
 	public static void drawString(float x, float y, String text) {
 		DrawUtil.drawString(x, y, text, 0xFFFFFF);
 	}
-
+	
 	public static void drawString(float x, float y, String text, int color) {
+		DrawUtil.drawString(x, y, text, color, 32);
+	}
+
+	public static void drawString(float x, float y, String text, int color, int size) {
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
-		DrawUtil.ttf.drawString(x, y, text, new Color(color));
+		DrawUtil.getFont(size).drawString(x, y, text, new Color(color));
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 	}
 

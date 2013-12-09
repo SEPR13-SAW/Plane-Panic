@@ -2,6 +2,8 @@ package com.planepanic.game.model;
 
 import lombok.Getter;
 
+import com.planepanic.game.gfx.DrawUtil;
+
 /**
  * A class to represent waypoints.
  * 
@@ -15,6 +17,13 @@ public final class Waypoint extends PointOfInterest {
 		this.name = name;
 	}
 
+	@Override
+	public void draw2d() {
+		super.draw2d();
+		Vector2d size = DrawUtil.getSize(name, 12);
+		DrawUtil.drawString((float) (getPosition().getX() - size.getX() / 2), (float) (getPosition().getY() - size.getY() / 2), name, 0xFFFFFF, 12);
+	}
+	
 	@Override
 	public void draw3d() {
 		// TODO Auto-generated method stub
