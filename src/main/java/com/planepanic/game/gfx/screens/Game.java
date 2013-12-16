@@ -8,6 +8,7 @@ import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.Waypoint;
 import com.planepanic.game.model.orders.AbsoluteHeading;
+import com.planepanic.game.model.orders.RelativeHeading;
 
 public class Game extends Screen {
 	
@@ -29,6 +30,7 @@ public class Game extends Screen {
 		Plane plane = entry.addPlane();
 		plane.getOrders().add(new AbsoluteHeading(0));
 		plane.getOrders().add(new AbsoluteHeading(Math.PI / 2));
+		plane.getOrders().add(new RelativeHeading(plane.getAngle(), Math.PI / 2));
 		draw.draw(plane, RenderPriority.Low);
 		
 		radar = new Radar();
