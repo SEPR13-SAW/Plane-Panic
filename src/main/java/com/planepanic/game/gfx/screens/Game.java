@@ -55,11 +55,9 @@ public class Game extends Screen {
 			int index = rng.nextInt(entryPointList.size());
 			Plane plane = entryPointList.get(index).addPlane();
 			DrawThread draw = DrawThread.getInstance();
-			draw.draw(plane, RenderPriority.High);
+			draw.draw(plane, RenderPriority.Low);
 			this.planeList.add(plane);
 			this.setMaxTicks(this.getMinSpawnInterval() + rng.nextInt(this.getMaxSpawnInterval()-this.getMinSpawnInterval()));
-			System.out.println(this.getTicks());
-			System.out.println(this.getMaxTicks());
 			this.setTicks(0);
 		} else {
 			this.setTicks(this.getTicks()+1);

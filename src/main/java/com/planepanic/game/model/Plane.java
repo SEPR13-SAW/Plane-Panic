@@ -33,6 +33,7 @@ public final class Plane extends Image {
 		this.fuel = fuel;
 		this.velocity = new Vector2d(0, 1);
 		this.speed = this.getVelocity().getLength();
+		System.out.println(speed);
 	}
 
 	@Override
@@ -58,6 +59,7 @@ public final class Plane extends Image {
 
 	public void tick() {
 		this.consumeFuel();
+
 		Order order = this.getCurrentOrder();
 		if (order != null) {
 			order.tick(this);
