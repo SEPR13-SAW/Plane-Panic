@@ -7,6 +7,7 @@ import java.util.Random;
 import lombok.Getter;
 import lombok.Setter;
 
+import com.planepanic.game.Config;
 import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.RenderPriority;
 import com.planepanic.game.gfx.ui.Radar;
@@ -20,8 +21,9 @@ import com.planepanic.game.model.orders.RelativeHeading;
 public class Game extends Screen {
 	
 	Radar radar;
-	@Getter @Setter int ticks = 0, maxTicks = 0, maxSpawnPeriod = 30, minSpawnPeriod = 10;
+	@Getter @Setter int ticks = 0, maxSpawnInterval = 20*Config.FRAMERATE, minSpawnInterval = 10*Config.FRAMERATE, maxTicks = maxSpawnInterval;
 	private List<EntryPoint> entryPointList = new ArrayList<>();
+	private List<Plane> planeList = new ArrayList<>();
 
 	public Game() {
 		super();
@@ -29,6 +31,7 @@ public class Game extends Screen {
 		DrawThread draw = DrawThread.getInstance();
 
 		EntryPoint entry = new EntryPoint(new Vector2d(50, 50));
+		this.entryPointList.add(entry);
 		draw.draw(entry, RenderPriority.High);
 		
 		for (int i = 0; i < 6; i++) {
@@ -37,25 +40,33 @@ public class Game extends Screen {
 		}
 		
 		Plane plane = entry.addPlane();
+		this.planeList.add(plane);
 		plane.getOrders().add(new AbsoluteHeading(0));
 		plane.getOrders().add(new AbsoluteHeading(Math.PI / 2));
 		plane.getOrders().add(new RelativeHeading(plane.getAngle(), Math.PI / 2));
 		draw.draw(plane, RenderPriority.Low);
 		
-		radar = new Radar();
+		radar = new Radar(this);
 		draw.draw(radar, RenderPriority.Highest);
 	}
 
 	public void spawnPlane(Random rng){
 		if (this.getTicks() == this.getMaxTicks()){
 			int index = rng.nextInt(entryPointList.size());
-			entryPointList.get(index).addPlane();
-			this.setMaxTicks(this.getMinSpawnPeriod() + rng.nextInt(this.getMaxSpawnPeriod()-this.getMinSpawnPeriod()));
+			Plane plane = entryPointList.get(index).addPlane();
+			DrawThread draw = DrawThread.getInstance();
+			draw.draw(plane, RenderPriority.High);
+			this.planeList.add(plane);
+			this.setMaxTicks(this.getMinSpawnInterval() + rng.nextInt(this.getMaxSpawnInterval()-this.getMinSpawnInterval()));
+			System.out.println(this.getTicks());
+			System.out.println(this.getMaxTicks());
 			this.setTicks(0);
 		} else {
 			this.setTicks(this.getTicks()+1);
 		}
 	};
+	
+	
 	@Override
 	public void resize() {
 		radar.setPosition(new Vector2d((DrawThread.width - 500) / 2, DrawThread.height / 2));
