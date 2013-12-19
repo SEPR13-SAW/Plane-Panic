@@ -7,6 +7,7 @@ import java.util.Random;
 import lombok.Getter;
 import lombok.Setter;
 
+import com.planepanic.game.Config;
 import com.planepanic.game.gfx.Image;
 import com.planepanic.game.gfx.Resources;
 import com.planepanic.game.model.orders.Order;
@@ -20,6 +21,7 @@ public final class Plane extends Image {
 	@Getter private final PlaneType type;
 	@Getter private final int passengers;
 	@Getter @Setter private double fuel;
+	@Getter @Setter private double speed; // Simple linear speed, to avoid having to calculate length of the vector every tick
 	@Getter @Setter private Vector2d velocity;
 
 	@Getter private final Queue<Order> orders = new ArrayDeque<>(64);
@@ -30,6 +32,7 @@ public final class Plane extends Image {
 		this.passengers = passengers;
 		this.fuel = fuel;
 		this.velocity = new Vector2d(0, 1);
+		this.speed = this.getVelocity().getLength();
 	}
 
 	@Override
@@ -54,6 +57,7 @@ public final class Plane extends Image {
 	}
 
 	public void tick() {
+		this.consumeFuel();
 		Order order = this.getCurrentOrder();
 		if (order != null) {
 			order.tick(this);
@@ -78,4 +82,8 @@ public final class Plane extends Image {
 
 		return new Plane(type, passengers, fuel, position, Resources.PLANE);
 	}
+	
+	public void consumeFuel(){
+		this.setFuel(this.getFuel()-((this.type.getFuelConsumption()/Config.FRAMERATE)*(this.getSpeed()/this.type.getMaxVelocity())));
+	};
 }
