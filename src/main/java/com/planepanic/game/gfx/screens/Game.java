@@ -1,5 +1,12 @@
 package com.planepanic.game.gfx.screens;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import lombok.Getter;
+import lombok.Setter;
+
 import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.RenderPriority;
 import com.planepanic.game.gfx.ui.Radar;
@@ -13,6 +20,8 @@ import com.planepanic.game.model.orders.RelativeHeading;
 public class Game extends Screen {
 	
 	Radar radar;
+	@Getter @Setter int ticks = 0, maxTicks = 0, maxSpawnPeriod = 30, minSpawnPeriod = 10;
+	private List<EntryPoint> entryPointList = new ArrayList<>();
 
 	public Game() {
 		super();
@@ -37,6 +46,16 @@ public class Game extends Screen {
 		draw.draw(radar, RenderPriority.Highest);
 	}
 
+	public void spawnPlane(Random rng){
+		if (this.getTicks() == this.getMaxTicks()){
+			int index = rng.nextInt(entryPointList.size());
+			entryPointList.get(index).addPlane();
+			this.setMaxTicks(this.getMinSpawnPeriod() + rng.nextInt(this.getMaxSpawnPeriod()-this.getMinSpawnPeriod()));
+			this.setTicks(0);
+		} else {
+			this.setTicks(this.getTicks()+1);
+		}
+	};
 	@Override
 	public void resize() {
 		radar.setPosition(new Vector2d((DrawThread.width - 500) / 2, DrawThread.height / 2));
