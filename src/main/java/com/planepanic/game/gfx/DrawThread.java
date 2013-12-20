@@ -147,6 +147,14 @@ public class DrawThread extends Thread {
 		}
 		this.drawObjects.get(priority).add(obj);
 	}
+	
+	public boolean removeObject(Drawable obj) {
+		boolean result = false;
+		for (RenderPriority priority : this.drawObjects.keySet()) {
+			result |= this.drawObjects.get(priority).remove(obj);
+		}
+		return result;
+	}
 
 	public void clearScreen() {
 		this.drawObjects.clear();
