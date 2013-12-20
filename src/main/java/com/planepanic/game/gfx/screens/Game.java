@@ -20,9 +20,9 @@ import com.planepanic.game.model.orders.AbsoluteHeading;
 import com.planepanic.game.model.orders.RelativeHeading;
 
 public class Game extends Screen {
-	
+
 	Radar radar;
-	@Getter @Setter int ticks = 0, maxSpawnInterval = 10*Config.FRAMERATE, minSpawnInterval = 5*Config.FRAMERATE, maxTicks = maxSpawnInterval;
+	@Getter @Setter int ticks = 0, maxSpawnInterval = 20 * Config.FRAMERATE, minSpawnInterval = 10 * Config.FRAMERATE, maxTicks = this.maxSpawnInterval;
 	private List<EntryPoint> entryPointList = new ArrayList<>();
 	private List<Plane> planeList = new ArrayList<>();
 
@@ -34,7 +34,7 @@ public class Game extends Screen {
 		EntryPoint entry = new EntryPoint(new Vector2d(50, 50));
 		this.entryPointList.add(entry);
 		draw.draw(entry, RenderPriority.High);
-		
+
 		createEntryPoint(new Vector2d(50,500));
 		createEntryPoint(new Vector2d(500,500));
 		createEntryPoint(new Vector2d(500,50));
@@ -50,24 +50,24 @@ public class Game extends Screen {
 		plane.getOrders().add(new AbsoluteHeading(Math.PI / 2));
 		plane.getOrders().add(new RelativeHeading(plane.getAngle(), Math.PI / 2));
 		draw.draw(plane, RenderPriority.Low);
-		radar = new Radar(this);
-		draw.draw(radar, RenderPriority.Highest);
-		Airport airport = new Airport(new Vector2d(400, Config.WINDOW_HEIGHT/2));
+		this.radar = new Radar(this);
+		draw.draw(this.radar, RenderPriority.Highest);
+		Airport airport = new Airport(new Vector2d(400, Config.WINDOW_HEIGHT / 2));
 		draw.draw(airport, RenderPriority.Low);
-		
+
 	}
 
-	public void spawnPlane(Random rng){
-		if (this.getTicks() == this.getMaxTicks()){
-			int index = rng.nextInt(entryPointList.size());
-			Plane plane = entryPointList.get(index).addPlane();
+	public void spawnPlane(Random rng) {
+		if (this.getTicks() == this.getMaxTicks()) {
+			int index = rng.nextInt(this.entryPointList.size());
+			Plane plane = this.entryPointList.get(index).addPlane();
 			DrawThread draw = DrawThread.getInstance();
 			draw.draw(plane, RenderPriority.Low);
 			this.planeList.add(plane);
-			this.setMaxTicks(this.getMinSpawnInterval() + rng.nextInt(this.getMaxSpawnInterval()-this.getMinSpawnInterval()));
+			this.setMaxTicks(this.getMinSpawnInterval() + rng.nextInt(this.getMaxSpawnInterval() - this.getMinSpawnInterval()));
 			this.setTicks(0);
 		} else {
-			this.setTicks(this.getTicks()+1);
+			this.setTicks(this.getTicks() + 1);
 		}
 	};
 	
@@ -81,8 +81,8 @@ public class Game extends Screen {
 	
 	@Override
 	public void resize() {
-		radar.setPosition(new Vector2d((DrawThread.width - 500) / 2, DrawThread.height / 2));
-		radar.onResize();
+		this.radar.setPosition(new Vector2d((DrawThread.width - 500) / 2, DrawThread.height / 2));
+		this.radar.onResize();
 	}
 
 }

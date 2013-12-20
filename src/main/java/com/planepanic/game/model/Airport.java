@@ -23,9 +23,9 @@ public final class Airport extends PointOfInterest {
 	public void addPlane(Plane plane) {
 		this.planeList.add(plane);
 	}
-	
+
 	@Override
-	public void draw2d(){
+	public void draw2d() {
 		this.sprite.draw2d();
 	}
 
