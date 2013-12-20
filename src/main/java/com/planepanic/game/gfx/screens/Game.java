@@ -22,7 +22,7 @@ import com.planepanic.game.model.orders.RelativeHeading;
 public class Game extends Screen {
 
 	Radar radar;
-	@Getter @Setter int ticks = 0, maxSpawnInterval = 20 * Config.FRAMERATE, minSpawnInterval = 10 * Config.FRAMERATE, maxTicks = this.maxSpawnInterval;
+	@Getter @Setter int ticks = 0, maxSpawnInterval = 10 * Config.FRAMERATE, minSpawnInterval = 5 * Config.FRAMERATE, maxTicks = this.maxSpawnInterval;
 	private List<EntryPoint> entryPointList = new ArrayList<>();
 	private List<Plane> planeList = new ArrayList<>();
 
