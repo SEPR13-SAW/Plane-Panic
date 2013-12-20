@@ -20,10 +20,10 @@ public final class Waypoint extends PointOfInterest {
 	@Override
 	public void draw2d() {
 		super.draw2d();
-		Vector2d size = DrawUtil.getSize(name, 12);
-		DrawUtil.drawString((float) (getPosition().getX() - size.getX() / 2), (float) (getPosition().getY() - size.getY() / 2), name, 0xFFFFFF, 12);
+		Vector2d size = DrawUtil.getSize(this.name, 12);
+		DrawUtil.drawString((float) (this.getPosition().getX() - size.getX() / 2), (float) (this.getPosition().getY() - size.getY() / 2), this.name, 0xFFFFFF, 12);
 	}
-	
+
 	@Override
 	public void draw3d() {
 		// TODO Auto-generated method stub

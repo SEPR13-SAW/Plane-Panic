@@ -31,9 +31,9 @@ public final class Vector2d {
 		this.x += velocity.getX();
 		this.y += velocity.getY();
 	}
-	
+
 	public double getLength() {
-		return Math.sqrt(this.getX()*this.getX()+this.getY()*this.getY());
+		return Math.sqrt(this.getX() * this.getX() + this.getY() * this.getY());
 	}
 
 	@Override

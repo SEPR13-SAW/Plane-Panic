@@ -20,11 +20,11 @@ public class DrawUtil {
 	private static Map<Integer, TrueTypeFont> ttf = new HashMap<Integer, TrueTypeFont>();
 
 	private static TrueTypeFont getFont(int size) {
-		if (!ttf.containsKey(size)) {
+		if (!DrawUtil.ttf.containsKey(size)) {
 			Font font = new Font("Verdana", Font.BOLD, size);
 			DrawUtil.ttf.put(size, new TrueTypeFont(font, true));
 		}
-		return ttf.get(size);
+		return DrawUtil.ttf.get(size);
 	}
 
 	public static float getRed(int color) {
@@ -102,9 +102,9 @@ public class DrawUtil {
 	}
 
 	public static Vector2d getSize(String text) {
-		return getSize(text, 32);
+		return DrawUtil.getSize(text, 32);
 	}
-	
+
 	public static Vector2d getSize(String text, int size) {
 		return new Vector2d(DrawUtil.getFont(size).getWidth(text), DrawUtil.getFont(size).getHeight(text));
 	}
@@ -112,7 +112,7 @@ public class DrawUtil {
 	public static void drawString(float x, float y, String text) {
 		DrawUtil.drawString(x, y, text, 0xFFFFFF);
 	}
-	
+
 	public static void drawString(float x, float y, String text, int color) {
 		DrawUtil.drawString(x, y, text, color, 32);
 	}
