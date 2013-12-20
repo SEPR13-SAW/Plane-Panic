@@ -11,6 +11,7 @@ import com.planepanic.game.Config;
 import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.RenderPriority;
 import com.planepanic.game.gfx.ui.Radar;
+import com.planepanic.game.model.Airport;
 import com.planepanic.game.model.EntryPoint;
 import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
@@ -38,16 +39,18 @@ public class Game extends Screen {
 			Waypoint wp = new Waypoint(new Vector2d(200 + 75 * i, 400), "" + (char) (65 + i));
 			draw.draw(wp, RenderPriority.High);
 		}
-		
+
 		Plane plane = entry.addPlane();
 		this.planeList.add(plane);
 		plane.getOrders().add(new AbsoluteHeading(0));
 		plane.getOrders().add(new AbsoluteHeading(Math.PI / 2));
 		plane.getOrders().add(new RelativeHeading(plane.getAngle(), Math.PI / 2));
 		draw.draw(plane, RenderPriority.Low);
-		
 		radar = new Radar(this);
 		draw.draw(radar, RenderPriority.Highest);
+		Airport airport = new Airport(new Vector2d(400, Config.WINDOW_HEIGHT/2));
+		draw.draw(airport, RenderPriority.Low);
+		
 	}
 
 	public void spawnPlane(Random rng){

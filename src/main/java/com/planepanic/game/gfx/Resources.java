@@ -16,7 +16,7 @@ import com.planepanic.game.Config;
  * @author Thomas Cheyney
  */
 public enum Resources {
-	TEST("achbg.png"), PLANE("temp.png");
+	TEST("achbg.png"), PLANE("temp.png"), AIRPORT("AIRPORT.png");
 
 	@Getter private Texture texture;
 	private String file;
