@@ -22,7 +22,7 @@ import com.planepanic.game.model.orders.RelativeHeading;
 public class Game extends Screen {
 	
 	Radar radar;
-	@Getter @Setter int ticks = 0, maxSpawnInterval = 20*Config.FRAMERATE, minSpawnInterval = 10*Config.FRAMERATE, maxTicks = maxSpawnInterval;
+	@Getter @Setter int ticks = 0, maxSpawnInterval = 10*Config.FRAMERATE, minSpawnInterval = 5*Config.FRAMERATE, maxTicks = maxSpawnInterval;
 	private List<EntryPoint> entryPointList = new ArrayList<>();
 	private List<Plane> planeList = new ArrayList<>();
 
@@ -34,6 +34,10 @@ public class Game extends Screen {
 		EntryPoint entry = new EntryPoint(new Vector2d(50, 50));
 		this.entryPointList.add(entry);
 		draw.draw(entry, RenderPriority.High);
+		
+		createEntryPoint(new Vector2d(50,500));
+		createEntryPoint(new Vector2d(500,500));
+		createEntryPoint(new Vector2d(500,50));
 		
 		for (int i = 0; i < 6; i++) {
 			Waypoint wp = new Waypoint(new Vector2d(200 + 75 * i, 400), "" + (char) (65 + i));
@@ -66,6 +70,13 @@ public class Game extends Screen {
 			this.setTicks(this.getTicks()+1);
 		}
 	};
+	
+	public void createEntryPoint(Vector2d position){
+		EntryPoint entry = new EntryPoint(position);
+		this.entryPointList.add(entry);
+		DrawThread draw = DrawThread.getInstance();
+		draw.draw(entry, RenderPriority.High);
+	}
 	
 	
 	@Override

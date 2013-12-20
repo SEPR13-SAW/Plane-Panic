@@ -31,7 +31,7 @@ public final class Plane extends Image {
 		this.type = type;
 		this.passengers = passengers;
 		this.fuel = fuel;
-		this.velocity = new Vector2d(0, 1);
+		this.velocity = new Vector2d(0, 0.4);
 		this.speed = this.getVelocity().getLength();
 		System.out.println(speed);
 	}
