@@ -34,11 +34,11 @@ public enum RenderPriority {
 	}
 
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
 	public static RenderPriority getRenderPriorityFromId(int id) {
-		for (RenderPriority rp : values()) {
+		for (RenderPriority rp : RenderPriority.values()) {
 			if (rp.getId() == id) {
 				return rp;
 			}

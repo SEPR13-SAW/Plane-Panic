@@ -138,16 +138,16 @@ public class DrawThread extends Thread {
 	}
 
 	public void draw(Drawable obj) {
-		draw(obj, RenderPriority.Normal);
+		this.draw(obj, RenderPriority.Normal);
 	}
-	
+
 	public void draw(Drawable obj, RenderPriority priority) {
 		if (!this.drawObjects.containsKey(priority)) {
 			this.drawObjects.put(priority, new HashSet<Drawable>());
 		}
 		this.drawObjects.get(priority).add(obj);
 	}
-	
+
 	public boolean removeObject(Drawable obj) {
 		boolean result = false;
 		for (RenderPriority priority : this.drawObjects.keySet()) {
