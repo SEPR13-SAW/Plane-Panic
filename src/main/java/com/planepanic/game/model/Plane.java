@@ -26,14 +26,14 @@ public final class Plane extends Image {
 
 	@Getter private final Queue<Order> orders = new ArrayDeque<>(64);
 
-	public Plane(PlaneType type, int passengers, double fuel, Vector2d position, Resources sprite) {
+	public Plane(PlaneType type, int passengers, double fuel, double speed, Vector2d position, Resources sprite) {
 		super(sprite, position);
 		this.type = type;
 		this.passengers = passengers;
 		this.fuel = fuel;
-		this.velocity = new Vector2d(0, 0.4);
-		this.speed = this.getVelocity().getLength();
-		System.out.println(this.speed);
+		this.speed = speed;
+		this.velocity = this.convertSpeedToVelocity(Math.PI / 2);
+		System.out.println(this.getVelocity().getX()+" "+this.getVelocity().getY());
 	}
 
 	@Override
@@ -81,11 +81,26 @@ public final class Plane extends Image {
 
 		int passengers = type.getMaxPassengers() / 2 + rng.nextInt(type.getMaxPassengers() / 2);
 		double fuel = type.getMaxFuel() / 2 + rng.nextDouble() * type.getMaxFuel() / 2;
+		double speed = type.getMaxVelocity();
 
-		return new Plane(type, passengers, fuel, position, Resources.PLANE);
+		return new Plane(type, passengers, fuel, speed, position, Resources.PLANE);
 	}
-
+	
+	// Calculates the fuel consumption in l/s scaling by how much of a max speed plane is flying
 	public void consumeFuel() {
 		this.setFuel(this.getFuel() - this.type.getFuelConsumption() / Config.FRAMERATE * (this.getSpeed() / this.type.getMaxVelocity()));
 	};
+	
+	// Converts speed in m/s and starting angle, to a Cartesian vector
+	// for simpler use in other calculations
+	public Vector2d convertSpeedToVelocity(double angle){
+		double x,y;
+		x = this.getSpeed() * Math.cos(angle) / Config.FRAMERATE / 10;
+		y = this.getSpeed() * Math.sin(angle) / Config.FRAMERATE / 10;
+		if (x < 0.01)
+			x = 0;
+		if (y < 0.01)
+			y = 0;
+		return new Vector2d(x, y);
+	}
 }
