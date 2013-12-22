@@ -25,6 +25,7 @@ public class Game extends Screen {
 	@Getter @Setter int ticks = 0, maxSpawnInterval = 10 * Config.FRAMERATE, minSpawnInterval = 5 * Config.FRAMERATE, maxTicks = this.maxSpawnInterval;
 	private List<EntryPoint> entryPointList = new ArrayList<>();
 	private List<Plane> planeList = new ArrayList<>();
+	private final static int exclusionZone = 305 / 10; //Exclusion in meters divided by how much meters one pixel represents. End version should have two depending on altitude
 
 	public Game() {
 		super();
@@ -66,6 +67,7 @@ public class Game extends Screen {
 			this.planeList.add(plane);
 			this.setMaxTicks(this.getMinSpawnInterval() + rng.nextInt(this.getMaxSpawnInterval() - this.getMinSpawnInterval()));
 			this.setTicks(0);
+			exclusionZoneDetection();
 		} else {
 			this.setTicks(this.getTicks() + 1);
 		}
@@ -83,6 +85,27 @@ public class Game extends Screen {
 	public void resize() {
 		this.radar.setPosition(new Vector2d((DrawThread.width - 500) / 2, DrawThread.height / 2));
 		this.radar.onResize();
+	}
+	
+	// loops through all the planes and checks whether
+	// the distance between any two is bigger than exclusion zone
+	public void exclusionZoneDetection(){
+		Vector2d location, location2;
+		int distance;
+		for(int i = 0; i < this.planeList.size()-1; i++)
+			for(int o = i+1; o < this.planeList.size(); o++){
+				location = this.planeList.get(i).getPosition();
+				location2 = this.planeList.get(o).getPosition();
+				distance = (int) distanceBetweenPoints(location, location2);
+				if(distance < Game.exclusionZone*Game.exclusionZone)
+					System.out.println("exclusioin zone violated between planes " + i + " and " + o);
+			}
+	};
+	
+	// calculates the distance between two given points,
+	// at the moment works in 2d, but can easily be extended to work in 3d
+	public double distanceBetweenPoints(Vector2d location, Vector2d location2){
+		return (((location.getX()-location2.getX())*(location.getX()-location2.getX()))+((location.getY()-location2.getY())*(location.getY()-location2.getY()))); 
 	}
 
 }
