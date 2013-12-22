@@ -16,14 +16,16 @@ public class ChangeSpeed extends Order{
 
 	@Override
 	public boolean isComplete(Plane plane) {
-		return plane.getSpeed() == this.getStartSpeed() - this.getDelta();
+		if(delta > 0)
+			return plane.getSpeed() - this.getStartSpeed() - this.getDelta() > this.getChangeRate();
+		else
+			return plane.getSpeed() - this.getStartSpeed() - this.getDelta() < this.getChangeRate();
 	}
 
 	@Override
 	public void tick(Plane plane) {
-		plane.setSpeed(plane.getSpeed() - this.getChangeRate());
+		plane.setSpeed(plane.getSpeed() + this.getChangeRate());
 		plane.setVelocity(plane.convertSpeedToVelocity(plane.getVelocity().getAngle()));
-		System.out.println(plane.getSpeed());
 	}
 }
 
