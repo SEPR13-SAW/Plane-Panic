@@ -9,10 +9,10 @@ import lombok.Getter;
  * 
  */
 public enum PlaneType {
-	BOEING_747_400("Boeing 747-400", 524, 181965, 291, 58390, 3.937), ;
+	BOEING_747_400("Boeing 747-400", 524, 181965, 291, 58390, 3.937, 1000), ;
 
 	@Getter private final String name;
-	@Getter private final int maxPassengers;
+	@Getter private final int maxPassengers, score;
 	@Getter private final double maxFuel, maxVelocity, mass, fuelConsumption;
 
 	/**
@@ -30,12 +30,13 @@ public enum PlaneType {
 	 * @param fuelConsumption
 	 *            The fuel, in litres, consumed each second at maxVelocity.
 	 */
-	PlaneType(String name, int maxPassengers, double maxFuel, double maxVelocity, double mass, double fuelConsumption) {
+	PlaneType(String name, int maxPassengers, double maxFuel, double maxVelocity, double mass, double fuelConsumption, int score) {
 		this.name = name;
 		this.maxPassengers = maxPassengers;
 		this.maxFuel = maxFuel;
 		this.maxVelocity = maxVelocity;
 		this.mass = mass;
 		this.fuelConsumption = fuelConsumption;
+		this.score = score;
 	}
 }
