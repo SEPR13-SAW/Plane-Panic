@@ -97,34 +97,46 @@ public class Game extends Screen {
 	// loops through all the planes and checks whether
 	// the distance between any two is bigger than exclusion zone
 	public void exclusionZoneDetection(){
-		Vector2d location, location2;
-		int distance;
+		boolean createNew = true;
 		for(int i = 0; i < this.planeList.size()-1; i++)
 			for(int o = i+1; o < this.planeList.size(); o++){
-				location = this.planeList.get(i).getPosition();
-				location2 = this.planeList.get(o).getPosition();
-				distance = (int) distanceBetweenPoints(location, location2);
-				if(distance < Game.exclusionZone*Game.exclusionZone){
-					DrawThread draw = DrawThread.getInstance();
-					System.out.println("exclusion zone violated between planes " + i + " and " + o);
-					ez = new ExclusionZone(this, location, this.planeList.get(i), this.planeList.get(o));
-					draw.draw(ez, RenderPriority.High);
-					this.exclusionZoneList.add(ez);
-					ez = new ExclusionZone(this, location2, this.planeList.get(o), this.planeList.get(i));
-					draw.draw(ez, RenderPriority.High);
-					this.exclusionZoneList.add(ez);
-				}
-			}
-		
-		for(ExclusionZone ez : this.exclusionZoneList){
-			if(Game.getExclusionZone() * Game.getExclusionZone() < this.distanceBetweenPoints(ez.getPlane().getPosition(), ez.getPlane2().getPosition())){
-				DrawThread draw = DrawThread.getInstance();
-				draw.removeObject(ez);
-			}
-		}
+				if(distanceBetweenPoints(this.planeList.get(i).getPosition(), this.planeList.get(o).getPosition()) < Game.exclusionZone*Game.exclusionZone){
+					for(ExclusionZone ez : this.exclusionZoneList){
+						if(this.planeList.get(i) == ez.getPlane() && this.planeList.get(o) == ez.getPlane2()){
+							createNew = false;
+						}
+					}
+					if(createNew)
+						createNewExclusionZones(this.planeList.get(i), this.planeList.get(o));
+				};
+				createNew = true;
+			};
+		this.removeExclusionZones();	
 	};
 	
-	// calculates the distance between two given points,
+	// creates new visual exclusion zones
+	public void createNewExclusionZones(Plane plane, Plane plane2){
+		DrawThread draw = DrawThread.getInstance();
+		ez = new ExclusionZone(this, plane.getPosition(), plane, plane2);
+		draw.draw(ez, RenderPriority.High);
+		this.exclusionZoneList.add(ez);
+		ez = new ExclusionZone(this, plane2.getPosition(), plane2, plane);
+		draw.draw(ez, RenderPriority.High);
+		this.exclusionZoneList.add(ez);		
+	}
+	
+	// removes visual exclusion zones after they are no longer violated
+	public void removeExclusionZones(){
+		for(int i = 0; i < this.exclusionZoneList.size(); i++){
+			if(Game.getExclusionZone() * Game.getExclusionZone() < this.distanceBetweenPoints(this.exclusionZoneList.get(i).getPlane().getPosition(), this.exclusionZoneList.get(i).getPlane2().getPosition())){
+				DrawThread draw = DrawThread.getInstance();
+				draw.removeObject(this.exclusionZoneList.get(i));
+				this.exclusionZoneList.remove(i);
+			}
+		}
+	}
+	
+	// calculates the squared distance between two given points,
 	// at the moment works in 2d, but can easily be extended to work in 3d
 	public double distanceBetweenPoints(Vector2d location, Vector2d location2){
 		return (((location.getX()-location2.getX())*(location.getX()-location2.getX()))+((location.getY()-location2.getY())*(location.getY()-location2.getY()))); 
