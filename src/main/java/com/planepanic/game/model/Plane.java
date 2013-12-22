@@ -10,6 +10,7 @@ import lombok.Setter;
 import com.planepanic.game.Config;
 import com.planepanic.game.gfx.Image;
 import com.planepanic.game.gfx.Resources;
+import com.planepanic.game.gfx.ui.ExclusionZone;
 import com.planepanic.game.model.orders.Order;
 
 /**
@@ -26,6 +27,7 @@ public final class Plane extends Image {
 	@Getter @Setter private Vector2d velocity;
 	@Getter @Setter private int scoreTickDelay = Config.FRAMERATE;
 	@Getter @Setter private int gracePeriod = 30;
+	@Getter private ExclusionZone ez;
 
 	@Getter private final Queue<Order> orders = new ArrayDeque<>(64);
 
@@ -37,6 +39,7 @@ public final class Plane extends Image {
 		this.speed = speed;
 		this.velocity = this.convertSpeedToVelocity(Math.PI / 2);
 		this.score = score;
+		this.ez = new ExclusionZone(position);
 	}
 
 	@Override
@@ -72,6 +75,8 @@ public final class Plane extends Image {
 			}
 		}
 		this.getPosition().applyChange(this.getVelocity());
+		this.ez.setPosition(this.getPosition());
+		this.ez.setViolated(false);
 		this.setAngle((float) Math.toDegrees(this.getVelocity().getAngle()) + 90);
 	}
 

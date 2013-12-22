@@ -1,27 +1,22 @@
 package com.planepanic.game.gfx.ui;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import com.planepanic.game.gfx.DrawUtil;
 import com.planepanic.game.gfx.Drawable;
 import com.planepanic.game.gfx.screens.Game;
-import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 
 public class ExclusionZone extends Drawable {
 
 	float radius;
-	Vector2d position;
-	Game game;
-	@Getter private Plane plane;
-	@Getter private Plane plane2;
+	@Getter @Setter private boolean violated;
 
-	public ExclusionZone(Game game, Vector2d position, Plane plane, Plane plane2) {
+	public ExclusionZone(Vector2d position) {
 		super(position);
-		this.game = game;
 		this.radius = Game.getExclusionZone();
-		this.plane = plane;
-		this.plane2 = plane2;
+		this.violated = false;
 	}
 
 	public void onResize() {
@@ -30,10 +25,12 @@ public class ExclusionZone extends Drawable {
 
 	@Override
 	public void draw2d() {
-		DrawUtil.setColor(0xff0000);
-		DrawUtil.drawCircle((float) this.getPosition().getX(), (float) this.getPosition().getY(), this.radius, true);
-		DrawUtil.setColor(0xff0010);
-		DrawUtil.drawCircle((float) this.getPosition().getX(), (float) this.getPosition().getY(), this.radius, false);
+		if(this.violated){
+			DrawUtil.setColor(0xff0000);
+			DrawUtil.drawCircle((float) this.getPosition().getX(), (float) this.getPosition().getY(), this.radius, true);
+			DrawUtil.setColor(0xff0010);
+			DrawUtil.drawCircle((float) this.getPosition().getX(), (float) this.getPosition().getY(), this.radius, false);
+		}
 	}
 
 	@Override
