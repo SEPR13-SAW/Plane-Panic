@@ -10,10 +10,13 @@ import lombok.Setter;
 import com.planepanic.game.Config;
 import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.RenderPriority;
+import com.planepanic.game.gfx.Resources;
 import com.planepanic.game.gfx.ui.ExclusionZone;
+import com.planepanic.game.gfx.ui.OrderButtons;
 import com.planepanic.game.gfx.ui.Radar;
 import com.planepanic.game.model.Airport;
 import com.planepanic.game.model.EntryPoint;
+import com.planepanic.game.model.OrderPanel;
 import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.Waypoint;
@@ -65,6 +68,8 @@ public class Game extends Screen {
 		draw.draw(this.radar, RenderPriority.Highest);
 		Airport airport = new Airport(new Vector2d(400, Config.WINDOW_HEIGHT / 2));
 		draw.draw(airport, RenderPriority.Low);
+		
+		this.orderPanel();
 
 	}
 
@@ -117,4 +122,55 @@ public class Game extends Screen {
 		return (((location.getX()-location2.getX())*(location.getX()-location2.getX()))+((location.getY()-location2.getY())*(location.getY()-location2.getY()))); 
 	}
 
+	public void orderPanel() {
+		DrawThread draw = DrawThread.getInstance();
+
+		
+		OrderButtons direction = (OrderButtons) new OrderButtons(1000, 525, Resources.DIRECTION).setCallback(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("Change Direction!");
+			}
+		});
+		
+		OrderButtons altitude = (OrderButtons) new OrderButtons(1150, 525, Resources.ALTITUDE).setCallback(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("Change Altitude!");
+			}
+		});
+		
+		OrderButtons heading = (OrderButtons) new OrderButtons(1000, 600, Resources.HEADING).setCallback(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("Change Heading!");
+			}
+		});
+		
+		OrderButtons land = (OrderButtons) new OrderButtons(1150, 600, Resources.LAND).setCallback(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("Land!");
+			}
+		});
+		
+		OrderButtons takeoff = (OrderButtons) new OrderButtons(1000, 675, Resources.TAKEOFF).setCallback(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("Take off!");
+			}
+		});
+			
+
+		draw.draw(direction, RenderPriority.Normal);
+		draw.draw(altitude, RenderPriority.Normal);
+		draw.draw(heading, RenderPriority.Normal);
+		draw.draw(land, RenderPriority.Normal);
+		draw.draw(takeoff, RenderPriority.Normal);
+
+		OrderPanel orderpanel = new OrderPanel(new Vector2d(1100, 360));
+		draw.draw(orderpanel, RenderPriority.Highest);
+
+	}
+	
 }
