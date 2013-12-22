@@ -18,6 +18,7 @@ import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.Waypoint;
 import com.planepanic.game.model.orders.AbsoluteHeading;
+import com.planepanic.game.model.orders.ChangeSpeed;
 import com.planepanic.game.model.orders.RelativeHeading;
 
 public class Game extends Screen {
@@ -55,6 +56,7 @@ public class Game extends Screen {
 		plane.getOrders().add(new AbsoluteHeading(0));
 		plane.getOrders().add(new AbsoluteHeading(Math.PI / 2));
 		plane.getOrders().add(new RelativeHeading(plane.getAngle(), Math.PI / 2));
+		plane.getOrders().add(new ChangeSpeed(plane.getSpeed(), 100));
 		draw.draw(plane, RenderPriority.Low);
 		draw.draw(plane.getEz(), RenderPriority.High);
 		plane = entry.addPlane();
@@ -107,7 +109,6 @@ public class Game extends Screen {
 					this.planeList.get(o).getEz().setViolated(true);
 				};
 			};
-			
 		};
 	};
 	
