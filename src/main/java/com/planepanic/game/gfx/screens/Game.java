@@ -10,6 +10,7 @@ import lombok.Setter;
 import com.planepanic.game.Config;
 import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.RenderPriority;
+import com.planepanic.game.gfx.ui.ExclusionZone;
 import com.planepanic.game.gfx.ui.Radar;
 import com.planepanic.game.model.Airport;
 import com.planepanic.game.model.EntryPoint;
@@ -22,10 +23,12 @@ import com.planepanic.game.model.orders.RelativeHeading;
 public class Game extends Screen {
 
 	Radar radar;
-	@Getter @Setter int ticks = 0, maxSpawnInterval = 10 * Config.FRAMERATE, minSpawnInterval = 5 * Config.FRAMERATE, maxTicks = this.maxSpawnInterval;
+	@Getter @Setter int ticks = 0, maxSpawnInterval = 5 * Config.FRAMERATE, minSpawnInterval = 4 * Config.FRAMERATE, maxTicks = this.maxSpawnInterval;
 	private List<EntryPoint> entryPointList = new ArrayList<>();
 	private List<Plane> planeList = new ArrayList<>();
-	private final static int exclusionZone = 305 / 10; //Exclusion in meters divided by how much meters one pixel represents. End version should have two depending on altitude
+	@Getter private List<ExclusionZone> exclusionZoneList = new ArrayList<>();
+	@Getter @Setter ExclusionZone ez;
+	@Getter private final static int exclusionZone = 3050 / 21; //Exclusion in meters divided by how much meters one pixel represents. End version should have two depending on altitude
 
 	public Game() {
 		super();
@@ -35,7 +38,9 @@ public class Game extends Screen {
 		EntryPoint entry = new EntryPoint(new Vector2d(50, 50));
 		this.entryPointList.add(entry);
 		draw.draw(entry, RenderPriority.High);
-
+		EntryPoint entry2 = new EntryPoint(new Vector2d(50, 200));
+		this.entryPointList.add(entry);
+		draw.draw(entry2, RenderPriority.High);
 		createEntryPoint(new Vector2d(50,500));
 		createEntryPoint(new Vector2d(500,500));
 		createEntryPoint(new Vector2d(500,50));
@@ -45,11 +50,14 @@ public class Game extends Screen {
 			draw.draw(wp, RenderPriority.High);
 		}
 
-		Plane plane = entry.addPlane();
+		Plane plane = entry2.addPlane();
 		this.planeList.add(plane);
 		plane.getOrders().add(new AbsoluteHeading(0));
 		plane.getOrders().add(new AbsoluteHeading(Math.PI / 2));
 		plane.getOrders().add(new RelativeHeading(plane.getAngle(), Math.PI / 2));
+		draw.draw(plane, RenderPriority.Low);
+		plane = entry.addPlane();
+		this.planeList.add(plane);
 		draw.draw(plane, RenderPriority.Low);
 		this.radar = new Radar(this);
 		draw.draw(this.radar, RenderPriority.Highest);
@@ -67,7 +75,6 @@ public class Game extends Screen {
 			this.planeList.add(plane);
 			this.setMaxTicks(this.getMinSpawnInterval() + rng.nextInt(this.getMaxSpawnInterval() - this.getMinSpawnInterval()));
 			this.setTicks(0);
-			exclusionZoneDetection();
 		} else {
 			this.setTicks(this.getTicks() + 1);
 		}
@@ -97,9 +104,24 @@ public class Game extends Screen {
 				location = this.planeList.get(i).getPosition();
 				location2 = this.planeList.get(o).getPosition();
 				distance = (int) distanceBetweenPoints(location, location2);
-				if(distance < Game.exclusionZone*Game.exclusionZone)
-					System.out.println("exclusioin zone violated between planes " + i + " and " + o);
+				if(distance < Game.exclusionZone*Game.exclusionZone){
+					DrawThread draw = DrawThread.getInstance();
+					System.out.println("exclusion zone violated between planes " + i + " and " + o);
+					ez = new ExclusionZone(this, location, this.planeList.get(i), this.planeList.get(o));
+					draw.draw(ez, RenderPriority.High);
+					this.exclusionZoneList.add(ez);
+					ez = new ExclusionZone(this, location2, this.planeList.get(o), this.planeList.get(i));
+					draw.draw(ez, RenderPriority.High);
+					this.exclusionZoneList.add(ez);
+				}
 			}
+		
+		for(ExclusionZone ez : this.exclusionZoneList){
+			if(Game.getExclusionZone() * Game.getExclusionZone() < this.distanceBetweenPoints(ez.getPlane().getPosition(), ez.getPlane2().getPosition())){
+				DrawThread draw = DrawThread.getInstance();
+				draw.removeObject(ez);
+			}
+		}
 	};
 	
 	// calculates the distance between two given points,
