@@ -97,22 +97,23 @@ public class Game extends Screen {
 	// loops through all the planes and checks whether
 	// the distance between any two is bigger than exclusion zone
 	public void exclusionZoneDetection(){
-		boolean createNew = true;
 		for(int i = 0; i < this.planeList.size()-1; i++)
 			for(int o = i+1; o < this.planeList.size(); o++){
 				if(distanceBetweenPoints(this.planeList.get(i).getPosition(), this.planeList.get(o).getPosition()) < Game.exclusionZone*Game.exclusionZone){
-					for(ExclusionZone ez : this.exclusionZoneList){
-						if(this.planeList.get(i) == ez.getPlane() && this.planeList.get(o) == ez.getPlane2()){
-							createNew = false;
-						}
-					}
-					if(createNew)
+					if(!checkIfExists(this.planeList.get(i), this.planeList.get(o)))
 						createNewExclusionZones(this.planeList.get(i), this.planeList.get(o));
 				};
-				createNew = true;
 			};
 		this.removeExclusionZones();	
 	};
+	
+	//checks if an exclusion zone with between these two planes already exists.
+	public boolean checkIfExists(Plane plane, Plane plane2){
+		for(ExclusionZone ez : this.exclusionZoneList)
+			if(plane == ez.getPlane() && plane2 == ez.getPlane2())
+				return true;
+		return false;
+	}
 	
 	// creates new visual exclusion zones
 	public void createNewExclusionZones(Plane plane, Plane plane2){
