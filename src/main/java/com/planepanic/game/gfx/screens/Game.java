@@ -8,12 +8,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 import com.planepanic.game.Config;
+import com.planepanic.game.Player;
 import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.RenderPriority;
 import com.planepanic.game.gfx.Resources;
+import com.planepanic.game.gfx.ui.Button;
 import com.planepanic.game.gfx.ui.ExclusionZone;
 import com.planepanic.game.gfx.ui.OrderButtons;
 import com.planepanic.game.gfx.ui.Radar;
+import com.planepanic.game.gfx.ui.TextBox;
 import com.planepanic.game.model.Airport;
 import com.planepanic.game.model.EntryPoint;
 import com.planepanic.game.model.OrderPanel;
@@ -32,7 +35,9 @@ public class Game extends Screen {
 	@Getter private List<ExclusionZone> exclusionZoneList = new ArrayList<>();
 	@Getter @Setter ExclusionZone ez;
 	@Getter private final static int exclusionZone = 3050 / 21; //Exclusion in meters divided by how much meters one pixel represents. End version should have two depending on altitude
-
+	@Getter @Setter public int orderState = 0;	
+	@Setter TextBox fuelDisplay;
+	
 	public Game() {
 		super();
 
@@ -69,8 +74,9 @@ public class Game extends Screen {
 		Airport airport = new Airport(new Vector2d(400, Config.WINDOW_HEIGHT / 2));
 		draw.draw(airport, RenderPriority.Low);
 		
+		
 		this.orderPanel();
-
+		
 	}
 
 	public void spawnPlane(Random rng) {
@@ -130,6 +136,7 @@ public class Game extends Screen {
 			@Override
 			public void run() {
 				System.out.println("Change Direction!");
+				orderState = 1;
 			}
 		});
 		
@@ -137,6 +144,7 @@ public class Game extends Screen {
 			@Override
 			public void run() {
 				System.out.println("Change Altitude!");
+				orderState = 2;
 			}
 		});
 		
@@ -144,6 +152,7 @@ public class Game extends Screen {
 			@Override
 			public void run() {
 				System.out.println("Change Heading!");
+				orderState = 3;
 			}
 		});
 		
@@ -151,6 +160,7 @@ public class Game extends Screen {
 			@Override
 			public void run() {
 				System.out.println("Land!");
+				orderState = 0;
 			}
 		});
 		
@@ -158,19 +168,95 @@ public class Game extends Screen {
 			@Override
 			public void run() {
 				System.out.println("Take off!");
+				orderState = 0;
 			}
 		});
-			
+		
+		Button left = (Button) new Button("<-").setCallback(new Runnable(){
+			@Override
+			public void run(){
+				System.out.println("Turns left by number inputted");
+				orderState = 0;
+			}
+		}).setHitboxSize(new Vector2d(50,50)).setPosition(new Vector2d(1100, 600));
+		
+		Button right = (Button) new Button("->").setCallback(new Runnable(){
+			@Override
+			public void run(){
+				System.out.println("Turns right by number inputted");
+				orderState = 0;
+			}
+		}).setHitboxSize(new Vector2d(50,50)).setPosition((new Vector2d(1175, 600)));
+		
+		Button set = (Button) new Button("Set").setCallback(new Runnable(){
+			@Override
+			public void run(){
+				System.out.println("Confirms new heading!");
+				orderState = 0;
+			}
+		}).setHitboxSize(new Vector2d(50,50)).setPosition((new Vector2d(1175, 600)));
+		
+		Button up = (Button) new Button("Up").setCallback(new Runnable(){
+			@Override
+			public void run(){
+				System.out.println("Increases altitude by inputted amount");
+				orderState = 0;
+			}
+		}).setHitboxSize(new Vector2d(50,50)).setPosition(new Vector2d(1130, 560));
+		
+		Button down = (Button) new Button("Down").setCallback(new Runnable(){
+			@Override
+			public void run(){
+				System.out.println("Decreases altitude by inputted amount");
+				orderState = 0;
+			}
+		}).setHitboxSize(new Vector2d(50,50)).setPosition(new Vector2d(1130, 630));
+		
+		Button back = (Button) new Button("Back").setCallback(new Runnable(){
+			@Override
+			public void run(){
+				System.out.println("Cancels selected order");
+				orderState = 0;
+			}
+		}).setHitboxSize(new Vector2d(50,50)).setPosition(new Vector2d(900, 500));;
+		
+		
+		//Displaying Fuel
+		Plane temp= this.planeList.get(1); //Needs to get the plane that has been clicked on
+		String currentFuel = String.valueOf(temp.getFuel());
+		this.fuelDisplay = (TextBox) new TextBox(currentFuel).setColor(0x000000).setPosition(new Vector2d(850,25));
+		draw.draw(fuelDisplay, RenderPriority.Normal);
 
-		draw.draw(direction, RenderPriority.Normal);
-		draw.draw(altitude, RenderPriority.Normal);
-		draw.draw(heading, RenderPriority.Normal);
-		draw.draw(land, RenderPriority.Normal);
-		draw.draw(takeoff, RenderPriority.Normal);
+			
+		if (orderState == 0){
+			draw.draw(direction, RenderPriority.Normal);
+			draw.draw(altitude, RenderPriority.Normal);
+			draw.draw(heading, RenderPriority.Normal);
+			draw.draw(land, RenderPriority.Normal);
+			draw.draw(takeoff, RenderPriority.Normal);
+		}
+		else if (orderState == 1){
+			//Changing direction
+			draw.draw(left, RenderPriority.Normal);
+			draw.draw(right, RenderPriority.Normal);
+			draw.draw(back, RenderPriority.Normal);
+		}
+		else if (orderState == 2){
+			//Changing heading
+			draw.draw(set, RenderPriority.Normal);
+			draw.draw(back, RenderPriority.Normal);
+		}
+		else if (orderState == 3){
+			//Changing altitude
+			draw.draw(up, RenderPriority.Normal);
+			draw.draw(down, RenderPriority.Normal);
+			draw.draw(back, RenderPriority.Normal);
+		}
 
 		OrderPanel orderpanel = new OrderPanel(new Vector2d(1100, 360));
 		draw.draw(orderpanel, RenderPriority.Highest);
-
+		System.out.println(orderState);
+		
 	}
 	
 }
