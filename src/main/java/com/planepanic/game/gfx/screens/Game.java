@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import com.planepanic.game.Config;
-import com.planepanic.game.Player;
 import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.RenderPriority;
 import com.planepanic.game.gfx.Resources;
@@ -157,7 +156,15 @@ public class Game extends Screen {
 			}
 		});
 		
-		OrderButtons land = (OrderButtons) new OrderButtons(1150, 600, Resources.LAND).setCallback(new Runnable() {
+		OrderButtons speed = (OrderButtons) new OrderButtons(1150, 600, Resources.SPEED).setCallback(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("Change Speed!");
+				orderState = 3;
+			}
+		});
+		
+		OrderButtons land = (OrderButtons) new OrderButtons(1150, 675, Resources.LAND).setCallback(new Runnable() {
 			@Override
 			public void run() {
 				System.out.println("Land!");
@@ -235,7 +242,8 @@ public class Game extends Screen {
 			draw.draw(heading, RenderPriority.Normal);
 			draw.draw(land, RenderPriority.Normal);
 			draw.draw(takeoff, RenderPriority.Normal);
-		}
+			draw.draw(speed, RenderPriority.Normal);
+			}
 		else if (orderState == 1){
 			//Changing direction
 			draw.draw(left, RenderPriority.Normal);
