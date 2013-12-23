@@ -35,7 +35,7 @@ public class Game extends Screen {
 	private List<Plane> planeList = new ArrayList<>();
 	@Getter private List<ExclusionZone> exclusionZoneList = new ArrayList<>();
 	@Getter @Setter ExclusionZone ez;
-	@Getter private final static int exclusionZone = 3050 / 21; //Exclusion in meters divided by how much meters one pixel represents. End version should have two depending on altitude
+	@Getter private final static int exclusionZone = 305 / Config.SCALE; //Exclusion in meters divided by how much meters one pixel represents. End version should have two depending on altitude
 	@Getter @Setter public int orderState = 0;	
 	@Setter TextBox fuelDisplay;
 	
