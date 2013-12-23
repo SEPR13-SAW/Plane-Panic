@@ -24,6 +24,7 @@ public final class Plane extends Image {
 	@Getter @Setter private int score;
 	@Getter @Setter private double fuel;
 	@Getter @Setter private double speed; // Simple linear speed, to avoid having to calculate length of the vector every tick
+	@Getter @Setter private double altitude;
 	@Getter @Setter private Vector2d velocity;
 	@Getter @Setter private int scoreTickDelay = Config.FRAMERATE;
 	@Getter @Setter private int gracePeriod = 30;
@@ -31,7 +32,7 @@ public final class Plane extends Image {
 
 	@Getter private final Queue<Order> orders = new ArrayDeque<>(64);
 
-	public Plane(PlaneType type, int passengers, double fuel, double speed, Vector2d position, Resources sprite, int score) {
+	public Plane(PlaneType type, int passengers, double fuel, double speed, Vector2d position, Resources sprite, int score, double altitude) {
 		super(sprite, position);
 		this.type = type;
 		this.passengers = passengers;
@@ -91,10 +92,11 @@ public final class Plane extends Image {
 		int passengers = type.getMaxPassengers() / 2 + rng.nextInt(type.getMaxPassengers() / 2);
 		double fuel = type.getMaxFuel() / 2 + rng.nextDouble() * type.getMaxFuel() / 2;
 		double speed = type.getMaxVelocity();
-		
+		double altitude = type.getMaxAltitude() / 2 + rng.nextDouble() * type.getMaxAltitude() / 2;
+	
 		int score = type.getScore();
 
-		return new Plane(type, passengers, fuel, speed, position, Resources.PLANE, score);
+		return new Plane(type, passengers, fuel, speed, position, Resources.PLANE, score, altitude);
 	}
 	
 	// Calculates the fuel consumption in l/s scaling by how much of a max speed plane is flying
