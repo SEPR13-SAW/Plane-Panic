@@ -41,6 +41,7 @@ public final class Plane extends Image {
 		this.velocity = this.convertSpeedToVelocity(Math.PI / 2);
 		this.score = score;
 		this.ez = new ExclusionZone(position);
+		this.altitude = altitude;
 	}
 
 	@Override
