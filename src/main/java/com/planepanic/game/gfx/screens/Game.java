@@ -108,6 +108,11 @@ public class Game extends Screen {
 	@Override
 	public void tick() {
 		this.exclusionZoneDetection();
+		
+		// Update Fuel Counter
+		Plane temp = this.planeList.get(1); // Needs to get the plane that has been clicked on
+		String currentFuel = String.valueOf((int) temp.getFuel());
+		this.fuelDisplay.setText(currentFuel);
 	}
 
 	/**
@@ -225,9 +230,7 @@ public class Game extends Screen {
 		}).setHitboxSize(new Vector2d(50, 50)).setPosition(new Vector2d(900, 500));;
 
 		// Displaying Fuel
-		Plane temp = this.planeList.get(1); // Needs to get the plane that has been clicked on
-		String currentFuel = String.valueOf(temp.getFuel());
-		this.fuelDisplay = (TextBox) new TextBox(currentFuel).setColor(0x000000).setPosition(new Vector2d(850, 25)).setPriority(0.9f);
+		this.fuelDisplay = (TextBox) new TextBox("0").setColor(0x000000).setPosition(new Vector2d(850, 25)).setPriority(0.9f);
 		draw.draw(this.fuelDisplay, RenderPriority.Normal);
 
 		if (this.orderState == 0) {
