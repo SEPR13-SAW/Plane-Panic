@@ -74,7 +74,7 @@ public class Game extends Screen {
 		this.planeList.add(plane);
 		draw.draw(plane, RenderPriority.Low);
 		draw.draw(plane.getEz(), RenderPriority.High);
-		this.radar = new Radar(this);
+		this.radar = new Radar();
 		draw.draw(this.radar, RenderPriority.Highest);
 		Airport airport = new Airport(new Vector2d(400, Config.WINDOW_HEIGHT / 2));
 		draw.draw(airport, RenderPriority.Low);
@@ -104,11 +104,10 @@ public class Game extends Screen {
 		DrawThread draw = DrawThread.getInstance();
 		draw.draw(entry, RenderPriority.High);
 	}
-
+	
 	@Override
-	public void resize() {
-		this.radar.setPosition(new Vector2d((DrawThread.width - 500) / 2, DrawThread.height / 2));
-		this.radar.onResize();
+	public void tick() {
+		exclusionZoneDetection();
 	}
 
 	/**

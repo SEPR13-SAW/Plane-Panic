@@ -8,6 +8,8 @@ public abstract class Screen {
 		DrawThread.getInstance().clearScreen();
 	}
 
-	public abstract void resize();
+	public void resize() {};
+
+	public void tick() {};
 
 }
