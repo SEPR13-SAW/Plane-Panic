@@ -1,6 +1,5 @@
 package com.planepanic.game.gfx.ui;
 
-
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
@@ -11,9 +10,7 @@ import com.planepanic.game.model.Vector2d;
 
 public class OrderButtons extends Drawable {
 
-	@Accessors(chain = true)
-	@Setter
-	private Runnable callback;
+	@Accessors(chain = true) @Setter private Runnable callback;
 
 	private Image orderbutton;
 

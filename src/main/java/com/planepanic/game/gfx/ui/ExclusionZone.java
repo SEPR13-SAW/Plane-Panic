@@ -20,12 +20,12 @@ public class ExclusionZone extends Drawable {
 	}
 
 	public void onResize() {
-		//this.radius = Math.min(DrawThread.height, DrawThread.width - 500) / 2;
+		// this.radius = Math.min(DrawThread.height, DrawThread.width - 500) / 2;
 	}
 
 	@Override
 	public void draw2d() {
-		if(this.violated){
+		if (this.violated) {
 			DrawUtil.setColor(0xff0000);
 			DrawUtil.drawCircle((float) this.getPosition().getX(), (float) this.getPosition().getY(), this.radius, true);
 			DrawUtil.setColor(0xff3300);
@@ -43,6 +43,5 @@ public class ExclusionZone extends Drawable {
 	public boolean onClick() {
 		return false;
 	}
-
 
 }

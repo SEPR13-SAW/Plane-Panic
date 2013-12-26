@@ -68,7 +68,7 @@ public final class Plane extends Image {
 	public void tick() {
 		this.consumeFuel();
 		this.decayScore();
-		
+
 		Order order = this.getCurrentOrder();
 		if (order != null) {
 			order.tick(this);
@@ -94,44 +94,45 @@ public final class Plane extends Image {
 		double fuel = type.getMaxFuel() / 2 + rng.nextDouble() * type.getMaxFuel() / 2;
 		double speed = type.getMaxVelocity();
 		double altitude = type.getMaxAltitude() / 2 + rng.nextDouble() * type.getMaxAltitude() / 2;
-	
+
 		int score = type.getScore();
 
 		return new Plane(type, passengers, fuel, speed, position, Resources.PLANE, score, altitude);
 	}
-	
+
 	// Calculates the fuel consumption in l/s scaling by how much of a max speed plane is flying
 	public void consumeFuel() {
 		this.setFuel(this.getFuel() - this.type.getFuelConsumption() / Config.FRAMERATE * (this.getSpeed() / this.type.getMaxVelocity()));
 	};
-	
+
 	// Converts speed in m/s and starting angle, to a Cartesian vector
 	// for simpler use in other calculations
-	public Vector2d convertSpeedToVelocity(double angle){
-		double x,y;
+	public Vector2d convertSpeedToVelocity(double angle) {
+		double x, y;
 		x = this.getSpeed() * Math.cos(angle) / Config.FRAMERATE / 10;
 		y = this.getSpeed() * Math.sin(angle) / Config.FRAMERATE / 10;
-		if (x < 0.01)
+		if (x < 0.01) {
 			x = 0;
-		if (y < 0.01)
+		}
+		if (y < 0.01) {
 			y = 0;
+		}
 		return new Vector2d(x, y);
-		
-	
+
 	}
-	
-	public void decayScore(){
-		this.setScoreTickDelay(this.getScoreTickDelay()-1);
-		
-		if(this.getScoreTickDelay() == 0 && this.getGracePeriod() > 0){
-			this.setGracePeriod(this.getGracePeriod()-1);
+
+	public void decayScore() {
+		this.setScoreTickDelay(this.getScoreTickDelay() - 1);
+
+		if (this.getScoreTickDelay() == 0 && this.getGracePeriod() > 0) {
+			this.setGracePeriod(this.getGracePeriod() - 1);
 			this.setScoreTickDelay(Config.FRAMERATE);
 		}
-		
-		if(this.getScore() > 0 && this.getScoreTickDelay() == 0 && this.getGracePeriod() == 0){
-		this.setScore(this.getScore() - (10));
-		this.setScoreTickDelay(Config.FRAMERATE);
-		// System.out.println("Score: " + score); /* Used to Track Scores for Testing */
+
+		if (this.getScore() > 0 && this.getScoreTickDelay() == 0 && this.getGracePeriod() == 0) {
+			this.setScore(this.getScore() - 10);
+			this.setScoreTickDelay(Config.FRAMERATE);
+			// System.out.println("Score: " + score); /* Used to Track Scores for Testing */
 		}
-	}	
+	}
 }
