@@ -16,7 +16,8 @@ import com.planepanic.game.model.Vector2d;
 public abstract class Drawable {
 	private final double MAXIMUM_CLOSE_DISTANCE = 0.001;
 
-	@Accessors(chain = true) @Getter @Setter protected Vector2d position;
+	@Accessors(chain = true) @Getter @Setter private Vector2d position;
+	@Accessors(chain = true) @Getter @Setter private float priority = 0;
 	/**
 	 * Used to determine click and hover states
 	 */

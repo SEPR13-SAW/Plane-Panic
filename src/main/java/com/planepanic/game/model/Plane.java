@@ -34,6 +34,7 @@ public final class Plane extends Image {
 
 	public Plane(PlaneType type, int passengers, double fuel, double speed, Vector2d position, Resources sprite, int score, double altitude) {
 		super(sprite, position);
+		this.setPriority(-0.1f);
 		this.type = type;
 		this.passengers = passengers;
 		this.fuel = fuel;
@@ -100,13 +101,18 @@ public final class Plane extends Image {
 		return new Plane(type, passengers, fuel, speed, position, Resources.PLANE, score, altitude);
 	}
 
-	// Calculates the fuel consumption in l/s scaling by how much of a max speed plane is flying
+	/**
+	 * Calculates the fuel consumption in l/s scaling by how much of a max speed plane is flying
+	 */
 	public void consumeFuel() {
 		this.setFuel(this.getFuel() - this.type.getFuelConsumption() / Config.FRAMERATE * (this.getSpeed() / this.type.getMaxVelocity()));
 	};
 
-	// Converts speed in m/s and starting angle, to a Cartesian vector
-	// for simpler use in other calculations
+	/**
+	 * Converts speed in m/s and starting angle, to a Cartesian vector
+	 * @param angle for simpler use in other calculations
+	 * @return
+	 */
 	public Vector2d convertSpeedToVelocity(double angle) {
 		double x, y;
 		x = this.getSpeed() * Math.cos(angle) / Config.FRAMERATE / 10;

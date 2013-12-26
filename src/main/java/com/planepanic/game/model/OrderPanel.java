@@ -1,19 +1,17 @@
 package com.planepanic.game.model;
 
-import com.planepanic.game.gfx.Drawable;
 import com.planepanic.game.gfx.Image;
 import com.planepanic.game.gfx.Resources;
 
-public class OrderPanel extends Drawable {
-	private Image background;
+public class OrderPanel extends Image {
 
 	public OrderPanel(Vector2d position) {
-		this.background = new Image(Resources.PLANEPANEL, position);
+		super(Resources.PLANEPANEL, position);
 	}
 
 	@Override
 	public void draw2d() {
-		this.background.draw2d();
+		super.draw2d();
 	}
 
 	@Override
@@ -23,7 +21,7 @@ public class OrderPanel extends Drawable {
 	}
 
 	@Override
-	protected boolean onClick() {
+	public boolean onClick() {
 		// TODO Auto-generated method stub
 		return false;
 	}

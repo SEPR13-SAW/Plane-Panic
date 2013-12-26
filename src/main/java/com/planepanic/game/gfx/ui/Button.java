@@ -33,7 +33,7 @@ public class Button extends Drawable {
 		if (this.dirtySize) {
 			this.textSize = DrawUtil.getSize(this.text);
 		}
-		DrawUtil.drawString((float) (this.getPosition().getX() + (this.getHitboxSize().getX() / 2 - this.textSize.getX() / 2)), (float) (this.getPosition().getY() + (this.getHitboxSize().getY() / 2 - this.textSize.getY() / 2)), this.text);
+		DrawUtil.drawString((float) (this.getPosition().getX() + (this.getHitboxSize().getX() / 2 - this.textSize.getX() / 2)), (float) (this.getPosition().getY() + (this.getHitboxSize().getY() / 2 - this.textSize.getY() / 2)), this.text, 0xFFFFFF, 32, 0.1f);
 	}
 
 	@Override

@@ -7,14 +7,14 @@ import java.util.Random;
  * 
  * @author Mantas
  */
-public final class EntryPoint extends PointOfInterest {
+public final class EntryPoint extends SimplePointOfInterest {
 
 	public EntryPoint(Vector2d position) {
 		super(position);
 	}
 
 	public Plane addPlane() {
-		return Plane.randomPlane(new Random(), this.position.clone());
+		return Plane.randomPlane(new Random(), this.getPosition().clone());
 	}
 
 	@Override

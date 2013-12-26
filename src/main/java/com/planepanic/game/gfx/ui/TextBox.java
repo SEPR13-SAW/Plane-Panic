@@ -24,7 +24,7 @@ public class TextBox extends Drawable {
 		if (this.dirtySize) {
 			this.setHitboxSize(DrawUtil.getSize(this.text));
 		}
-		DrawUtil.drawString((float) this.getPosition().getX(), (float) this.getPosition().getY(), this.text, this.color);
+		DrawUtil.drawString((float) this.getPosition().getX(), (float) this.getPosition().getY(), this.text, this.color, 32, this.getPriority());
 	}
 
 	@Override

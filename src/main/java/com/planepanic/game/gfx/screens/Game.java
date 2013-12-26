@@ -49,17 +49,17 @@ public class Game extends Screen {
 
 		EntryPoint entry = new EntryPoint(new Vector2d(50, 50));
 		this.entryPointList.add(entry);
-		draw.draw(entry, RenderPriority.High);
+		draw.draw(entry, RenderPriority.Normal);
 		EntryPoint entry2 = new EntryPoint(new Vector2d(50, 200));
 		this.entryPointList.add(entry);
-		draw.draw(entry2, RenderPriority.High);
+		draw.draw(entry2, RenderPriority.Normal);
 		this.createEntryPoint(new Vector2d(50, 500));
 		this.createEntryPoint(new Vector2d(500, 500));
 		this.createEntryPoint(new Vector2d(500, 50));
 
 		for (int i = 0; i < 6; i++) {
 			Waypoint wp = new Waypoint(new Vector2d(200 + 75 * i, 400), "" + (char) (65 + i));
-			draw.draw(wp, RenderPriority.High);
+			draw.draw(wp, RenderPriority.Normal);
 		}
 
 		Plane plane = entry2.addPlane();
@@ -69,15 +69,15 @@ public class Game extends Screen {
 		plane.getOrders().add(new RelativeHeading(plane.getAngle(), Math.PI / 2));
 		plane.getOrders().add(new ChangeSpeed(plane.getSpeed(), 100));
 		draw.draw(plane, RenderPriority.Low);
-		draw.draw(plane.getEz(), RenderPriority.High);
+		draw.draw(plane.getEz(), RenderPriority.Normal);
 		plane = entry.addPlane();
 		this.planeList.add(plane);
 		draw.draw(plane, RenderPriority.Low);
-		draw.draw(plane.getEz(), RenderPriority.High);
+		draw.draw(plane.getEz(), RenderPriority.Normal);
 		this.radar = new Radar();
-		draw.draw(this.radar, RenderPriority.Highest);
+		draw.draw(this.radar, RenderPriority.Normal);
 		Airport airport = new Airport(new Vector2d(400, Config.WINDOW_HEIGHT / 2));
-		draw.draw(airport, RenderPriority.Low);
+		draw.draw(airport, RenderPriority.Normal);
 
 		this.orderPanel();
 
@@ -89,7 +89,7 @@ public class Game extends Screen {
 			Plane plane = this.entryPointList.get(index).addPlane();
 			DrawThread draw = DrawThread.getInstance();
 			draw.draw(plane, RenderPriority.Low);
-			draw.draw(plane.getEz(), RenderPriority.High);
+			draw.draw(plane.getEz(), RenderPriority.Normal);
 			this.planeList.add(plane);
 			this.setMaxTicks(this.getMinSpawnInterval() + rng.nextInt(this.getMaxSpawnInterval() - this.getMinSpawnInterval()));
 			this.setTicks(0);
@@ -102,7 +102,7 @@ public class Game extends Screen {
 		EntryPoint entry = new EntryPoint(position);
 		this.entryPointList.add(entry);
 		DrawThread draw = DrawThread.getInstance();
-		draw.draw(entry, RenderPriority.High);
+		draw.draw(entry, RenderPriority.Normal);
 	}
 	
 	@Override
@@ -227,7 +227,7 @@ public class Game extends Screen {
 		// Displaying Fuel
 		Plane temp = this.planeList.get(1); // Needs to get the plane that has been clicked on
 		String currentFuel = String.valueOf(temp.getFuel());
-		this.fuelDisplay = (TextBox) new TextBox(currentFuel).setColor(0x000000).setPosition(new Vector2d(850, 25));
+		this.fuelDisplay = (TextBox) new TextBox(currentFuel).setColor(0x000000).setPosition(new Vector2d(850, 25)).setPriority(0.9f);
 		draw.draw(this.fuelDisplay, RenderPriority.Normal);
 
 		if (this.orderState == 0) {
@@ -257,7 +257,7 @@ public class Game extends Screen {
 		}
 
 		OrderPanel orderpanel = new OrderPanel(new Vector2d(1100, 360));
-		draw.draw(orderpanel, RenderPriority.Highest);
+		draw.draw(orderpanel, RenderPriority.High);
 		System.out.println(this.orderState);
 
 	}

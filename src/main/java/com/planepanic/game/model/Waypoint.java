@@ -9,7 +9,7 @@ import com.planepanic.game.gfx.DrawUtil;
  * 
  * @author Jonathan, Mantas
  */
-public final class Waypoint extends PointOfInterest {
+public final class Waypoint extends SimplePointOfInterest {
 	@Getter private final String name;
 
 	public Waypoint(Vector2d position, String name) {

@@ -33,7 +33,7 @@ public class Image extends Drawable {
 	public void draw2d() {
 		Color.white.bind();
 		this.texture.bind();
-		DrawUtil.drawImg((float) this.position.getX(), (float) this.position.getY(), (float) this.getHitboxSize().getX(), (float) this.getHitboxSize().getY(), this.texture.getTextureWidth(), this.texture.getTextureHeight(), this.angle);
+		DrawUtil.drawImg((float) this.getPosition().getX(), (float) this.getPosition().getY(), (float) this.getHitboxSize().getX(), (float) this.getHitboxSize().getY(), this.texture.getTextureWidth(), this.texture.getTextureHeight(), this.angle, this.getPriority());
 	}
 
 	@Override

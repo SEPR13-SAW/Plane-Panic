@@ -5,7 +5,7 @@ package com.planepanic.game.model;
  * 
  * @author Mantas
  */
-public final class ExitPoint extends PointOfInterest {
+public final class ExitPoint extends SimplePointOfInterest {
 
 	public ExitPoint(Vector2d position) {
 		super(position);
