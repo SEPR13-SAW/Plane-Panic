@@ -7,5 +7,5 @@ package com.planepanic.game.model;
  */
 
 public interface PointOfInterest {
-	
+
 }

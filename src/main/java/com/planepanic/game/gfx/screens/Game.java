@@ -104,10 +104,10 @@ public class Game extends Screen {
 		DrawThread draw = DrawThread.getInstance();
 		draw.draw(entry, RenderPriority.Normal);
 	}
-	
+
 	@Override
 	public void tick() {
-		exclusionZoneDetection();
+		this.exclusionZoneDetection();
 	}
 
 	/**
