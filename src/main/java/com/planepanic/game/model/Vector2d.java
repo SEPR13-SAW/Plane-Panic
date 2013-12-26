@@ -36,6 +36,16 @@ public final class Vector2d {
 		return Math.sqrt(this.getX() * this.getX() + this.getY() * this.getY());
 	}
 
+	/**
+	 * Calculates the squared distance between two given points,
+	 * at the moment works in 2d, but can easily be extended to work in 3d
+	 * @param location The other point
+	 * @return The distance between the points
+	 */
+	public double distanceFrom(Vector2d location) {
+		return (location.getX() - this.getX()) * (location.getX() - this.getX()) + (location.getY() - this.getY()) * (location.getY() - this.getY());
+	}
+
 	@Override
 	protected Vector2d clone() {
 		return new Vector2d(this.x, this.y);

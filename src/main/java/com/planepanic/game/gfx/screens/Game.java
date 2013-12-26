@@ -118,27 +118,13 @@ public class Game extends Screen {
 	public void exclusionZoneDetection() {
 		for (int i = 0; i < this.planeList.size() - 1; i++) {
 			for (int o = i + 1; o < this.planeList.size(); o++) {
-				if (this.distanceBetweenPoints(this.planeList.get(i).getPosition(), this.planeList.get(o).getPosition()) < Game.exclusionZone * Game.exclusionZone) {
+				if (this.planeList.get(i).getPosition().distanceFrom(this.planeList.get(o).getPosition()) < Game.exclusionZone * Game.exclusionZone) {
 					this.planeList.get(i).getEz().setViolated(true);
 					this.planeList.get(o).getEz().setViolated(true);
 				};
 			};
 		};
 	};
-
-	/**
-	 * Calculates the squared distance between two given points,
-	 * at the moment works in 2d, but can easily be extended to work in 3d
-	 * 
-	 * @param location
-	 *            The first location
-	 * @param location2
-	 *            The second location
-	 * @return The distance between locations
-	 */
-	public double distanceBetweenPoints(Vector2d location, Vector2d location2) {
-		return (location.getX() - location2.getX()) * (location.getX() - location2.getX()) + (location.getY() - location2.getY()) * (location.getY() - location2.getY());
-	}
 
 	public void orderPanel() {
 		DrawThread draw = DrawThread.getInstance();
