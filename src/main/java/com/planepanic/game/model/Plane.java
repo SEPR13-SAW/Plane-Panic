@@ -143,4 +143,17 @@ public final class Plane extends Image {
 			// System.out.println("Score: " + score); /* Used to Track Scores for Testing */
 		}
 	}
+	
+	/**
+	 * Calculates the squared distance between two planes in 3D,
+	 *
+	 * @param plane
+	 *            The other plane
+	 * @return The distance between the points
+	 */
+	public double distanceFrom(Plane plane) {
+		return ((plane.getPosition().getX() - this.getPosition().getX()) * (plane.getPosition().getX() - this.getPosition().getX()) + (plane.getPosition().getY() - this.getPosition().getY()) * (plane.getPosition().getY() - this.getPosition().getY()) + (plane.getAltitude() - this.getAltitude()) * (plane.getAltitude() - this.getAltitude()));
+	}
+	
+	
 }

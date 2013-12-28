@@ -122,7 +122,8 @@ public class Game extends Screen {
 	public void exclusionZoneDetection() {
 		for (int i = 0; i < this.planeList.size() - 1; i++) {
 			for (int o = i + 1; o < this.planeList.size(); o++) {
-				if (this.planeList.get(i).getPosition().distanceFrom(this.planeList.get(o).getPosition()) < Game.exclusionZone * Game.exclusionZone) {
+//				if (this.planeList.get(i).getPosition().distanceFrom(this.planeList.get(o).getPosition()) < Game.exclusionZone * Game.exclusionZone) {
+				if (this.planeList.get(i).distanceFrom(this.planeList.get(o)) < Game.exclusionZone * Game.exclusionZone) {
 					this.planeList.get(i).getEz().setViolated(true);
 					this.planeList.get(o).getEz().setViolated(true);
 				};
