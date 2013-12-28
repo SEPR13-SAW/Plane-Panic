@@ -112,7 +112,7 @@ public class Game extends Screen {
 		this.spawnPlane(new Random());
 		// Update Fuel Counter
 		this.selected();
-		if(this.getSelectedPlane() != null){
+		if (this.getSelectedPlane() != null) {
 			String altitude = "altitude " + String.valueOf((int) this.getSelectedPlane().getAltitude());
 			this.altitudeDisplay.setText(altitude);
 			String speed = "speed " + String.valueOf((int) this.getSelectedPlane().getSpeed());
@@ -121,22 +121,22 @@ public class Game extends Screen {
 			this.fuelDisplay.setText(fuel);
 		}
 
-
 	}
-	/** Sets selectedPlane, to whichever plane was last selected
+
+	/**
+	 * Sets selectedPlane, to whichever plane was last selected
 	 * 
 	 * @return
-	 * 		true if a new plane was selected and false otherwise
+	 *         true if a new plane was selected and false otherwise
 	 */
-	public void selected(){
-		for(Plane plane : this.planeList){
-			if(plane.isSelected()){
+	public void selected() {
+		for (Plane plane : this.planeList) {
+			if (plane.isSelected()) {
 				this.setSelectedPlane(plane);
 				plane.setSelected(false);
 			}
 		}
 	}
-	
 
 	/**
 	 * Loops through all the planes and checks whether
@@ -145,7 +145,7 @@ public class Game extends Screen {
 	public void exclusionZoneDetection() {
 		for (int i = 0; i < this.planeList.size() - 1; i++) {
 			for (int o = i + 1; o < this.planeList.size(); o++) {
-//				if (this.planeList.get(i).getPosition().distanceFrom(this.planeList.get(o).getPosition()) < Game.exclusionZone * Game.exclusionZone) {
+				// if (this.planeList.get(i).getPosition().distanceFrom(this.planeList.get(o).getPosition()) < Game.exclusionZone * Game.exclusionZone) {
 				if (this.planeList.get(i).distanceFrom(this.planeList.get(o)) < Game.exclusionZone * Game.exclusionZone) {
 					this.planeList.get(i).getEz().setViolated(true);
 					this.planeList.get(o).getEz().setViolated(true);
