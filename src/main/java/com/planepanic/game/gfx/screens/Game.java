@@ -40,8 +40,9 @@ public class Game extends Screen {
 	 */
 	@Getter private final static int exclusionZone = 305 / Config.SCALE;
 	@Getter @Setter public int orderState = 0;
-	@Setter TextBox fuelDisplay, altitudeDisplay, speedDisplay;
-	@Getter @Setter Plane selectedPlane;
+	@Setter private TextBox fuelDisplay, altitudeDisplay, speedDisplay;
+	@Getter @Setter private Plane selectedPlane;
+	private Random random = new Random();
 
 	public Game() {
 		super();
@@ -84,15 +85,15 @@ public class Game extends Screen {
 
 	}
 
-	public void spawnPlane(Random rng) {
+	public void spawnPlane() {
 		if (this.getTicks() == this.getMaxTicks()) {
-			int index = rng.nextInt(this.entryPointList.size());
+			int index = random.nextInt(this.entryPointList.size());
 			Plane plane = this.entryPointList.get(index).addPlane();
 			DrawThread draw = DrawThread.getInstance();
 			draw.draw(plane, RenderPriority.Low);
 			draw.draw(plane.getEz(), RenderPriority.Normal);
 			this.planeList.add(plane);
-			this.setMaxTicks(this.getMinSpawnInterval() + rng.nextInt(this.getMaxSpawnInterval() - this.getMinSpawnInterval()));
+			this.setMaxTicks(this.getMinSpawnInterval() + random.nextInt(this.getMaxSpawnInterval() - this.getMinSpawnInterval()));
 			this.setTicks(0);
 		} else {
 			this.setTicks(this.getTicks() + 1);
@@ -109,7 +110,7 @@ public class Game extends Screen {
 	@Override
 	public void tick() {
 		this.exclusionZoneDetection();
-		this.spawnPlane(new Random());
+		this.spawnPlane();
 		// Update Fuel Counter
 		this.selected();
 		if (this.getSelectedPlane() != null) {
