@@ -148,7 +148,7 @@ public final class Plane extends Image {
 	}
 
 	/**
-	 * Calculates the squared distance between two planes in 3D,
+	 * Calculates the cubed distance between two planes in 3D
 	 * 
 	 * @param plane
 	 *            The other plane
