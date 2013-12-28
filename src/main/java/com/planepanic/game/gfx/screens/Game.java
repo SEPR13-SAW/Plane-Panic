@@ -40,7 +40,8 @@ public class Game extends Screen {
 	 */
 	@Getter private final static int exclusionZone = 305 / Config.SCALE;
 	@Getter @Setter public int orderState = 0;
-	@Setter TextBox fuelDisplay;
+	@Setter TextBox fuelDisplay, altitudeDisplay, speedDisplay;
+	@Getter @Setter Plane selectedPlane;
 
 	public Game() {
 		super();
@@ -108,12 +109,34 @@ public class Game extends Screen {
 	@Override
 	public void tick() {
 		this.exclusionZoneDetection();
-		
+		this.spawnPlane(new Random());
 		// Update Fuel Counter
-		Plane temp = this.planeList.get(1); // Needs to get the plane that has been clicked on
-		String currentFuel = String.valueOf((int) temp.getFuel());
-		this.fuelDisplay.setText(currentFuel);
+		this.selected();
+		if(this.getSelectedPlane() != null){
+			String altitude = "altitude " + String.valueOf((int) this.getSelectedPlane().getAltitude());
+			this.altitudeDisplay.setText(altitude);
+			String speed = "speed " + String.valueOf((int) this.getSelectedPlane().getSpeed());
+			this.speedDisplay.setText(speed);
+			String fuel = "fuel " + String.valueOf((int) this.getSelectedPlane().getFuel());
+			this.fuelDisplay.setText(fuel);
+		}
+
+
 	}
+	/** Sets selectedPlane, to whichever plane was last selected
+	 * 
+	 * @return
+	 * 		true if a new plane was selected and false otherwise
+	 */
+	public void selected(){
+		for(Plane plane : this.planeList){
+			if(plane.isSelected()){
+				this.setSelectedPlane(plane);
+				plane.setSelected(false);
+			}
+		}
+	}
+	
 
 	/**
 	 * Loops through all the planes and checks whether
@@ -231,7 +254,11 @@ public class Game extends Screen {
 		}).setHitboxSize(new Vector2d(50, 50)).setPosition(new Vector2d(900, 500));;
 
 		// Displaying Fuel
-		this.fuelDisplay = (TextBox) new TextBox("0").setColor(0x000000).setPosition(new Vector2d(850, 25)).setPriority(0.9f);
+		this.altitudeDisplay = (TextBox) new TextBox("0").setColor(0x000000).setPosition(new Vector2d(900, 25)).setPriority(0.9f);
+		draw.draw(this.altitudeDisplay, RenderPriority.Normal);
+		this.speedDisplay = (TextBox) new TextBox("0").setColor(0x000000).setPosition(new Vector2d(900, 70)).setPriority(0.9f);
+		draw.draw(this.speedDisplay, RenderPriority.Normal);
+		this.fuelDisplay = (TextBox) new TextBox("0").setColor(0x000000).setPosition(new Vector2d(900, 115)).setPriority(0.9f);
 		draw.draw(this.fuelDisplay, RenderPriority.Normal);
 
 		if (this.orderState == 0) {

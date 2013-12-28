@@ -29,6 +29,7 @@ public final class Plane extends Image {
 	@Getter @Setter private int scoreTickDelay = Config.FRAMERATE;
 	@Getter @Setter private int gracePeriod = 30;
 	@Getter private ExclusionZone ez;
+	@Getter @Setter boolean selected = false;
 
 	@Getter private final Queue<Order> orders = new ArrayDeque<>(64);
 
@@ -43,6 +44,7 @@ public final class Plane extends Image {
 		this.score = score;
 		this.ez = new ExclusionZone(position);
 		this.altitude = altitude;
+		System.out.println("altitude = " + this.getAltitude());
 	}
 
 	@Override
@@ -59,7 +61,8 @@ public final class Plane extends Image {
 
 	@Override
 	public boolean onClick() {
-		return false;
+		this.setSelected(true);
+		return true;
 	}
 
 	public Order getCurrentOrder() {
