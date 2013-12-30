@@ -44,7 +44,6 @@ public final class Plane extends Image {
 		this.score = score;
 		this.ez = new ExclusionZone(position);
 		this.altitude = altitude;
-		System.out.println("altitude = " + this.getAltitude());
 	}
 
 	@Override
@@ -97,7 +96,7 @@ public final class Plane extends Image {
 		int passengers = type.getMaxPassengers() / 2 + rng.nextInt(type.getMaxPassengers() / 2);
 		double fuel = type.getMaxFuel() / 2 + rng.nextDouble() * type.getMaxFuel() / 2;
 		double speed = type.getMaxVelocity();
-		double altitude = type.getMaxAltitude() / 2 + rng.nextDouble() * type.getMaxAltitude() / 2;
+		double altitude = (type.getMaxAltitude() / 2 + rng.nextDouble() * type.getMaxAltitude() / 2) / Config.SCALE;
 
 		int score = type.getScore();
 
