@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @ToString
 public final class Vector2d {
-	private final double MAXIMUM_CLOSE_ANGLE = 0.01;
+	private final double MAXIMUM_CLOSE_ANGLE = Math.PI/80;
 
 	@Getter @Setter private double x, y;
 
@@ -44,6 +44,10 @@ public final class Vector2d {
 	public static Vector2d fromAngle(double r) {
 		double s = 0.01;
 		return new Vector2d(-s * Math.sin(r), s * Math.cos(r));
+	}
+
+	public Vector2d sub(Vector2d v) {
+		return new Vector2d(x-v.x, y-v.y);
 	}
 
 }
