@@ -3,6 +3,7 @@ package com.planepanic.game.model.orders;
 import lombok.Getter;
 
 import com.planepanic.game.model.Plane;
+import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.Waypoint;
 
 public final class FlyOver extends Order {
@@ -19,7 +20,18 @@ public final class FlyOver extends Order {
 
 	@Override
 	public void tick(Plane plane) {
-		// TODO
+		double target = waypoint.getPosition().sub(plane.getPosition()).getAngle();
+		double pa = plane.getVelocity().getAngle();
+		double a = target - pa;
+		while (a > Math.PI) {
+			a -= Math.PI * 2;
+		}
+
+		if (a >= 0) {
+			plane.getVelocity().applyChange(Vector2d.fromAngle(pa));
+		} else {
+			plane.getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI));
+		}
 	}
 
 }
