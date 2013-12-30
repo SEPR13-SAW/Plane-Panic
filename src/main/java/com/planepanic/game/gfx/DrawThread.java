@@ -66,6 +66,7 @@ public class DrawThread extends Thread {
 			}
 
 			GL11.glEnable(GL11.GL_BLEND);
+			GL11.glEnable(GL11.GL_DEPTH_TEST);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
 			GL11.glOrtho(0, DrawThread.width, DrawThread.height, 0, 1, -1);
@@ -100,9 +101,10 @@ public class DrawThread extends Thread {
 
 				this.currentScreen.resize();
 			}
+			this.currentScreen.tick();
 
 			// Clear the canvas
-			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_STENCIL_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
+			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 
 			if (Mouse.isButtonDown(0) && this.mouseWasUp) {
 				for (int i = 4; i >= 0; i--) {

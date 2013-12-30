@@ -29,11 +29,13 @@ public final class Plane extends Image {
 	@Getter @Setter private int scoreTickDelay = Config.FRAMERATE;
 	@Getter @Setter private int gracePeriod = 30;
 	@Getter private ExclusionZone ez;
+	@Getter @Setter boolean selected = false;
 
 	@Getter private final Queue<Order> orders = new ArrayDeque<>(64);
 
 	public Plane(PlaneType type, int passengers, double fuel, double speed, Vector2d position, Resources sprite, int score, double altitude) {
 		super(sprite, position);
+		this.setPriority(-0.1f);
 		this.type = type;
 		this.passengers = passengers;
 		this.fuel = fuel;
@@ -41,6 +43,8 @@ public final class Plane extends Image {
 		this.velocity = this.convertSpeedToVelocity(Math.PI / 2);
 		this.score = score;
 		this.ez = new ExclusionZone(position);
+		this.altitude = altitude;
+		System.out.println("altitude = " + this.getAltitude());
 	}
 
 	@Override
@@ -57,7 +61,8 @@ public final class Plane extends Image {
 
 	@Override
 	public boolean onClick() {
-		return false;
+		this.setSelected(true);
+		return true;
 	}
 
 	public Order getCurrentOrder() {
@@ -67,7 +72,7 @@ public final class Plane extends Image {
 	public void tick() {
 		this.consumeFuel();
 		this.decayScore();
-		
+
 		Order order = this.getCurrentOrder();
 		if (order != null) {
 			order.tick(this);
@@ -93,44 +98,64 @@ public final class Plane extends Image {
 		double fuel = type.getMaxFuel() / 2 + rng.nextDouble() * type.getMaxFuel() / 2;
 		double speed = type.getMaxVelocity();
 		double altitude = type.getMaxAltitude() / 2 + rng.nextDouble() * type.getMaxAltitude() / 2;
-	
+
 		int score = type.getScore();
 
 		return new Plane(type, passengers, fuel, speed, position, Resources.PLANE, score, altitude);
 	}
-	
-	// Calculates the fuel consumption in l/s scaling by how much of a max speed plane is flying
+
+	/**
+	 * Calculates the fuel consumption in l/s scaling by how much of a max speed plane is flying
+	 */
 	public void consumeFuel() {
 		this.setFuel(this.getFuel() - this.type.getFuelConsumption() / Config.FRAMERATE * (this.getSpeed() / this.type.getMaxVelocity()));
 	};
-	
-	// Converts speed in m/s and starting angle, to a Cartesian vector
-	// for simpler use in other calculations
-	public Vector2d convertSpeedToVelocity(double angle){
-		double x,y;
+
+	/**
+	 * Converts speed in m/s and starting angle, to a Cartesian vector
+	 * 
+	 * @param angle
+	 *            for simpler use in other calculations
+	 * @return
+	 */
+	public Vector2d convertSpeedToVelocity(double angle) {
+		double x, y;
 		x = this.getSpeed() * Math.cos(angle) / Config.FRAMERATE / 10;
 		y = this.getSpeed() * Math.sin(angle) / Config.FRAMERATE / 10;
-		if (x < 0.01)
+		if (x < 0.01) {
 			x = 0;
-		if (y < 0.01)
+		}
+		if (y < 0.01) {
 			y = 0;
+		}
 		return new Vector2d(x, y);
-		
-	
+
 	}
-	
-	public void decayScore(){
-		this.setScoreTickDelay(this.getScoreTickDelay()-1);
-		
-		if(this.getScoreTickDelay() == 0 && this.getGracePeriod() > 0){
-			this.setGracePeriod(this.getGracePeriod()-1);
+
+	public void decayScore() {
+		this.setScoreTickDelay(this.getScoreTickDelay() - 1);
+
+		if (this.getScoreTickDelay() == 0 && this.getGracePeriod() > 0) {
+			this.setGracePeriod(this.getGracePeriod() - 1);
 			this.setScoreTickDelay(Config.FRAMERATE);
 		}
-		
-		if(this.getScore() > 0 && this.getScoreTickDelay() == 0 && this.getGracePeriod() == 0){
-		this.setScore(this.getScore() - (10));
-		this.setScoreTickDelay(Config.FRAMERATE);
-		// System.out.println("Score: " + score); /* Used to Track Scores for Testing */
+
+		if (this.getScore() > 0 && this.getScoreTickDelay() == 0 && this.getGracePeriod() == 0) {
+			this.setScore(this.getScore() - 10);
+			this.setScoreTickDelay(Config.FRAMERATE);
+			// System.out.println("Score: " + score); /* Used to Track Scores for Testing */
 		}
-	}	
+	}
+
+	/**
+	 * Calculates the squared distance between two planes in 3D
+	 * 
+	 * @param plane
+	 *            The other plane
+	 * @return The distance between the points
+	 */
+	public double distanceFrom(Plane plane) {
+		return plane.getPosition().distanceFrom(this.getPosition()) + (plane.getAltitude() - this.getAltitude()) * (plane.getAltitude() - this.getAltitude());
+	}
+
 }

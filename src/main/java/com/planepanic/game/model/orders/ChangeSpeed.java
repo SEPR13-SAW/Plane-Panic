@@ -4,22 +4,24 @@ import lombok.Getter;
 
 import com.planepanic.game.model.Plane;
 
-public class ChangeSpeed extends Order{
+public class ChangeSpeed extends Order {
 
 	@Getter double delta, startSpeed, changeRate;
+
 	public ChangeSpeed(double startSpeed, double delta) {
 		this.startSpeed = startSpeed;
 		this.delta = delta;
 		this.changeRate = delta / 60f;
-		
+
 	}
 
 	@Override
 	public boolean isComplete(Plane plane) {
-		if(delta > 0)
+		if (this.delta > 0) {
 			return plane.getSpeed() - this.getStartSpeed() - this.getDelta() > this.getChangeRate();
-		else
+		} else {
 			return plane.getSpeed() - this.getStartSpeed() - this.getDelta() < this.getChangeRate();
+		}
 	}
 
 	@Override
@@ -28,4 +30,3 @@ public class ChangeSpeed extends Order{
 		plane.setVelocity(plane.convertSpeedToVelocity(plane.getVelocity().getAngle()));
 	}
 }
-

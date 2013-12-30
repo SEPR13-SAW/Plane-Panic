@@ -11,13 +11,12 @@ import com.planepanic.game.gfx.Resources;
  * 
  * @author Mantas, Jonathan
  */
-public final class Airport extends PointOfInterest {
+public final class Airport extends Image implements PointOfInterest {
 	private List<Plane> planeList = new ArrayList<>();
-	private Image sprite;
 
 	public Airport(Vector2d position) {
-		super(position);
-		this.sprite = new Image(Resources.AIRPORT, position);
+		super(Resources.AIRPORT, position);
+		this.setPriority(-0.8f);
 	}
 
 	public void addPlane(Plane plane) {
@@ -26,7 +25,7 @@ public final class Airport extends PointOfInterest {
 
 	@Override
 	public void draw2d() {
-		this.sprite.draw2d();
+		super.draw2d();
 	}
 
 	@Override
