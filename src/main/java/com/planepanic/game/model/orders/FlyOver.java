@@ -20,7 +20,7 @@ public final class FlyOver extends Order {
 
 	@Override
 	public void tick(Plane plane) {
-		double target = waypoint.getPosition().sub(plane.getPosition()).getAngle();
+		double target = this.waypoint.getPosition().sub(plane.getPosition()).getAngle();
 		double pa = plane.getVelocity().getAngle();
 		double a = target - pa;
 		while (a > Math.PI) {

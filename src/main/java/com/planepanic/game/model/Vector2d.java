@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @ToString
 public final class Vector2d {
-	private final double MAXIMUM_CLOSE_ANGLE = Math.PI/80;
+	private final double MAXIMUM_CLOSE_ANGLE = Math.PI / 80;
 
 	@Getter @Setter private double x, y;
 
@@ -37,11 +37,10 @@ public final class Vector2d {
 	}
 
 	/**
-	 * Calculates the squared distance between two given points,
-	 * at the moment works in 2d, but can easily be extended to work in 3d
+	 * Calculates the squared distance between two given points, at the moment
+	 * works in 2d, but can easily be extended to work in 3d
 	 * 
-	 * @param location
-	 *            The other point
+	 * @param location The other point
 	 * @return The distance between the points
 	 */
 	public double distanceFrom(Vector2d location) {
@@ -59,7 +58,7 @@ public final class Vector2d {
 	}
 
 	public Vector2d sub(Vector2d v) {
-		return new Vector2d(x-v.x, y-v.y);
+		return new Vector2d(this.x - v.x, this.y - v.y);
 	}
 
 }

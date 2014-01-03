@@ -3,7 +3,8 @@ package com.planepanic.game.model;
 import lombok.Getter;
 
 /**
- * Plane type class, defines immutable statistics such as maximum fuel/passenger capacity and velocity.
+ * Plane type class, defines immutable statistics such as maximum fuel/passenger
+ * capacity and velocity.
  * 
  * @author Jonathan
  * 
@@ -17,18 +18,13 @@ public enum PlaneType {
 
 	/**
 	 * 
-	 * @param name
-	 *            Nicely formatted name of the plane model.
-	 * @param maxPassengers
-	 *            Maximum passenger capacity.
-	 * @param maxFuel
-	 *            Maximum fuel capactity, measured in litres.
-	 * @param maxVelocity
-	 *            Maximum velocity measured in meters per second.
-	 * @param mass
-	 *            Mass of the plane in kg.
-	 * @param fuelConsumption
-	 *            The fuel, in litres, consumed each second at maxVelocity.
+	 * @param name Nicely formatted name of the plane model.
+	 * @param maxPassengers Maximum passenger capacity.
+	 * @param maxFuel Maximum fuel capactity, measured in litres.
+	 * @param maxVelocity Maximum velocity measured in meters per second.
+	 * @param mass Mass of the plane in kg.
+	 * @param fuelConsumption The fuel, in litres, consumed each second at
+	 *            maxVelocity.
 	 */
 	PlaneType(String name, int maxPassengers, double maxFuel, double maxVelocity, double mass, double fuelConsumption, int score, double maxAltitude) {
 		this.name = name;

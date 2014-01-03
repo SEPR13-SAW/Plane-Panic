@@ -9,7 +9,6 @@ import lombok.Setter;
 
 import com.planepanic.game.Config;
 import com.planepanic.game.gfx.DrawThread;
-import com.planepanic.game.gfx.RenderPriority;
 import com.planepanic.game.gfx.Resources;
 import com.planepanic.game.gfx.ui.Button;
 import com.planepanic.game.gfx.ui.ExclusionZone;
@@ -51,17 +50,17 @@ public class Game extends Screen {
 
 		EntryPoint entry = new EntryPoint(new Vector2d(50, 50));
 		this.entryPointList.add(entry);
-		draw.draw(entry, RenderPriority.Normal);
+		draw.draw(entry);
 		EntryPoint entry2 = new EntryPoint(new Vector2d(50, 200));
 		this.entryPointList.add(entry);
-		draw.draw(entry2, RenderPriority.Normal);
+		draw.draw(entry2);
 		this.createEntryPoint(new Vector2d(50, 500));
 		this.createEntryPoint(new Vector2d(500, 500));
 		this.createEntryPoint(new Vector2d(500, 50));
 
 		for (int i = 0; i < 6; i++) {
 			Waypoint wp = new Waypoint(new Vector2d(200 + 75 * i, 400), "" + (char) (65 + i));
-			draw.draw(wp, RenderPriority.Normal);
+			draw.draw(wp);
 		}
 
 		Plane plane = entry2.addPlane();
@@ -70,16 +69,16 @@ public class Game extends Screen {
 		plane.getOrders().add(new AbsoluteHeading(Math.PI / 2));
 		plane.getOrders().add(new RelativeHeading(plane.getAngle(), Math.PI / 2));
 		plane.getOrders().add(new ChangeSpeed(plane.getSpeed(), 100));
-		draw.draw(plane, RenderPriority.Low);
-		draw.draw(plane.getEz(), RenderPriority.Normal);
+		draw.draw(plane);
+		draw.draw(plane.getEz());
 		plane = entry.addPlane();
 		this.planeList.add(plane);
-		draw.draw(plane, RenderPriority.Low);
-		draw.draw(plane.getEz(), RenderPriority.Normal);
+		draw.draw(plane);
+		draw.draw(plane.getEz());
 		this.radar = new Radar();
-		draw.draw(this.radar, RenderPriority.Normal);
+		draw.draw(this.radar);
 		Airport airport = new Airport(new Vector2d(400, Config.WINDOW_HEIGHT / 2));
-		draw.draw(airport, RenderPriority.Normal);
+		draw.draw(airport);
 
 		this.orderPanel();
 
@@ -87,13 +86,13 @@ public class Game extends Screen {
 
 	public void spawnPlane() {
 		if (this.getTicks() == this.getMaxTicks()) {
-			int index = random.nextInt(this.entryPointList.size());
+			int index = this.random.nextInt(this.entryPointList.size());
 			Plane plane = this.entryPointList.get(index).addPlane();
 			DrawThread draw = DrawThread.getInstance();
-			draw.draw(plane, RenderPriority.Low);
-			draw.draw(plane.getEz(), RenderPriority.Normal);
+			draw.draw(plane);
+			draw.draw(plane.getEz());
 			this.planeList.add(plane);
-			this.setMaxTicks(this.getMinSpawnInterval() + random.nextInt(this.getMaxSpawnInterval() - this.getMinSpawnInterval()));
+			this.setMaxTicks(this.getMinSpawnInterval() + this.random.nextInt(this.getMaxSpawnInterval() - this.getMinSpawnInterval()));
 			this.setTicks(0);
 		} else {
 			this.setTicks(this.getTicks() + 1);
@@ -104,7 +103,7 @@ public class Game extends Screen {
 		EntryPoint entry = new EntryPoint(position);
 		this.entryPointList.add(entry);
 		DrawThread draw = DrawThread.getInstance();
-		draw.draw(entry, RenderPriority.Normal);
+		draw.draw(entry);
 	}
 
 	@Override
@@ -127,8 +126,7 @@ public class Game extends Screen {
 	/**
 	 * Sets selectedPlane, to whichever plane was last selected
 	 * 
-	 * @return
-	 *         true if a new plane was selected and false otherwise
+	 * @return true if a new plane was selected and false otherwise
 	 */
 	public void selected() {
 		for (Plane plane : this.planeList) {
@@ -140,13 +138,12 @@ public class Game extends Screen {
 	}
 
 	/**
-	 * Loops through all the planes and checks whether
-	 * the distance between any two is bigger than exclusion zone
+	 * Loops through all the planes and checks whether the distance between any
+	 * two is bigger than exclusion zone
 	 */
 	public void exclusionZoneDetection() {
 		for (int i = 0; i < this.planeList.size() - 1; i++) {
 			for (int o = i + 1; o < this.planeList.size(); o++) {
-				// if (this.planeList.get(i).getPosition().distanceFrom(this.planeList.get(o).getPosition()) < Game.exclusionZone * Game.exclusionZone) {
 				if (this.planeList.get(i).distanceFrom(this.planeList.get(o)) < Game.exclusionZone * Game.exclusionZone) {
 					this.planeList.get(i).getEz().setViolated(true);
 					this.planeList.get(o).getEz().setViolated(true);
@@ -256,40 +253,40 @@ public class Game extends Screen {
 
 		// Displaying Fuel
 		this.altitudeDisplay = (TextBox) new TextBox("0").setColor(0x000000).setPosition(new Vector2d(900, 25)).setPriority(0.9f);
-		draw.draw(this.altitudeDisplay, RenderPriority.Normal);
+		draw.draw(this.altitudeDisplay);
 		this.speedDisplay = (TextBox) new TextBox("0").setColor(0x000000).setPosition(new Vector2d(900, 70)).setPriority(0.9f);
-		draw.draw(this.speedDisplay, RenderPriority.Normal);
+		draw.draw(this.speedDisplay);
 		this.fuelDisplay = (TextBox) new TextBox("0").setColor(0x000000).setPosition(new Vector2d(900, 115)).setPriority(0.9f);
-		draw.draw(this.fuelDisplay, RenderPriority.Normal);
+		draw.draw(this.fuelDisplay);
 
 		if (this.orderState == 0) {
-			draw.draw(direction, RenderPriority.Normal);
-			draw.draw(altitude, RenderPriority.Normal);
-			draw.draw(heading, RenderPriority.Normal);
-			draw.draw(land, RenderPriority.Normal);
-			draw.draw(takeoff, RenderPriority.Normal);
-			draw.draw(speed, RenderPriority.Normal);
+			draw.draw(direction);
+			draw.draw(altitude);
+			draw.draw(heading);
+			draw.draw(land);
+			draw.draw(takeoff);
+			draw.draw(speed);
 		}
 		else if (this.orderState == 1) {
 			// Changing direction
-			draw.draw(left, RenderPriority.Normal);
-			draw.draw(right, RenderPriority.Normal);
-			draw.draw(back, RenderPriority.Normal);
+			draw.draw(left);
+			draw.draw(right);
+			draw.draw(back);
 		}
 		else if (this.orderState == 2) {
 			// Changing heading
-			draw.draw(set, RenderPriority.Normal);
-			draw.draw(back, RenderPriority.Normal);
+			draw.draw(set);
+			draw.draw(back);
 		}
 		else if (this.orderState == 3) {
 			// Changing altitude
-			draw.draw(up, RenderPriority.Normal);
-			draw.draw(down, RenderPriority.Normal);
-			draw.draw(back, RenderPriority.Normal);
+			draw.draw(up);
+			draw.draw(down);
+			draw.draw(back);
 		}
 
 		OrderPanel orderpanel = new OrderPanel(new Vector2d(1100, 360));
-		draw.draw(orderpanel, RenderPriority.High);
+		draw.draw(orderpanel);
 		System.out.println(this.orderState);
 
 	}

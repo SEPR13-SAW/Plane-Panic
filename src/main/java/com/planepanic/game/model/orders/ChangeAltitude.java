@@ -22,7 +22,9 @@ public class ChangeAltitude extends Order {
 
 	@Override
 	public void tick(Plane plane) {
-		// plane.setVelocity(plane.convertSpeedToVelocity(3)); //This may be changed once I know what the angle is respective too and if it is degrees or radians.
+		// plane.setVelocity(plane.convertSpeedToVelocity(3)); //This may be
+		// changed once I know what the angle is respective too and if it is
+		// degrees or radians.
 		if (this.getDelta() < 0) {
 			plane.setAltitude(plane.getAltitude() - plane.getSpeed() / Config.FRAMERATE);
 		} else {

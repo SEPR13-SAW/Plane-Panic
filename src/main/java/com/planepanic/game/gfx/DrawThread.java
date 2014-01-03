@@ -2,10 +2,11 @@ package com.planepanic.game.gfx;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 import lombok.Getter;
 
@@ -37,7 +38,13 @@ public class DrawThread extends Thread {
 	}
 
 	@Getter private boolean running = true;
-	private Map<RenderPriority, Set<Drawable>> drawObjects = new HashMap<RenderPriority, Set<Drawable>>();
+	private List<Drawable> drawObjects = new ArrayList<Drawable>();
+	private Queue<Drawable> temp = new PriorityQueue<Drawable>(11, new Comparator<Drawable>() {
+		@Override
+		public int compare(Drawable arg0, Drawable arg1) {
+			return arg1.getPriority() > arg0.getPriority() ? -1 : arg1.getPriority() < arg0.getPriority() ? 1 : 0;
+		}
+	});
 	private boolean mouseWasUp = true;
 	private Screen currentScreen;
 
@@ -107,27 +114,21 @@ public class DrawThread extends Thread {
 			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 
 			if (Mouse.isButtonDown(0) && this.mouseWasUp) {
-				for (int i = 4; i >= 0; i--) {
-					RenderPriority priority = RenderPriority.getRenderPriorityFromId(i);
-					if (this.drawObjects.containsKey(priority)) {
-						for (Drawable obj : this.drawObjects.get(priority)) {
-							if (obj.clickHandler()) {
-								break;
-							}
-						}
+				this.temp.addAll(this.drawObjects);
+				Drawable obj;
+				while ((obj = this.temp.poll()) != null) {
+					if (obj.clickHandler()) {
+						break;
 					}
 				}
 			}
 			this.mouseWasUp = !Mouse.isButtonDown(0);
 
 			// Draw the objects
-			for (int i = 0; i <= 4; i++) {
-				RenderPriority priority = RenderPriority.getRenderPriorityFromId(i);
-				if (this.drawObjects.containsKey(priority)) {
-					for (Drawable obj : this.drawObjects.get(priority)) {
-						obj.draw2d();
-					}
-				}
+			this.temp.addAll(this.drawObjects);
+			Drawable obj;
+			while ((obj = this.temp.poll()) != null) {
+				obj.draw2d();
 			}
 
 			// Update the output
@@ -140,22 +141,11 @@ public class DrawThread extends Thread {
 	}
 
 	public void draw(Drawable obj) {
-		this.draw(obj, RenderPriority.Normal);
-	}
-
-	public void draw(Drawable obj, RenderPriority priority) {
-		if (!this.drawObjects.containsKey(priority)) {
-			this.drawObjects.put(priority, new HashSet<Drawable>());
-		}
-		this.drawObjects.get(priority).add(obj);
+		this.drawObjects.add(obj);
 	}
 
 	public boolean removeObject(Drawable obj) {
-		boolean result = false;
-		for (RenderPriority priority : this.drawObjects.keySet()) {
-			result |= this.drawObjects.get(priority).remove(obj);
-		}
-		return result;
+		return this.drawObjects.remove(obj);
 	}
 
 	public void clearScreen() {

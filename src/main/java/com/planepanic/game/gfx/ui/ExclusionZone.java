@@ -20,7 +20,8 @@ public class ExclusionZone extends Drawable {
 	}
 
 	public void onResize() {
-		// this.radius = Math.min(DrawThread.height, DrawThread.width - 500) / 2;
+		// this.radius = Math.min(DrawThread.height, DrawThread.width - 500) /
+		// 2;
 	}
 
 	@Override

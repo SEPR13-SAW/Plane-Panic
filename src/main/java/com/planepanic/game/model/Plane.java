@@ -7,7 +7,10 @@ import java.util.Random;
 import lombok.Getter;
 import lombok.Setter;
 
+import org.lwjgl.input.Mouse;
+
 import com.planepanic.game.Config;
+import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.Image;
 import com.planepanic.game.gfx.Resources;
 import com.planepanic.game.gfx.ui.ExclusionZone;
@@ -23,7 +26,11 @@ public final class Plane extends Image {
 	@Getter private final int passengers;
 	@Getter @Setter private int score;
 	@Getter @Setter private double fuel;
-	@Getter @Setter private double speed; // Simple linear speed, to avoid having to calculate length of the vector every tick
+	/**
+	 * Simple linear speed, to avoid having to calculate length of the vector
+	 * every tick
+	 */
+	@Getter @Setter private double speed;
 	@Getter @Setter private double altitude;
 	@Getter @Setter private Vector2d velocity;
 	@Getter @Setter private int scoreTickDelay = Config.FRAMERATE;
@@ -48,6 +55,7 @@ public final class Plane extends Image {
 
 	@Override
 	public void draw2d() {
+		this.setPriority((float) -(0.1 - this.getAltitude() / 50000));
 		super.draw2d();
 		this.tick();
 	}
@@ -104,7 +112,8 @@ public final class Plane extends Image {
 	}
 
 	/**
-	 * Calculates the fuel consumption in l/s scaling by how much of a max speed plane is flying
+	 * Calculates the fuel consumption in l/s scaling by how much of a max speed
+	 * plane is flying
 	 */
 	public void consumeFuel() {
 		this.setFuel(this.getFuel() - this.type.getFuelConsumption() / Config.FRAMERATE * (this.getSpeed() / this.type.getMaxVelocity()));
@@ -113,8 +122,7 @@ public final class Plane extends Image {
 	/**
 	 * Converts speed in m/s and starting angle, to a Cartesian vector
 	 * 
-	 * @param angle
-	 *            for simpler use in other calculations
+	 * @param angle for simpler use in other calculations
 	 * @return
 	 */
 	public Vector2d convertSpeedToVelocity(double angle) {
@@ -142,19 +150,27 @@ public final class Plane extends Image {
 		if (this.getScore() > 0 && this.getScoreTickDelay() == 0 && this.getGracePeriod() == 0) {
 			this.setScore(this.getScore() - 10);
 			this.setScoreTickDelay(Config.FRAMERATE);
-			// System.out.println("Score: " + score); /* Used to Track Scores for Testing */
+			// System.out.println("Score: " + score); /* Used to Track Scores
+			// for Testing */
 		}
 	}
 
 	/**
 	 * Calculates the squared distance between two planes in 3D
 	 * 
-	 * @param plane
-	 *            The other plane
+	 * @param plane The other plane
 	 * @return The distance between the points
 	 */
 	public double distanceFrom(Plane plane) {
 		return plane.getPosition().distanceFrom(this.getPosition()) + (plane.getAltitude() - this.getAltitude()) * (plane.getAltitude() - this.getAltitude());
+	}
+
+	@Override
+	protected boolean isMouseOver() {
+		int x = Mouse.getX();
+		int y = DrawThread.height - Mouse.getY();
+		System.out.println(new Vector2d(x, y).distanceFrom(this.getPosition()));
+		return new Vector2d(x, y).distanceFrom(this.getPosition()) < 625;
 	}
 
 }

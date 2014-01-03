@@ -21,7 +21,7 @@ public final class Waypoint extends SimplePointOfInterest {
 	public void draw2d() {
 		super.draw2d();
 		Vector2d size = DrawUtil.getSize(this.name, 12);
-		DrawUtil.drawString((float) (this.getPosition().getX() - size.getX() / 2), (float) (this.getPosition().getY() - size.getY() / 2), this.name, 0xFFFFFF, 12);
+		DrawUtil.drawString((float) (this.getPosition().getX() - size.getX() / 2), (float) (this.getPosition().getY() - size.getY() / 2), this.name, 0xFFFFFF, 12, this.getPriority());
 	}
 
 	@Override
