@@ -11,7 +11,6 @@ import com.planepanic.game.gfx.Resources;
 import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.orders.AbsoluteHeading;
-import com.planepanic.game.model.orders.RelativeHeading;
 
 public class Controls {
 

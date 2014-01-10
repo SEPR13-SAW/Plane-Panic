@@ -49,7 +49,7 @@ public final class Plane extends Image {
 		this.passengers = passengers;
 		this.fuel = fuel;
 		this.speed = speed;
-		this.velocity = this.convertSpeedToVelocity(Math.PI / 2);
+		this.velocity = Vector2d.fromAngle(-Math.PI / 2).mul(this.getSpeed() * 10 / Config.FRAMERATE);
 		this.score = score;
 		this.ez = new ExclusionZone(position);
 		this.altitude = altitude;
@@ -131,17 +131,7 @@ public final class Plane extends Image {
 	 * @return
 	 */
 	public Vector2d convertSpeedToVelocity(double angle) {
-		double x, y;
-		x = this.getSpeed() * Math.cos(angle) / Config.FRAMERATE / 10;
-		y = this.getSpeed() * Math.sin(angle) / Config.FRAMERATE / 10;
-		if (x < 0.01) {
-			x = 0;
-		}
-		if (y < 0.01) {
-			y = 0;
-		}
-		return new Vector2d(x, y);
-
+		return Vector2d.fromAngle(angle).mul(this.getSpeed() * 10 / Config.FRAMERATE);
 	}
 
 	public void decayScore() {
