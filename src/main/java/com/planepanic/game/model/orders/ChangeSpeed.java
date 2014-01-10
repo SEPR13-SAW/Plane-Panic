@@ -8,25 +8,29 @@ public class ChangeSpeed extends Order {
 
 	@Getter double delta, startSpeed, changeRate;
 
-	public ChangeSpeed(double startSpeed, double delta) {
-		this.startSpeed = startSpeed;
+	public ChangeSpeed(Plane plane, double delta) {
+		super(plane);
 		this.delta = delta;
 		this.changeRate = delta / 60f;
-
 	}
 
 	@Override
-	public boolean isComplete(Plane plane) {
+	public boolean isComplete() {
 		if (this.delta > 0) {
-			return plane.getSpeed() - this.getStartSpeed() - this.getDelta() > this.getChangeRate();
+			return this.getPlane().getSpeed() - this.getStartSpeed() - this.getDelta() > this.getChangeRate();
 		} else {
-			return plane.getSpeed() - this.getStartSpeed() - this.getDelta() < this.getChangeRate();
+			return this.getPlane().getSpeed() - this.getStartSpeed() - this.getDelta() < this.getChangeRate();
 		}
 	}
 
 	@Override
-	public void tick(Plane plane) {
-		plane.setSpeed(plane.getSpeed() + this.getChangeRate());
-		plane.setVelocity(plane.convertSpeedToVelocity(plane.getVelocity().getAngle()));
+	public void tick() {
+		this.getPlane().setSpeed(this.getPlane().getSpeed() + this.getChangeRate());
+		this.getPlane().setVelocity(this.getPlane().convertSpeedToVelocity(this.getPlane().getVelocity().getAngle()));
+	}
+
+	@Override
+	public void start() {
+		this.startSpeed = this.getPlane().getSpeed();
 	}
 }

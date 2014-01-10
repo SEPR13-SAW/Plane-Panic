@@ -8,18 +8,24 @@ import com.planepanic.game.model.Runway;
 public final class TakeOff extends Order {
 	@Getter private final Runway runway;
 
-	public TakeOff(Runway runway) {
+	public TakeOff(Plane plane, Runway runway) {
+		super(plane);
 		this.runway = runway;
 	}
 
 	@Override
-	public boolean isComplete(Plane plane) {
-		return !plane.closeEnough(this.runway);
+	public boolean isComplete() {
+		return !this.getPlane().closeEnough(this.runway);
 	}
 
 	@Override
-	public void tick(Plane plane) {
+	public void tick() {
 		// TODO
+	}
+
+	@Override
+	public void start() {
+
 	}
 
 }

@@ -59,10 +59,10 @@ public class Game extends Screen {
 
 		Plane plane = entry2.addPlane();
 		this.planeList.add(plane);
-		plane.getOrders().add(new AbsoluteHeading(0));
-		plane.getOrders().add(new AbsoluteHeading(Math.PI / 2));
-		plane.getOrders().add(new RelativeHeading(plane.getAngle(), Math.PI / 2));
-		plane.getOrders().add(new ChangeSpeed(plane.getSpeed(), 100));
+		plane.getOrders().add(new AbsoluteHeading(plane, 0));
+		plane.getOrders().add(new AbsoluteHeading(plane, Math.PI / 2));
+		plane.getOrders().add(new RelativeHeading(plane, Math.PI / 2));
+		plane.getOrders().add(new ChangeSpeed(plane, 100));
 		draw.draw(plane);
 		draw.draw(plane.getEz());
 		plane = entry.addPlane();

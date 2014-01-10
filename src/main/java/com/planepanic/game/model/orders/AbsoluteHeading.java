@@ -8,27 +8,33 @@ import com.planepanic.game.model.Vector2d;
 public final class AbsoluteHeading extends Order {
 	@Getter private final double angle;
 
-	public AbsoluteHeading(double angle) {
+	public AbsoluteHeading(Plane plane, double angle) {
+		super(plane);
 		this.angle = angle;
 	}
 
 	@Override
-	public boolean isComplete(Plane plane) {
-		return plane.getVelocity().angleCloseEnough(this.angle);
+	public void start() {
+
 	}
 
 	@Override
-	public void tick(Plane plane) {
-		double pa = plane.getVelocity().getAngle();
+	public boolean isComplete() {
+		return this.getPlane().getVelocity().angleCloseEnough(this.angle);
+	}
+
+	@Override
+	public void tick() {
+		double pa = this.getPlane().getVelocity().getAngle();
 		double a = this.angle - pa;
 		while (a > Math.PI) {
 			a -= Math.PI * 2;
 		}
 
 		if (a >= 0) {
-			plane.getVelocity().applyChange(Vector2d.fromAngle(pa));
+			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa));
 		} else {
-			plane.getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI));
+			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI));
 		}
 	}
 

@@ -9,26 +9,32 @@ public class ChangeAltitude extends Order {
 
 	@Getter double delta, speed, startAltitude, changeRate;
 
-	public ChangeAltitude(double startAltitude, double speed, double delta) {
+	public ChangeAltitude(Plane plane, double startAltitude, double speed, double delta) {
+		super(plane);
 		this.startAltitude = startAltitude;
 		this.speed = speed;
 		this.delta = delta;
 	}
 
 	@Override
-	public boolean isComplete(Plane plane) {
-		return plane.getAltitude() == this.getStartAltitude() + this.delta;
+	public boolean isComplete() {
+		return this.getPlane().getAltitude() == this.getStartAltitude() + this.delta;
 	}
 
 	@Override
-	public void tick(Plane plane) {
+	public void tick() {
 		// plane.setVelocity(plane.convertSpeedToVelocity(3)); //This may be
 		// changed once I know what the angle is respective too and if it is
 		// degrees or radians.
 		if (this.getDelta() < 0) {
-			plane.setAltitude(plane.getAltitude() - plane.getSpeed() / Config.FRAMERATE);
+			this.getPlane().setAltitude(this.getPlane().getAltitude() - this.getPlane().getSpeed() / Config.FRAMERATE);
 		} else {
-			plane.setAltitude(plane.getAltitude() + plane.getSpeed() / Config.FRAMERATE);
+			this.getPlane().setAltitude(this.getPlane().getAltitude() + this.getPlane().getSpeed() / Config.FRAMERATE);
 		}
+	}
+
+	@Override
+	public void start() {
+
 	}
 }

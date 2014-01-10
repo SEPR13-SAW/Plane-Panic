@@ -17,7 +17,6 @@ public class Main extends Screen {
 		DrawThread draw = DrawThread.getInstance();
 
 		this.startGame = new Button("Start Game").setCallback(new Callback<Boolean>() {
-			
 			@Override
 			public Boolean call() {
 				DrawThread.getInstance().changeScreen(new Game());

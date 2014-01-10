@@ -6,30 +6,36 @@ import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 
 public final class RelativeHeading extends Order {
-	@Getter private final double startAngle, delta;
+	@Getter private final double delta;
+	@Getter private double startAngle;
 
-	public RelativeHeading(double startAngle, double delta) {
-		this.startAngle = startAngle;
+	public RelativeHeading(Plane plane, double delta) {
+		super(plane);
 		this.delta = delta;
 	}
 
 	@Override
-	public boolean isComplete(Plane plane) {
-		return plane.getVelocity().angleCloseEnough(this.startAngle + this.delta);
+	public void start() {
+		this.startAngle = this.getPlane().getAngle();
 	}
 
 	@Override
-	public void tick(Plane plane) {
-		double pa = plane.getVelocity().getAngle();
+	public boolean isComplete() {
+		return this.getPlane().getVelocity().angleCloseEnough(this.startAngle + this.delta);
+	}
+
+	@Override
+	public void tick() {
+		double pa = this.getPlane().getVelocity().getAngle();
 		double a = this.startAngle + this.delta - pa;
 		while (a > Math.PI) {
 			a -= Math.PI * 2;
 		}
 
 		if (a >= 0) {
-			plane.getVelocity().applyChange(Vector2d.fromAngle(pa));
+			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa));
 		} else {
-			plane.getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI));
+			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI));
 		}
 	}
 

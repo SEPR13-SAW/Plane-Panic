@@ -11,8 +11,11 @@ import com.planepanic.game.gfx.Resources;
 import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.orders.AbsoluteHeading;
+import com.planepanic.game.model.orders.RelativeHeading;
 
 public class Controls {
+
+	private int orderState = 0;
 
 	private List<Drawable> controls = new ArrayList<Drawable>();
 	private OrderButton direction;
@@ -62,7 +65,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Change Heading!");
-				Controls.this.setOrderState(3);
+				Controls.this.setOrderState(4);
 				return true;
 			}
 		}));
@@ -98,7 +101,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Turns left by number inputted");
-				Plane.getSelected().addOrder(new AbsoluteHeading(Math.toRadians(value)));
+				Plane.getSelected().addOrder(new RelativeHeading(Plane.getSelected(), Math.toRadians(Controls.this.value)));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -117,6 +120,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Confirms new heading!");
+				Plane.getSelected().addOrder(new AbsoluteHeading(Plane.getSelected(), Math.toRadians(Controls.this.value - 90)));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -156,30 +160,38 @@ public class Controls {
 			draw.removeObject(button);
 		}
 
-		if (state == 0) {
-			draw.draw(this.direction);
-			draw.draw(this.altitude);
-			draw.draw(this.heading);
-			draw.draw(this.land);
-			draw.draw(this.takeoff);
-			draw.draw(this.speed);
-		} else if (state == 1) {
-			// Changing direction
-			draw.draw(this.valueBox);
-			draw.draw(this.left);
-			draw.draw(this.right);
-			draw.draw(this.back);
-		} else if (state == 2) {
-			// Changing heading
-			draw.draw(this.valueBox);
-			draw.draw(this.set);
-			draw.draw(this.back);
-		} else if (state == 3) {
-			// Changing altitude
-			draw.draw(this.valueBox);
-			draw.draw(this.up);
-			draw.draw(this.down);
-			draw.draw(this.back);
+		this.orderState = state;
+		switch (this.orderState) {
+			case 0:
+				draw.draw(this.direction);
+				draw.draw(this.altitude);
+				draw.draw(this.heading);
+				draw.draw(this.land);
+				draw.draw(this.takeoff);
+				draw.draw(this.speed);
+				break;
+			case 1:
+				// Changing direction
+				draw.draw(this.valueBox);
+				draw.draw(this.left);
+				draw.draw(this.right);
+				draw.draw(this.back);
+				break;
+			case 2:
+				// Relative heading
+			case 4:
+				// Absolute heading
+				draw.draw(this.valueBox);
+				draw.draw(this.set);
+				draw.draw(this.back);
+				break;
+			case 3:
+				// Changing altitude
+				draw.draw(this.valueBox);
+				draw.draw(this.up);
+				draw.draw(this.down);
+				draw.draw(this.back);
+				break;
 		}
 	}
 

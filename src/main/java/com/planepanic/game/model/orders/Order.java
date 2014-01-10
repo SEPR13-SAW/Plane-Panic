@@ -1,9 +1,21 @@
 package com.planepanic.game.model.orders;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+
 import com.planepanic.game.model.Plane;
 
 public abstract class Order {
-	public abstract boolean isComplete(Plane plane);
 
-	public abstract void tick(Plane plane);
+	@Getter(AccessLevel.PROTECTED) private Plane plane;
+
+	public Order(Plane plane) {
+		this.plane = plane;
+	}
+
+	public abstract boolean isComplete();
+
+	public abstract void tick();
+
+	public abstract void start();
 }

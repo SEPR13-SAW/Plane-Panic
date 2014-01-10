@@ -9,29 +9,35 @@ import com.planepanic.game.model.Waypoint;
 public final class FlyOver extends Order {
 	@Getter private final Waypoint waypoint;
 
-	public FlyOver(Waypoint waypoint) {
+	public FlyOver(Plane plane, Waypoint waypoint) {
+		super(plane);
 		this.waypoint = waypoint;
 	}
 
 	@Override
-	public boolean isComplete(Plane plane) {
-		return plane.closeEnough(this.waypoint);
+	public boolean isComplete() {
+		return this.getPlane().closeEnough(this.waypoint);
 	}
 
 	@Override
-	public void tick(Plane plane) {
-		double target = this.waypoint.getPosition().sub(plane.getPosition()).getAngle();
-		double pa = plane.getVelocity().getAngle();
+	public void tick() {
+		double target = this.waypoint.getPosition().sub(this.getPlane().getPosition()).getAngle();
+		double pa = this.getPlane().getVelocity().getAngle();
 		double a = target - pa;
 		while (a > Math.PI) {
 			a -= Math.PI * 2;
 		}
 
 		if (a >= 0) {
-			plane.getVelocity().applyChange(Vector2d.fromAngle(pa));
+			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa));
 		} else {
-			plane.getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI));
+			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI));
 		}
+	}
+
+	@Override
+	public void start() {
+
 	}
 
 }
