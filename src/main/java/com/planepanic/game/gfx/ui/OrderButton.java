@@ -3,15 +3,16 @@ package com.planepanic.game.gfx.ui;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import com.planepanic.game.gfx.Callback;
 import com.planepanic.game.gfx.Image;
 import com.planepanic.game.gfx.Resources;
 import com.planepanic.game.model.Vector2d;
 
-public class OrderButtons extends Image {
+public class OrderButton extends Image {
 
-	@Accessors(chain = true) @Setter private Runnable callback;
+	@Accessors(chain = true) @Setter private Callback<Boolean> callback;
 
-	public OrderButtons(int xPosition, int yPosition, Resources buttonType) {
+	public OrderButton(int xPosition, int yPosition, Resources buttonType) {
 		super(buttonType, new Vector2d(xPosition, yPosition));
 		this.setPriority(0.5f);
 		this.setHitboxSize(new Vector2d(128, 64));
@@ -32,8 +33,7 @@ public class OrderButtons extends Image {
 	@Override
 	public boolean onClick() {
 		if (this.callback != null) {
-			this.callback.run();
-			return true;
+			return this.callback.call();
 		}
 		return false;
 	}

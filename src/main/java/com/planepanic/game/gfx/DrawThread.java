@@ -45,8 +45,14 @@ public class DrawThread extends Thread {
 			return arg1.getPriority() > arg0.getPriority() ? -1 : arg1.getPriority() < arg0.getPriority() ? 1 : 0;
 		}
 	});
+	private Queue<Drawable> tempReverse = new PriorityQueue<Drawable>(11, new Comparator<Drawable>() {
+		@Override
+		public int compare(Drawable arg0, Drawable arg1) {
+			return arg1.getPriority() > arg0.getPriority() ? 1 : arg1.getPriority() < arg0.getPriority() ? -1 : 0;
+		}
+	});
 	private boolean mouseWasUp = true;
-	private Screen currentScreen;
+	@Getter private Screen currentScreen;
 
 	public static int width = 1280;
 	public static int height = 720;
@@ -114,15 +120,28 @@ public class DrawThread extends Thread {
 			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 
 			if (Mouse.isButtonDown(0) && this.mouseWasUp) {
-				this.temp.addAll(this.drawObjects);
+				this.tempReverse.addAll(this.drawObjects);
 				Drawable obj;
-				while ((obj = this.temp.poll()) != null) {
+				while ((obj = this.tempReverse.poll()) != null) {
 					if (obj.clickHandler()) {
 						break;
 					}
 				}
+				this.tempReverse.clear();
 			}
 			this.mouseWasUp = !Mouse.isButtonDown(0);
+
+			int scroll = Mouse.getDWheel();
+			if (scroll != 0) {
+				this.tempReverse.addAll(this.drawObjects);
+				Drawable obj;
+				while ((obj = this.tempReverse.poll()) != null) {
+					if (obj.scrollHandler(scroll)) {
+						break;
+					}
+				}
+				this.tempReverse.clear();
+			}
 
 			// Draw the objects
 			this.temp.addAll(this.drawObjects);

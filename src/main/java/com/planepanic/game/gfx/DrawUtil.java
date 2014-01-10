@@ -56,10 +56,10 @@ public class DrawUtil {
 		GL11.glTranslatef(0, 0, -z);
 
 		GL11.glBegin(filled ? GL11.GL_QUADS : GL11.GL_LINE_LOOP);
-		GL11.glVertex2f(x, y);
-		GL11.glVertex2f(x + w, y);
-		GL11.glVertex2f(x + w, y + h);
-		GL11.glVertex2f(x, y + h);
+		GL11.glVertex2f(x - w / 2, y - h / 2);
+		GL11.glVertex2f(x + w / 2, y - h / 2);
+		GL11.glVertex2f(x + w / 2, y + h / 2);
+		GL11.glVertex2f(x - w / 2, y + h / 2);
 		GL11.glEnd();
 
 		GL11.glPopMatrix();

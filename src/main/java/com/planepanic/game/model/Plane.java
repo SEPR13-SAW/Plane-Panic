@@ -22,6 +22,9 @@ import com.planepanic.game.model.orders.Order;
  * @author Jonathan
  */
 public final class Plane extends Image {
+
+	@Getter private static Plane selected;
+
 	@Getter private final PlaneType type;
 	@Getter private final int passengers;
 	@Getter @Setter private int score;
@@ -36,7 +39,6 @@ public final class Plane extends Image {
 	@Getter @Setter private int scoreTickDelay = Config.FRAMERATE;
 	@Getter @Setter private int gracePeriod = 30;
 	@Getter private ExclusionZone ez;
-	@Getter @Setter boolean selected = false;
 
 	@Getter private final Queue<Order> orders = new ArrayDeque<>(64);
 
@@ -68,7 +70,7 @@ public final class Plane extends Image {
 
 	@Override
 	public boolean onClick() {
-		this.setSelected(true);
+		Plane.selected = this;
 		return true;
 	}
 
@@ -169,7 +171,6 @@ public final class Plane extends Image {
 	protected boolean isMouseOver() {
 		int x = Mouse.getX();
 		int y = DrawThread.height - Mouse.getY();
-		System.out.println(new Vector2d(x, y).distanceFrom(this.getPosition()));
 		return new Vector2d(x, y).distanceFrom(this.getPosition()) < 625;
 	}
 

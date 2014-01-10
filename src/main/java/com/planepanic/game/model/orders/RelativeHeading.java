@@ -15,7 +15,7 @@ public final class RelativeHeading extends Order {
 
 	@Override
 	public boolean isComplete(Plane plane) {
-		return plane.getPosition().angleCloseEnough(this.startAngle + this.delta);
+		return plane.getVelocity().angleCloseEnough(this.startAngle + this.delta);
 	}
 
 	@Override

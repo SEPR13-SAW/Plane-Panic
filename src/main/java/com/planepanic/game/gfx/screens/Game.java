@@ -9,15 +9,11 @@ import lombok.Setter;
 
 import com.planepanic.game.Config;
 import com.planepanic.game.gfx.DrawThread;
-import com.planepanic.game.gfx.Resources;
-import com.planepanic.game.gfx.ui.Button;
 import com.planepanic.game.gfx.ui.ExclusionZone;
-import com.planepanic.game.gfx.ui.OrderButtons;
+import com.planepanic.game.gfx.ui.OrderPanel;
 import com.planepanic.game.gfx.ui.Radar;
-import com.planepanic.game.gfx.ui.TextBox;
 import com.planepanic.game.model.Airport;
 import com.planepanic.game.model.EntryPoint;
-import com.planepanic.game.model.OrderPanel;
 import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.Waypoint;
@@ -27,7 +23,8 @@ import com.planepanic.game.model.orders.RelativeHeading;
 
 public class Game extends Screen {
 
-	Radar radar;
+	@Getter private OrderPanel orderpanel;
+	private Radar radar;
 	@Getter @Setter int ticks = 0, maxSpawnInterval = 5 * Config.FRAMERATE, minSpawnInterval = 4 * Config.FRAMERATE, maxTicks = this.maxSpawnInterval;
 	private List<EntryPoint> entryPointList = new ArrayList<>();
 	private List<Plane> planeList = new ArrayList<>();
@@ -38,9 +35,6 @@ public class Game extends Screen {
 	 * Final version should have two depending on altitude
 	 */
 	@Getter private final static int exclusionZone = 305 / Config.SCALE;
-	@Getter @Setter public int orderState = 0;
-	@Setter private TextBox fuelDisplay, altitudeDisplay, speedDisplay;
-	@Getter @Setter private Plane selectedPlane;
 	private Random random = new Random();
 
 	public Game() {
@@ -80,8 +74,8 @@ public class Game extends Screen {
 		Airport airport = new Airport(new Vector2d(400, Config.WINDOW_HEIGHT / 2));
 		draw.draw(airport);
 
-		this.orderPanel();
-
+		this.orderpanel = new OrderPanel(new Vector2d(1100, 360));
+		draw.draw(this.orderpanel);
 	}
 
 	public void spawnPlane() {
@@ -111,30 +105,7 @@ public class Game extends Screen {
 		this.exclusionZoneDetection();
 		this.spawnPlane();
 		// Update Fuel Counter
-		this.selected();
-		if (this.getSelectedPlane() != null) {
-			String altitude = "altitude " + String.valueOf((int) this.getSelectedPlane().getAltitude());
-			this.altitudeDisplay.setText(altitude);
-			String speed = "speed " + String.valueOf((int) this.getSelectedPlane().getSpeed());
-			this.speedDisplay.setText(speed);
-			String fuel = "fuel " + String.valueOf((int) this.getSelectedPlane().getFuel());
-			this.fuelDisplay.setText(fuel);
-		}
-
-	}
-
-	/**
-	 * Sets selectedPlane, to whichever plane was last selected
-	 * 
-	 * @return true if a new plane was selected and false otherwise
-	 */
-	public void selected() {
-		for (Plane plane : this.planeList) {
-			if (plane.isSelected()) {
-				this.setSelectedPlane(plane);
-				plane.setSelected(false);
-			}
-		}
+		this.orderpanel.tick();
 	}
 
 	/**
@@ -152,143 +123,9 @@ public class Game extends Screen {
 		};
 	};
 
-	public void orderPanel() {
-		DrawThread draw = DrawThread.getInstance();
-
-		OrderButtons direction = new OrderButtons(1000, 525, Resources.DIRECTION).setCallback(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("Change Direction!");
-				Game.this.orderState = 1;
-			}
-		});
-
-		OrderButtons altitude = new OrderButtons(1150, 525, Resources.ALTITUDE).setCallback(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("Change Altitude!");
-				Game.this.orderState = 2;
-			}
-		});
-
-		OrderButtons heading = new OrderButtons(1000, 600, Resources.HEADING).setCallback(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("Change Heading!");
-				Game.this.orderState = 3;
-			}
-		});
-
-		OrderButtons speed = new OrderButtons(1150, 600, Resources.SPEED).setCallback(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("Change Speed!");
-				Game.this.orderState = 3;
-			}
-		});
-
-		OrderButtons land = new OrderButtons(1150, 675, Resources.LAND).setCallback(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("Land!");
-				Game.this.orderState = 0;
-			}
-		});
-
-		OrderButtons takeoff = new OrderButtons(1000, 675, Resources.TAKEOFF).setCallback(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("Take off!");
-				Game.this.orderState = 0;
-			}
-		});
-
-		Button left = (Button) new Button("<-").setCallback(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("Turns left by number inputted");
-				Game.this.orderState = 0;
-			}
-		}).setHitboxSize(new Vector2d(50, 50)).setPosition(new Vector2d(1100, 600));
-
-		Button right = (Button) new Button("->").setCallback(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("Turns right by number inputted");
-				Game.this.orderState = 0;
-			}
-		}).setHitboxSize(new Vector2d(50, 50)).setPosition(new Vector2d(1175, 600));
-
-		Button set = (Button) new Button("Set").setCallback(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("Confirms new heading!");
-				Game.this.orderState = 0;
-			}
-		}).setHitboxSize(new Vector2d(50, 50)).setPosition(new Vector2d(1175, 600));
-
-		Button up = (Button) new Button("Up").setCallback(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("Increases altitude by inputted amount");
-				Game.this.orderState = 0;
-			}
-		}).setHitboxSize(new Vector2d(50, 50)).setPosition(new Vector2d(1130, 560));
-
-		Button down = (Button) new Button("Down").setCallback(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("Decreases altitude by inputted amount");
-				Game.this.orderState = 0;
-			}
-		}).setHitboxSize(new Vector2d(50, 50)).setPosition(new Vector2d(1130, 630));
-
-		Button back = (Button) new Button("Back").setCallback(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("Cancels selected order");
-				Game.this.orderState = 0;
-			}
-		}).setHitboxSize(new Vector2d(50, 50)).setPosition(new Vector2d(900, 500));;
-
-		// Displaying Fuel
-		this.altitudeDisplay = (TextBox) new TextBox("0").setColor(0x000000).setPosition(new Vector2d(900, 25)).setPriority(0.9f);
-		draw.draw(this.altitudeDisplay);
-		this.speedDisplay = (TextBox) new TextBox("0").setColor(0x000000).setPosition(new Vector2d(900, 70)).setPriority(0.9f);
-		draw.draw(this.speedDisplay);
-		this.fuelDisplay = (TextBox) new TextBox("0").setColor(0x000000).setPosition(new Vector2d(900, 115)).setPriority(0.9f);
-		draw.draw(this.fuelDisplay);
-
-		if (this.orderState == 0) {
-			draw.draw(direction);
-			draw.draw(altitude);
-			draw.draw(heading);
-			draw.draw(land);
-			draw.draw(takeoff);
-			draw.draw(speed);
-		}
-		else if (this.orderState == 1) {
-			// Changing direction
-			draw.draw(left);
-			draw.draw(right);
-			draw.draw(back);
-		}
-		else if (this.orderState == 2) {
-			// Changing heading
-			draw.draw(set);
-			draw.draw(back);
-		}
-		else if (this.orderState == 3) {
-			// Changing altitude
-			draw.draw(up);
-			draw.draw(down);
-			draw.draw(back);
-		}
-
-		OrderPanel orderpanel = new OrderPanel(new Vector2d(1100, 360));
-		draw.draw(orderpanel);
-		System.out.println(this.orderState);
-
+	@Override
+	public void resize() {
+		this.orderpanel.setPosition(new Vector2d(DrawThread.width - 250, 360));
 	}
 
 }

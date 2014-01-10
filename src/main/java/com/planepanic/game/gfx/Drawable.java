@@ -22,6 +22,7 @@ public abstract class Drawable {
 	 * Used to determine click and hover states
 	 */
 	@Accessors(chain = true) @Getter @Setter private Vector2d hitboxSize;
+	@Accessors(chain = true) @Setter private CallbackP<Boolean, Integer> scrollCallback;
 
 	public Drawable(Vector2d position, Vector2d hitboxSize) {
 		this.position = position;
@@ -61,6 +62,21 @@ public abstract class Drawable {
 	 */
 	protected abstract boolean onClick();
 
+	/**
+	 * Called when a user has scrolled on the object
+	 * 
+	 * @param scroll
+	 * 
+	 * @return true if handled, false if should propagate further
+	 */
+	protected boolean onScroll(int scroll) {
+		try {
+			return this.scrollCallback.call(scroll);
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 	final boolean clickHandler() {
 		if (this.isMouseOver()) {
 			return this.onClick();
@@ -71,7 +87,14 @@ public abstract class Drawable {
 	protected boolean isMouseOver() {
 		int x = Mouse.getX();
 		int y = DrawThread.height - Mouse.getY();
-		return x > this.getPosition().getX() && x < this.getPosition().getX() + this.getHitboxSize().getX() && y > this.getPosition().getY() && y < this.getPosition().getY() + this.getHitboxSize().getY();
+		return x > this.getPosition().getX() - this.getHitboxSize().getX() / 2 && x < this.getPosition().getX() + this.getHitboxSize().getX() / 2 && y > this.getPosition().getY() - this.getHitboxSize().getY() / 2 && y < this.getPosition().getY() + this.getHitboxSize().getY() / 2;
+	}
+
+	public boolean scrollHandler(int scroll) {
+		if (this.isMouseOver()) {
+			return this.onScroll(scroll);
+		}
+		return false;
 	}
 
 }

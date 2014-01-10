@@ -14,7 +14,7 @@ public class Radar extends Drawable {
 	@Override
 	public void draw2d() {
 		DrawUtil.setColor(0x001E02);
-		DrawUtil.drawSquare((float) this.getPosition().getX(), (float) this.getPosition().getY(), DrawThread.width - 500, DrawThread.height, true, -0.9f);
+		DrawUtil.drawSquare((DrawThread.width - 500) / 2, DrawThread.height / 2, DrawThread.width - 500, DrawThread.height, true, -0.9f);
 	}
 
 	@Override
