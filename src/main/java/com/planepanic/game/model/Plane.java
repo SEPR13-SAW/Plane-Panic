@@ -87,7 +87,9 @@ public final class Plane extends Image {
 			order.tick();
 			if (order.isComplete()) {
 				this.orders.poll();
-				this.getCurrentOrder().start();
+				if (this.orders.size() > 0) {
+					this.getCurrentOrder().start();
+				}
 			}
 		}
 		this.getPosition().applyChange(this.getVelocity());
