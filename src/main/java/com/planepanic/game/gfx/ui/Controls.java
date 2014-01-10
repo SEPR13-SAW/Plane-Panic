@@ -101,7 +101,6 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Turns left by number inputted");
-				Plane.getSelected().addOrder(new RelativeHeading(Plane.getSelected(), Math.toRadians(Controls.this.value)));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -120,7 +119,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Confirms new heading!");
-				Plane.getSelected().addOrder(new AbsoluteHeading(Plane.getSelected(), Math.toRadians(Controls.this.value - 90)));
+				Plane.getSelected().addOrder(new AbsoluteHeading(Plane.getSelected(), Math.toRadians(90 - Controls.this.value)));
 				Controls.this.setOrderState(0);
 				return true;
 			}
