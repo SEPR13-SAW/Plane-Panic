@@ -20,7 +20,7 @@ public final class Vector2d {
 	}
 
 	public double getAngle() {
-		return Math.atan2(this.y, this.x);
+		return Math.atan2(-this.y, this.x);
 	}
 
 	public boolean angleCloseEnough(double angle) {
@@ -54,7 +54,7 @@ public final class Vector2d {
 
 	public static Vector2d fromAngle(double r) {
 		double s = 0.01;
-		return new Vector2d(-s * Math.sin(r), s * Math.cos(r));
+		return new Vector2d(s * Math.cos(r), -s * Math.sin(r));
 	}
 
 	public Vector2d sub(Vector2d v) {

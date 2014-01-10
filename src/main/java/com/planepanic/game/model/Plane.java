@@ -95,7 +95,7 @@ public final class Plane extends Image {
 		this.getPosition().applyChange(this.getVelocity());
 		this.ez.setPosition(this.getPosition());
 		this.ez.setViolated(false);
-		this.setAngle((float) Math.toDegrees(this.getVelocity().getAngle()) + 90);
+		this.setAngle(90 - (float) Math.toDegrees(this.getVelocity().getAngle()));
 	}
 
 	public void addOrder(Order order) {

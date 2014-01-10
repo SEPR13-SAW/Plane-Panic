@@ -22,7 +22,7 @@ public final class AbsoluteHeading extends Order {
 	public boolean isComplete() {
 		return this.getPlane().getVelocity().angleCloseEnough(this.angle);
 	}
-
+	
 	@Override
 	public void tick() {
 		double pa = this.getPlane().getVelocity().getAngle();
@@ -30,11 +30,14 @@ public final class AbsoluteHeading extends Order {
 		while (a > Math.PI) {
 			a -= Math.PI * 2;
 		}
-
+		while (a < -Math.PI) {
+			a += Math.PI * 2;
+		}
+		
 		if (a >= 0) {
-			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa));
+			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI / 2));
 		} else {
-			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI));
+			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa - Math.PI / 2));
 		}
 	}
 

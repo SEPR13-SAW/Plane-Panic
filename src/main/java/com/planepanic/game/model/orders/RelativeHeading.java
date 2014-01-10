@@ -16,7 +16,7 @@ public final class RelativeHeading extends Order {
 
 	@Override
 	public void start() {
-		this.startAngle = this.getPlane().getAngle();
+		this.startAngle = this.getPlane().getVelocity().getAngle();
 	}
 
 	@Override
@@ -31,11 +31,14 @@ public final class RelativeHeading extends Order {
 		while (a > Math.PI) {
 			a -= Math.PI * 2;
 		}
+		while (a < -Math.PI) {
+			a += Math.PI * 2;
+		}
 
 		if (a >= 0) {
-			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa));
+			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI / 2));
 		} else {
-			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI));
+			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa - Math.PI / 2));
 		}
 	}
 
