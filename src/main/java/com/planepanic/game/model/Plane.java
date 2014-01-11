@@ -57,7 +57,6 @@ public final class Plane extends Image {
 
 	@Override
 	public void draw2d() {
-		this.ez.draw2d();
 		this.setPriority((float) -(0.1 - this.getAltitude() / 50000));
 		super.draw2d();
 		this.tick();
@@ -94,8 +93,14 @@ public final class Plane extends Image {
 			}
 		}
 		this.getPosition().applyChange(this.getVelocity());
-		this.ez.setPosition(this.getPosition());
-		this.ez.setViolated(false);
+		this.ez.draw2d();
+		if(Plane.getSelected() == this){
+			this.getEz().setSelected(true);
+		} else{
+			this.getEz().setSelected(false);
+		}
+		this.getEz().setPosition(this.getPosition());
+		this.getEz().setViolated(false);
 
 		this.setAngle(90 - (float) Math.toDegrees(this.getVelocity().getAngle()));
 	}
@@ -111,7 +116,7 @@ public final class Plane extends Image {
 		int passengers = type.getMaxPassengers() / 2 + rng.nextInt(type.getMaxPassengers() / 2);
 		double fuel = type.getMaxFuel() / 2 + rng.nextDouble() * type.getMaxFuel() / 2;
 		double speed = type.getMaxVelocity();
-		double altitude = (type.getMaxAltitude() / 2 + rng.nextDouble() * type.getMaxAltitude() / 2) / Config.SCALE;
+		double altitude = 1;//(type.getMaxAltitude() / 2 + rng.nextDouble() * type.getMaxAltitude() / 2) / Config.SCALE;
 
 		int score = type.getScore();
 

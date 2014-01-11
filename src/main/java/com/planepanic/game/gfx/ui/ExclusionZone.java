@@ -31,6 +31,9 @@ public class ExclusionZone extends Drawable {
 		if (this.violated) {
 			DrawUtil.setColor(0xff0000);
 			DrawUtil.drawCircle((float) this.getPosition().getX(), (float) this.getPosition().getY(), this.radius, false);
+		} else if(this.selected){
+			DrawUtil.setColor(0x00ff00);
+			DrawUtil.drawCircle((float) this.getPosition().getX(), (float) this.getPosition().getY(), this.radius, false);
 		}
 		
 	}
