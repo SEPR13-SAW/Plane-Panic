@@ -20,6 +20,7 @@ import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.Waypoint;
 import com.planepanic.game.model.orders.AbsoluteHeading;
 import com.planepanic.game.model.orders.ChangeSpeed;
+import com.planepanic.game.model.orders.FlyOver;
 import com.planepanic.game.model.orders.RelativeHeading;
 
 public class Game extends Screen {
@@ -31,6 +32,7 @@ public class Game extends Screen {
 	private List<EntryPoint> entryPointList = new ArrayList<>();
 	private List<Plane> planeList = new ArrayList<>();
 	@Getter private List<ExclusionZone> exclusionZoneList = new ArrayList<>();
+	@Getter private List<Waypoint> waypointList = new ArrayList<>();
 	@Getter @Setter ExclusionZone ez;
 	/**
 	 * Exclusion in meters divided by how much meters one pixel represents.
@@ -55,8 +57,8 @@ public class Game extends Screen {
 		this.createEntryPoint(new Vector2d(500, 50));
 
 		for (int i = 0; i < 6; i++) {
-			Waypoint wp = new Waypoint(new Vector2d(200 + 75 * i, 400), "" + (char) (65 + i));
-			draw.draw(wp);
+			waypointList.add(new Waypoint(new Vector2d(200 + 75 * i, 400), "" + (char) (65 + i)));
+			draw.draw(waypointList.get(i));
 		}
 
 		Plane plane = entry2.addPlane();
@@ -65,6 +67,7 @@ public class Game extends Screen {
 		plane.getOrders().add(new AbsoluteHeading(plane, -Math.PI / 2));
 		plane.getOrders().add(new RelativeHeading(plane, Math.PI / 2));
 		plane.getOrders().add(new ChangeSpeed(plane, 100));
+		plane.getOrders().add(new FlyOver(plane, waypointList.get(0), waypointList.get(2)));
 		draw.draw(plane);
 		draw.draw(plane.getEz());
 		plane = entry.addPlane();
@@ -77,7 +80,6 @@ public class Game extends Screen {
 		draw.draw(airport);
 		timer = new Timer(new Vector2d(325, 0));
 		draw.draw(timer);
-		System.out.println("spawn interval = " + this.getSpawnInterval());
 		
 
 		this.orderpanel = new OrderPanel(new Vector2d(1100, 360));

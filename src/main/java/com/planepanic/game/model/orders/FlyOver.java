@@ -8,31 +8,61 @@ import com.planepanic.game.model.Waypoint;
 
 public final class FlyOver extends Order {
 	@Getter private final Waypoint waypoint;
+	@Getter private final Waypoint targetWaypoint;
+	private boolean partComplete = false;
 
-	public FlyOver(Plane plane, Waypoint waypoint) {
+	public FlyOver(Plane plane, Waypoint waypoint, Waypoint waypoint2) {
 		super(plane);
 		this.waypoint = waypoint;
+		this.targetWaypoint = waypoint2;
 	}
-
+	//Maximum close distance is too small to work
 	@Override
 	public boolean isComplete() {
-		return this.getPlane().closeEnough(this.waypoint);
+
+		if(!partComplete){
+			this.partComplete = this.getPlane().distanceTo(waypoint) < 1;
+			return false;
+		}
+		return this.getPlane().distanceTo(targetWaypoint) < 1;
 	}
 
 	@Override
 	public void tick() {
-		double target = this.waypoint.getPosition().sub(this.getPlane().getPosition()).getAngle();
-		double pa = this.getPlane().getVelocity().getAngle();
-		double a = target - pa;
-		while (a > Math.PI) {
-			a -= Math.PI * 2;
+		if(!partComplete){
+			double target = this.waypoint.getPosition().sub(this.getPlane().getPosition()).getAngle();
+			double pa = this.getPlane().getVelocity().getAngle();
+			double a = target - pa;
+			while (a > Math.PI) {
+				a -= Math.PI * 2;
+			}
+			while (a < -Math.PI) {
+				a += Math.PI * 2;
+			}
+	
+			if (a >= 0) {
+				this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI / 2));
+			} else {
+				this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa - Math.PI / 2));
+			}
+		} else {
+			double target = this.targetWaypoint.getPosition().sub(this.getPlane().getPosition()).getAngle();
+			double pa = this.getPlane().getVelocity().getAngle();
+			double a = target - pa;
+			while (a > Math.PI) {
+				a -= Math.PI * 2;
+			}
+			while (a < -Math.PI) {
+				a += Math.PI * 2;
+			}
+	
+			if (a >= 0) {
+				this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI / 2));
+			} else {
+				this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa - Math.PI / 2));
+			}
 		}
 
-		if (a >= 0) {
-			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa));
-		} else {
-			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI));
-		}
 	}
 
 	@Override
