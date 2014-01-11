@@ -20,6 +20,7 @@ import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.Waypoint;
 import com.planepanic.game.model.orders.AbsoluteHeading;
 import com.planepanic.game.model.orders.ChangeSpeed;
+import com.planepanic.game.model.orders.FlyBy;
 import com.planepanic.game.model.orders.FlyOver;
 import com.planepanic.game.model.orders.RelativeHeading;
 
@@ -67,7 +68,7 @@ public class Game extends Screen {
 		plane.getOrders().add(new AbsoluteHeading(plane, -Math.PI / 2));
 		plane.getOrders().add(new RelativeHeading(plane, Math.PI / 2));
 		plane.getOrders().add(new ChangeSpeed(plane, 100));
-		plane.getOrders().add(new FlyOver(plane, waypointList.get(0), waypointList.get(2)));
+		plane.getOrders().add(new FlyBy(plane, waypointList.get(1), waypointList.get(2)));
 		draw.draw(plane);
 		draw.draw(plane.getEz());
 		plane = entry.addPlane();

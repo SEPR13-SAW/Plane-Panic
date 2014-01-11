@@ -30,39 +30,29 @@ public final class FlyOver extends Order {
 	@Override
 	public void tick() {
 		if(!partComplete){
-			double target = this.waypoint.getPosition().sub(this.getPlane().getPosition()).getAngle();
-			double pa = this.getPlane().getVelocity().getAngle();
-			double a = target - pa;
-			while (a > Math.PI) {
-				a -= Math.PI * 2;
-			}
-			while (a < -Math.PI) {
-				a += Math.PI * 2;
-			}
-	
-			if (a >= 0) {
-				this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI / 2));
-			} else {
-				this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa - Math.PI / 2));
-			}
+			this.changeHeading(this.waypoint);
 		} else {
-			double target = this.targetWaypoint.getPosition().sub(this.getPlane().getPosition()).getAngle();
-			double pa = this.getPlane().getVelocity().getAngle();
-			double a = target - pa;
-			while (a > Math.PI) {
-				a -= Math.PI * 2;
-			}
-			while (a < -Math.PI) {
-				a += Math.PI * 2;
-			}
-	
-			if (a >= 0) {
-				this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI / 2));
-			} else {
-				this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa - Math.PI / 2));
-			}
+			this.changeHeading(this.targetWaypoint);
 		}
 
+	}
+	
+	public void changeHeading(Waypoint waypoint){
+		double target = waypoint.getPosition().sub(this.getPlane().getPosition()).getAngle();
+		double pa = this.getPlane().getVelocity().getAngle();
+		double a = target - pa;
+		while (a > Math.PI) {
+			a -= Math.PI * 2;
+		}
+		while (a < -Math.PI) {
+			a += Math.PI * 2;
+		}
+
+		if (a >= 0) {
+			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI / 2));
+		} else {
+			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa - Math.PI / 2));
+		}
 	}
 
 	@Override
