@@ -12,6 +12,7 @@ import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.ui.ExclusionZone;
 import com.planepanic.game.gfx.ui.OrderPanel;
 import com.planepanic.game.gfx.ui.Radar;
+import com.planepanic.game.gfx.ui.Timer;
 import com.planepanic.game.model.Airport;
 import com.planepanic.game.model.EntryPoint;
 import com.planepanic.game.model.Plane;
@@ -24,6 +25,7 @@ import com.planepanic.game.model.orders.RelativeHeading;
 public class Game extends Screen {
 
 	@Getter private OrderPanel orderpanel;
+	private Timer timer;
 	private Radar radar;
 	@Getter @Setter int ticks = 0, maxSpawnInterval = 5 * Config.FRAMERATE, minSpawnInterval = 4 * Config.FRAMERATE, maxTicks = this.maxSpawnInterval;
 	private List<EntryPoint> entryPointList = new ArrayList<>();
@@ -73,6 +75,9 @@ public class Game extends Screen {
 		draw.draw(this.radar);
 		Airport airport = new Airport(new Vector2d(400, Config.WINDOW_HEIGHT / 2));
 		draw.draw(airport);
+		timer = new Timer(new Vector2d(325, 0));
+		draw.draw(timer);
+		
 
 		this.orderpanel = new OrderPanel(new Vector2d(1100, 360));
 		draw.draw(this.orderpanel);
@@ -106,6 +111,8 @@ public class Game extends Screen {
 		this.spawnPlane();
 		// Update Fuel Counter
 		this.orderpanel.tick();
+		this.timer.tick();
+		
 	}
 
 	/**
