@@ -8,9 +8,9 @@ import com.planepanic.game.gfx.Drawable;
 import com.planepanic.game.model.Vector2d;
 
 public class Timer extends Drawable{
-	private int minutes = 0;
-	private int seconds = 0;
-	private int ticks = 0;
+	@Getter private int minutes = 0;
+	@Getter private int seconds = 0;
+	@Getter private int ticks = 0;
 	private int color = 0x000000;
 	private int size = 50;
 	@Getter private String time = "0:00";
@@ -35,8 +35,9 @@ public class Timer extends Drawable{
 				this.minutes++;
 			}
 			this.ticks = 0;
+		} else {
+			ticks++;
 		}
-		ticks++;
 		if (this.seconds < 10)
 			this.time = minutes + ":0" + seconds;
 		else

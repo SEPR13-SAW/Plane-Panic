@@ -25,9 +25,9 @@ import com.planepanic.game.model.orders.RelativeHeading;
 public class Game extends Screen {
 
 	@Getter private OrderPanel orderpanel;
-	private Timer timer;
+	@Getter private Timer timer;
 	private Radar radar;
-	@Getter @Setter int ticks = 0, maxSpawnInterval = 5 * Config.FRAMERATE, minSpawnInterval = 4 * Config.FRAMERATE, maxTicks = this.maxSpawnInterval;
+	@Getter @Setter int maxSpawnInterval = 5, minSpawnInterval = 4, spawnInterval = this.maxSpawnInterval;
 	private List<EntryPoint> entryPointList = new ArrayList<>();
 	private List<Plane> planeList = new ArrayList<>();
 	@Getter private List<ExclusionZone> exclusionZoneList = new ArrayList<>();
@@ -77,24 +77,26 @@ public class Game extends Screen {
 		draw.draw(airport);
 		timer = new Timer(new Vector2d(325, 0));
 		draw.draw(timer);
+		System.out.println("spawn interval = " + this.getSpawnInterval());
 		
 
 		this.orderpanel = new OrderPanel(new Vector2d(1100, 360));
 		draw.draw(this.orderpanel);
 	}
-
+	
+	/*
+	 *	Spawns planes every spawnInterval seconds which is minSpawnInterval < spawnInterval < maxSpawnInterval 
+	 *  Spawns the first plane immediately
+	 */
 	public void spawnPlane() {
-		if (this.getTicks() == this.getMaxTicks()) {
+		if (this.getTimer().getSeconds() % this.getSpawnInterval() == 0 && this.getTimer().getTicks() == 0) {
 			int index = this.random.nextInt(this.entryPointList.size());
 			Plane plane = this.entryPointList.get(index).addPlane();
 			DrawThread draw = DrawThread.getInstance();
 			draw.draw(plane);
 			draw.draw(plane.getEz());
 			this.planeList.add(plane);
-			this.setMaxTicks(this.getMinSpawnInterval() + this.random.nextInt(this.getMaxSpawnInterval() - this.getMinSpawnInterval()));
-			this.setTicks(0);
-		} else {
-			this.setTicks(this.getTicks() + 1);
+			this.setSpawnInterval(this.getMinSpawnInterval() + this.random.nextInt(this.getMaxSpawnInterval() - this.getMinSpawnInterval()));
 		}
 	};
 
