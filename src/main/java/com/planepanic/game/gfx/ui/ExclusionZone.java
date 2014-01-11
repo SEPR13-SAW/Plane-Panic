@@ -12,11 +12,13 @@ public class ExclusionZone extends Drawable {
 
 	float radius;
 	@Getter @Setter private boolean violated;
+	@Getter @Setter private boolean selected;
 
 	public ExclusionZone(Vector2d position) {
 		super(position);
 		this.radius = Game.getExclusionZone();
 		this.violated = false;
+		this.selected = false;
 	}
 
 	public void onResize() {
@@ -28,10 +30,9 @@ public class ExclusionZone extends Drawable {
 	public void draw2d() {
 		if (this.violated) {
 			DrawUtil.setColor(0xff0000);
-			DrawUtil.drawCircle((float) this.getPosition().getX(), (float) this.getPosition().getY(), this.radius, true);
-			DrawUtil.setColor(0xff3300);
 			DrawUtil.drawCircle((float) this.getPosition().getX(), (float) this.getPosition().getY(), this.radius, false);
 		}
+		
 	}
 
 	@Override
