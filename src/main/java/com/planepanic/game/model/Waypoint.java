@@ -1,6 +1,7 @@
 package com.planepanic.game.model;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import com.planepanic.game.gfx.DrawUtil;
 
@@ -11,6 +12,7 @@ import com.planepanic.game.gfx.DrawUtil;
  */
 public final class Waypoint extends SimplePointOfInterest {
 	@Getter private final String name;
+	@Getter @Setter private static Waypoint via = null, target = null;
 
 	public Waypoint(Vector2d position, String name) {
 		super(position);
@@ -32,6 +34,12 @@ public final class Waypoint extends SimplePointOfInterest {
 
 	@Override
 	public boolean onClick() {
-		return false;
+		if(Waypoint.via == null)
+			Waypoint.via = this;
+		else if(Waypoint.via != this){
+		
+			Waypoint.target = this;
+		}
+		return true;
 	}
 }

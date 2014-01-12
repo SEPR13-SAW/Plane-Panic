@@ -31,7 +31,7 @@ public class Game extends Screen {
 	private Radar radar;
 	@Getter @Setter int maxSpawnInterval = 5, minSpawnInterval = 4, spawnInterval = this.maxSpawnInterval;
 	private List<EntryPoint> entryPointList = new ArrayList<>();
-	private List<Plane> planeList = new ArrayList<>();
+	@Getter private List<Plane> planeList = new ArrayList<>();
 	@Getter private List<ExclusionZone> exclusionZoneList = new ArrayList<>();
 	@Getter private List<Waypoint> waypointList = new ArrayList<>();
 	@Getter @Setter ExclusionZone ez;
@@ -68,7 +68,7 @@ public class Game extends Screen {
 		plane.getOrders().add(new AbsoluteHeading(plane, -Math.PI / 2));
 		plane.getOrders().add(new RelativeHeading(plane, Math.PI / 2));
 		plane.getOrders().add(new ChangeSpeed(plane, 100));
-		plane.getOrders().add(new FlyBy(plane, waypointList.get(1), waypointList.get(2)));
+		plane.getOrders().add(new FlyOver(plane, waypointList.get(0), waypointList.get(2)));
 		draw.draw(plane);
 		draw.draw(plane.getEz());
 		plane = entry.addPlane();
@@ -117,7 +117,26 @@ public class Game extends Screen {
 		// Update Fuel Counter
 		this.orderpanel.tick();
 		this.timer.tick();
+		this.giveOrder();
+
 		
+	}
+	
+	/**
+	 * If a plane and two different waypoints are selected
+	 * gives the plane a new FlyOver order through those waypoints
+	 */
+	
+	public void giveOrder(){
+		if(Waypoint.getVia() != null){
+			if(Waypoint.getTarget()!= null){
+				if(Plane.getSelected()!= null){
+					Plane.getSelected().getOrders().add(new FlyOver(Plane.getSelected(), Waypoint.getVia(), Waypoint.getTarget()));
+					Waypoint.setVia(null);
+					Waypoint.setTarget(null);
+				}
+			}
+		}
 	}
 
 	/**

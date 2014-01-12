@@ -14,6 +14,7 @@ public abstract class SimplePointOfInterest extends Drawable implements PointOfI
 	public SimplePointOfInterest(Vector2d position) {
 		super(position);
 		this.setPriority(-0.2f);
+		this.setHitboxSize(new Vector2d(20, 20));
 	}
 
 	@Override
