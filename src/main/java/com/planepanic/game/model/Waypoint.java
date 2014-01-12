@@ -35,7 +35,7 @@ public final class Waypoint extends SimplePointOfInterest {
 
 	@Override
 	public boolean onClick() {
-		if(Waypoint.via == null){
+		if(Waypoint.via == null && Plane.getSelected() != null){
 			Waypoint.via = this;
 			Waypoint.flyBy = false;
 		}
@@ -50,7 +50,7 @@ public final class Waypoint extends SimplePointOfInterest {
 	 */
 	@Override
 	public boolean onClickRight(){
-		if(Waypoint.via == null){
+		if(Waypoint.via == null && Plane.getSelected() != null){
 			Waypoint.via = this;
 			Waypoint.flyBy = true;
 		}
