@@ -13,6 +13,7 @@ import com.planepanic.game.gfx.DrawUtil;
 public final class Waypoint extends SimplePointOfInterest {
 	@Getter private final String name;
 	@Getter @Setter private static Waypoint via = null, target = null;
+	@Getter @Setter private static boolean flyBy;
 
 	public Waypoint(Vector2d position, String name) {
 		super(position);
@@ -34,10 +35,27 @@ public final class Waypoint extends SimplePointOfInterest {
 
 	@Override
 	public boolean onClick() {
-		if(Waypoint.via == null)
+		if(Waypoint.via == null){
 			Waypoint.via = this;
+			Waypoint.flyBy = false;
+		}
 		else if(Waypoint.via != this){
 		
+			Waypoint.target = this;
+		}
+		return true;
+	}
+	/*
+	 * For right click handling
+	 */
+	@Override
+	public boolean onClickRight(){
+		if(Waypoint.via == null){
+			Waypoint.via = this;
+			Waypoint.flyBy = true;
+		}
+		else if(Waypoint.via != this){
+
 			Waypoint.target = this;
 		}
 		return true;

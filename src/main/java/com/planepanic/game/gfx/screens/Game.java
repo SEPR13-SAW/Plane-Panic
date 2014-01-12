@@ -117,9 +117,7 @@ public class Game extends Screen {
 		// Update Fuel Counter
 		this.orderpanel.tick();
 		this.timer.tick();
-		this.giveOrder();
-
-		
+		this.giveOrder();	
 	}
 	
 	/**
@@ -131,7 +129,10 @@ public class Game extends Screen {
 		if(Waypoint.getVia() != null){
 			if(Waypoint.getTarget()!= null){
 				if(Plane.getSelected()!= null){
-					Plane.getSelected().getOrders().add(new FlyOver(Plane.getSelected(), Waypoint.getVia(), Waypoint.getTarget()));
+					if(Waypoint.isFlyBy())
+						Plane.getSelected().getOrders().add(new FlyBy(Plane.getSelected(), Waypoint.getVia(), Waypoint.getTarget()));
+					else
+						Plane.getSelected().getOrders().add(new FlyOver(Plane.getSelected(), Waypoint.getVia(), Waypoint.getTarget()));
 					Waypoint.setVia(null);
 					Waypoint.setTarget(null);
 				}

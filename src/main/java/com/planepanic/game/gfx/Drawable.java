@@ -61,6 +61,10 @@ public abstract class Drawable {
 	 * @return true if handled, false if should propagate further
 	 */
 	protected abstract boolean onClick();
+	
+	protected boolean onClickRight(){
+		return false;
+	}
 
 	/**
 	 * Called when a user has scrolled on the object
@@ -80,6 +84,13 @@ public abstract class Drawable {
 	final boolean clickHandler() {
 		if (this.isMouseOver()) {
 			return this.onClick();
+		}
+		return false;
+	}
+	
+	final boolean clickRightHandler() {
+		if (this.isMouseOver()) {
+			return this.onClickRight();
 		}
 		return false;
 	}

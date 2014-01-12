@@ -52,6 +52,11 @@ public class DrawThread extends Thread {
 		}
 	});
 	private boolean mouseWasUp = true;
+	
+	/*
+	 * For right click handling
+	 * */
+	private boolean mouseRightWasUp = true;
 	@Getter private Screen currentScreen;
 
 	public static int width = 1280;
@@ -130,6 +135,18 @@ public class DrawThread extends Thread {
 				this.tempReverse.clear();
 			}
 			this.mouseWasUp = !Mouse.isButtonDown(0);
+			
+			if (Mouse.isButtonDown(1) && this.mouseRightWasUp) {
+				this.tempReverse.addAll(this.drawObjects);
+				Drawable obj;
+				while ((obj = this.tempReverse.poll()) != null) {
+					if (obj.clickRightHandler()) {
+						break;
+					}
+				}
+				this.tempReverse.clear();
+			}
+			this.mouseRightWasUp = !Mouse.isButtonDown(1);
 
 			int scroll = Mouse.getDWheel();
 			if (scroll != 0) {
