@@ -16,28 +16,29 @@ public final class FlyBy extends Order {
 		this.waypoint = waypoint;
 		this.targetWaypoint = waypoint2;
 	}
-	//Maximum close distance is too small to work
+
+	// Maximum close distance is too small to work
 	@Override
 	public boolean isComplete() {
 
-		if(!partComplete){
-			this.partComplete = this.getPlane().distanceTo(waypoint) < 40;
+		if (!this.partComplete) {
+			this.partComplete = this.getPlane().distanceTo(this.waypoint) < 40;
 			return false;
 		}
-		return this.getPlane().distanceTo(targetWaypoint) < 1;
+		return this.getPlane().distanceTo(this.targetWaypoint) < 1;
 	}
 
 	@Override
 	public void tick() {
-		if(!partComplete){
+		if (!this.partComplete) {
 			this.changeHeading(this.waypoint);
 		} else {
 			this.changeHeading(this.targetWaypoint);
 		}
 
 	}
-	
-	public void changeHeading(Waypoint waypoint){
+
+	public void changeHeading(Waypoint waypoint) {
 		double target = waypoint.getPosition().sub(this.getPlane().getPosition()).getAngle();
 		double pa = this.getPlane().getVelocity().getAngle();
 		double a = target - pa;

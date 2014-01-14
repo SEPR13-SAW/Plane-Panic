@@ -38,9 +38,9 @@ public class OrderPanel extends Drawable {
 	}
 
 	public void onMove() {
-		this.orderList.setPosition(getPosition().sub(new Vector2d(0, 15))).setHitboxSize(new Vector2d(500, DrawThread.height - 330));
-		//this.planeinfo.onMove();
-		//this.controls.onMove();
+		this.orderList.setPosition(this.getPosition().sub(new Vector2d(0, 15))).setHitboxSize(new Vector2d(500, DrawThread.height - 330));
+		// this.planeinfo.onMove();
+		// this.controls.onMove();
 	}
 
 	@Override

@@ -68,14 +68,14 @@ public final class Vector2d {
 	public Vector2d mul(double d) {
 		return new Vector2d(this.x * d, this.y * d);
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof Vector2d)) {
 			return false;
 		}
 		Vector2d other = (Vector2d) obj;
-		return other.getX() == getX() && other.getY() == getY();
+		return other.getX() == this.getX() && other.getY() == this.getY();
 	}
 
 }

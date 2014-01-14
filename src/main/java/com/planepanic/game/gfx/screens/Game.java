@@ -58,8 +58,8 @@ public class Game extends Screen {
 		this.createEntryPoint(new Vector2d(500, 50));
 
 		for (int i = 0; i < 6; i++) {
-			waypointList.add(new Waypoint(new Vector2d(200 + 75 * i, 400), "" + (char) (65 + i)));
-			draw.draw(waypointList.get(i));
+			this.waypointList.add(new Waypoint(new Vector2d(200 + 75 * i, 400), "" + (char) (65 + i)));
+			draw.draw(this.waypointList.get(i));
 		}
 
 		Plane plane = entry2.addPlane();
@@ -68,7 +68,7 @@ public class Game extends Screen {
 		plane.getOrders().add(new AbsoluteHeading(plane, -Math.PI / 2));
 		plane.getOrders().add(new RelativeHeading(plane, Math.PI / 2));
 		plane.getOrders().add(new ChangeSpeed(plane, 100));
-		plane.getOrders().add(new FlyOver(plane, waypointList.get(0), waypointList.get(2)));
+		plane.getOrders().add(new FlyOver(plane, this.waypointList.get(0), this.waypointList.get(2)));
 		draw.draw(plane);
 		draw.draw(plane.getEz());
 		plane = entry.addPlane();
@@ -79,17 +79,16 @@ public class Game extends Screen {
 		draw.draw(this.radar);
 		Airport airport = new Airport(new Vector2d(400, Config.WINDOW_HEIGHT / 2));
 		draw.draw(airport);
-		timer = new Timer(new Vector2d(325, 0));
-		draw.draw(timer);
-		
+		this.timer = new Timer(new Vector2d(325, 0));
+		draw.draw(this.timer);
 
 		this.orderpanel = new OrderPanel(new Vector2d(1100, 360));
 		draw.draw(this.orderpanel);
 	}
-	
+
 	/*
-	 *	Spawns planes every spawnInterval seconds which is minSpawnInterval < spawnInterval < maxSpawnInterval 
-	 *  Spawns the first plane immediately
+	 * Spawns planes every spawnInterval seconds which is minSpawnInterval <
+	 * spawnInterval < maxSpawnInterval Spawns the first plane immediately
 	 */
 	public void spawnPlane() {
 		if (this.getTimer().getSeconds() % this.getSpawnInterval() == 0 && this.getTimer().getTicks() == 0) {
@@ -117,22 +116,23 @@ public class Game extends Screen {
 		// Update Fuel Counter
 		this.orderpanel.tick();
 		this.timer.tick();
-		this.giveOrder();	
+		this.giveOrder();
 	}
-	
+
 	/**
-	 * If a plane and two different waypoints are selected
-	 * gives the plane a new FlyOver order through those waypoints
+	 * If a plane and two different waypoints are selected gives the plane a new
+	 * FlyOver order through those waypoints
 	 */
-	
-	public void giveOrder(){
-		if(Waypoint.getVia() != null){
-			if(Waypoint.getTarget()!= null){
-				if(Plane.getSelected()!= null){
-					if(Waypoint.isFlyBy())
+
+	public void giveOrder() {
+		if (Waypoint.getVia() != null) {
+			if (Waypoint.getTarget() != null) {
+				if (Plane.getSelected() != null) {
+					if (Waypoint.isFlyBy()) {
 						Plane.getSelected().getOrders().add(new FlyBy(Plane.getSelected(), Waypoint.getVia(), Waypoint.getTarget()));
-					else
+					} else {
 						Plane.getSelected().getOrders().add(new FlyOver(Plane.getSelected(), Waypoint.getVia(), Waypoint.getTarget()));
+					}
 					Waypoint.setVia(null);
 					Waypoint.setTarget(null);
 				}

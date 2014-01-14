@@ -37,7 +37,7 @@ public class ChangeAltitude extends Order {
 	public void start() {
 
 	}
-	
+
 	@Override
 	public String getHumanReadable() {
 		return "Change Altitude";
