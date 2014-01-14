@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @ToString
 public final class Vector2d {
-	private final double MAXIMUM_CLOSE_ANGLE = Math.PI / 80;
+	private static final double MAXIMUM_CLOSE_ANGLE = Math.PI / 80;
 
 	@Getter @Setter private double x, y;
 
@@ -24,7 +24,7 @@ public final class Vector2d {
 	}
 
 	public boolean angleCloseEnough(double angle) {
-		return (Math.abs(angle - this.getAngle()) + Math.PI * 2) % (Math.PI * 2) < this.MAXIMUM_CLOSE_ANGLE;
+		return (Math.abs(angle - this.getAngle()) + Math.PI * 2) % (Math.PI * 2) < Vector2d.MAXIMUM_CLOSE_ANGLE;
 	}
 
 	public void applyChange(Vector2d velocity) {
@@ -67,6 +67,15 @@ public final class Vector2d {
 
 	public Vector2d mul(double d) {
 		return new Vector2d(this.x * d, this.y * d);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Vector2d)) {
+			return false;
+		}
+		Vector2d other = (Vector2d) obj;
+		return other.getX() == getX() && other.getY() == getY();
 	}
 
 }
