@@ -41,5 +41,10 @@ public final class RelativeHeading extends Order {
 			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa - Math.PI / 2));
 		}
 	}
+	
+	@Override
+	public String getHumanReadable() {
+		return "Relative Heading";
+	}
 
 }

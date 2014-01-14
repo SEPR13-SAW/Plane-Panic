@@ -70,7 +70,9 @@ public final class Plane extends Image {
 
 	@Override
 	public boolean onClick() {
-		Plane.selected.getEz().setSelected(false);
+		if (Plane.selected != null) {
+			Plane.selected.getEz().setSelected(false);
+		}
 		Plane.selected = this;
 		Plane.selected.getEz().setSelected(true);
 		return true;

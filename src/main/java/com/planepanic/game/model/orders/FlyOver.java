@@ -59,5 +59,10 @@ public final class FlyOver extends Order {
 	public void start() {
 
 	}
+	
+	@Override
+	public String getHumanReadable() {
+		return "Fly Over";
+	}
 
 }

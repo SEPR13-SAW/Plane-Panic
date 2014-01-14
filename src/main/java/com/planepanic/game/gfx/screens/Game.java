@@ -158,6 +158,7 @@ public class Game extends Screen {
 	@Override
 	public void resize() {
 		this.orderpanel.setPosition(new Vector2d(DrawThread.width - 250, 360));
+		this.orderpanel.onMove();
 	}
 
 }

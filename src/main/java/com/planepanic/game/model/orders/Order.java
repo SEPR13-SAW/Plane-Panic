@@ -18,4 +18,6 @@ public abstract class Order {
 	public abstract void tick();
 
 	public abstract void start();
+
+	public abstract String getHumanReadable();
 }

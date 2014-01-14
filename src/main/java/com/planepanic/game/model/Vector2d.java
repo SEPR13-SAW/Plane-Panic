@@ -57,6 +57,10 @@ public final class Vector2d {
 		return new Vector2d(s * Math.cos(r), -s * Math.sin(r));
 	}
 
+	public Vector2d add(Vector2d v) {
+		return new Vector2d(this.x + v.x, this.y + v.y);
+	}
+
 	public Vector2d sub(Vector2d v) {
 		return new Vector2d(this.x - v.x, this.y - v.y);
 	}
