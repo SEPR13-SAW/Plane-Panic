@@ -61,8 +61,8 @@ public abstract class Drawable {
 	 * @return true if handled, false if should propagate further
 	 */
 	protected abstract boolean onClick();
-	
-	protected boolean onClickRight(){
+
+	protected boolean onClickRight() {
 		return false;
 	}
 
@@ -87,7 +87,7 @@ public abstract class Drawable {
 		}
 		return false;
 	}
-	
+
 	final boolean clickRightHandler() {
 		if (this.isMouseOver()) {
 			return this.onClickRight();

@@ -42,4 +42,9 @@ public final class RelativeHeading extends Order {
 		}
 	}
 
+	@Override
+	public String getHumanReadable() {
+		return "Relative Heading";
+	}
+
 }

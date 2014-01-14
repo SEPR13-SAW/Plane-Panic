@@ -28,4 +28,9 @@ public final class Land extends Order {
 
 	}
 
+	@Override
+	public String getHumanReadable() {
+		return "Land";
+	}
+
 }

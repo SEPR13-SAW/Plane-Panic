@@ -33,4 +33,9 @@ public class ChangeSpeed extends Order {
 	public void start() {
 		this.startSpeed = this.getPlane().getSpeed();
 	}
+
+	@Override
+	public String getHumanReadable() {
+		return "Change Speed";
+	}
 }

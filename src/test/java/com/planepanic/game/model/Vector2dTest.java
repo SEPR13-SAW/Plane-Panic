@@ -33,5 +33,24 @@ public class Vector2dTest {
 		
 		assertEquals(-Math.PI / 4, Vector2d.fromAngle(-Math.PI / 4).getAngle(), 0.01);
 	}
+	
+	@Test
+	public void arithmaticTest() {
+		Vector2d vector = new Vector2d(1, -2);
+		
+		assertEquals(new Vector2d(7, 7), vector.add(new Vector2d(6, 9)));
+		
+		assertEquals(new Vector2d(-5, -11), vector.sub(new Vector2d(6, 9)));
+		
+		assertEquals(new Vector2d(4, -8), vector.mul(4));
+	}
+	
+	@Test
+	public void distanceTest() {
+		Vector2d vector = new Vector2d(1, -2);
+		Vector2d vector2 = new Vector2d(4, 2);
+		
+		assertEquals(25, vector.distanceFrom(vector2), 0.1);
+	}
 
 }

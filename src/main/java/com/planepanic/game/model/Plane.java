@@ -70,7 +70,11 @@ public final class Plane extends Image {
 
 	@Override
 	public boolean onClick() {
+		if (Plane.selected != null) {
+			Plane.selected.getEz().setSelected(false);
+		}
 		Plane.selected = this;
+		Plane.selected.getEz().setSelected(true);
 		return true;
 	}
 
@@ -94,11 +98,6 @@ public final class Plane extends Image {
 		}
 		this.getPosition().applyChange(this.getVelocity());
 		this.ez.draw2d();
-		if(Plane.getSelected() == this){
-			this.getEz().setSelected(true);
-		} else{
-			this.getEz().setSelected(false);
-		}
 		this.getEz().setPosition(this.getPosition());
 		this.getEz().setViolated(false);
 

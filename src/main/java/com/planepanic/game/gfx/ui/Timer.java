@@ -7,7 +7,7 @@ import com.planepanic.game.gfx.DrawUtil;
 import com.planepanic.game.gfx.Drawable;
 import com.planepanic.game.model.Vector2d;
 
-public class Timer extends Drawable{
+public class Timer extends Drawable {
 	@Getter private int minutes = 0;
 	@Getter private int seconds = 0;
 	@Getter private int ticks = 0;
@@ -16,19 +16,20 @@ public class Timer extends Drawable{
 	@Getter private String time = "0:00";
 	Vector2d position;
 
-	public Timer(Vector2d position){
+	public Timer(Vector2d position) {
 		this.position = position;
 	}
+
 	@Override
 	public void draw2d() {
 		// TODO Auto-generated method stub
 		DrawUtil.drawString((float) this.position.getX(), (float) this.position.getY(), this.time, this.color, this.size);
-		
+
 	}
 
-	public void tick(){
-		if(this.ticks == Config.FRAMERATE){
-			if(this.seconds < 59){
+	public void tick() {
+		if (this.ticks == Config.FRAMERATE) {
+			if (this.seconds < 59) {
 				this.seconds++;
 			} else {
 				this.seconds = 0;
@@ -36,19 +37,19 @@ public class Timer extends Drawable{
 			}
 			this.ticks = 0;
 		} else {
-			ticks++;
+			this.ticks++;
 		}
-		if (this.seconds < 10)
-			this.time = minutes + ":0" + seconds;
-		else
-			this.time = minutes + ":" + seconds;
+		if (this.seconds < 10) {
+			this.time = this.minutes + ":0" + this.seconds;
+		} else {
+			this.time = this.minutes + ":" + this.seconds;
+		}
 	}
-	
-	
+
 	@Override
 	public void draw3d() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

@@ -41,4 +41,9 @@ public final class AbsoluteHeading extends Order {
 		}
 	}
 
+	@Override
+	public String getHumanReadable() {
+		return "Absolute Heading";
+	}
+
 }
