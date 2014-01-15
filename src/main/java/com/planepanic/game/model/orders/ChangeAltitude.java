@@ -40,6 +40,6 @@ public class ChangeAltitude extends Order {
 
 	@Override
 	public String getHumanReadable() {
-		return "Change Altitude";
+		return "Change Altitude by " + this.getDelta();
 	}
 }
