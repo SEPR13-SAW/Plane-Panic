@@ -10,7 +10,7 @@ import com.planepanic.game.gfx.DrawUtil;
  * 
  * @author Jonathan, Mantas
  */
-public final class Waypoint extends SimplePointOfInterest {
+public class Waypoint extends SimplePointOfInterest {
 	@Getter private final String name;
 	@Getter @Setter private static Waypoint via = null, target = null;
 	@Getter @Setter private static boolean flyBy;

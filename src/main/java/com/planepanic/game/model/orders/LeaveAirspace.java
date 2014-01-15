@@ -2,20 +2,17 @@ package com.planepanic.game.model.orders;
 
 import lombok.Getter;
 
-import com.planepanic.game.model.ExitPoint;
 import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.Waypoint;
+import com.planepanic.game.model.ExitPoint;
 
-public final class FlyOver extends Order {
-	@Getter private final Waypoint waypoint;
-	@Getter private final Waypoint targetWaypoint;
-	private boolean partComplete = false;
+public final class LeaveAirspace extends Order {
+	@Getter private final ExitPoint exit;
 
-	public FlyOver(Plane plane, Waypoint waypoint, Waypoint waypoint2) {
+	public LeaveAirspace(Plane plane, ExitPoint exit) {
 		super(plane);
-		this.waypoint = waypoint;
-		this.targetWaypoint = waypoint2;
+		this.exit = exit;
 	}
 
 	/*
@@ -24,14 +21,8 @@ public final class FlyOver extends Order {
 	 */
 	@Override
 	public boolean isComplete() {
-
-		if (!this.partComplete) {
-			this.partComplete = this.getPlane().distanceTo(this.waypoint) < 1;
-			return false;
-		}
-		if(this.getPlane().distanceTo(this.targetWaypoint) < 1){
-			if(this.getTargetWaypoint().getClass() != this.getWaypoint().getClass())
-				((ExitPoint) this.getTargetWaypoint()).removePlane(this.getPlane());
+		if(this.getPlane().distanceTo(this.exit) < 1){
+			this.exit.removePlane(this.getPlane());
 			return true;
 		}
 		return false;
@@ -39,12 +30,7 @@ public final class FlyOver extends Order {
 
 	@Override
 	public void tick() {
-		if (!this.partComplete) {
-			this.changeHeading(this.waypoint);
-		} else {
-			this.changeHeading(this.targetWaypoint);
-		}
-
+		changeHeading(exit);
 	}
 
 	public void changeHeading(Waypoint waypoint) {
@@ -72,7 +58,6 @@ public final class FlyOver extends Order {
 
 	@Override
 	public String getHumanReadable() {
-		return "Fly Over " + this.getWaypoint().getName() + " to " + this.getTargetWaypoint().getName();
+		return "Leave airspace through " + this.getExit().getName();
 	}
-
 }
