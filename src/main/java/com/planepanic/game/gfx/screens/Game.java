@@ -74,6 +74,12 @@ public class Game extends Screen {
 		draw.draw(this.waypointList.get(3));
 		this.waypointList.add(new Waypoint(new Vector2d(600, 600), "F"));
 		draw.draw(this.waypointList.get(4));
+		this.waypointList.add(new Waypoint(new Vector2d(300, 600), "E"));
+		draw.draw(this.waypointList.get(5));
+		this.waypointList.add(new Waypoint(new Vector2d(50, 300), "G"));
+		draw.draw(this.waypointList.get(6));
+		this.waypointList.add(new Waypoint(new Vector2d(300, 50), "H"));
+		draw.draw(this.waypointList.get(7));
 		System.out.println(this.waypointList.size());
 		Plane plane = entry2.addPlane();
 		this.planeList.add(plane);
@@ -124,7 +130,7 @@ public class Game extends Screen {
 	public void generateFlightPlan(Plane plane){
 		List<Waypoint> waypoints = new ArrayList<>();
 		waypoints.addAll(this.getWaypointList());
-		while(random.nextInt(100) > 15 && !waypoints.isEmpty()){
+		while(random.nextInt(100) > 5 && waypoints.size() > 1){
 			Waypoint i = waypoints.get(random.nextInt(waypoints.size())), o = waypoints.get(random.nextInt(waypoints.size()));
 			if(i != o){
 				if(random.nextInt(1) == 1){
