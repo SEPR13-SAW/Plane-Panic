@@ -36,6 +36,6 @@ public class ChangeSpeed extends Order {
 
 	@Override
 	public String getHumanReadable() {
-		return "Change Speed by " + this.getChangeRate() + "m/s";
+		return "Change Speed by " + this.getDelta() + "m/s";
 	}
 }
