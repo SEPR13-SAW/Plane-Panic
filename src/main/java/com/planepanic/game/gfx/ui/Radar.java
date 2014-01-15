@@ -31,4 +31,10 @@ public class Radar extends Image{
 		return false;
 	}
 
+	@Override
+	protected boolean keyPress(int key) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

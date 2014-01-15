@@ -58,4 +58,10 @@ public class Timer extends Drawable {
 		return false;
 	}
 
+	@Override
+	protected boolean keyPress(int key) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

@@ -53,4 +53,10 @@ public class OrderPanel extends Drawable {
 		this.planeinfo.tick();
 	}
 
+	@Override
+	protected boolean keyPress(int key) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
