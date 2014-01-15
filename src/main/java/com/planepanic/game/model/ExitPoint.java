@@ -40,4 +40,10 @@ public final class ExitPoint extends Waypoint {
 		}
 		return true;
 	}
+
+	@Override
+	protected boolean keyPress(int key) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
