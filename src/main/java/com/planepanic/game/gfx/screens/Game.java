@@ -15,6 +15,7 @@ import com.planepanic.game.gfx.ui.Radar;
 import com.planepanic.game.gfx.ui.Timer;
 import com.planepanic.game.model.Airport;
 import com.planepanic.game.model.EntryPoint;
+import com.planepanic.game.model.ExitPoint;
 import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.Waypoint;
@@ -81,7 +82,8 @@ public class Game extends Screen {
 		draw.draw(airport);
 		this.timer = new Timer(new Vector2d(325, 0));
 		draw.draw(this.timer);
-
+		ExitPoint exit = new ExitPoint(new Vector2d(700, 300));
+		draw.draw(exit);
 		this.orderpanel = new OrderPanel(new Vector2d(1100, 360));
 		draw.draw(this.orderpanel);
 	}

@@ -5,14 +5,15 @@ package com.planepanic.game.model;
  * 
  * @author Mantas
  */
-public final class ExitPoint extends SimplePointOfInterest {
+public final class ExitPoint extends Waypoint {
 
 	public ExitPoint(Vector2d position) {
-		super(position);
+		super(position, "E");
 	}
 
-	public void removePlane() {
+	public void removePlane(Plane plane) {
 		// TODO make it do something
+		System.out.println("plane removed");
 	}
 
 	@Override
@@ -23,6 +24,14 @@ public final class ExitPoint extends SimplePointOfInterest {
 
 	@Override
 	public boolean onClick() {
-		return false;
+		if (Waypoint.getVia() == null && Plane.getSelected() != null) {
+			Waypoint.setVia(this);
+			Waypoint.setFlyBy(false);
+		}
+		else if (Waypoint.getVia() != this) {
+
+			Waypoint.setTarget(this);
+		}
+		return true;
 	}
 }

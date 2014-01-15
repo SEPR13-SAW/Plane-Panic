@@ -5,6 +5,7 @@ import lombok.Getter;
 import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.Waypoint;
+import com.planepanic.game.model.ExitPoint;
 
 public final class FlyBy extends Order {
 	@Getter private final Waypoint waypoint;
@@ -25,7 +26,12 @@ public final class FlyBy extends Order {
 			this.partComplete = this.getPlane().distanceTo(this.waypoint) < 40;
 			return false;
 		}
-		return this.getPlane().distanceTo(this.targetWaypoint) < 1;
+		if(this.getPlane().distanceTo(this.targetWaypoint) < 1){
+			if(this.getTargetWaypoint().getClass() != this.getWaypoint().getClass())
+				((ExitPoint) this.getTargetWaypoint()).removePlane(this.getPlane());
+			return true;
+		}
+		return false;
 	}
 
 	@Override
