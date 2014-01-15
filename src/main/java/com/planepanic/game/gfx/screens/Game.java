@@ -147,13 +147,14 @@ public class Game extends Screen {
 	 * two is bigger than exclusion zone
 	 */
 	public void exclusionZoneDetection() {
+		double distance;
 		for (int i = 0; i < this.planeList.size() - 1; i++) {
 			for (int o = i + 1; o < this.planeList.size(); o++) {
-				if (this.planeList.get(i).distanceFrom(this.planeList.get(o)) <= Game.exclusionZone * Game.exclusionZone) {
+				distance = this.planeList.get(i).distanceFrom(this.planeList.get(o));
+				if (distance <= Game.exclusionZone * Game.exclusionZone) {
 					this.planeList.get(i).getEz().setViolated(true);
 					this.planeList.get(o).getEz().setViolated(true);
-					if(this.planeList.get(i).distanceFrom(this.planeList.get(o)) <= (Game.exclusionZone * Game.exclusionZone)*0.5 ) {
-						
+					if(distance <= (Game.exclusionZone * Game.exclusionZone)*0.5 ) {
 						DrawThread.getInstance().changeScreen(new com.planepanic.game.gfx.screens.GameOver());
 						
 					};

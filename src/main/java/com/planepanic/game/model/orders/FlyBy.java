@@ -18,7 +18,10 @@ public final class FlyBy extends Order {
 		this.targetWaypoint = waypoint2;
 	}
 
-	// Maximum close distance is too small to work
+	/*
+	 * If the target waypoint is exit point removes plane
+	 * 
+	 */
 	@Override
 	public boolean isComplete() {
 
