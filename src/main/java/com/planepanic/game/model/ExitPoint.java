@@ -7,13 +7,19 @@ package com.planepanic.game.model;
  */
 public final class ExitPoint extends Waypoint {
 
-	public ExitPoint(Vector2d position) {
-		super(position, "E");
+	public ExitPoint(Vector2d position, String name) {
+		super(position, name);
 	}
 
 	public void removePlane(Plane plane) {
 		// TODO make it do something
 		System.out.println("plane removed");
+	}
+	
+	@Override
+	public void draw2d() {
+		super.draw2d();
+		
 	}
 
 	@Override

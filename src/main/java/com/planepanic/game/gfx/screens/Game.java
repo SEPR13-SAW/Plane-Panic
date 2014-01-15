@@ -23,6 +23,7 @@ import com.planepanic.game.model.orders.AbsoluteHeading;
 import com.planepanic.game.model.orders.ChangeSpeed;
 import com.planepanic.game.model.orders.FlyBy;
 import com.planepanic.game.model.orders.FlyOver;
+import com.planepanic.game.model.orders.LeaveAirspace;
 import com.planepanic.game.model.orders.RelativeHeading;
 
 public class Game extends Screen {
@@ -35,6 +36,7 @@ public class Game extends Screen {
 	@Getter private List<Plane> planeList = new ArrayList<>();
 	@Getter private List<ExclusionZone> exclusionZoneList = new ArrayList<>();
 	@Getter private List<Waypoint> waypointList = new ArrayList<>();
+	@Getter private List<ExitPoint> exitPointList = new ArrayList<>();
 	@Getter @Setter ExclusionZone ez;
 	/**
 	 * Exclusion in meters divided by how much meters one pixel represents.
@@ -58,11 +60,21 @@ public class Game extends Screen {
 		this.createEntryPoint(new Vector2d(500, 500));
 		this.createEntryPoint(new Vector2d(500, 50));
 
-		for (int i = 0; i < 6; i++) {
-			this.waypointList.add(new Waypoint(new Vector2d(200 + 75 * i, 400), "" + (char) (65 + i)));
-			draw.draw(this.waypointList.get(i));
-		}
-
+//		for (int i = 0; i < 6; i++) {
+//			this.waypointList.add(new Waypoint(new Vector2d(50 + 100 * i, 20 + 100 *i ), "" + (char) (65 + i)));
+//			draw.draw(this.waypointList.get(i));
+//		}
+		this.waypointList.add(new Waypoint(new Vector2d(50, 50), "A"));
+		draw.draw(this.waypointList.get(0));
+		this.waypointList.add(new Waypoint(new Vector2d(600, 50), "B"));
+		draw.draw(this.waypointList.get(1));
+		this.waypointList.add(new Waypoint(new Vector2d(50, 600), "C"));
+		draw.draw(this.waypointList.get(2));
+		this.waypointList.add(new Waypoint(new Vector2d(600, 300), "D"));
+		draw.draw(this.waypointList.get(3));
+		this.waypointList.add(new Waypoint(new Vector2d(600, 600), "F"));
+		draw.draw(this.waypointList.get(4));
+		System.out.println(this.waypointList.size());
 		Plane plane = entry2.addPlane();
 		this.planeList.add(plane);
 		plane.getOrders().add(new AbsoluteHeading(plane, 0));
@@ -82,8 +94,12 @@ public class Game extends Screen {
 		draw.draw(airport);
 		this.timer = new Timer(new Vector2d(325, 0));
 		draw.draw(this.timer);
-		ExitPoint exit = new ExitPoint(new Vector2d(700, 300));
+		ExitPoint exit = new ExitPoint(new Vector2d(750, 300), "e0");
 		draw.draw(exit);
+		exitPointList.add(exit);
+		exit = new ExitPoint(new Vector2d(350, 700), "e1");
+		draw.draw(exit);
+		exitPointList.add(exit);
 		this.orderpanel = new OrderPanel(new Vector2d(1100, 360));
 		draw.draw(this.orderpanel);
 	}
@@ -99,11 +115,31 @@ public class Game extends Screen {
 			DrawThread draw = DrawThread.getInstance();
 			draw.draw(plane);
 			draw.draw(plane.getEz());
+			generateFlightPlan(plane);
 			this.planeList.add(plane);
 			this.setSpawnInterval(this.getMinSpawnInterval() + this.random.nextInt(this.getMaxSpawnInterval() - this.getMinSpawnInterval()));
 		}
 	};
 
+	public void generateFlightPlan(Plane plane){
+		List<Waypoint> waypoints = new ArrayList<>();
+		waypoints.addAll(this.getWaypointList());
+		while(random.nextInt(100) > 15 && !waypoints.isEmpty()){
+			Waypoint i = waypoints.get(random.nextInt(waypoints.size())), o = waypoints.get(random.nextInt(waypoints.size()));
+			if(i != o){
+				if(random.nextInt(1) == 1){
+					plane.getOrders().add(new FlyBy(plane, i, o));
+				} else {
+					plane.getOrders().add(new FlyOver(plane, i, o));
+				}
+				waypoints.remove(o);
+				waypoints.remove(i);
+			}
+		}
+		plane.getOrders().add(new LeaveAirspace(plane, this.getExitPointList().get(random.nextInt(this.getExitPointList().size()))));
+
+	}
+	
 	public void createEntryPoint(Vector2d position) {
 		EntryPoint entry = new EntryPoint(position);
 		this.entryPointList.add(entry);
