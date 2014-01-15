@@ -63,6 +63,6 @@ public final class FlyBy extends Order {
 
 	@Override
 	public String getHumanReadable() {
-		return "Fly By";
+		return "Fly By " + this.getWaypoint().getName() + " to " + this.getTargetWaypoint().getName();
 	}
 }
