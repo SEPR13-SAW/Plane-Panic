@@ -20,7 +20,6 @@ public final class FlyOver extends Order {
 
 	/*
 	 * If the target waypoint is exit point removes plane
-	 * 
 	 */
 	@Override
 	public boolean isComplete() {
@@ -29,9 +28,10 @@ public final class FlyOver extends Order {
 			this.partComplete = this.getPlane().distanceTo(this.waypoint) < 1;
 			return false;
 		}
-		if(this.getPlane().distanceTo(this.targetWaypoint) < 1){
-			if(this.getTargetWaypoint().getClass() != this.getWaypoint().getClass())
+		if (this.getPlane().distanceTo(this.targetWaypoint) < 1) {
+			if (this.getTargetWaypoint().getClass() != this.getWaypoint().getClass()) {
 				((ExitPoint) this.getTargetWaypoint()).removePlane(this.getPlane());
+			}
 			return true;
 		}
 		return false;

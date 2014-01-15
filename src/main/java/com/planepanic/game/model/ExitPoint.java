@@ -15,11 +15,11 @@ public final class ExitPoint extends Waypoint {
 		// TODO make it do something
 		System.out.println("plane removed");
 	}
-	
+
 	@Override
 	public void draw2d() {
 		super.draw2d();
-		
+
 	}
 
 	@Override

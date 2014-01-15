@@ -44,7 +44,7 @@ public final class RelativeHeading extends Order {
 
 	@Override
 	public String getHumanReadable() {
-		return "Change relative Heading by " + this.getDelta()*180/Math.PI;
+		return "Change relative Heading by " + this.getDelta() * 180 / Math.PI;
 	}
 
 }

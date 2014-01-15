@@ -17,10 +17,11 @@ public class ChangeAltitude extends Order {
 
 	@Override
 	public boolean isComplete() {
-		if(this.getDelta() > 0)
+		if (this.getDelta() > 0) {
 			return this.getPlane().getAltitude() - this.getStartAltitude() - this.delta > 1;
-		else
+		} else {
 			return this.getPlane().getAltitude() - this.getStartAltitude() - this.delta < 1;
+		}
 	}
 
 	@Override
@@ -42,6 +43,6 @@ public class ChangeAltitude extends Order {
 
 	@Override
 	public String getHumanReadable() {
-		return "Change Altitude by " + this.getDelta()*Config.SCALE +"m";
+		return "Change Altitude by " + this.getDelta() * Config.SCALE + "m";
 	}
 }

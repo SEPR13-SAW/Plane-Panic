@@ -68,14 +68,14 @@ public class DrawThread extends Thread {
 
 	private final boolean[] wasKeyDown = new boolean[256];
 	private final int[] keys = new int[] {
-			Keyboard.KEY_0, Keyboard.KEY_1, Keyboard.KEY_2, Keyboard.KEY_3, Keyboard.KEY_4, 
-			Keyboard.KEY_5, Keyboard.KEY_6, Keyboard.KEY_7, Keyboard.KEY_8, Keyboard.KEY_9, 
+			Keyboard.KEY_0, Keyboard.KEY_1, Keyboard.KEY_2, Keyboard.KEY_3, Keyboard.KEY_4,
+			Keyboard.KEY_5, Keyboard.KEY_6, Keyboard.KEY_7, Keyboard.KEY_8, Keyboard.KEY_9,
 
-			Keyboard.KEY_A, Keyboard.KEY_B, Keyboard.KEY_C, Keyboard.KEY_D, Keyboard.KEY_E, 
-			Keyboard.KEY_E, Keyboard.KEY_F, Keyboard.KEY_G, Keyboard.KEY_H, Keyboard.KEY_I, 
-			Keyboard.KEY_J, Keyboard.KEY_K, Keyboard.KEY_L, Keyboard.KEY_M, Keyboard.KEY_N, 
-			Keyboard.KEY_O, Keyboard.KEY_P, Keyboard.KEY_Q, Keyboard.KEY_R, Keyboard.KEY_S, 
-			Keyboard.KEY_T, Keyboard.KEY_U, Keyboard.KEY_V, Keyboard.KEY_W, Keyboard.KEY_X, 
+			Keyboard.KEY_A, Keyboard.KEY_B, Keyboard.KEY_C, Keyboard.KEY_D, Keyboard.KEY_E,
+			Keyboard.KEY_E, Keyboard.KEY_F, Keyboard.KEY_G, Keyboard.KEY_H, Keyboard.KEY_I,
+			Keyboard.KEY_J, Keyboard.KEY_K, Keyboard.KEY_L, Keyboard.KEY_M, Keyboard.KEY_N,
+			Keyboard.KEY_O, Keyboard.KEY_P, Keyboard.KEY_Q, Keyboard.KEY_R, Keyboard.KEY_S,
+			Keyboard.KEY_T, Keyboard.KEY_U, Keyboard.KEY_V, Keyboard.KEY_W, Keyboard.KEY_X,
 			Keyboard.KEY_Y, Keyboard.KEY_Z,
 
 			Keyboard.KEY_BACK, Keyboard.KEY_DELETE,
@@ -149,7 +149,7 @@ public class DrawThread extends Thread {
 				Drawable obj;
 				while ((obj = this.tempReverse.poll()) != null) {
 					if (obj.clickHandler()) {
-						focus = obj;
+						DrawThread.focus = obj;
 						break;
 					}
 				}
@@ -181,14 +181,14 @@ public class DrawThread extends Thread {
 				this.tempReverse.clear();
 			}
 
-			for (int key : keys) {
-				if (Keyboard.isKeyDown(key) && !wasKeyDown[key]) {
-					wasKeyDown[key] = true;
-					if (focus != null) {
-						focus.keyPress(key);
+			for (int key : this.keys) {
+				if (Keyboard.isKeyDown(key) && !this.wasKeyDown[key]) {
+					this.wasKeyDown[key] = true;
+					if (DrawThread.focus != null) {
+						DrawThread.focus.keyPress(key);
 					}
-				} else if (wasKeyDown[key] && !Keyboard.isKeyDown(key)) {
-					wasKeyDown[key] = false;
+				} else if (this.wasKeyDown[key] && !Keyboard.isKeyDown(key)) {
+					this.wasKeyDown[key] = false;
 				}
 			}
 

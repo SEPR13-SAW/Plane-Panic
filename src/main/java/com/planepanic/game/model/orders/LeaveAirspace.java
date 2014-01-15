@@ -2,10 +2,10 @@ package com.planepanic.game.model.orders;
 
 import lombok.Getter;
 
+import com.planepanic.game.model.ExitPoint;
 import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.Waypoint;
-import com.planepanic.game.model.ExitPoint;
 
 public final class LeaveAirspace extends Order {
 	@Getter private final ExitPoint exit;
@@ -17,11 +17,10 @@ public final class LeaveAirspace extends Order {
 
 	/*
 	 * If the target waypoint is exit point removes plane
-	 * 
 	 */
 	@Override
 	public boolean isComplete() {
-		if(this.getPlane().distanceTo(this.exit) < 1){
+		if (this.getPlane().distanceTo(this.exit) < 1) {
 			this.exit.removePlane(this.getPlane());
 			return true;
 		}
@@ -30,7 +29,7 @@ public final class LeaveAirspace extends Order {
 
 	@Override
 	public void tick() {
-		changeHeading(exit);
+		this.changeHeading(this.exit);
 	}
 
 	public void changeHeading(Waypoint waypoint) {
