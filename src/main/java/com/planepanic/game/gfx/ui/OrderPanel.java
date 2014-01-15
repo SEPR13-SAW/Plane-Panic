@@ -12,7 +12,7 @@ public class OrderPanel extends Drawable {
 	private PlaneInfo planeinfo;
 
 	public OrderPanel(Vector2d position) {
-		super(position, new Vector2d(500, 720));
+		super(position, new Vector2d(620, 720));
 		this.controls = new Controls();
 		this.controls.setOrderState(0);
 		DrawThread.getInstance().draw(this.orderList = new OrderList());

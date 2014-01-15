@@ -1,20 +1,23 @@
 package com.planepanic.game.gfx.ui;
 
-import com.planepanic.game.gfx.DrawThread;
-import com.planepanic.game.gfx.DrawUtil;
-import com.planepanic.game.gfx.Drawable;
+import com.planepanic.game.model.Vector2d;
+import com.planepanic.game.gfx.Resources;
+import com.planepanic.game.gfx.Image;
 
-public class Radar extends Drawable {
+public class Radar extends Image{
 
 	public Radar() {
-		super();
-		this.setPriority(-1);
+		//super();
+		super(Resources.GRASS, new Vector2d(360,360)); 
+		this.setPriority(-0.9f);
+
 	}
 
 	@Override
 	public void draw2d() {
-		DrawUtil.setColor(0x001E02);
-		DrawUtil.drawSquare((DrawThread.width - 500) / 2, DrawThread.height / 2, DrawThread.width - 500, DrawThread.height, true, -0.9f);
+		//DrawUtil.setColor(0x001E02);
+		//DrawUtil.drawSquare((DrawThread.width - 500) / 2, DrawThread.height / 2, DrawThread.width - 500, DrawThread.height, true, -0.9f);
+		super.draw2d();
 	}
 
 	@Override

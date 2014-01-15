@@ -74,12 +74,6 @@ public class Game extends Screen {
 		draw.draw(this.waypointList.get(3));
 		this.waypointList.add(new Waypoint(new Vector2d(600, 600), "F"));
 		draw.draw(this.waypointList.get(4));
-		this.waypointList.add(new Waypoint(new Vector2d(300, 600), "E"));
-		draw.draw(this.waypointList.get(5));
-		this.waypointList.add(new Waypoint(new Vector2d(50, 300), "G"));
-		draw.draw(this.waypointList.get(6));
-		this.waypointList.add(new Waypoint(new Vector2d(300, 50), "H"));
-		draw.draw(this.waypointList.get(7));
 		System.out.println(this.waypointList.size());
 		Plane plane = entry2.addPlane();
 		this.planeList.add(plane);
@@ -96,14 +90,10 @@ public class Game extends Screen {
 		draw.draw(plane.getEz());
 		this.radar = new Radar();
 		draw.draw(this.radar);
-		Airport airport = new Airport(new Vector2d(360, Config.WINDOW_HEIGHT / 2));
+		Airport airport = new Airport(new Vector2d(400, Config.WINDOW_HEIGHT / 2));
 		draw.draw(airport);
 		this.timer = new Timer(new Vector2d(325, 0));
 		draw.draw(this.timer);
-<<<<<<< HEAD
-
-		this.orderpanel = new OrderPanel(new Vector2d(1000, 360));
-=======
 		ExitPoint exit = new ExitPoint(new Vector2d(750, 300), "e0");
 		draw.draw(exit);
 		exitPointList.add(exit);
@@ -111,7 +101,6 @@ public class Game extends Screen {
 		draw.draw(exit);
 		exitPointList.add(exit);
 		this.orderpanel = new OrderPanel(new Vector2d(1100, 360));
->>>>>>> 2bd1f7054a1990d383643863a8ba2b07b0391683
 		draw.draw(this.orderpanel);
 	}
 
@@ -135,7 +124,7 @@ public class Game extends Screen {
 	public void generateFlightPlan(Plane plane){
 		List<Waypoint> waypoints = new ArrayList<>();
 		waypoints.addAll(this.getWaypointList());
-		while(random.nextInt(100) > 5 && waypoints.size() > 1){
+		while(random.nextInt(100) > 15 && !waypoints.isEmpty()){
 			Waypoint i = waypoints.get(random.nextInt(waypoints.size())), o = waypoints.get(random.nextInt(waypoints.size()));
 			if(i != o){
 				if(random.nextInt(1) == 1){
