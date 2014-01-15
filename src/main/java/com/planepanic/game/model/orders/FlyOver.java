@@ -63,7 +63,7 @@ public final class FlyOver extends Order {
 
 	@Override
 	public String getHumanReadable() {
-		return "Fly Over";
+		return "Fly Over " + this.getWaypoint().getName() + " to " + this.getTargetWaypoint().getName();
 	}
 
 }

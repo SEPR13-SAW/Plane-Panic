@@ -150,6 +150,11 @@ public class Game extends Screen {
 				if (this.planeList.get(i).distanceFrom(this.planeList.get(o)) <= Game.exclusionZone * Game.exclusionZone) {
 					this.planeList.get(i).getEz().setViolated(true);
 					this.planeList.get(o).getEz().setViolated(true);
+					if(this.planeList.get(i).distanceFrom(this.planeList.get(o)) <= (Game.exclusionZone * Game.exclusionZone)*0.5 ) {
+						
+						DrawThread.getInstance().changeScreen(new com.planepanic.game.gfx.screens.GameOver());
+						
+					};
 				};
 			};
 		};

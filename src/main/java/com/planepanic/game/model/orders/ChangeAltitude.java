@@ -9,16 +9,18 @@ public class ChangeAltitude extends Order {
 
 	@Getter double delta, speed, startAltitude, changeRate;
 
-	public ChangeAltitude(Plane plane, double startAltitude, double speed, double delta) {
+	public ChangeAltitude(Plane plane, double delta) {
 		super(plane);
-		this.startAltitude = startAltitude;
-		this.speed = speed;
-		this.delta = delta;
+		this.startAltitude = plane.getAltitude();
+		this.delta = delta / Config.SCALE;
 	}
 
 	@Override
 	public boolean isComplete() {
-		return this.getPlane().getAltitude() == this.getStartAltitude() + this.delta;
+		if(this.getDelta() > 0)
+			return this.getPlane().getAltitude() - this.getStartAltitude() - this.delta > 1;
+		else
+			return this.getPlane().getAltitude() - this.getStartAltitude() - this.delta < 1;
 	}
 
 	@Override
@@ -27,9 +29,9 @@ public class ChangeAltitude extends Order {
 		// changed once I know what the angle is respective too and if it is
 		// degrees or radians.
 		if (this.getDelta() < 0) {
-			this.getPlane().setAltitude(this.getPlane().getAltitude() - this.getPlane().getSpeed() / Config.FRAMERATE);
+			this.getPlane().setAltitude(this.getPlane().getAltitude() - 20.0 / Config.FRAMERATE);
 		} else {
-			this.getPlane().setAltitude(this.getPlane().getAltitude() + this.getPlane().getSpeed() / Config.FRAMERATE);
+			this.getPlane().setAltitude(this.getPlane().getAltitude() + 20.0 / Config.FRAMERATE);
 		}
 	}
 
@@ -40,6 +42,6 @@ public class ChangeAltitude extends Order {
 
 	@Override
 	public String getHumanReadable() {
-		return "Change Altitude";
+		return "Change Altitude by " + this.getDelta()*Config.SCALE +"m";
 	}
 }
