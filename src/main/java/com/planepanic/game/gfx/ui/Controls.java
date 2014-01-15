@@ -33,7 +33,7 @@ public class Controls {
 	private int value;
 
 	public Controls() {
-		this.controls.add(this.valueBox = (TextBox) new TextBox("0").setAlign(Align.RIGHT).setColor(0x000000).setPriority(0.9f).setPosition(new Vector2d(900, 600)).setScrollCallback(new CallbackP<Boolean, Integer>() {
+		this.controls.add(this.valueBox = (TextBox) new TextBox("0", true).setAlign(Align.RIGHT).setColor(0x000000).setPriority(0.9f).setPosition(new Vector2d(900, 600)).setScrollCallback(new CallbackP<Boolean, Integer>() {
 			@Override
 			public Boolean call(Integer param) {
 				Controls.this.value += param / 6;

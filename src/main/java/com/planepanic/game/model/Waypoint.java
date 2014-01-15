@@ -61,4 +61,10 @@ public final class Waypoint extends SimplePointOfInterest {
 		}
 		return true;
 	}
+
+	@Override
+	protected boolean keyPress(int key) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

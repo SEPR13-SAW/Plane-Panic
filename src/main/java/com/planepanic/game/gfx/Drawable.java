@@ -62,6 +62,8 @@ public abstract class Drawable {
 	 */
 	protected abstract boolean onClick();
 
+	protected abstract boolean keyPress(int key);
+
 	protected boolean onClickRight() {
 		return false;
 	}

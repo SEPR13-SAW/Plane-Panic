@@ -27,4 +27,10 @@ public final class EntryPoint extends SimplePointOfInterest {
 	protected boolean onClick() {
 		return false;
 	}
+
+	@Override
+	protected boolean keyPress(int key) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
