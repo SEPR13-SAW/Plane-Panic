@@ -10,7 +10,7 @@ import lombok.Getter;
  * 
  */
 public enum PlaneType {
-	BOEING_747_400("Boeing 747-400", 524, 181965, 291, 58390, 3.937, 1000, 11000), ;
+	BOEING_747_400("Boeing 747-400", 524, 181965, 291, 58390, 3.937 * 300, 1000, 11000), ;
 
 	@Getter private final String name;
 	@Getter private final int maxPassengers, score;
