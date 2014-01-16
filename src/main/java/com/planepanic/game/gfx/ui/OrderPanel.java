@@ -12,7 +12,7 @@ public class OrderPanel extends Drawable {
 	private PlaneInfo planeinfo;
 
 	public OrderPanel(Vector2d position) {
-		super(position, new Vector2d(620, 720));
+		super(position, new Vector2d(384, 720));
 		this.controls = new Controls();
 		this.controls.setOrderState(0);
 		DrawThread.getInstance().draw(this.orderList = new OrderList());
@@ -24,11 +24,11 @@ public class OrderPanel extends Drawable {
 	@Override
 	public void draw2d() {
 		DrawUtil.setColor(0xFFFFFF);
-		DrawUtil.drawSquare((float) this.getPosition().getX(), 75, (float) this.getHitboxSize().getX(), 150, true, this.getPriority());
-		DrawUtil.drawSquare((float) this.getPosition().getX(), DrawThread.height - 90, (float) this.getHitboxSize().getX(), 180, true, this.getPriority());
+		DrawUtil.drawSquare((float) this.getPosition().getX() + 58, 75, (float) this.getHitboxSize().getX(), 150, true, this.getPriority());
+		DrawUtil.drawSquare((float) this.getPosition().getX() + 58, DrawThread.height - 64, (float) this.getHitboxSize().getX(), 128, true, this.getPriority());
 		DrawUtil.setColor(0x000000);
-		DrawUtil.drawSquare((float) this.getPosition().getX(), 150, 500, 1, true, this.getPriority() + 0.01f);
-		DrawUtil.drawSquare((float) this.getPosition().getX(), DrawThread.height - 180, 500, 1, true, this.getPriority() + 0.01f);
+		DrawUtil.drawSquare((float) this.getPosition().getX() + 58 , 150, 384, 1, true, this.getPriority() + 0.01f);
+		//DrawUtil.drawSquare((float) this.getPosition().getX() , DrawThread.height - 180, 500, 1, true, this.getPriority() + 0.01f);
 	}
 
 	@Override

@@ -8,7 +8,7 @@ public class Radar extends Image {
 
 	public Radar() {
 		// super();
-		super(Resources.GRASS, new Vector2d(360, 360));
+		super(Resources.GRASS, new Vector2d(448, 360));
 		this.setPriority(-0.9f);
 
 	}

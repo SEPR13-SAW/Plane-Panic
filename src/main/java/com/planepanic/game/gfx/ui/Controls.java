@@ -42,7 +42,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.direction = new OrderButton(945, 620, Resources.DIRECTION).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.direction = new OrderButton(1024, 656, Resources.DIRECTION).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Change Direction!");
@@ -51,7 +51,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.altitude = new OrderButton(1095, 620, Resources.ALTITUDE).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.altitude = new OrderButton(1152, 656, Resources.ALTITUDE).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Change Altitude!");
@@ -60,7 +60,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.heading = new OrderButton(1245, 620, Resources.HEADING).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.heading = new OrderButton(1280, 656, Resources.HEADING).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Change Heading!");
@@ -69,7 +69,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.speed = new OrderButton(945, 695, Resources.SPEED).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.speed = new OrderButton(1024, 720, Resources.SPEED).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Change Speed!");
@@ -78,7 +78,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.land = new OrderButton(1095, 695, Resources.LAND).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.land = new OrderButton(1152, 720, Resources.LAND).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Land!");
@@ -87,7 +87,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.takeoff = new OrderButton(1245, 695, Resources.TAKEOFF).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.takeoff = new OrderButton(1280, 720, Resources.TAKEOFF).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Take off!");

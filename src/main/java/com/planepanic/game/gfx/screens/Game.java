@@ -97,18 +97,17 @@ public class Game extends Screen {
 		draw.draw(plane.getEz());
 		this.radar = new Radar();
 		draw.draw(this.radar);
-		Airport airport = new Airport(new Vector2d(360, Config.WINDOW_HEIGHT / 2));
+		Airport airport = new Airport(new Vector2d(448, Config.WINDOW_HEIGHT / 2));
 		draw.draw(airport);
 		this.timer = new Timer(new Vector2d(325, 0));
 		draw.draw(this.timer);
-		this.orderpanel = new OrderPanel(new Vector2d(1000, 360));
 		ExitPoint exit = new ExitPoint(new Vector2d(700, 300), "e0", this);
 		draw.draw(exit);
 		this.exitPointList.add(exit);
 		exit = new ExitPoint(new Vector2d(350, 700), "e1", this);
 		draw.draw(exit);
 		this.exitPointList.add(exit);
-		this.orderpanel = new OrderPanel(new Vector2d(1100, 360));
+		this.orderpanel = new OrderPanel(new Vector2d(1000, 360));
 		draw.draw(this.orderpanel);
 	}
 

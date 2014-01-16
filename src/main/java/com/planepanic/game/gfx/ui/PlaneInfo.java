@@ -12,13 +12,13 @@ public class PlaneInfo {
 
 	public PlaneInfo(OrderPanel panel) {
 		DrawThread draw = DrawThread.getInstance();
-		draw.draw(new TextBox("Altitude").setColor(0x000000).setAlign(Align.RIGHT).setPosition(new Vector2d(1000, 25)).setPriority(0.9f));
-		draw.draw(new TextBox("Speed").setColor(0x000000).setAlign(Align.RIGHT).setPosition(new Vector2d(1000, 70)).setPriority(0.9f));
-		draw.draw(new TextBox("Fuel").setColor(0x000000).setAlign(Align.RIGHT).setPosition(new Vector2d(1000, 115)).setPriority(0.9f));
+		draw.draw(new TextBox("Altitude").setColor(0x000000).setAlign(Align.RIGHT).setPosition(new Vector2d(1100, 25)).setPriority(0.9f));
+		draw.draw(new TextBox("Speed").setColor(0x000000).setAlign(Align.RIGHT).setPosition(new Vector2d(1100, 70)).setPriority(0.9f));
+		draw.draw(new TextBox("Fuel").setColor(0x000000).setAlign(Align.RIGHT).setPosition(new Vector2d(1100, 115)).setPriority(0.9f));
 
-		draw.draw(this.altitudeDisplay = (TextBox) new TextBox("0").setColor(0x000000).setAlign(Align.LEFT).setPosition(new Vector2d(1050, 25)).setPriority(0.9f));
-		draw.draw(this.speedDisplay = (TextBox) new TextBox("0").setColor(0x000000).setAlign(Align.LEFT).setPosition(new Vector2d(1050, 70)).setPriority(0.9f));
-		draw.draw(this.fuelDisplay = (TextBox) new TextBox("0").setColor(0x000000).setAlign(Align.LEFT).setPosition(new Vector2d(1050, 115)).setPriority(0.9f));
+		draw.draw(this.altitudeDisplay = (TextBox) new TextBox("0").setColor(0x000000).setAlign(Align.LEFT).setPosition(new Vector2d(1150, 25)).setPriority(0.9f));
+		draw.draw(this.speedDisplay = (TextBox) new TextBox("0").setColor(0x000000).setAlign(Align.LEFT).setPosition(new Vector2d(1150, 70)).setPriority(0.9f));
+		draw.draw(this.fuelDisplay = (TextBox) new TextBox("0").setColor(0x000000).setAlign(Align.LEFT).setPosition(new Vector2d(1150, 115)).setPriority(0.9f));
 	}
 
 	public void tick() {
