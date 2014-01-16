@@ -7,6 +7,12 @@ import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.Waypoint;
 
+/**
+ * Order a plane to "fly by" a waypoint to another waypoint
+ * 
+ * @author Jonathan, Mantas, Thomas
+ *
+ */
 public final class FlyBy extends Order {
 	@Getter private final Waypoint waypoint;
 	@Getter private final Waypoint targetWaypoint;

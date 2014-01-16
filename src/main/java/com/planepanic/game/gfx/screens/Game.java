@@ -26,6 +26,13 @@ import com.planepanic.game.model.orders.FlyOver;
 import com.planepanic.game.model.orders.LeaveAirspace;
 import com.planepanic.game.model.orders.RelativeHeading;
 
+/**
+ * Game screen
+ * Does most of the setup and glue logic
+ * 
+ * @author Ben, Jonathan, Mantas, Steven, Thomas
+ *
+ */
 public class Game extends Screen {
 
 	@Getter private OrderPanel orderpanel;

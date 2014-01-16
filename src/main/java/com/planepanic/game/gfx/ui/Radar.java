@@ -4,6 +4,12 @@ import com.planepanic.game.gfx.Image;
 import com.planepanic.game.gfx.Resources;
 import com.planepanic.game.model.Vector2d;
 
+/**
+ * Draws the background for the scene
+ * 
+ * @author Jonathan, Mantas, Steven, Thomas
+ *
+ */
 public class Radar extends Image {
 
 	public Radar() {

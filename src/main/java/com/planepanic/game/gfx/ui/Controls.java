@@ -10,6 +10,12 @@ import com.planepanic.game.gfx.Drawable;
 import com.planepanic.game.gfx.Resources;
 import com.planepanic.game.model.Vector2d;
 
+/**
+ * Maintains the state of the controls displayed at the bottom of the Order Panel
+ * 
+ * @author Jonathan, Mantas, Steven, Thomas
+ *
+ */
 public class Controls {
 
 	private int orderState = 0;

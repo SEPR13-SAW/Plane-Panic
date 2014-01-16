@@ -9,7 +9,7 @@ import com.planepanic.game.gfx.screens.Game;
 /**
  * A class to represent Entry points.
  * 
- * @author Mantas
+ * @author Jonathan, Mantas, Thomas
  */
 public final class ExitPoint extends Waypoint {
 	private Game game;

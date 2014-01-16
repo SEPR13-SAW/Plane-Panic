@@ -6,7 +6,7 @@ import com.planepanic.game.gfx.Drawable;
 /**
  * An abstract class to represent Points of Interest.
  * 
- * @author Mantas
+ * @author Mantas, Thomas
  */
 
 public abstract class SimplePointOfInterest extends Drawable implements PointOfInterest {

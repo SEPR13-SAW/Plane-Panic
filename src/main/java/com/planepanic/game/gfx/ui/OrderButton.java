@@ -8,6 +8,12 @@ import com.planepanic.game.gfx.Image;
 import com.planepanic.game.gfx.Resources;
 import com.planepanic.game.model.Vector2d;
 
+/**
+ * Represents a button used as a top-level control
+ * 
+ * @author Steven, Thomas
+ *
+ */
 public class OrderButton extends Image {
 
 	@Accessors(chain = true) @Setter private Callback<Boolean> callback;

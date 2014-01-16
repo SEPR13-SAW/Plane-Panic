@@ -5,6 +5,12 @@ import lombok.Getter;
 import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Runway;
 
+/**
+ * Order a plane to take off from a specified runway
+ * 
+ * @author Jonathan, Thomas
+ *
+ */
 public final class TakeOff extends Order {
 	@Getter private final Runway runway;
 

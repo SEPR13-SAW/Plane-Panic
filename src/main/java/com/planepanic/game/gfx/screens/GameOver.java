@@ -6,6 +6,13 @@ import com.planepanic.game.gfx.ui.Button;
 import com.planepanic.game.gfx.ui.TextBox;
 import com.planepanic.game.model.Vector2d;
 
+/**
+ * Game Over screen
+ * Shows when you lose
+ * 
+ * @author Ben
+ *
+ */
 public class GameOver extends Screen {
 
 	private Button returnToMain;

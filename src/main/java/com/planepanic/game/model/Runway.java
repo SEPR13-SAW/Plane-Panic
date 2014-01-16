@@ -7,7 +7,7 @@ import com.planepanic.game.gfx.Drawable;
 /**
  * A class to represent runways.
  * 
- * @author Jonathan
+ * @author Jonathan, Thomas
  */
 public final class Runway extends Drawable {
 	@Getter private final String name;

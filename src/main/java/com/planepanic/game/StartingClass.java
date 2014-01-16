@@ -6,7 +6,7 @@ import lombok.Getter;
  * Starting Class with Enumerated Values for Readability. Allows for reading and
  * altering of the Current Game State.
  * 
- * @author Ben Leyland
+ * @author Ben, Jonathan, Thomas
  */
 
 public class StartingClass {

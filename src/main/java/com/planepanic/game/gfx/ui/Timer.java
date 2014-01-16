@@ -7,6 +7,12 @@ import com.planepanic.game.gfx.DrawUtil;
 import com.planepanic.game.gfx.Drawable;
 import com.planepanic.game.model.Vector2d;
 
+/**
+ * Times time, displays it
+ * 
+ * @author Jonathan, Mantas, Steven, Thomas
+ *
+ */
 public class Timer extends Drawable {
 	@Getter private int minutes = 0;
 	@Getter private int seconds = 0;
@@ -22,9 +28,7 @@ public class Timer extends Drawable {
 
 	@Override
 	public void draw2d() {
-		// TODO Auto-generated method stub
 		DrawUtil.drawString((float) this.position.getX(), (float) this.position.getY(), this.time, this.color, this.size);
-
 	}
 
 	public void tick() {

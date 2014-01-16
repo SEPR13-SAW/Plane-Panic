@@ -4,6 +4,12 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Represents a vector in 2d space
+ * 
+ * @author Jonathan, Mantas, Thomas
+ *
+ */
 @ToString
 public final class Vector2d {
 	private static final double MAXIMUM_CLOSE_ANGLE = Math.PI / 80;

@@ -11,6 +11,13 @@ import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.DrawUtil;
 import com.planepanic.game.gfx.Drawable;
 
+/**
+ * Draws text
+ * Can be editable
+ * 
+ * @author Jonathan, Thomas
+ *
+ */
 public class TextBox extends Drawable {
 
 	@Accessors(chain = true) @Getter private String text;

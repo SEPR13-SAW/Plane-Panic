@@ -5,6 +5,12 @@ import lombok.Getter;
 import com.planepanic.game.Config;
 import com.planepanic.game.model.Plane;
 
+/**
+ * Order a plane to ascend or descend by a specified amount 
+ * 
+ * @author Ben, Mantas, Thomas
+ *
+ */
 public class ChangeAltitude extends Order {
 
 	@Getter double delta, speed, startAltitude, changeRate;

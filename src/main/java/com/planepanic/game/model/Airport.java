@@ -9,8 +9,7 @@ import com.planepanic.game.gfx.Resources;
 /**
  * A class to represent Airport Entry points.
  * 
- * @author Mantas
- * @author Jonathan
+ * @author Jonathan, Mantas, Thomas
  */
 public final class Airport extends Image implements PointOfInterest {
 	private List<Plane> planeList = new ArrayList<Plane>();

@@ -13,7 +13,7 @@ import com.planepanic.game.Config;
 /**
  * Resources/Textures available
  * 
- * @author Thomas Cheyney
+ * @author Mantas, Steven, Thomas
  */
 public enum Resources {
 	PLANE("temp.png"),

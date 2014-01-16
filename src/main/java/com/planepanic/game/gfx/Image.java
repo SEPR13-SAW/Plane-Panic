@@ -10,9 +10,9 @@ import org.newdawn.slick.opengl.Texture;
 import com.planepanic.game.model.Vector2d;
 
 /**
- * A simple drawable
+ * A simple drawable that draws a texture
  * 
- * @author Thomas Cheyney
+ * @author Jonathan, Thomas
  */
 public class Image extends Drawable {
 

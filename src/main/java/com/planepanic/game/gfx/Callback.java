@@ -1,7 +1,14 @@
 package com.planepanic.game.gfx;
 
-public abstract class Callback<T> {
+/**
+ * Can be given to another class to be called on an event
+ * 
+ * @author Thomas
+ *
+ * @param <T> Type returned by the callback, ie a boolean to indicate success.
+ */
+public interface Callback<T> {
 
-	public abstract T call();
+	public T call();
 
 }

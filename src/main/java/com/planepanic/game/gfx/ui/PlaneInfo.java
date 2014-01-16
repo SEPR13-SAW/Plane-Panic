@@ -4,6 +4,12 @@ import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 
+/**
+ * Shows information about the selected plane
+ * 
+ * @author Mantas, Steven, Thomas
+ *
+ */
 public class PlaneInfo {
 
 	private TextBox altitudeDisplay;

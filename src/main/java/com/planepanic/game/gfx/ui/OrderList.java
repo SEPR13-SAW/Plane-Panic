@@ -9,6 +9,12 @@ import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.orders.Order;
 
+/**
+ * Draws a list of the orders that have been given to the selected plane
+ * 
+ * @author Jonathan, Mantas, Steven, Thomas
+ *
+ */
 public class OrderList extends Drawable {
 
 	private int offset = 50;

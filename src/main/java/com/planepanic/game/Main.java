@@ -5,7 +5,7 @@ import com.planepanic.game.gfx.DrawThread;
 /**
  * Example main
  * 
- * @author Thomas Cheyney
+ * @author Jonathan, Mantas, Thomas
  */
 public class Main {
 

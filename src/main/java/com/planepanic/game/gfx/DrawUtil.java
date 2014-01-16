@@ -13,7 +13,7 @@ import com.planepanic.game.model.Vector2d;
 /**
  * Helpers to get things done in OpenGL
  * 
- * @author Thomas Cheyney
+ * @author Jonathan, Mantas, Thomas
  */
 public class DrawUtil {
 

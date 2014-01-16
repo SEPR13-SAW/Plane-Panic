@@ -3,7 +3,7 @@ package com.planepanic.game;
 /**
  * Configuration options
  * 
- * @author Thomas Cheyney
+ * @author Mantas, Thomas
  */
 public class Config {
 

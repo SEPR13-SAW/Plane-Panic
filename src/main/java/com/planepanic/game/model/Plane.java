@@ -22,9 +22,9 @@ import com.planepanic.game.model.orders.FlyOver;
 import com.planepanic.game.model.orders.Order;
 
 /**
- * Plane class.
+ * Plane class
  * 
- * @author Jonathan
+ * @author Ben, Jonathan, Mantas, Thomas
  */
 public final class Plane extends Image {
 

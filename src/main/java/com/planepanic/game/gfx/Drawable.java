@@ -11,7 +11,7 @@ import com.planepanic.game.model.Vector2d;
 /**
  * An abstract class used to represent objects which can be drawn to the screen.
  * 
- * @author Thomas Cheyney, Jonathan
+ * @author Jonathan, Mantas, Thomas
  */
 public abstract class Drawable {
 	private final double MAXIMUM_CLOSE_DISTANCE = 0.001;

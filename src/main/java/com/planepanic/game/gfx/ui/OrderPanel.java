@@ -5,6 +5,12 @@ import com.planepanic.game.gfx.DrawUtil;
 import com.planepanic.game.gfx.Drawable;
 import com.planepanic.game.model.Vector2d;
 
+/**
+ * Maintains the sidebar
+ * 
+ * @author Jonathan, Mantas, Steven, Thomas
+ *
+ */
 public class OrderPanel extends Drawable {
 
 	private Controls controls;
@@ -30,8 +36,6 @@ public class OrderPanel extends Drawable {
 		DrawUtil.drawSquare((float) this.getPosition().getX(), DrawThread.height - 64, (float) this.getHitboxSize().getX(), 128, true, this.getPriority());
 		DrawUtil.setColor(0x000000);
 		DrawUtil.drawSquare((float) this.getPosition().getX(), 150, 384, 1, true, this.getPriority() + 0.01f);
-		// DrawUtil.drawSquare((float) this.getPosition().getX() ,
-		// DrawThread.height - 180, 500, 1, true, this.getPriority() + 0.01f);
 	}
 
 	@Override
@@ -42,8 +46,6 @@ public class OrderPanel extends Drawable {
 
 	public void onMove() {
 		this.orderList.setPosition(this.getPosition().sub(new Vector2d(0, 15))).setHitboxSize(new Vector2d(500, DrawThread.height - 330));
-		// this.planeinfo.onMove();
-		// this.controls.onMove();
 	}
 
 	@Override

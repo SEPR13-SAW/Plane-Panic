@@ -8,7 +8,7 @@ import com.planepanic.game.gfx.DrawUtil;
 /**
  * A class to represent waypoints.
  * 
- * @author Jonathan, Mantas
+ * @author Jonathan, Mantas, Thomas
  */
 public class Waypoint extends SimplePointOfInterest {
 	@Getter private final String name;

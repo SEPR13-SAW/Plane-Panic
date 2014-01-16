@@ -6,7 +6,7 @@ import lombok.Setter;
 /**
  * Player class containing name and score
  * 
- * @author Steven Whitelock
+ * @author Jonathan, Steven, Thomas
  */
 
 public class Player {

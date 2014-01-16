@@ -6,7 +6,7 @@ import lombok.Getter;
  * Plane type class, defines immutable statistics such as maximum fuel/passenger
  * capacity and velocity.
  * 
- * @author Jonathan
+ * @author Ben, Jonathan, Steven, Thomas
  * 
  */
 public enum PlaneType {

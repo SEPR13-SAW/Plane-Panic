@@ -25,7 +25,7 @@ import com.planepanic.game.gfx.screens.Screen;
 /**
  * Thread in charge of the screen
  * 
- * @author Thomas Cheyney
+ * @author Jonathan, Mantas, Thomas
  */
 public class DrawThread extends Thread {
 	/**
