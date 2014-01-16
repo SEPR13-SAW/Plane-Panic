@@ -58,7 +58,7 @@ public final class FlyOver extends Order {
 			a += Math.PI * 2;
 		}
 
-		if (a >= 0) {
+		if (a >= 0.05 || a <= -0.05) {
 			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI / 2));
 		} else {
 			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa - Math.PI / 2));

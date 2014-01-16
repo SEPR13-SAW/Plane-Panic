@@ -40,9 +40,9 @@ public final class FlyBy extends Order {
 	@Override
 	public void tick() {
 		if (!this.partComplete) {
-			this.changeHeading(this.waypoint);
+				this.changeHeading(this.waypoint);
 		} else {
-			this.changeHeading(this.targetWaypoint);
+				this.changeHeading(this.targetWaypoint);
 		}
 
 	}
@@ -57,8 +57,7 @@ public final class FlyBy extends Order {
 		while (a < -Math.PI) {
 			a += Math.PI * 2;
 		}
-
-		if (a >= 0) {
+		if (a >= 0.05 || a <= -0.05) {
 			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI / 2));
 		} else {
 			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa - Math.PI / 2));

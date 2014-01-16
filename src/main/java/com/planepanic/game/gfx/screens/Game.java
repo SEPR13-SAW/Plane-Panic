@@ -133,10 +133,10 @@ public class Game extends Screen {
 	public void generateFlightPlan(Plane plane) {
 		List<Waypoint> waypoints = new ArrayList<Waypoint>();
 		waypoints.addAll(this.getWaypointList());
-		while (this.random.nextInt(100) > 10 && waypoints.size() > 1) {
+		while (this.random.nextInt(100) > 15 && waypoints.size() > 1) {
 			Waypoint i = waypoints.get(this.random.nextInt(waypoints.size())), o = waypoints.get(this.random.nextInt(waypoints.size()));
 			if (i != o) {
-				if (this.random.nextInt(1) == 1) {
+				if (this.random.nextInt(2) == 1) {
 					plane.getOrders().add(new FlyBy(plane, i, o));
 				} else {
 					plane.getOrders().add(new FlyOver(plane, i, o));
@@ -199,7 +199,7 @@ public class Game extends Screen {
 				if (distance <= Game.exclusionZone * Game.exclusionZone) {
 					this.planeList.get(i).getEz().setViolated(true);
 					this.planeList.get(o).getEz().setViolated(true);
-					if (distance <= Game.exclusionZone * Game.exclusionZone * 0.5) {
+					if (distance <= Game.exclusionZone * Game.exclusionZone * 0.1) {
 						DrawThread.getInstance().changeScreen(new com.planepanic.game.gfx.screens.GameOver());
 
 					};
