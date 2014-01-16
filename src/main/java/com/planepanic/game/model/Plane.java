@@ -1,6 +1,8 @@
 package com.planepanic.game.model;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Random;
 
@@ -15,6 +17,8 @@ import com.planepanic.game.gfx.Image;
 import com.planepanic.game.gfx.Resources;
 import com.planepanic.game.gfx.screens.Game;
 import com.planepanic.game.gfx.ui.ExclusionZone;
+import com.planepanic.game.model.orders.FlyBy;
+import com.planepanic.game.model.orders.FlyOver;
 import com.planepanic.game.model.orders.Order;
 
 /**
@@ -43,6 +47,8 @@ public final class Plane extends Image {
 	@Getter private final Game game;
 
 	@Getter private final Queue<Order> orders = new ArrayDeque<Order>(64);
+	
+	private Random random = new Random();
 
 	public Plane(Game game, PlaneType type, int passengers, double fuel, double speed, Vector2d position, Resources sprite, int score, double altitude) {
 		super(sprite, position);
@@ -71,6 +77,26 @@ public final class Plane extends Image {
 
 	}
 
+	public void outOfBounds() {
+		if (this.getPosition().getX() < 0 || this.getPosition().getX() > 660
+				|| this.getPosition().getY() < 0
+				|| this.getPosition().getY() > 720) {
+			List<Waypoint> waypoints = new ArrayList<Waypoint>();
+			waypoints.addAll(game.getWaypointList());
+			Waypoint i = waypoints.get(this.random.nextInt(waypoints.size())), o = waypoints
+					.get(this.random.nextInt(waypoints.size()));
+			if (i != o) {
+				if (this.random.nextInt(1) == 1) {
+					this.getOrders().add(new FlyBy(this, i, o));
+				} else {
+					this.getOrders().add(new FlyOver(this, i, o));
+				}
+
+			}
+		}
+
+	}
+	
 	@Override
 	public boolean onClick() {
 		if (Plane.selected != null) {
