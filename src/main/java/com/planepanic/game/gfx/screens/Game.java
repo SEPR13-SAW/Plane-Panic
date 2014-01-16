@@ -32,11 +32,11 @@ public class Game extends Screen {
 	@Getter private Timer timer;
 	private Radar radar;
 	@Getter @Setter int maxSpawnInterval = 5, minSpawnInterval = 4, spawnInterval = this.maxSpawnInterval;
-	private List<EntryPoint> entryPointList = new ArrayList<>();
-	@Getter private List<Plane> planeList = new ArrayList<>();
-	@Getter private List<ExclusionZone> exclusionZoneList = new ArrayList<>();
-	@Getter private List<Waypoint> waypointList = new ArrayList<>();
-	@Getter private List<ExitPoint> exitPointList = new ArrayList<>();
+	private List<EntryPoint> entryPointList = new ArrayList<EntryPoint>();
+	@Getter private List<Plane> planeList = new ArrayList<Plane>();
+	@Getter private List<ExclusionZone> exclusionZoneList = new ArrayList<ExclusionZone>();
+	@Getter private List<Waypoint> waypointList = new ArrayList<Waypoint>();
+	@Getter private List<ExitPoint> exitPointList = new ArrayList<ExitPoint>();
 	@Getter @Setter ExclusionZone ez;
 	/**
 	 * Exclusion in meters divided by how much meters one pixel represents.
@@ -130,7 +130,7 @@ public class Game extends Screen {
 	};
 
 	public void generateFlightPlan(Plane plane) {
-		List<Waypoint> waypoints = new ArrayList<>();
+		List<Waypoint> waypoints = new ArrayList<Waypoint>();
 		waypoints.addAll(this.getWaypointList());
 		while (this.random.nextInt(100) > 5 && waypoints.size() > 1) {
 			Waypoint i = waypoints.get(this.random.nextInt(waypoints.size())), o = waypoints.get(this.random.nextInt(waypoints.size()));

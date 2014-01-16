@@ -40,7 +40,7 @@ public final class Plane extends Image {
 	@Getter @Setter private int gracePeriod = 30;
 	@Getter private ExclusionZone ez;
 
-	@Getter private final Queue<Order> orders = new ArrayDeque<>(64);
+	@Getter private final Queue<Order> orders = new ArrayDeque<Order>(64);
 
 	public Plane(PlaneType type, int passengers, double fuel, double speed, Vector2d position, Resources sprite, int score, double altitude) {
 		super(sprite, position);
