@@ -82,7 +82,7 @@ public class Game extends Screen {
 		this.waypointList.add(new Waypoint(new Vector2d(300, 50), "H"));
 		draw.draw(this.waypointList.get(7));
 		System.out.println(this.waypointList.size());
-		Plane plane = entry2.addPlane();
+		Plane plane = entry2.addPlane(this);
 		this.planeList.add(plane);
 		plane.getOrders().add(new AbsoluteHeading(plane, 0));
 		plane.getOrders().add(new AbsoluteHeading(plane, -Math.PI / 2));
@@ -91,7 +91,7 @@ public class Game extends Screen {
 		plane.getOrders().add(new FlyOver(plane, this.waypointList.get(0), this.waypointList.get(2)));
 		draw.draw(plane);
 		draw.draw(plane.getEz());
-		plane = entry.addPlane();
+		plane = entry.addPlane(this);
 		this.planeList.add(plane);
 		draw.draw(plane);
 		draw.draw(plane.getEz());
@@ -119,7 +119,7 @@ public class Game extends Screen {
 	public void spawnPlane() {
 		if (this.getTimer().getSeconds() % this.getSpawnInterval() == 0 && this.getTimer().getTicks() == 0) {
 			int index = this.random.nextInt(this.entryPointList.size());
-			Plane plane = this.entryPointList.get(index).addPlane();
+			Plane plane = this.entryPointList.get(index).addPlane(this);
 			DrawThread draw = DrawThread.getInstance();
 			draw.draw(plane);
 			draw.draw(plane.getEz());
