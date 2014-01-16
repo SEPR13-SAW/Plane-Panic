@@ -31,7 +31,7 @@ public class Game extends Screen {
 	@Getter private OrderPanel orderpanel;
 	@Getter private Timer timer;
 	private Radar radar;
-	@Getter @Setter int maxSpawnInterval = 5, minSpawnInterval = 4, spawnInterval = this.maxSpawnInterval;
+	@Getter @Setter int maxSpawnInterval = 10, minSpawnInterval = 6, spawnInterval = this.maxSpawnInterval;
 	private List<EntryPoint> entryPointList = new ArrayList<EntryPoint>();
 	@Getter private List<Plane> planeList = new ArrayList<Plane>();
 	@Getter private List<ExclusionZone> exclusionZoneList = new ArrayList<ExclusionZone>();
@@ -67,22 +67,23 @@ public class Game extends Screen {
 		// }
 		this.waypointList.add(new Waypoint(new Vector2d(50, 50), "A"));
 		draw.draw(this.waypointList.get(0));
-		this.waypointList.add(new Waypoint(new Vector2d(600, 50), "B"));
+
+		this.waypointList.add(new Waypoint(new Vector2d(300, 50), "B"));
 		draw.draw(this.waypointList.get(1));
-		this.waypointList.add(new Waypoint(new Vector2d(50, 600), "C"));
+		this.waypointList.add(new Waypoint(new Vector2d(600, 50), "C"));
 		draw.draw(this.waypointList.get(2));
 		this.waypointList.add(new Waypoint(new Vector2d(600, 300), "D"));
 		draw.draw(this.waypointList.get(3));
-		this.waypointList.add(new Waypoint(new Vector2d(600, 600), "F"));
+		this.waypointList.add(new Waypoint(new Vector2d(600, 600), "E"));
 		draw.draw(this.waypointList.get(4));
-		this.waypointList.add(new Waypoint(new Vector2d(300, 600), "E"));
+		this.waypointList.add(new Waypoint(new Vector2d(300, 600), "F"));
 		draw.draw(this.waypointList.get(5));
-		this.waypointList.add(new Waypoint(new Vector2d(50, 300), "G"));
+		this.waypointList.add(new Waypoint(new Vector2d(50, 600), "G"));
 		draw.draw(this.waypointList.get(6));
-		this.waypointList.add(new Waypoint(new Vector2d(300, 50), "H"));
+		this.waypointList.add(new Waypoint(new Vector2d(50, 300), "H"));
 		draw.draw(this.waypointList.get(7));
 		System.out.println(this.waypointList.size());
-		Plane plane = entry2.addPlane();
+		Plane plane = entry2.addPlane(this);
 		this.planeList.add(plane);
 		plane.getOrders().add(new AbsoluteHeading(plane, 0));
 		plane.getOrders().add(new AbsoluteHeading(plane, -Math.PI / 2));
@@ -91,7 +92,7 @@ public class Game extends Screen {
 		plane.getOrders().add(new FlyOver(plane, this.waypointList.get(0), this.waypointList.get(2)));
 		draw.draw(plane);
 		draw.draw(plane.getEz());
-		plane = entry.addPlane();
+		plane = entry.addPlane(this);
 		this.planeList.add(plane);
 		draw.draw(plane);
 		draw.draw(plane.getEz());
@@ -102,10 +103,10 @@ public class Game extends Screen {
 		this.timer = new Timer(new Vector2d(325, 0));
 		draw.draw(this.timer);
 		this.orderpanel = new OrderPanel(new Vector2d(1000, 360));
-		ExitPoint exit = new ExitPoint(new Vector2d(750, 300), "e0");
+		ExitPoint exit = new ExitPoint(new Vector2d(700, 300), "e0", this);
 		draw.draw(exit);
 		this.exitPointList.add(exit);
-		exit = new ExitPoint(new Vector2d(350, 700), "e1");
+		exit = new ExitPoint(new Vector2d(350, 700), "e1", this);
 		draw.draw(exit);
 		this.exitPointList.add(exit);
 		this.orderpanel = new OrderPanel(new Vector2d(1100, 360));
@@ -119,7 +120,7 @@ public class Game extends Screen {
 	public void spawnPlane() {
 		if (this.getTimer().getSeconds() % this.getSpawnInterval() == 0 && this.getTimer().getTicks() == 0) {
 			int index = this.random.nextInt(this.entryPointList.size());
-			Plane plane = this.entryPointList.get(index).addPlane();
+			Plane plane = this.entryPointList.get(index).addPlane(this);
 			DrawThread draw = DrawThread.getInstance();
 			draw.draw(plane);
 			draw.draw(plane.getEz());
@@ -132,7 +133,7 @@ public class Game extends Screen {
 	public void generateFlightPlan(Plane plane) {
 		List<Waypoint> waypoints = new ArrayList<Waypoint>();
 		waypoints.addAll(this.getWaypointList());
-		while (this.random.nextInt(100) > 5 && waypoints.size() > 1) {
+		while (this.random.nextInt(100) > 10 && waypoints.size() > 1) {
 			Waypoint i = waypoints.get(this.random.nextInt(waypoints.size())), o = waypoints.get(this.random.nextInt(waypoints.size()));
 			if (i != o) {
 				if (this.random.nextInt(1) == 1) {
