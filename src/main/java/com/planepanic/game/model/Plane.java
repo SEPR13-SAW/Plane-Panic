@@ -1,6 +1,8 @@
 package com.planepanic.game.model;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Random;
 
@@ -13,6 +15,7 @@ import com.planepanic.game.Config;
 import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.Image;
 import com.planepanic.game.gfx.Resources;
+import com.planepanic.game.gfx.screens.Game;
 import com.planepanic.game.gfx.ui.ExclusionZone;
 import com.planepanic.game.model.orders.Order;
 
@@ -68,6 +71,16 @@ public final class Plane extends Image {
 
 	}
 
+	public void outOfBounds(){
+		if (this.getPosition().getX() < 0 || this.getPosition().getX() > 1280 || this.getPosition().getY() < 0 || this.getPosition().getY() > 720){
+			List<Waypoint> waypoints = new ArrayList<Waypoint>();
+			//waypoints.addAll(Game.getWaypointList());
+			
+			
+		}
+		
+	}
+	
 	@Override
 	public boolean onClick() {
 		if (Plane.selected != null) {
