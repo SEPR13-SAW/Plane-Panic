@@ -28,19 +28,37 @@ import com.planepanic.game.gfx.screens.Screen;
  * @author Thomas Cheyney
  */
 public class DrawThread extends Thread {
-
+	/**
+	 * The current draw thread instance.
+	 */
 	public static DrawThread draw;
 
+	/**
+	 * Get a draw thread instance.
+	 * @return
+	 */
 	public static DrawThread getInstance() {
 		if (DrawThread.draw == null) {
 			DrawThread.draw = new DrawThread();
 			DrawThread.draw.start();
 		}
+
 		return DrawThread.draw;
 	}
 
+	/**
+	 * Specifies if the draw thread is running at the current time.
+	 */
 	@Getter private boolean running = true;
+
+	/**
+	 * List of drawable objects to draw.
+	 */
 	private List<Drawable> drawObjects = new ArrayList<Drawable>();
+
+	/**
+	 * Temporary queues for rendering drawables.
+	 */
 	private Queue<Drawable> temp = new PriorityQueue<Drawable>(11, new Comparator<Drawable>() {
 		@Override
 		public int compare(Drawable arg0, Drawable arg1) {
@@ -53,19 +71,29 @@ public class DrawThread extends Thread {
 			return arg1.getPriority() > arg0.getPriority() ? 1 : arg1.getPriority() < arg0.getPriority() ? -1 : 0;
 		}
 	});
-	private boolean mouseWasUp = true;
 
-	/*
-	 * For right click handling
+	/**
+	 * Left and right click handling.
 	 */
+	private boolean mouseLeftWasUp = true;
 	private boolean mouseRightWasUp = true;
+
 	@Getter private Screen currentScreen;
 
+	/**
+	 * Current width and height.
+	 */
 	public static int width = 1280;
 	public static int height = 720;
 
+	/**
+	 * The current drawable in focus (last to be clicked on).
+	 */
 	@Getter @Setter private static Drawable focus = null;
 
+	/**
+	 * Key press handling.
+	 */
 	private final boolean[] wasKeyDown = new boolean[256];
 	private final int[] keys = new int[] {
 			Keyboard.KEY_0, Keyboard.KEY_1, Keyboard.KEY_2, Keyboard.KEY_3, Keyboard.KEY_4,
@@ -82,6 +110,9 @@ public class DrawThread extends Thread {
 			Keyboard.KEY_LEFT, Keyboard.KEY_RIGHT,
 	};
 
+	/**
+	 * Initializes the draw thread.
+	 */
 	private void init() {
 		try {
 			if (Config.FULLSCREEN) {
@@ -93,6 +124,7 @@ public class DrawThread extends Thread {
 				DrawThread.height = Config.WINDOW_HEIGHT;
 				Display.setDisplayMode(new DisplayMode(DrawThread.width, DrawThread.height));
 			}
+
 			Display.setResizable(true);
 			Display.setTitle(Config.TITLE);
 			Display.setFullscreen(Config.FULLSCREEN);
@@ -115,6 +147,9 @@ public class DrawThread extends Thread {
 		}
 	}
 
+	/**
+	 * Checks if the display has requested to be closed.
+	 */
 	private void checkClose() {
 		if (Display.isCloseRequested()) {
 			this.running = false;
@@ -122,10 +157,14 @@ public class DrawThread extends Thread {
 		}
 	}
 
+	/**
+	 * Runs the draw thread.
+	 */
 	@Override
 	public void run() {
 		this.init();
 		while (this.running) {
+			// Check for resizing.
 			if (Display.wasResized()) {
 				DrawThread.width = Display.getWidth();
 				DrawThread.height = Display.getHeight();
@@ -144,7 +183,8 @@ public class DrawThread extends Thread {
 			// Clear the canvas
 			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 
-			if (Mouse.isButtonDown(0) && this.mouseWasUp) {
+			// Handle left click.
+			if (Mouse.isButtonDown(0) && this.mouseLeftWasUp) {
 				this.tempReverse.addAll(this.drawObjects);
 				Drawable obj;
 				while ((obj = this.tempReverse.poll()) != null) {
@@ -155,8 +195,9 @@ public class DrawThread extends Thread {
 				}
 				this.tempReverse.clear();
 			}
-			this.mouseWasUp = !Mouse.isButtonDown(0);
+			this.mouseLeftWasUp = !Mouse.isButtonDown(0);
 
+			// Handle right click.
 			if (Mouse.isButtonDown(1) && this.mouseRightWasUp) {
 				this.tempReverse.addAll(this.drawObjects);
 				Drawable obj;
@@ -169,6 +210,7 @@ public class DrawThread extends Thread {
 			}
 			this.mouseRightWasUp = !Mouse.isButtonDown(1);
 
+			// Handle scrolling.
 			int scroll = Mouse.getDWheel();
 			if (scroll != 0) {
 				this.tempReverse.addAll(this.drawObjects);
@@ -181,6 +223,7 @@ public class DrawThread extends Thread {
 				this.tempReverse.clear();
 			}
 
+			// Handle key presses
 			for (int key : this.keys) {
 				if (Keyboard.isKeyDown(key) && !this.wasKeyDown[key]) {
 					this.wasKeyDown[key] = true;

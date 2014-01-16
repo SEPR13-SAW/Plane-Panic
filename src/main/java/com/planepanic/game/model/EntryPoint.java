@@ -2,6 +2,8 @@ package com.planepanic.game.model;
 
 import java.util.Random;
 
+import com.planepanic.game.gfx.screens.Game;
+
 /**
  * A class to represent Entry points.
  * 
@@ -13,8 +15,8 @@ public final class EntryPoint extends SimplePointOfInterest {
 		super(position);
 	}
 
-	public Plane addPlane() {
-		return Plane.randomPlane(new Random(), this.getPosition().clone());
+	public Plane addPlane(Game game) {
+		return Plane.randomPlane(game, new Random(), this.getPosition().clone());
 	}
 
 	@Override

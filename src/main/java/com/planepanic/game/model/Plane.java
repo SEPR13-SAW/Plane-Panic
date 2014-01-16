@@ -13,6 +13,7 @@ import com.planepanic.game.Config;
 import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.Image;
 import com.planepanic.game.gfx.Resources;
+import com.planepanic.game.gfx.screens.Game;
 import com.planepanic.game.gfx.ui.ExclusionZone;
 import com.planepanic.game.model.orders.Order;
 
@@ -39,10 +40,11 @@ public final class Plane extends Image {
 	@Getter @Setter private int scoreTickDelay = Config.FRAMERATE;
 	@Getter @Setter private int gracePeriod = 30;
 	@Getter private ExclusionZone ez;
+	@Getter private final Game game;
 
 	@Getter private final Queue<Order> orders = new ArrayDeque<Order>(64);
 
-	public Plane(PlaneType type, int passengers, double fuel, double speed, Vector2d position, Resources sprite, int score, double altitude) {
+	public Plane(Game game, PlaneType type, int passengers, double fuel, double speed, Vector2d position, Resources sprite, int score, double altitude) {
 		super(sprite, position);
 		this.setPriority(-0.1f);
 		this.type = type;
@@ -53,6 +55,7 @@ public final class Plane extends Image {
 		this.score = score;
 		this.ez = new ExclusionZone(position);
 		this.altitude = altitude;
+		this.game = game;
 	}
 
 	@Override
@@ -108,7 +111,7 @@ public final class Plane extends Image {
 		this.orders.add(order);
 	}
 
-	public static Plane randomPlane(Random rng, Vector2d position) {
+	public static Plane randomPlane(Game game, Random rng, Vector2d position) {
 		int index = rng.nextInt(PlaneType.values().length);
 		PlaneType type = PlaneType.values()[index];
 
@@ -119,7 +122,7 @@ public final class Plane extends Image {
 
 		int score = type.getScore();
 
-		return new Plane(type, passengers, fuel, speed, position, Resources.PLANE, score, altitude);
+		return new Plane(game, type, passengers, fuel, speed, position, Resources.PLANE, score, altitude);
 	}
 
 	/**
