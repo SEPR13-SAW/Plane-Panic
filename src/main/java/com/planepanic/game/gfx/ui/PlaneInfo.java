@@ -28,8 +28,8 @@ public class PlaneInfo {
 			this.altitudeDisplay.setText(altitude);
 			String speed = String.valueOf((int) plane.getSpeed());
 			this.speedDisplay.setText(speed);
-			String fuel = String.valueOf((float) (plane.getFuel()/181965*100));
-			fuel = fuel.substring(0,2);
+			String fuel = String.valueOf((float) (plane.getFuel() / 181965 * 100));
+			fuel = fuel.substring(0, 2);
 			this.fuelDisplay.setText(fuel + "%");
 		}
 	}

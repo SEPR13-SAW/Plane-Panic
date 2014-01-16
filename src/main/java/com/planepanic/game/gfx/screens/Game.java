@@ -170,11 +170,11 @@ public class Game extends Screen {
 	 */
 
 	public void giveOrder() {
-		if (ExitPoint.getExitPoint() != null){
+		if (ExitPoint.getExitPoint() != null) {
 			Plane.getSelected().getOrders().add(new LeaveAirspace(Plane.getSelected(), ExitPoint.getExitPoint()));
 			ExitPoint.setExitPoint(null);
 		}
-		
+
 		if (Waypoint.getVia() != null) {
 			if (Waypoint.getTarget() != null) {
 				if (Plane.getSelected() != null) {
@@ -213,7 +213,7 @@ public class Game extends Screen {
 
 	@Override
 	public void resize() {
-		this.orderpanel.setPosition(new Vector2d(DrawThread.width - 192 , 360));
+		this.orderpanel.setPosition(new Vector2d(DrawThread.width - 192, 360));
 		this.orderpanel.onMove();
 	}
 
