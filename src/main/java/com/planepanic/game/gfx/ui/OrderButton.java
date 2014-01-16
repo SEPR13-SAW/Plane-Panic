@@ -12,10 +12,10 @@ public class OrderButton extends Image {
 
 	@Accessors(chain = true) @Setter private Callback<Boolean> callback;
 
-	public OrderButton(int xPosition, int yPosition, Resources buttonType) {
+	public OrderButton(int xPosition, int yPosition, Resources buttonType, Vector2d hitsize) {
 		super(buttonType, new Vector2d(xPosition, yPosition));
 		this.setPriority(0.5f);
-		this.setHitboxSize(new Vector2d(128, 64));
+		this.setHitboxSize(hitsize);
 		this.setPosition(new Vector2d(xPosition - 64, yPosition - 32));
 	}
 

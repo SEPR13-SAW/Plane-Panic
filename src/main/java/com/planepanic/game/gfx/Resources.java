@@ -25,7 +25,9 @@ public enum Resources {
 	LAND("Land.png"),
 	TAKEOFF("Takeoff.png"),
 	SPEED("Speed.png"),
-	GRASS("Grass.png");
+	GRASS("Grass.png"),
+	BACK("Back.png"),
+	SET("Set.png");
 
 	@Getter private Texture texture;
 	private String file;
