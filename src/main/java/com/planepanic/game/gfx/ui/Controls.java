@@ -8,9 +8,7 @@ import com.planepanic.game.gfx.CallbackP;
 import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.Drawable;
 import com.planepanic.game.gfx.Resources;
-import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
-import com.planepanic.game.model.orders.AbsoluteHeading;
 
 public class Controls {
 
