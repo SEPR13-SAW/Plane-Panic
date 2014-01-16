@@ -47,7 +47,7 @@ public final class Plane extends Image {
 	@Getter private final Game game;
 
 	@Getter private final Queue<Order> orders = new ArrayDeque<Order>(64);
-	
+
 	private Random random = new Random();
 
 	public Plane(Game game, PlaneType type, int passengers, double fuel, double speed, Vector2d position, Resources sprite, int score, double altitude) {
@@ -78,15 +78,15 @@ public final class Plane extends Image {
 	}
 
 	public void checkOutOfBounds() {
-		if (	  (this.getPosition().getX() < 0
+		if ((this.getPosition().getX() < 0
 				|| this.getPosition().getX() > 660
 				|| this.getPosition().getY() < 0
 				|| this.getPosition().getY() > 720)
-				&& orders.size() == 0) {
+				&& this.orders.size() == 0) {
 			List<Waypoint> temp = new ArrayList<Waypoint>();
-			temp.addAll(game.getWaypointList());
+			temp.addAll(this.game.getWaypointList());
 
-			Waypoint waypointA = game.getWaypointList().get(this.random.nextInt(game.getWaypointList().size()));
+			Waypoint waypointA = this.game.getWaypointList().get(this.random.nextInt(this.game.getWaypointList().size()));
 
 			temp.remove(waypointA);
 
@@ -103,16 +103,16 @@ public final class Plane extends Image {
 		}
 
 	}
-	
+
 	@Override
 	public boolean onClick() {
 		if (Plane.selected != null) {
 			Plane.selected.getEz().setSelected(false);
 		}
-		if(Plane.selected != this){
+		if (Plane.selected != this) {
 			Waypoint.setVia(null);
 		}
-			
+
 		Plane.selected = this;
 		Plane.selected.getEz().setSelected(true);
 

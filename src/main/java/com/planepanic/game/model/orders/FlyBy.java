@@ -41,15 +41,17 @@ public final class FlyBy extends Order {
 	@Override
 	public void tick() {
 		if (!this.partComplete) {
-			if(!this.changeComplete)
+			if (!this.changeComplete) {
 				this.changeHeading(this.waypoint);
-			else
+			} else {
 				this.changeComplete = false;
+			}
 		} else {
-			if(!this.changeComplete)
+			if (!this.changeComplete) {
 				this.changeHeading(this.targetWaypoint);
-			else
+			} else {
 				this.changeComplete = false;
+			}
 		}
 	}
 
@@ -63,14 +65,15 @@ public final class FlyBy extends Order {
 		while (a < -Math.PI) {
 			a += Math.PI * 2;
 		}
-		if ((a >= 0.05 || a <= -0.05)){
-			if(a >= 0){
+		if (a >= 0.05 || a <= -0.05) {
+			if (a >= 0) {
 				this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI / 2));
 			} else {
 				this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa - Math.PI / 2));
 			};
-		} else
+		} else {
 			this.changeComplete = true;
+		}
 	}
 
 	@Override
