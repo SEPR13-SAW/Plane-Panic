@@ -31,7 +31,7 @@ public class Game extends Screen {
 	@Getter private OrderPanel orderpanel;
 	@Getter private Timer timer;
 	private Radar radar;
-	@Getter @Setter int maxSpawnInterval = 5, minSpawnInterval = 4, spawnInterval = this.maxSpawnInterval;
+	@Getter @Setter int maxSpawnInterval = 10, minSpawnInterval = 6, spawnInterval = this.maxSpawnInterval;
 	private List<EntryPoint> entryPointList = new ArrayList<>();
 	@Getter private List<Plane> planeList = new ArrayList<>();
 	@Getter private List<ExclusionZone> exclusionZoneList = new ArrayList<>();
@@ -102,10 +102,10 @@ public class Game extends Screen {
 		this.timer = new Timer(new Vector2d(325, 0));
 		draw.draw(this.timer);
 		this.orderpanel = new OrderPanel(new Vector2d(1000, 360));
-		ExitPoint exit = new ExitPoint(new Vector2d(750, 300), "e0");
+		ExitPoint exit = new ExitPoint(new Vector2d(750, 300), "e0", this);
 		draw.draw(exit);
 		this.exitPointList.add(exit);
-		exit = new ExitPoint(new Vector2d(350, 700), "e1");
+		exit = new ExitPoint(new Vector2d(350, 700), "e1", this);
 		draw.draw(exit);
 		this.exitPointList.add(exit);
 		this.orderpanel = new OrderPanel(new Vector2d(1100, 360));
@@ -132,7 +132,7 @@ public class Game extends Screen {
 	public void generateFlightPlan(Plane plane) {
 		List<Waypoint> waypoints = new ArrayList<>();
 		waypoints.addAll(this.getWaypointList());
-		while (this.random.nextInt(100) > 5 && waypoints.size() > 1) {
+		while (this.random.nextInt(100) > 10 && waypoints.size() > 1) {
 			Waypoint i = waypoints.get(this.random.nextInt(waypoints.size())), o = waypoints.get(this.random.nextInt(waypoints.size()));
 			if (i != o) {
 				if (this.random.nextInt(1) == 1) {
