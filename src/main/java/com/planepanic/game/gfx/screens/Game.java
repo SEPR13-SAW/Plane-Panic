@@ -101,13 +101,13 @@ public class Game extends Screen {
 		draw.draw(airport);
 		this.timer = new Timer(new Vector2d(325, 0));
 		draw.draw(this.timer);
-		ExitPoint exit = new ExitPoint(new Vector2d(700, 300), "e0", this);
+		ExitPoint exit = new ExitPoint(new Vector2d(896, 300), "e0", this);
 		draw.draw(exit);
 		this.exitPointList.add(exit);
 		exit = new ExitPoint(new Vector2d(350, 700), "e1", this);
 		draw.draw(exit);
 		this.exitPointList.add(exit);
-		this.orderpanel = new OrderPanel(new Vector2d(1000, 360));
+		this.orderpanel = new OrderPanel(new Vector2d(896, 360));
 		draw.draw(this.orderpanel);
 	}
 
