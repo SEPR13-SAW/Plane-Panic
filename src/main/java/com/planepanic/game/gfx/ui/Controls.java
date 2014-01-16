@@ -101,7 +101,7 @@ public class Controls {
 				Controls.this.setOrderState(0);
 				return true;
 			}
-		}).setHitboxSize(new Vector2d(50, 50)).setPosition(new Vector2d(1050, 650)).setPriority(0.5f));
+		}).setHitboxSize(new Vector2d(50, 50)).setPosition(new Vector2d(1090, 650)).setPriority(0.5f));
 
 		this.controls.add(this.right = (Button) new Button("->").setCallback(new Callback<Boolean>() {
 			@Override
@@ -110,7 +110,7 @@ public class Controls {
 				Controls.this.setOrderState(0);
 				return true;
 			}
-		}).setHitboxSize(new Vector2d(50, 50)).setPosition(new Vector2d(1125, 650)).setPriority(0.5f));
+		}).setHitboxSize(new Vector2d(50, 50)).setPosition(new Vector2d(1150, 650)).setPriority(0.5f));
 
 		this.controls.add(this.set = new OrderButton(1280, 720, Resources.SET, new Vector2d(64, 40)).setCallback(new Callback<Boolean>() {
 			@Override
