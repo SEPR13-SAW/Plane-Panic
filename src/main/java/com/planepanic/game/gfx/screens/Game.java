@@ -82,7 +82,6 @@ public class Game extends Screen {
 		draw.draw(this.waypointList.get(6));
 		this.waypointList.add(new Waypoint(new Vector2d(50, 300), "H"));
 		draw.draw(this.waypointList.get(7));
-		System.out.println(this.waypointList.size());
 		Plane plane = entry2.addPlane(this);
 		this.planeList.add(plane);
 		plane.getOrders().add(new AbsoluteHeading(plane, 0));
