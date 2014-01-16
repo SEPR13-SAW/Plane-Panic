@@ -118,7 +118,7 @@ public class Game extends Screen {
 	 * spawnInterval < maxSpawnInterval Spawns the first plane immediately
 	 */
 	public void spawnPlane() {
-		if (this.getTimer().getSeconds() % this.getSpawnInterval() == 0 && this.getTimer().getTicks() == 0) {
+		if (this.getTimer().getSeconds() % this.getSpawnInterval() == 0 && this.getTimer().getTicks() == 0 && planeList.size() < 10) {
 			int index = this.random.nextInt(this.entryPointList.size());
 			Plane plane = this.entryPointList.get(index).addPlane(this);
 			DrawThread draw = DrawThread.getInstance();
