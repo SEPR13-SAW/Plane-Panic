@@ -22,7 +22,7 @@ public final class ExitPoint extends Waypoint {
 
 	public void removePlane(Plane plane) {
 		// TODO make it do something
-		game.getPlaneList().remove(plane);
+		this.game.getPlaneList().remove(plane);
 		DrawThread.draw.removeObject(plane);
 	}
 

@@ -36,7 +36,6 @@ public class TextBox extends Drawable {
 		this.dirtySize = true;
 	}
 
-	@SuppressWarnings("incomplete-switch")
 	@Override
 	public void draw2d() {
 		if (this.dirtySize) {
@@ -49,6 +48,8 @@ public class TextBox extends Drawable {
 				x -= this.getHitboxSize().getX() / 2;
 			case MIDDLE:
 				x -= this.getHitboxSize().getX() / 2;
+			default:
+				break;
 		}
 
 		if (this.editable && DrawThread.getFocus() == this) {
@@ -60,7 +61,6 @@ public class TextBox extends Drawable {
 		DrawUtil.drawString((float) x, (float) (this.getPosition().getY() - this.getHitboxSize().getY() / 2), this.text, this.color, 32, this.getPriority());
 	}
 
-	@SuppressWarnings("incomplete-switch")
 	@Override
 	public boolean isMouseOver() {
 		int x = Mouse.getX();
@@ -83,7 +83,6 @@ public class TextBox extends Drawable {
 
 	}
 
-	@SuppressWarnings("incomplete-switch")
 	@Override
 	public boolean onClick() {
 		if (!this.editable) {
@@ -102,6 +101,8 @@ public class TextBox extends Drawable {
 					x += this.getHitboxSize().getX() / 2;
 				case MIDDLE:
 					x += this.getHitboxSize().getX() / 2;
+				default:
+					break;
 			}
 
 			int width = (int) DrawUtil.getSize(this.text.substring(0, i)).getX();

@@ -82,11 +82,11 @@ public final class Plane extends Image {
 				|| this.getPosition().getX() > 660
 				|| this.getPosition().getY() < 0
 				|| this.getPosition().getY() > 720)
-				&& orders.size() == 0) {
+				&& this.orders.size() == 0) {
 			List<Waypoint> temp = new ArrayList<Waypoint>();
-			temp.addAll(game.getWaypointList());
+			temp.addAll(this.game.getWaypointList());
 
-			Waypoint waypointA = game.getWaypointList().get(this.random.nextInt(game.getWaypointList().size()));
+			Waypoint waypointA = this.game.getWaypointList().get(this.random.nextInt(this.game.getWaypointList().size()));
 
 			temp.remove(waypointA);
 
