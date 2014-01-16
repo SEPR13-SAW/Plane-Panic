@@ -11,6 +11,7 @@ public final class FlyBy extends Order {
 	@Getter private final Waypoint waypoint;
 	@Getter private final Waypoint targetWaypoint;
 	private boolean partComplete = false;
+	private boolean changeComplete = false;
 
 	public FlyBy(Plane plane, Waypoint waypoint, Waypoint waypoint2) {
 		super(plane);
@@ -40,11 +41,16 @@ public final class FlyBy extends Order {
 	@Override
 	public void tick() {
 		if (!this.partComplete) {
+			if(!this.changeComplete)
 				this.changeHeading(this.waypoint);
+			else
+				this.changeComplete = false;
 		} else {
+			if(!this.changeComplete)
 				this.changeHeading(this.targetWaypoint);
+			else
+				this.changeComplete = false;
 		}
-
 	}
 
 	public void changeHeading(Waypoint waypoint) {
@@ -57,11 +63,14 @@ public final class FlyBy extends Order {
 		while (a < -Math.PI) {
 			a += Math.PI * 2;
 		}
-		if (a >= 0.05 || a <= -0.05) {
-			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI / 2));
-		} else {
-			this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa - Math.PI / 2));
-		}
+		if ((a >= 0.05 || a <= -0.05)){
+			if(a >= 0){
+				this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa + Math.PI / 2));
+			} else {
+				this.getPlane().getVelocity().applyChange(Vector2d.fromAngle(pa - Math.PI / 2));
+			};
+		} else
+			this.changeComplete = true;
 	}
 
 	@Override
