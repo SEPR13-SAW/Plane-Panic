@@ -67,19 +67,20 @@ public class Game extends Screen {
 		// }
 		this.waypointList.add(new Waypoint(new Vector2d(50, 50), "A"));
 		draw.draw(this.waypointList.get(0));
-		this.waypointList.add(new Waypoint(new Vector2d(600, 50), "B"));
+
+		this.waypointList.add(new Waypoint(new Vector2d(300, 50), "B"));
 		draw.draw(this.waypointList.get(1));
-		this.waypointList.add(new Waypoint(new Vector2d(50, 600), "C"));
+		this.waypointList.add(new Waypoint(new Vector2d(600, 50), "C"));
 		draw.draw(this.waypointList.get(2));
 		this.waypointList.add(new Waypoint(new Vector2d(600, 300), "D"));
 		draw.draw(this.waypointList.get(3));
-		this.waypointList.add(new Waypoint(new Vector2d(600, 600), "F"));
+		this.waypointList.add(new Waypoint(new Vector2d(600, 600), "E"));
 		draw.draw(this.waypointList.get(4));
-		this.waypointList.add(new Waypoint(new Vector2d(300, 600), "E"));
+		this.waypointList.add(new Waypoint(new Vector2d(300, 600), "F"));
 		draw.draw(this.waypointList.get(5));
-		this.waypointList.add(new Waypoint(new Vector2d(50, 300), "G"));
+		this.waypointList.add(new Waypoint(new Vector2d(50, 600), "G"));
 		draw.draw(this.waypointList.get(6));
-		this.waypointList.add(new Waypoint(new Vector2d(300, 50), "H"));
+		this.waypointList.add(new Waypoint(new Vector2d(50, 300), "H"));
 		draw.draw(this.waypointList.get(7));
 		System.out.println(this.waypointList.size());
 		Plane plane = entry2.addPlane();
@@ -102,7 +103,7 @@ public class Game extends Screen {
 		this.timer = new Timer(new Vector2d(325, 0));
 		draw.draw(this.timer);
 		this.orderpanel = new OrderPanel(new Vector2d(1000, 360));
-		ExitPoint exit = new ExitPoint(new Vector2d(750, 300), "e0", this);
+		ExitPoint exit = new ExitPoint(new Vector2d(700, 300), "e0", this);
 		draw.draw(exit);
 		this.exitPointList.add(exit);
 		exit = new ExitPoint(new Vector2d(350, 700), "e1", this);
