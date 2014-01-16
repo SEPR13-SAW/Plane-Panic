@@ -2,6 +2,7 @@ package com.planepanic.game.gfx.ui;
 
 import java.util.Iterator;
 
+import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.DrawUtil;
 import com.planepanic.game.gfx.Drawable;
 import com.planepanic.game.model.Plane;
@@ -14,7 +15,7 @@ public class OrderList extends Drawable {
 
 	@Override
 	public void draw2d() {
-		this.setPosition(new Vector2d(896, 345));
+		this.setHitboxSize(new Vector2d(DrawThread.width - 896, DrawThread.height - 330));
 		Plane plane;
 		int y = (int) (this.getPosition().getY() - this.getHitboxSize().getY() / 2) + this.offset;
 		if ((plane = Plane.getSelected()) != null) {
@@ -31,10 +32,10 @@ public class OrderList extends Drawable {
 
 	private void drawOrder(int y, Order order) {
 		DrawUtil.setColor(0xFFFF99);
-		DrawUtil.drawSquare((float) (this.getPosition().getX() + this.getHitboxSize().getX() / 2), y, (float) this.getHitboxSize().getX(), 99, true, this.getPriority());
+		DrawUtil.drawSquare((float) (this.getPosition().getX()), y, (float) this.getHitboxSize().getX(), 99, true, this.getPriority());
 		DrawUtil.setColor(0x000000);
-		DrawUtil.drawSquare((float) (this.getPosition().getX() + this.getHitboxSize().getX() / 2), y + 50, (float) this.getHitboxSize().getX() , 1, true, this.getPriority());
-		DrawUtil.drawString((float) (this.getPosition().getX()) + 10, y - 40, order.getHumanReadable(), 0x000000, 24, this.getPriority() + 0.01f);
+		DrawUtil.drawSquare((float) (this.getPosition().getX()), y + 50, (float) this.getHitboxSize().getX() , 1, true, this.getPriority());
+		DrawUtil.drawString((float) (this.getPosition().getX() - this.getHitboxSize().getX() / 2) + 10, y - 40, order.getHumanReadable(), 0x000000, 24, this.getPriority() + 0.01f);
 	}
 
 	@Override

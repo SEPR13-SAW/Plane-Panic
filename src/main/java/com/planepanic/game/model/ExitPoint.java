@@ -1,5 +1,8 @@
 package com.planepanic.game.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.screens.Game;
 
@@ -10,6 +13,7 @@ import com.planepanic.game.gfx.screens.Game;
  */
 public final class ExitPoint extends Waypoint {
 	private Game game;
+	@Getter @Setter private static ExitPoint exitPoint;
 
 	public ExitPoint(Vector2d position, String name, Game game) {
 		super(position, name);
@@ -37,8 +41,7 @@ public final class ExitPoint extends Waypoint {
 	@Override
 	public boolean onClick() {
 		if (Waypoint.getVia() == null && Plane.getSelected() != null) {
-			Waypoint.setVia(this);
-			Waypoint.setFlyBy(false);
+			ExitPoint.exitPoint = this;
 		}
 		else if (Waypoint.getVia() != this) {
 

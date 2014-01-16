@@ -40,7 +40,6 @@ public class Waypoint extends SimplePointOfInterest {
 			Waypoint.flyBy = false;
 		}
 		else if (Waypoint.via != this) {
-
 			Waypoint.target = this;
 		}
 		return true;

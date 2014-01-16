@@ -109,8 +109,13 @@ public final class Plane extends Image {
 		if (Plane.selected != null) {
 			Plane.selected.getEz().setSelected(false);
 		}
+		if(Plane.selected != this){
+			Waypoint.setVia(null);
+		}
+			
 		Plane.selected = this;
 		Plane.selected.getEz().setSelected(true);
+
 		return true;
 	}
 

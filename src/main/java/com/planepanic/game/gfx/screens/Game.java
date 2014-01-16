@@ -101,7 +101,7 @@ public class Game extends Screen {
 		draw.draw(airport);
 		this.timer = new Timer(new Vector2d(325, 0));
 		draw.draw(this.timer);
-		ExitPoint exit = new ExitPoint(new Vector2d(896, 300), "e0", this);
+		ExitPoint exit = new ExitPoint(new Vector2d(890, 300), "e0", this);
 		draw.draw(exit);
 		this.exitPointList.add(exit);
 		exit = new ExitPoint(new Vector2d(350, 700), "e1", this);
@@ -170,6 +170,11 @@ public class Game extends Screen {
 	 */
 
 	public void giveOrder() {
+		if (ExitPoint.getExitPoint() != null){
+			Plane.getSelected().getOrders().add(new LeaveAirspace(Plane.getSelected(), ExitPoint.getExitPoint()));
+			ExitPoint.setExitPoint(null);
+		}
+		
 		if (Waypoint.getVia() != null) {
 			if (Waypoint.getTarget() != null) {
 				if (Plane.getSelected() != null) {
@@ -208,7 +213,7 @@ public class Game extends Screen {
 
 	@Override
 	public void resize() {
-		this.orderpanel.setPosition(new Vector2d(DrawThread.width - 250, 360));
+		this.orderpanel.setPosition(new Vector2d(DrawThread.width - 192 , 360));
 		this.orderpanel.onMove();
 	}
 
