@@ -77,19 +77,26 @@ public final class Plane extends Image {
 
 	}
 
-	public void outOfBounds() {
-		if (this.getPosition().getX() < 0 || this.getPosition().getX() > 660
+	public void checkOutOfBounds() {
+		if (	  (this.getPosition().getX() < 0
+				|| this.getPosition().getX() > 660
 				|| this.getPosition().getY() < 0
-				|| this.getPosition().getY() > 720) {
-			List<Waypoint> waypoints = new ArrayList<Waypoint>();
-			waypoints.addAll(game.getWaypointList());
-			Waypoint i = waypoints.get(this.random.nextInt(waypoints.size())), o = waypoints
-					.get(this.random.nextInt(waypoints.size()));
-			if (i != o) {
-				if (this.random.nextInt(1) == 1) {
-					this.getOrders().add(new FlyBy(this, i, o));
+				|| this.getPosition().getY() > 720)
+				&& orders.size() == 0) {
+			List<Waypoint> temp = new ArrayList<Waypoint>();
+			temp.addAll(game.getWaypointList());
+
+			Waypoint waypointA = game.getWaypointList().get(this.random.nextInt(game.getWaypointList().size()));
+
+			temp.remove(waypointA);
+
+			Waypoint waypointB = temp.get(this.random.nextInt(temp.size()));
+
+			if (waypointA != waypointB) {
+				if (this.random.nextInt(2) == 0) {
+					this.getOrders().add(new FlyBy(this, waypointA, waypointB));
 				} else {
-					this.getOrders().add(new FlyOver(this, i, o));
+					this.getOrders().add(new FlyOver(this, waypointA, waypointB));
 				}
 
 			}
@@ -114,6 +121,7 @@ public final class Plane extends Image {
 	public void tick() {
 		this.consumeFuel();
 		this.decayScore();
+		this.checkOutOfBounds();
 
 		Order order = this.getCurrentOrder();
 		if (order != null) {
