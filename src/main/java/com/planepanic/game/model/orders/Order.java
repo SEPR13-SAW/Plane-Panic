@@ -6,11 +6,11 @@ import lombok.Getter;
 import com.planepanic.game.model.Plane;
 
 /**
- * A list of orders define how a plane behaves over time
- * Each order is ticked until it says that it has been completed
+ * A list of orders define how a plane behaves over time Each order is ticked
+ * until it says that it has been completed
  * 
  * @author Jonathan, Thomas
- *
+ * 
  */
 public abstract class Order {
 

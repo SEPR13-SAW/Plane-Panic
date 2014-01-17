@@ -10,11 +10,11 @@ import com.planepanic.game.gfx.Drawable;
 import com.planepanic.game.model.Vector2d;
 
 /**
- * Represents a clickable object to be drawn on screen
- * Draws a purple backdrop with desired text in white
+ * Represents a clickable object to be drawn on screen Draws a purple backdrop
+ * with desired text in white
  * 
  * @author Jonathan, Thomas
- *
+ * 
  */
 public class Button extends Drawable {
 

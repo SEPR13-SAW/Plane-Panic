@@ -13,10 +13,10 @@ import org.lwjgl.input.Mouse;
 
 import com.planepanic.game.Config;
 import com.planepanic.game.gfx.DrawThread;
+import com.planepanic.game.gfx.DrawUtil;
 import com.planepanic.game.gfx.Image;
 import com.planepanic.game.gfx.Resources;
 import com.planepanic.game.gfx.screens.Game;
-import com.planepanic.game.gfx.ui.ExclusionZone;
 import com.planepanic.game.model.orders.FlyBy;
 import com.planepanic.game.model.orders.FlyOver;
 import com.planepanic.game.model.orders.Order;
@@ -43,7 +43,7 @@ public final class Plane extends Image {
 	@Getter @Setter private Vector2d velocity;
 	@Getter @Setter private int scoreTickDelay = Config.FRAMERATE;
 	@Getter @Setter private int gracePeriod = 30;
-	@Getter private ExclusionZone ez;
+	@Getter @Setter private boolean violated = false;
 	@Getter private final Game game;
 
 	@Getter private final Queue<Order> orders = new ArrayDeque<Order>(64);
@@ -59,7 +59,6 @@ public final class Plane extends Image {
 		this.speed = speed;
 		this.velocity = Vector2d.fromAngle(-Math.PI / 2).mul(this.getSpeed() * 10 / Config.FRAMERATE);
 		this.score = score;
-		this.ez = new ExclusionZone(position);
 		this.altitude = altitude;
 		this.game = game;
 	}
@@ -106,15 +105,11 @@ public final class Plane extends Image {
 
 	@Override
 	public boolean onClick() {
-		if (Plane.selected != null) {
-			Plane.selected.getEz().setSelected(false);
-		}
 		if (Plane.selected != this) {
 			Waypoint.setVia(null);
 		}
 
 		Plane.selected = this;
-		Plane.selected.getEz().setSelected(true);
 
 		return true;
 	}
@@ -139,9 +134,14 @@ public final class Plane extends Image {
 			}
 		}
 		this.getPosition().applyChange(this.getVelocity());
-		this.ez.draw2d();
-		this.getEz().setPosition(this.getPosition());
-		this.getEz().setViolated(false);
+		if (this.violated) {
+			DrawUtil.setColor(0xff0000);
+			DrawUtil.drawCircle((float) this.getPosition().getX(), (float) this.getPosition().getY(), Game.getExclusionZone(), false);
+		} else if (Plane.selected == this) {
+			DrawUtil.setColor(0x00ff00);
+			DrawUtil.drawCircle((float) this.getPosition().getX(), (float) this.getPosition().getY(), Game.getExclusionZone(), false);
+		}
+		this.violated = false;
 
 		this.setAngle(90 - (float) Math.toDegrees(this.getVelocity().getAngle()));
 	}

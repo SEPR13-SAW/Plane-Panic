@@ -6,10 +6,10 @@ import com.planepanic.game.Config;
 import com.planepanic.game.model.Plane;
 
 /**
- * Order a plane to ascend or descend by a specified amount 
+ * Order a plane to ascend or descend by a specified amount
  * 
  * @author Ben, Mantas, Thomas
- *
+ * 
  */
 public class ChangeAltitude extends Order {
 
@@ -32,9 +32,6 @@ public class ChangeAltitude extends Order {
 
 	@Override
 	public void tick() {
-		// plane.setVelocity(plane.convertSpeedToVelocity(3)); //This may be
-		// changed once I know what the angle is respective too and if it is
-		// degrees or radians.
 		if (this.getDelta() < 0) {
 			this.getPlane().setAltitude(this.getPlane().getAltitude() - 20.0 / Config.FRAMERATE);
 		} else {

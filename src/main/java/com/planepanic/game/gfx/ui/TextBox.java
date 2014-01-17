@@ -12,16 +12,16 @@ import com.planepanic.game.gfx.DrawUtil;
 import com.planepanic.game.gfx.Drawable;
 
 /**
- * Draws text
- * Can be editable
+ * Draws text Can be editable
  * 
  * @author Jonathan, Thomas
- *
+ * 
  */
 public class TextBox extends Drawable {
 
 	@Accessors(chain = true) @Getter private String text;
 	@Accessors(chain = true) @Getter @Setter private int color = 0xFFFFFF;
+	@Accessors(chain = true) @Getter private int size = 32;
 	@Accessors(chain = true) @Getter @Setter private Align align = Align.MIDDLE;
 	@Accessors(chain = true) @Getter @Setter private int cursorPosition = 0;
 	@Accessors(chain = true) @Getter private final boolean editable;
@@ -38,15 +38,22 @@ public class TextBox extends Drawable {
 		this(text, false);
 	}
 
-	public void setText(String text) {
+	public TextBox setText(String text) {
 		this.text = text;
 		this.dirtySize = true;
+		return this;
+	}
+
+	public TextBox setSize(int size) {
+		this.size = size;
+		this.dirtySize = true;
+		return this;
 	}
 
 	@Override
 	public void draw2d() {
 		if (this.dirtySize) {
-			this.setHitboxSize(DrawUtil.getSize(this.text));
+			this.setHitboxSize(DrawUtil.getSize(this.text, this.size));
 		}
 
 		double x = this.getPosition().getX();
@@ -62,10 +69,10 @@ public class TextBox extends Drawable {
 		if (this.editable && DrawThread.getFocus() == this) {
 			int cursorX = (int) (x + DrawUtil.getSize(this.text.substring(0, this.cursorPosition)).getX());
 			DrawUtil.setColor(0x888888);
-			DrawUtil.drawSquare(cursorX, (int) (this.getPosition().getY() - this.getHitboxSize().getY() / 2 + 16 + 3), 2, 32, true, this.getPriority());
+			DrawUtil.drawSquare(cursorX, (int) (this.getPosition().getY() - this.getHitboxSize().getY() / 2 + 16 + 3), 2, this.size, true, this.getPriority());
 		}
 
-		DrawUtil.drawString((float) x, (float) (this.getPosition().getY() - this.getHitboxSize().getY() / 2), this.text, this.color, 32, this.getPriority());
+		DrawUtil.drawString((float) x, (float) (this.getPosition().getY() - this.getHitboxSize().getY() / 2), this.text, this.color, this.size, this.getPriority());
 	}
 
 	@Override

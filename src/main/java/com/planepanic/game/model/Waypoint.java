@@ -63,7 +63,6 @@ public class Waypoint extends SimplePointOfInterest {
 
 	@Override
 	protected boolean keyPress(int key) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

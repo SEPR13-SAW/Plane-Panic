@@ -12,7 +12,7 @@ import com.planepanic.game.model.Vector2d;
  * Represents a button used as a top-level control
  * 
  * @author Steven, Thomas
- *
+ * 
  */
 public class OrderButton extends Image {
 

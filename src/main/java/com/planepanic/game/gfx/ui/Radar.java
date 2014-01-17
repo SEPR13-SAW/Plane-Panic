@@ -8,23 +8,14 @@ import com.planepanic.game.model.Vector2d;
  * Draws the background for the scene
  * 
  * @author Jonathan, Mantas, Steven, Thomas
- *
+ * 
  */
 public class Radar extends Image {
 
 	public Radar() {
-		// super();
 		super(Resources.GRASS, new Vector2d(448, 360));
 		this.setPriority(-0.9f);
 
-	}
-
-	@Override
-	public void draw2d() {
-		// DrawUtil.setColor(0x001E02);
-		// DrawUtil.drawSquare((DrawThread.width - 500) / 2, DrawThread.height /
-		// 2, DrawThread.width - 500, DrawThread.height, true, -0.9f);
-		super.draw2d();
 	}
 
 	@Override
@@ -40,7 +31,6 @@ public class Radar extends Image {
 
 	@Override
 	protected boolean keyPress(int key) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

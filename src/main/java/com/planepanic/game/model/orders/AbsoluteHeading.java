@@ -9,7 +9,7 @@ import com.planepanic.game.model.Vector2d;
  * Order a plane to turn until facing a specified direction
  * 
  * @author Jonathan, Mantas, Thomas
- *
+ * 
  */
 public final class AbsoluteHeading extends Order {
 	@Getter private final double angle;

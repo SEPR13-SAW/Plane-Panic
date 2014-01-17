@@ -7,11 +7,10 @@ import com.planepanic.game.gfx.ui.TextBox;
 import com.planepanic.game.model.Vector2d;
 
 /**
- * Main screen
- * Where a user would change options before starting to play
+ * Main screen Where a user would change options before starting to play
  * 
  * @author Thomas
- *
+ * 
  */
 public class Main extends Screen {
 

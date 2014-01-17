@@ -9,7 +9,6 @@ import lombok.Setter;
 
 import com.planepanic.game.Config;
 import com.planepanic.game.gfx.DrawThread;
-import com.planepanic.game.gfx.ui.ExclusionZone;
 import com.planepanic.game.gfx.ui.OrderPanel;
 import com.planepanic.game.gfx.ui.Radar;
 import com.planepanic.game.gfx.ui.Timer;
@@ -27,24 +26,22 @@ import com.planepanic.game.model.orders.LeaveAirspace;
 import com.planepanic.game.model.orders.RelativeHeading;
 
 /**
- * Game screen
- * Does most of the setup and glue logic
+ * Game screen Does most of the setup and glue logic
  * 
  * @author Ben, Jonathan, Mantas, Steven, Thomas
- *
+ * 
  */
 public class Game extends Screen {
 
+	private final int[][] waypointLocations = { { 50, 50 }, { 300, 50 }, { 600, 50 }, { 600, 300 }, { 600, 600 }, { 300, 600 }, { 50, 600 }, { 50, 300 } };
 	@Getter private OrderPanel orderpanel;
 	@Getter private Timer timer;
 	private Radar radar;
 	@Getter @Setter int maxSpawnInterval = 10, minSpawnInterval = 6, spawnInterval = this.maxSpawnInterval;
 	private List<EntryPoint> entryPointList = new ArrayList<EntryPoint>();
 	@Getter private List<Plane> planeList = new ArrayList<Plane>();
-	@Getter private List<ExclusionZone> exclusionZoneList = new ArrayList<ExclusionZone>();
 	@Getter private List<Waypoint> waypointList = new ArrayList<Waypoint>();
 	@Getter private List<ExitPoint> exitPointList = new ArrayList<ExitPoint>();
-	@Getter @Setter ExclusionZone ez;
 	/**
 	 * Exclusion in meters divided by how much meters one pixel represents.
 	 * Final version should have two depending on altitude
@@ -67,28 +64,11 @@ public class Game extends Screen {
 		this.createEntryPoint(new Vector2d(500, 500));
 		this.createEntryPoint(new Vector2d(500, 50));
 
-		// for (int i = 0; i < 6; i++) {
-		// this.waypointList.add(new Waypoint(new Vector2d(50 + 100 * i, 20 +
-		// 100 *i ), "" + (char) (65 + i)));
-		// draw.draw(this.waypointList.get(i));
-		// }
-		this.waypointList.add(new Waypoint(new Vector2d(50, 50), "A"));
-		draw.draw(this.waypointList.get(0));
+		for (int i = 0; i < 8; i++) {
+			this.waypointList.add(new Waypoint(new Vector2d(this.waypointLocations[i][0], this.waypointLocations[i][1]), "" + (char) (65 + i)));
+			draw.draw(this.waypointList.get(i));
+		}
 
-		this.waypointList.add(new Waypoint(new Vector2d(300, 50), "B"));
-		draw.draw(this.waypointList.get(1));
-		this.waypointList.add(new Waypoint(new Vector2d(600, 50), "C"));
-		draw.draw(this.waypointList.get(2));
-		this.waypointList.add(new Waypoint(new Vector2d(600, 300), "D"));
-		draw.draw(this.waypointList.get(3));
-		this.waypointList.add(new Waypoint(new Vector2d(600, 600), "E"));
-		draw.draw(this.waypointList.get(4));
-		this.waypointList.add(new Waypoint(new Vector2d(300, 600), "F"));
-		draw.draw(this.waypointList.get(5));
-		this.waypointList.add(new Waypoint(new Vector2d(50, 600), "G"));
-		draw.draw(this.waypointList.get(6));
-		this.waypointList.add(new Waypoint(new Vector2d(50, 300), "H"));
-		draw.draw(this.waypointList.get(7));
 		Plane plane = entry2.addPlane(this);
 		this.planeList.add(plane);
 		plane.getOrders().add(new AbsoluteHeading(plane, 0));
@@ -97,16 +77,14 @@ public class Game extends Screen {
 		plane.getOrders().add(new ChangeSpeed(plane, 100));
 		plane.getOrders().add(new FlyOver(plane, this.waypointList.get(0), this.waypointList.get(2)));
 		draw.draw(plane);
-		draw.draw(plane.getEz());
 		plane = entry.addPlane(this);
 		this.planeList.add(plane);
 		draw.draw(plane);
-		draw.draw(plane.getEz());
 		this.radar = new Radar();
 		draw.draw(this.radar);
 		Airport airport = new Airport(new Vector2d(448, Config.WINDOW_HEIGHT / 2));
 		draw.draw(airport);
-		this.timer = new Timer(new Vector2d(325, 0));
+		this.timer = new Timer(new Vector2d(448, 30));
 		draw.draw(this.timer);
 		ExitPoint exit = new ExitPoint(new Vector2d(890, 300), "e0", this);
 		draw.draw(exit);
@@ -118,7 +96,7 @@ public class Game extends Screen {
 		draw.draw(this.orderpanel);
 	}
 
-	/*
+	/**
 	 * Spawns planes every spawnInterval seconds which is minSpawnInterval <
 	 * spawnInterval < maxSpawnInterval Spawns the first plane immediately
 	 */
@@ -128,7 +106,6 @@ public class Game extends Screen {
 			Plane plane = this.entryPointList.get(index).addPlane(this);
 			DrawThread draw = DrawThread.getInstance();
 			draw.draw(plane);
-			draw.draw(plane.getEz());
 			this.generateFlightPlan(plane);
 			this.planeList.add(plane);
 			this.setSpawnInterval(this.getMinSpawnInterval() + this.random.nextInt(this.getMaxSpawnInterval() - this.getMinSpawnInterval()));
@@ -207,8 +184,8 @@ public class Game extends Screen {
 			for (int o = i + 1; o < this.planeList.size(); o++) {
 				distance = this.planeList.get(i).distanceFrom(this.planeList.get(o));
 				if (distance <= Game.exclusionZone * Game.exclusionZone) {
-					this.planeList.get(i).getEz().setViolated(true);
-					this.planeList.get(o).getEz().setViolated(true);
+					this.planeList.get(i).setViolated(true);
+					this.planeList.get(o).setViolated(true);
 					if (distance <= Game.exclusionZone * Game.exclusionZone * 0.1) {
 						DrawThread.getInstance().changeScreen(new com.planepanic.game.gfx.screens.GameOver());
 

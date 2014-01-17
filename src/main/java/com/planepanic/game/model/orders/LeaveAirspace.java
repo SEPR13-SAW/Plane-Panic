@@ -11,7 +11,7 @@ import com.planepanic.game.model.Waypoint;
  * Order a plane to leave the airspace
  * 
  * @author Mantas, Thomas
- *
+ * 
  */
 public final class LeaveAirspace extends Order {
 	@Getter private final ExitPoint exit;

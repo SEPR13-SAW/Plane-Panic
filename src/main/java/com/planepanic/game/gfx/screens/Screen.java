@@ -3,11 +3,10 @@ package com.planepanic.game.gfx.screens;
 import com.planepanic.game.gfx.DrawThread;
 
 /**
- * Abstract screen
- * One screen is displayed at a time
+ * Abstract screen One screen is displayed at a time
  * 
  * @author Thomas
- *
+ * 
  */
 public abstract class Screen {
 

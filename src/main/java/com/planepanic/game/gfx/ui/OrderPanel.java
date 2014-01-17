@@ -9,7 +9,7 @@ import com.planepanic.game.model.Vector2d;
  * Maintains the sidebar
  * 
  * @author Jonathan, Mantas, Steven, Thomas
- *
+ * 
  */
 public class OrderPanel extends Drawable {
 

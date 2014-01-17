@@ -9,7 +9,7 @@ import com.planepanic.game.model.Vector2d;
  * Order a plane to turn by a specified amount
  * 
  * @author Jonathan, Mantas, Thomas
- *
+ * 
  */
 public final class RelativeHeading extends Order {
 	@Getter private final double delta;

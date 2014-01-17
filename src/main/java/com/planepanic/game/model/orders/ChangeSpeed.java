@@ -5,10 +5,10 @@ import lombok.Getter;
 import com.planepanic.game.model.Plane;
 
 /**
- * Order a plane to change speed by a specified amount 
+ * Order a plane to change speed by a specified amount
  * 
  * @author Mantas, Thomas
- *
+ * 
  */
 public class ChangeSpeed extends Order {
 

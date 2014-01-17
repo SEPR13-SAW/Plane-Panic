@@ -13,7 +13,7 @@ import com.planepanic.game.model.orders.Order;
  * Draws a list of the orders that have been given to the selected plane
  * 
  * @author Jonathan, Mantas, Steven, Thomas
- *
+ * 
  */
 public class OrderList extends Drawable {
 
@@ -38,9 +38,9 @@ public class OrderList extends Drawable {
 
 	private void drawOrder(int y, Order order) {
 		DrawUtil.setColor(0xFFFF99);
-		DrawUtil.drawSquare((float) (this.getPosition().getX()), y, (float) this.getHitboxSize().getX(), 99, true, this.getPriority());
+		DrawUtil.drawSquare((float) this.getPosition().getX(), y, (float) this.getHitboxSize().getX(), 99, true, this.getPriority());
 		DrawUtil.setColor(0x000000);
-		DrawUtil.drawSquare((float) (this.getPosition().getX()), y + 50, (float) this.getHitboxSize().getX(), 1, true, this.getPriority());
+		DrawUtil.drawSquare((float) this.getPosition().getX(), y + 50, (float) this.getHitboxSize().getX(), 1, true, this.getPriority());
 		DrawUtil.drawString((float) (this.getPosition().getX() - this.getHitboxSize().getX() / 2) + 10, y - 40, order.getHumanReadable(), 0x000000, 24, this.getPriority() + 0.01f);
 	}
 

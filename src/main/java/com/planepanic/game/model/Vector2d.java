@@ -8,7 +8,7 @@ import lombok.ToString;
  * Represents a vector in 2d space
  * 
  * @author Jonathan, Mantas, Thomas
- *
+ * 
  */
 @ToString
 public final class Vector2d {
