@@ -16,7 +16,7 @@ public final class AbsoluteHeading extends Order {
 
 	public AbsoluteHeading(Plane plane, double angle) {
 		super(plane);
-		this.angle = angle;
+		this.angle = angle  + Math.PI/2;
 	}
 
 	@Override
