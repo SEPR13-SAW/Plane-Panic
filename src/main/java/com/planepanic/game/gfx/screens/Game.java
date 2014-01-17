@@ -72,6 +72,7 @@ public class Game extends Screen {
 		plane.getOrders().add(new RelativeHeading(plane, Math.PI / 2));
 		plane.getOrders().add(new ChangeSpeed(plane, 100));
 		plane.getOrders().add(new FlyOver(plane, this.waypointList.get(0), this.waypointList.get(2)));
+		plane.getOrders().add(new RelativeHeading(plane, Math.PI / 2));
 		draw.draw(plane);
 		plane = entry.addPlane(this);
 		this.planeList.add(plane);

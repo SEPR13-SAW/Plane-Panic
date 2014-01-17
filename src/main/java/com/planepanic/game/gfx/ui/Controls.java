@@ -8,7 +8,12 @@ import com.planepanic.game.gfx.CallbackP;
 import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.Drawable;
 import com.planepanic.game.gfx.Resources;
+import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
+import com.planepanic.game.model.orders.AbsoluteHeading;
+import com.planepanic.game.model.orders.ChangeAltitude;
+import com.planepanic.game.model.orders.ChangeSpeed;
+import com.planepanic.game.model.orders.RelativeHeading;
 
 /**
  * Maintains the state of the controls displayed at the bottom of the Order
@@ -33,6 +38,8 @@ public class Controls {
 	private OrderButton set;
 	private Button up;
 	private Button down;
+	private Button upSpeed;
+	private Button downSpeed;
 	private OrderButton back;
 	private TextBox valueBox;
 	private int value;
@@ -60,7 +67,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Change Altitude!");
-				Controls.this.setOrderState(2);
+				Controls.this.setOrderState(5);
 				return true;
 			}
 		}));
@@ -105,6 +112,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Turns left by number inputted");
+				Plane.getSelected().getOrders().add(new RelativeHeading(Plane.getSelected(), (Controls.this.readValueBox()) * Math.PI / 180));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -114,6 +122,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Turns right by number inputted");
+				Plane.getSelected().getOrders().add(new RelativeHeading(Plane.getSelected(), -(Controls.this.readValueBox()) * Math.PI / 180));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -123,6 +132,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Back!");
+				Plane.getSelected().getOrders().add(new AbsoluteHeading(Plane.getSelected(), (Controls.this.readValueBox()) * Math.PI / 180));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -132,6 +142,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Increases altitude by inputted amount");
+				Plane.getSelected().getOrders().add(new ChangeAltitude(Plane.getSelected(), Controls.this.readValueBox()));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -141,6 +152,27 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Decreases altitude by inputted amount");
+				Plane.getSelected().getOrders().add(new ChangeAltitude(Plane.getSelected(), -Controls.this.readValueBox()));
+				Controls.this.setOrderState(0);
+				return true;
+			}
+		}).setHitboxSize(new Vector2d(100, 50)).setPosition(new Vector2d(1130, 680)).setPriority(0.5f));
+		
+		this.controls.add(this.upSpeed = (Button) new Button("Up").setCallback(new Callback<Boolean>() {
+			@Override
+			public Boolean call() {
+				System.out.println("Increases speed by inputted amount");
+				Plane.getSelected().getOrders().add(new ChangeSpeed(Plane.getSelected(), Controls.this.readValueBox()));
+				Controls.this.setOrderState(0);
+				return true;
+			}
+		}).setHitboxSize(new Vector2d(100, 50)).setPosition(new Vector2d(1130, 625)).setPriority(0.5f));
+
+		this.controls.add(this.downSpeed = (Button) new Button("Down").setCallback(new Callback<Boolean>() {
+			@Override
+			public Boolean call() {
+				System.out.println("Decreases speed by inputted amount");
+				Plane.getSelected().getOrders().add(new ChangeSpeed(Plane.getSelected(), -Controls.this.readValueBox()));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -182,6 +214,9 @@ public class Controls {
 				break;
 			case 2:
 				// Relative heading
+				draw.draw(this.valueBox);
+				draw.draw(this.back);
+				break;
 			case 4:
 				// Absolute heading
 				draw.draw(this.valueBox);
@@ -189,13 +224,26 @@ public class Controls {
 				draw.draw(this.back);
 				break;
 			case 3:
-				// Changing altitude
+				// Changing speed
+				draw.draw(this.valueBox);
+				draw.draw(this.upSpeed);
+				draw.draw(this.downSpeed);
+				draw.draw(this.back);
+				break;
+			case 5:
+				//Change Altitude
 				draw.draw(this.valueBox);
 				draw.draw(this.up);
 				draw.draw(this.down);
 				draw.draw(this.back);
-				break;
 		}
+		
 	}
+	
+	public int readValueBox(){
+		return Integer.parseInt(Controls.this.valueBox.getText());
+	}
+	
+	
 
 }
