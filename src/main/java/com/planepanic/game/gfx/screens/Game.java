@@ -54,12 +54,8 @@ public class Game extends Screen {
 
 		DrawThread draw = DrawThread.getInstance();
 
-		EntryPoint entry = new EntryPoint(new Vector2d(50, 50));
-		this.entryPointList.add(entry);
-		draw.draw(entry);
-		EntryPoint entry2 = new EntryPoint(new Vector2d(50, 200));
-		this.entryPointList.add(entry);
-		draw.draw(entry2);
+		EntryPoint entry = this.createEntryPoint(new Vector2d(50, 50));
+		EntryPoint entry2 = this.createEntryPoint(new Vector2d(50, 200));
 		this.createEntryPoint(new Vector2d(50, 500));
 		this.createEntryPoint(new Vector2d(500, 500));
 		this.createEntryPoint(new Vector2d(500, 50));
@@ -131,11 +127,12 @@ public class Game extends Screen {
 
 	}
 
-	public void createEntryPoint(Vector2d position) {
+	public EntryPoint createEntryPoint(Vector2d position) {
 		EntryPoint entry = new EntryPoint(position);
 		this.entryPointList.add(entry);
 		DrawThread draw = DrawThread.getInstance();
 		draw.draw(entry);
+		return entry;
 	}
 
 	@Override
