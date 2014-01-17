@@ -18,7 +18,6 @@ public final class RelativeHeading extends Order {
 	public RelativeHeading(Plane plane, double delta) {
 		super(plane);
 		this.delta = delta;
-		this.startAngle = this.getPlane().getVelocity().getAngle();
 	}
 
 	@Override

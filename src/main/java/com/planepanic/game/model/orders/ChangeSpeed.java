@@ -17,8 +17,7 @@ public class ChangeSpeed extends Order {
 	public ChangeSpeed(Plane plane, double delta) {
 		super(plane);
 		this.delta = delta;
-		this.startSpeed = this.getPlane().getSpeed();
-		this.changeRate = delta / 120f;
+		this.changeRate = delta / 60f;
 	}
 
 	@Override
