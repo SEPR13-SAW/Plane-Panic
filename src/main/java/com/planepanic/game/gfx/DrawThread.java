@@ -114,7 +114,7 @@ public class DrawThread extends Thread {
 	/**
 	 * Initializes the draw thread.
 	 */
-	private void init() {
+	public void init() {
 		try {
 			if (Config.FULLSCREEN) {
 				Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
