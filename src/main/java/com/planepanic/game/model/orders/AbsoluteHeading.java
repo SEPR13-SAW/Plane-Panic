@@ -49,7 +49,7 @@ public final class AbsoluteHeading extends Order {
 
 	@Override
 	public String getHumanReadable() {
-		return "Set absolute Heading to " + this.getAngle() * 180 / Math.PI;
+		return "Set absolute heading to " + (this.getAngle() * 180 / Math.PI - 90);
 	}
 
 }
