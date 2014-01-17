@@ -100,7 +100,6 @@ public final class Plane extends Image {
 
 			}
 		}
-
 	}
 
 	@Override

@@ -26,7 +26,9 @@ public class Image extends Drawable {
 	public Image(Resources res, Vector2d position) {
 		super(position);
 		this.texture = res.getTexture();
-		this.setHitboxSize(new Vector2d(this.texture.getImageWidth(), this.texture.getImageHeight()));
+		if (this.texture != null) {
+			this.setHitboxSize(new Vector2d(this.texture.getImageWidth(), this.texture.getImageHeight()));
+		}
 	}
 
 	@Override
