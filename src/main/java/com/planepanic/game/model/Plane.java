@@ -147,6 +147,9 @@ public final class Plane extends Image {
 
 	public void addOrder(Order order) {
 		this.orders.add(order);
+		if (this.orders.size() == 1) {
+			this.getCurrentOrder().start();
+		}
 	}
 
 	public static Plane randomPlane(Game game, Random rng, Vector2d position) {
