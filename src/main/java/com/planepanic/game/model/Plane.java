@@ -155,7 +155,7 @@ public final class Plane extends Image {
 
 		int passengers = type.getMaxPassengers() / 2 + rng.nextInt(type.getMaxPassengers() / 2);
 		double fuel = type.getMaxFuel() / 2 + rng.nextDouble() * type.getMaxFuel() / 2;
-		double speed = type.getMaxVelocity();
+		double speed = type.getMaxVelocity() / 2 + rng.nextDouble() * type.getMaxVelocity() / 2;
 		double altitude = (type.getMaxAltitude() / 2 + rng.nextDouble() * type.getMaxAltitude() / 2) / Config.SCALE;
 
 		int score = type.getScore();

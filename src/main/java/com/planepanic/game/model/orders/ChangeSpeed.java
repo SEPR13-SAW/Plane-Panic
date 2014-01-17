@@ -23,9 +23,18 @@ public class ChangeSpeed extends Order {
 	@Override
 	public boolean isComplete() {
 		if (this.delta > 0) {
-			return this.getPlane().getSpeed() - this.getStartSpeed() - this.getDelta() > this.getChangeRate();
+			if(this.getPlane().getSpeed() + this.changeRate < this.getPlane().getType().getMaxVelocity())
+				return this.getPlane().getSpeed() - this.getStartSpeed() - this.getDelta() > this.getChangeRate();
+			else{
+				this.getPlane().setSpeed(this.getPlane().getType().getMaxVelocity());
+				this.getPlane().setVelocity(this.getPlane().convertSpeedToVelocity(this.getPlane().getVelocity().getAngle()));
+				return true;
+				}
 		} else {
-			return this.getPlane().getSpeed() - this.getStartSpeed() - this.getDelta() < this.getChangeRate();
+			if(this.getPlane().getSpeed() - this.changeRate > this.getPlane().getType().getMaxVelocity() / 2)
+				return this.getPlane().getSpeed() - this.getStartSpeed() - this.getDelta() < this.getChangeRate();
+			else 
+				return true;
 		}
 	}
 
