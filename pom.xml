@@ -116,6 +116,21 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<charset>UTF-8</charset>
+					<docencoding>UTF-8</docencoding>
+					<docfilessubdirs>true</docfilessubdirs>
+					<links>
+						<link>http://java.sun.com/j2se/1.7.0/docs/api/</link>
+					</links>
+					<show>private</show>
+					<source>1.7</source>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	
