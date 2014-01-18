@@ -25,17 +25,19 @@ public class TextBox extends Drawable {
 	@Accessors(chain = true) @Getter @Setter private Align align = Align.MIDDLE;
 	@Accessors(chain = true) @Getter @Setter private int cursorPosition = 0;
 	@Accessors(chain = true) @Getter private final boolean editable;
+	@Accessors(chain = true) @Getter @Setter private boolean numbersOnly;
 
 	private boolean dirtySize = true;
 
-	public TextBox(String text, boolean editable) {
+	public TextBox(String text, boolean editable, boolean numbersOnly) {
 		super();
 		this.text = text;
 		this.editable = editable;
+		this.numbersOnly = numbersOnly;
 	}
 
 	public TextBox(String text) {
-		this(text, false);
+		this(text, false, false);
 	}
 
 	public TextBox setText(String text) {
@@ -153,12 +155,19 @@ public class TextBox extends Drawable {
 					this.cursorPosition = this.getText().length();
 				}
 			} else {
-				if (!Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) && !Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
-					this.setText(this.getText().substring(0, this.cursorPosition) + new String(Keyboard.getKeyName(key)).toLowerCase() + this.getText().substring(this.cursorPosition, this.getText().length()));
+				if (numbersOnly){
+					if (key > 1 && key < 12){
+						this.setText(this.getText().substring(0, this.cursorPosition) + new String(Keyboard.getKeyName(key)) + this.getText().substring(this.cursorPosition, this.getText().length()));
+						this.cursorPosition++;
+					}
 				} else {
-					this.setText(this.getText().substring(0, this.cursorPosition) + new String(Keyboard.getKeyName(key)) + this.getText().substring(this.cursorPosition, this.getText().length()));
+					if (!Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) && !Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
+						this.setText(this.getText().substring(0, this.cursorPosition) + new String(Keyboard.getKeyName(key)).toLowerCase() + this.getText().substring(this.cursorPosition, this.getText().length()));
+					} else {
+						this.setText(this.getText().substring(0, this.cursorPosition) + new String(Keyboard.getKeyName(key)) + this.getText().substring(this.cursorPosition, this.getText().length()));
+					}
+					this.cursorPosition++;
 				}
-				this.cursorPosition++;
 			}
 		} catch (StringIndexOutOfBoundsException ex) {
 			/* ignore */
