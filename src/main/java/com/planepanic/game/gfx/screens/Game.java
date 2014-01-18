@@ -116,15 +116,15 @@ public class Game extends Screen {
 			Waypoint i = waypoints.get(this.random.nextInt(waypoints.size())), o = waypoints.get(this.random.nextInt(waypoints.size()));
 			if (i != o) {
 				if (this.random.nextInt(2) == 1) {
-					plane.getOrders().add(new FlyBy(plane, i, o));
+					plane.addOrder(new FlyBy(plane, i, o));
 				} else {
-					plane.getOrders().add(new FlyOver(plane, i, o));
+					plane.addOrder(new FlyOver(plane, i, o));
 				}
 				waypoints.remove(o);
 				waypoints.remove(i);
 			}
 		}
-		plane.getOrders().add(new LeaveAirspace(plane, this.getExitPointList().get(this.random.nextInt(this.getExitPointList().size()))));
+		plane.addOrder(new LeaveAirspace(plane, this.getExitPointList().get(this.random.nextInt(this.getExitPointList().size()))));
 
 	}
 
@@ -153,7 +153,7 @@ public class Game extends Screen {
 
 	public void giveOrder() {
 		if (ExitPoint.getExitPoint() != null) {
-			Plane.getSelected().getOrders().add(new LeaveAirspace(Plane.getSelected(), ExitPoint.getExitPoint()));
+			Plane.getSelected().addOrder(new LeaveAirspace(Plane.getSelected(), ExitPoint.getExitPoint()));
 			ExitPoint.setExitPoint(null);
 		}
 
@@ -161,9 +161,9 @@ public class Game extends Screen {
 			if (Waypoint.getTarget() != null) {
 				if (Plane.getSelected() != null) {
 					if (Waypoint.isFlyBy()) {
-						Plane.getSelected().getOrders().add(new FlyBy(Plane.getSelected(), Waypoint.getVia(), Waypoint.getTarget()));
+						Plane.getSelected().addOrder(new FlyBy(Plane.getSelected(), Waypoint.getVia(), Waypoint.getTarget()));
 					} else {
-						Plane.getSelected().getOrders().add(new FlyOver(Plane.getSelected(), Waypoint.getVia(), Waypoint.getTarget()));
+						Plane.getSelected().addOrder(new FlyOver(Plane.getSelected(), Waypoint.getVia(), Waypoint.getTarget()));
 					}
 					Waypoint.setVia(null);
 					Waypoint.setTarget(null);

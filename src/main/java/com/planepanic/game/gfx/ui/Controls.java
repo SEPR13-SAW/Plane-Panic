@@ -112,7 +112,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Turns left by number inputted");
-				Plane.getSelected().getOrders().add(new RelativeHeading(Plane.getSelected(), (Controls.this.readValueBox()) * Math.PI / 180));
+				Plane.getSelected().addOrder(new RelativeHeading(Plane.getSelected(), (Controls.this.readValueBox()) * Math.PI / 180));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -122,7 +122,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Turns right by number inputted");
-				Plane.getSelected().getOrders().add(new RelativeHeading(Plane.getSelected(), -(Controls.this.readValueBox()) * Math.PI / 180));
+				Plane.getSelected().addOrder(new RelativeHeading(Plane.getSelected(), -(Controls.this.readValueBox()) * Math.PI / 180));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -132,7 +132,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Back!");
-				Plane.getSelected().getOrders().add(new AbsoluteHeading(Plane.getSelected(), (Controls.this.readValueBox()) * Math.PI / 180));
+				Plane.getSelected().addOrder(new AbsoluteHeading(Plane.getSelected(), (Controls.this.readValueBox()) * Math.PI / 180));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -142,7 +142,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Increases altitude by inputted amount");
-				Plane.getSelected().getOrders().add(new ChangeAltitude(Plane.getSelected(), Controls.this.readValueBox()));
+				Plane.getSelected().addOrder(new ChangeAltitude(Plane.getSelected(), Controls.this.readValueBox()));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -152,17 +152,17 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Decreases altitude by inputted amount");
-				Plane.getSelected().getOrders().add(new ChangeAltitude(Plane.getSelected(), -Controls.this.readValueBox()));
+				Plane.getSelected().addOrder(new ChangeAltitude(Plane.getSelected(), -Controls.this.readValueBox()));
 				Controls.this.setOrderState(0);
 				return true;
 			}
 		}).setHitboxSize(new Vector2d(100, 50)).setPosition(new Vector2d(1130, 680)).setPriority(0.5f));
-		
+
 		this.controls.add(this.upSpeed = (Button) new Button("Up").setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Increases speed by inputted amount");
-				Plane.getSelected().getOrders().add(new ChangeSpeed(Plane.getSelected(), Controls.this.readValueBox()));
+				Plane.getSelected().addOrder(new ChangeSpeed(Plane.getSelected(), Controls.this.readValueBox()));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -172,7 +172,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Decreases speed by inputted amount");
-				Plane.getSelected().getOrders().add(new ChangeSpeed(Plane.getSelected(), -Controls.this.readValueBox()));
+				Plane.getSelected().addOrder(new ChangeSpeed(Plane.getSelected(), -Controls.this.readValueBox()));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -231,19 +231,17 @@ public class Controls {
 				draw.draw(this.back);
 				break;
 			case 5:
-				//Change Altitude
+				// Change Altitude
 				draw.draw(this.valueBox);
 				draw.draw(this.up);
 				draw.draw(this.down);
 				draw.draw(this.back);
 		}
-		
+
 	}
-	
-	public int readValueBox(){
+
+	public int readValueBox() {
 		return Integer.parseInt(Controls.this.valueBox.getText());
 	}
-	
-	
 
 }

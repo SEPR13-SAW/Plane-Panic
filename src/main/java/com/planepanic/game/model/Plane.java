@@ -93,9 +93,9 @@ public final class Plane extends Image {
 
 			if (waypointA != waypointB) {
 				if (this.random.nextInt(2) == 0) {
-					this.getOrders().add(new FlyBy(this, waypointA, waypointB));
+					this.addOrder(new FlyBy(this, waypointA, waypointB));
 				} else {
-					this.getOrders().add(new FlyOver(this, waypointA, waypointB));
+					this.addOrder(new FlyOver(this, waypointA, waypointB));
 				}
 
 			}
