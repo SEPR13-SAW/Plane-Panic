@@ -155,7 +155,7 @@ public class TextBox extends Drawable {
 					this.cursorPosition = this.getText().length();
 				}
 			} else {
-				if (numbersOnly) {
+				if (this.numbersOnly) {
 					if (key > 1 && key < 12) {
 						this.setText(this.getText().substring(0, this.cursorPosition) + new String(Keyboard.getKeyName(key)) + this.getText().substring(this.cursorPosition, this.getText().length()));
 						this.cursorPosition++;

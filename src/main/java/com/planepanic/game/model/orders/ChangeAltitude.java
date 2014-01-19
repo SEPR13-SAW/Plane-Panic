@@ -24,20 +24,20 @@ public class ChangeAltitude extends Order {
 	@Override
 	public boolean isComplete() {
 		if (this.getDelta() > 0) {
-			if(this.getPlane().getAltitude() + this.changeRate < this.getPlane().getType().getMaxAltitude()){
-			return this.getPlane().getAltitude() - this.getStartAltitude() - this.delta > 1;
-			}else{
+			if (this.getPlane().getAltitude() + this.changeRate < this.getPlane().getType().getMaxAltitude()) {
+				return this.getPlane().getAltitude() - this.getStartAltitude() - this.delta > 1;
+			} else {
 				this.getPlane().setAltitude(this.getPlane().getType().getMaxAltitude());
 				return true;
 			}
 		} else {
-			if(this.getPlane().getAltitude() - this.changeRate > this.getPlane().getType().getMaxAltitude()*0.7){
-			return this.getPlane().getAltitude() - this.getStartAltitude() - this.delta < 1;
-			}else{
-				this.getPlane().setAltitude(this.getPlane().getType().getMaxAltitude()*0.7);
+			if (this.getPlane().getAltitude() - this.changeRate > this.getPlane().getType().getMaxAltitude() * 0.7) {
+				return this.getPlane().getAltitude() - this.getStartAltitude() - this.delta < 1;
+			} else {
+				this.getPlane().setAltitude(this.getPlane().getType().getMaxAltitude() * 0.7);
 				return true;
 			}
-			}
+		}
 	}
 
 	@Override
