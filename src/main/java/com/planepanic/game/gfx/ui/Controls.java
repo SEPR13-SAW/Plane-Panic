@@ -112,7 +112,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Turns left by number inputted");
-				Plane.getSelected().addOrder(new RelativeHeading(Plane.getSelected(), (Controls.this.readValueBox()) * Math.PI / 180));
+				Plane.getSelected().addOrder(new RelativeHeading(Plane.getSelected(), Controls.this.readValueBox() * Math.PI / 180));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -122,7 +122,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Turns right by number inputted");
-				Plane.getSelected().addOrder(new RelativeHeading(Plane.getSelected(), -(Controls.this.readValueBox()) * Math.PI / 180));
+				Plane.getSelected().addOrder(new RelativeHeading(Plane.getSelected(), -Controls.this.readValueBox() * Math.PI / 180));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -132,7 +132,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Back!");
-				Plane.getSelected().addOrder(new AbsoluteHeading(Plane.getSelected(), (Controls.this.readValueBox()) * Math.PI / 180));
+				Plane.getSelected().addOrder(new AbsoluteHeading(Plane.getSelected(), Controls.this.readValueBox() * Math.PI / 180));
 				Controls.this.setOrderState(0);
 				return true;
 			}

@@ -18,15 +18,25 @@ public class ChangeAltitude extends Order {
 	public ChangeAltitude(Plane plane, double delta) {
 		super(plane);
 		this.startAltitude = plane.getAltitude();
-		this.delta = delta / Config.SCALE;
+		this.delta = delta;
 	}
 
 	@Override
 	public boolean isComplete() {
 		if (this.getDelta() > 0) {
-			return this.getPlane().getAltitude() - this.getStartAltitude() - this.delta > 1;
+			if (this.getPlane().getAltitude() + this.changeRate < this.getPlane().getType().getMaxAltitude()) {
+				return this.getPlane().getAltitude() - this.getStartAltitude() - this.delta > 1;
+			} else {
+				this.getPlane().setAltitude(this.getPlane().getType().getMaxAltitude());
+				return true;
+			}
 		} else {
-			return this.getPlane().getAltitude() - this.getStartAltitude() - this.delta < 1;
+			if (this.getPlane().getAltitude() - this.changeRate > this.getPlane().getType().getMaxAltitude() * 0.7) {
+				return this.getPlane().getAltitude() - this.getStartAltitude() - this.delta < 1;
+			} else {
+				this.getPlane().setAltitude(this.getPlane().getType().getMaxAltitude() * 0.7);
+				return true;
+			}
 		}
 	}
 
@@ -46,6 +56,6 @@ public class ChangeAltitude extends Order {
 
 	@Override
 	public String getHumanReadable() {
-		return "Change Altitude by " + this.getDelta() * Config.SCALE + "m";
+		return "Change Altitude by " + this.getDelta() + "m";
 	}
 }
