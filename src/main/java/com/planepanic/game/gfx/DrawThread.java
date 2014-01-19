@@ -109,6 +109,10 @@ public class DrawThread extends Thread {
 
 			Keyboard.KEY_BACK, Keyboard.KEY_DELETE,
 			Keyboard.KEY_LEFT, Keyboard.KEY_RIGHT,
+			
+			Keyboard.KEY_NUMPAD0, Keyboard.KEY_NUMPAD1, Keyboard.KEY_NUMPAD2, Keyboard.KEY_NUMPAD3,
+			Keyboard.KEY_NUMPAD4, Keyboard.KEY_NUMPAD5, Keyboard.KEY_NUMPAD6, Keyboard.KEY_NUMPAD6,
+			Keyboard.KEY_NUMPAD7, Keyboard.KEY_NUMPAD8, Keyboard.KEY_NUMPAD9,
 	};
 
 	/**

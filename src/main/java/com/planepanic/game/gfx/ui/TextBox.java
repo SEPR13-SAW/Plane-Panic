@@ -25,6 +25,9 @@ public class TextBox extends Drawable {
 	@Accessors(chain = true) @Getter @Setter private Align align = Align.MIDDLE;
 	@Accessors(chain = true) @Getter @Setter private int cursorPosition = 0;
 	@Accessors(chain = true) @Getter private final boolean editable;
+	/*
+	 * Numpad is only enabled when numbersOnly is true
+	 */
 	@Accessors(chain = true) @Getter @Setter private boolean numbersOnly;
 
 	private boolean dirtySize = true;
@@ -156,8 +159,12 @@ public class TextBox extends Drawable {
 				}
 			} else {
 				if (numbersOnly) {
-					if (key > 1 && key < 12) {
+					if (key >= 2 && key <= 11) {
 						this.setText(this.getText().substring(0, this.cursorPosition) + new String(Keyboard.getKeyName(key)) + this.getText().substring(this.cursorPosition, this.getText().length()));
+						this.cursorPosition++;
+					}
+					if (key >= 69 && key <= 82 && key != 70 && key != 74){
+						this.setText(this.getText().substring(0, this.cursorPosition) + new String(Keyboard.getKeyName(key).substring(6)) + this.getText().substring(this.cursorPosition, this.getText().length()));
 						this.cursorPosition++;
 					}
 				} else {
