@@ -16,8 +16,9 @@ public class GameOver extends Screen {
 
 	private Button returnToMain;
 	private TextBox gameOver;
+	private TextBox score;
 
-	public GameOver() {
+	public GameOver(String score) {
 		super();
 
 		DrawThread draw = DrawThread.getInstance();
@@ -31,12 +32,15 @@ public class GameOver extends Screen {
 		});
 		draw.draw(this.returnToMain);
 		this.gameOver = new TextBox("PLANE CRASH!!");
+		this.score = new TextBox(score);
+		draw.draw(this.score);
 		draw.draw(this.gameOver);
 	}
 
 	@Override
 	public void resize() {
 		this.gameOver.setPosition(new Vector2d(DrawThread.width / 2, DrawThread.height / 2 - 150));
+		this.score.setPosition(new Vector2d(DrawThread.width / 2, DrawThread.height / 2 - 75));
 		this.returnToMain.setPosition(new Vector2d(DrawThread.width / 2, DrawThread.height / 2 + 95));
 	}
 
