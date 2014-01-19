@@ -25,9 +25,6 @@ public class TextBox extends Drawable {
 	@Accessors(chain = true) @Getter @Setter private Align align = Align.MIDDLE;
 	@Accessors(chain = true) @Getter @Setter private int cursorPosition = 0;
 	@Accessors(chain = true) @Getter private final boolean editable;
-	/*
-	 * Numpad is only enabled when numbersOnly is true
-	 */
 	@Accessors(chain = true) @Getter @Setter private boolean numbersOnly;
 
 	private boolean dirtySize = true;
@@ -157,16 +154,16 @@ public class TextBox extends Drawable {
 				if (this.cursorPosition > this.getText().length()) {
 					this.cursorPosition = this.getText().length();
 				}
+			} else if (key >= 69 && key <= 82 && key != 70 && key != 74) {
+				this.setText(this.getText().substring(0, this.cursorPosition) + new String(Keyboard.getKeyName(key).substring(6)) + this.getText().substring(this.cursorPosition, this.getText().length()));
+				this.cursorPosition++;
 			} else {
 				if (this.numbersOnly) {
 					if (key >= 2 && key <= 11) {
 						this.setText(this.getText().substring(0, this.cursorPosition) + new String(Keyboard.getKeyName(key)) + this.getText().substring(this.cursorPosition, this.getText().length()));
 						this.cursorPosition++;
 					}
-					if (key >= 69 && key <= 82 && key != 70 && key != 74) {
-						this.setText(this.getText().substring(0, this.cursorPosition) + new String(Keyboard.getKeyName(key).substring(6)) + this.getText().substring(this.cursorPosition, this.getText().length()));
-						this.cursorPosition++;
-					}
+
 				} else {
 					if (!Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) && !Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
 						this.setText(this.getText().substring(0, this.cursorPosition) + new String(Keyboard.getKeyName(key)).toLowerCase() + this.getText().substring(this.cursorPosition, this.getText().length()));
