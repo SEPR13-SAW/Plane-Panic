@@ -41,7 +41,7 @@ public class Main extends Screen {
 			}
 		});
 
-		this.exclusionNotice = (TextBox) new TextBox("Set the exclusion zone for the game in meters", false, false).setAlign(Align.RIGHT).setColor(0xffffff).setPriority(0.9f);
+		this.exclusionNotice = (TextBox) new TextBox("Set exclusion zone size (meters)", false, false).setAlign(Align.RIGHT).setColor(0xffffff).setPriority(0.9f);
 
 		this.valueBox = (TextBox) new TextBox("610", true, true).setAlign(Align.RIGHT).setColor(0xffffff).setPriority(0.9f).setScrollCallback(new CallbackP<Boolean, Integer>() {
 			@Override
