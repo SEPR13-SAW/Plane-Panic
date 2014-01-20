@@ -46,12 +46,11 @@ public class Game extends Screen {
 	 * Exclusion in meters divided by how much meters one pixel represents.
 	 * Final version should have two depending on altitude
 	 */
-	@Getter private final static int exclusionZone = 610 / Config.SCALE;
+	@Getter @Setter private static int exclusionZone = 610 / Config.SCALE;
 	private Random random = new Random();
 
 	public Game() {
 		super();
-
 		DrawThread draw = DrawThread.getInstance();
 
 		EntryPoint entry = this.createEntryPoint(new Vector2d(50, 50));
