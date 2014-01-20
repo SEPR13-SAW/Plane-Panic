@@ -115,17 +115,19 @@ public class Game extends Screen {
 		while (this.random.nextInt(100) > 15 && waypoints.size() > 1) {
 			Waypoint i = waypoints.get(this.random.nextInt(waypoints.size())), o = waypoints.get(this.random.nextInt(waypoints.size()));
 			if (i != o) {
-				switch (this.random.nextInt(4)) {
+				switch (this.random.nextInt(6)) {
 					case 0:
+					case 1:
 						plane.addOrder(new FlyBy(plane, i, o));
 						break;
-					case 1:
+					case 2:
+					case 3:
 						plane.addOrder(new FlyOver(plane, i, o));
 						break;
-					case 2:
+					case 4:
 						plane.addOrder(new ChangeAltitude(plane, this.random.nextBoolean() ? this.random.nextInt(1000) : -this.random.nextInt(1000)));
 						break;
-					case 3:
+					case 5:
 						plane.addOrder(new ChangeSpeed(plane, this.random.nextBoolean() ? this.random.nextInt(100) : -this.random.nextInt(100)));
 						break;
 				}
