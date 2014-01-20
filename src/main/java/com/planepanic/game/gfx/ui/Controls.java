@@ -133,7 +133,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Set!");
-				Controls.this.checkAdd(new AbsoluteHeading(Plane.getSelected(), (Controls.this.readValueBox() -180) * Math.PI / 180));
+				Controls.this.checkAdd(new AbsoluteHeading(Plane.getSelected(), (Controls.this.readValueBox()) * Math.PI / 180));
 				Controls.this.setOrderState(0);
 				return true;
 			}
