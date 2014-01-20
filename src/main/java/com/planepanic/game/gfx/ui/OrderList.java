@@ -63,6 +63,17 @@ public class OrderList extends Drawable {
 	}
 
 	@Override
+	protected boolean onClickRight() {
+		Iterator<Order> orders = Plane.getSelected().getOrders().iterator();
+		Order order = null;
+		while (orders.hasNext()) {
+			order = orders.next();
+		}
+		Plane.getSelected().getOrders().remove(order);
+		return true;
+	}
+
+	@Override
 	protected boolean keyPress(int key) {
 		// TODO Auto-generated method stub
 		return false;
