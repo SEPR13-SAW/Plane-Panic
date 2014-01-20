@@ -64,12 +64,7 @@ public class OrderList extends Drawable {
 
 	@Override
 	protected boolean onClickRight() {
-		Iterator<Order> orders = Plane.getSelected().getOrders().iterator();
-		Order order = null;
-		while (orders.hasNext()) {
-			order = orders.next();
-		}
-		Plane.getSelected().getOrders().remove(order);
+		Plane.getSelected().getOrders().removeLast();
 		return true;
 	}
 
