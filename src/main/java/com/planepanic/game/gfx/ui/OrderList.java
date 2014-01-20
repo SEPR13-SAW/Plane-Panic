@@ -1,5 +1,6 @@
 package com.planepanic.game.gfx.ui;
 
+import java.util.ArrayDeque;
 import java.util.Iterator;
 
 import com.planepanic.game.gfx.DrawThread;
@@ -64,7 +65,7 @@ public class OrderList extends Drawable {
 
 	@Override
 	protected boolean onClickRight() {
-		Plane.getSelected().getOrders().removeLast();
+		((ArrayDeque) Plane.getSelected().getOrders()).removeLast();
 		return true;
 	}
 
