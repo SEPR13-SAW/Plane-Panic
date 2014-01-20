@@ -19,6 +19,7 @@ import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.Waypoint;
 import com.planepanic.game.model.orders.AbsoluteHeading;
+import com.planepanic.game.model.orders.ChangeAltitude;
 import com.planepanic.game.model.orders.ChangeSpeed;
 import com.planepanic.game.model.orders.FlyBy;
 import com.planepanic.game.model.orders.FlyOver;
@@ -97,7 +98,7 @@ public class Game extends Screen {
 	 * spawnInterval < maxSpawnInterval Spawns the first plane immediately
 	 */
 	public void spawnPlane() {
-		if (this.getTimer().getSeconds() % this.getSpawnInterval() == 0 && this.getTimer().getTicks() == 0 && this.planeList.size() < 10) {
+		if (this.getTimer().getSeconds() % this.getSpawnInterval() == 0 && this.getTimer().getTicks() == 0 && this.planeList.size() < Config.NUMBER_OF_PLANES) {
 			int index = this.random.nextInt(this.entryPointList.size());
 			Plane plane = this.entryPointList.get(index).addPlane(this);
 			DrawThread draw = DrawThread.getInstance();
@@ -111,16 +112,29 @@ public class Game extends Screen {
 	public void generateFlightPlan(Plane plane) {
 		List<Waypoint> waypoints = new ArrayList<Waypoint>();
 		waypoints.addAll(this.getWaypointList());
-		while (this.random.nextInt(100) > 15 && waypoints.size() > 1) {
+		int randomInt = this.random.nextInt(100);
+		while (randomInt > 15 && waypoints.size() > 1) {
 			Waypoint i = waypoints.get(this.random.nextInt(waypoints.size())), o = waypoints.get(this.random.nextInt(waypoints.size()));
 			if (i != o) {
-				if (this.random.nextInt(2) == 1) {
-					plane.addOrder(new FlyBy(plane, i, o));
-				} else {
-					plane.addOrder(new FlyOver(plane, i, o));
+				switch (this.random.nextInt(6)) {
+					case 0:
+					case 1:
+						plane.addOrder(new FlyBy(plane, i, o));
+						break;
+					case 2:
+					case 3:
+						plane.addOrder(new FlyOver(plane, i, o));
+						break;
+					case 4:
+						plane.addOrder(new ChangeAltitude(plane, this.random.nextBoolean() ? this.random.nextInt(1000) : -this.random.nextInt(1000)));
+						break;
+					case 5:
+						plane.addOrder(new ChangeSpeed(plane, this.random.nextBoolean() ? this.random.nextInt(100) : -this.random.nextInt(100)));
+						break;
 				}
 				waypoints.remove(o);
 				waypoints.remove(i);
+				randomInt = this.random.nextInt(100);
 			}
 		}
 		plane.addOrder(new LeaveAirspace(plane, this.getExitPointList().get(this.random.nextInt(this.getExitPointList().size()))));

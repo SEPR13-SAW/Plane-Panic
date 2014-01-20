@@ -78,7 +78,7 @@ public final class Plane extends Image {
 
 	public void checkOutOfBounds() {
 		if ((this.getPosition().getX() < 0
-				|| this.getPosition().getX() > 660
+				|| this.getPosition().getX() > 896
 				|| this.getPosition().getY() < 0
 				|| this.getPosition().getY() > 720)
 				&& this.orders.size() == 0) {

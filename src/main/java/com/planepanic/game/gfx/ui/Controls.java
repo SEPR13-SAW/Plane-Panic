@@ -13,6 +13,7 @@ import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.orders.AbsoluteHeading;
 import com.planepanic.game.model.orders.ChangeAltitude;
 import com.planepanic.game.model.orders.ChangeSpeed;
+import com.planepanic.game.model.orders.Order;
 import com.planepanic.game.model.orders.RelativeHeading;
 
 /**
@@ -112,7 +113,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Turns left by number inputted");
-				Plane.getSelected().addOrder(new RelativeHeading(Plane.getSelected(), Controls.this.readValueBox() * Math.PI / 180));
+				Controls.this.checkAdd(new RelativeHeading(Plane.getSelected(), Controls.this.readValueBox() * Math.PI / 180));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -122,7 +123,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Turns right by number inputted");
-				Plane.getSelected().addOrder(new RelativeHeading(Plane.getSelected(), -Controls.this.readValueBox() * Math.PI / 180));
+				Controls.this.checkAdd(new RelativeHeading(Plane.getSelected(), -Controls.this.readValueBox() * Math.PI / 180));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -131,8 +132,8 @@ public class Controls {
 		this.controls.add(this.set = new OrderButton(1312, 720, Resources.SET, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
-				System.out.println("Back!");
-				Plane.getSelected().addOrder(new AbsoluteHeading(Plane.getSelected(), Controls.this.readValueBox() * Math.PI / 180));
+				System.out.println("Set!");
+				Controls.this.checkAdd(new AbsoluteHeading(Plane.getSelected(), Controls.this.readValueBox() * Math.PI / 180));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -143,7 +144,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Increases altitude by inputted amount");
-				Plane.getSelected().addOrder(new ChangeAltitude(Plane.getSelected(), Controls.this.readValueBox()));
+				Controls.this.checkAdd(new ChangeAltitude(Plane.getSelected(), Controls.this.readValueBox()));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -153,7 +154,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Decreases altitude by inputted amount");
-				Plane.getSelected().addOrder(new ChangeAltitude(Plane.getSelected(), -Controls.this.readValueBox()));
+				Controls.this.checkAdd(new ChangeAltitude(Plane.getSelected(), -Controls.this.readValueBox()));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -164,7 +165,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Increases speed by inputted amount");
-				Plane.getSelected().addOrder(new ChangeSpeed(Plane.getSelected(), Controls.this.readValueBox()));
+				Controls.this.checkAdd(new ChangeSpeed(Plane.getSelected(), Controls.this.readValueBox()));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -175,7 +176,7 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Decreases speed by inputted amount");
-				Plane.getSelected().addOrder(new ChangeSpeed(Plane.getSelected(), -Controls.this.readValueBox()));
+				Controls.this.checkAdd(new ChangeSpeed(Plane.getSelected(), -Controls.this.readValueBox()));
 				Controls.this.setOrderState(0);
 				return true;
 			}
@@ -246,6 +247,12 @@ public class Controls {
 
 	public int readValueBox() {
 		return Integer.parseInt(Controls.this.valueBox.getText());
+	}
+
+	public void checkAdd(Order order) {
+		if (Plane.getSelected() != null) {
+			Plane.getSelected().addOrder(order);
+		}
 	}
 
 }
