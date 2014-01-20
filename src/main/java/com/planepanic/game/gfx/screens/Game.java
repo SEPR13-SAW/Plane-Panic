@@ -112,7 +112,8 @@ public class Game extends Screen {
 	public void generateFlightPlan(Plane plane) {
 		List<Waypoint> waypoints = new ArrayList<Waypoint>();
 		waypoints.addAll(this.getWaypointList());
-		while (this.random.nextInt(100) > 15 && waypoints.size() > 1) {
+		int randomInt = this.random.nextInt(100);
+		while (randomInt > 15 && waypoints.size() > 1) {
 			Waypoint i = waypoints.get(this.random.nextInt(waypoints.size())), o = waypoints.get(this.random.nextInt(waypoints.size()));
 			if (i != o) {
 				switch (this.random.nextInt(6)) {
@@ -133,6 +134,7 @@ public class Game extends Screen {
 				}
 				waypoints.remove(o);
 				waypoints.remove(i);
+				randomInt = this.random.nextInt(100);
 			}
 		}
 		plane.addOrder(new LeaveAirspace(plane, this.getExitPointList().get(this.random.nextInt(this.getExitPointList().size()))));
