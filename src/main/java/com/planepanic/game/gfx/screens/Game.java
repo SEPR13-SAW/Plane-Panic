@@ -19,6 +19,7 @@ import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.Waypoint;
 import com.planepanic.game.model.orders.AbsoluteHeading;
+import com.planepanic.game.model.orders.ChangeAltitude;
 import com.planepanic.game.model.orders.ChangeSpeed;
 import com.planepanic.game.model.orders.FlyBy;
 import com.planepanic.game.model.orders.FlyOver;
@@ -114,10 +115,19 @@ public class Game extends Screen {
 		while (this.random.nextInt(100) > 15 && waypoints.size() > 1) {
 			Waypoint i = waypoints.get(this.random.nextInt(waypoints.size())), o = waypoints.get(this.random.nextInt(waypoints.size()));
 			if (i != o) {
-				if (this.random.nextInt(2) == 1) {
-					plane.addOrder(new FlyBy(plane, i, o));
-				} else {
-					plane.addOrder(new FlyOver(plane, i, o));
+				switch (this.random.nextInt(4)) {
+					case 0:
+						plane.addOrder(new FlyBy(plane, i, o));
+						break;
+					case 1:
+						plane.addOrder(new FlyOver(plane, i, o));
+						break;
+					case 2:
+						plane.addOrder(new ChangeAltitude(plane, this.random.nextBoolean() ? this.random.nextInt(1000) : -this.random.nextInt(1000)));
+						break;
+					case 3:
+						plane.addOrder(new ChangeSpeed(plane, this.random.nextBoolean() ? this.random.nextInt(100) : -this.random.nextInt(100)));
+						break;
 				}
 				waypoints.remove(o);
 				waypoints.remove(i);

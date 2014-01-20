@@ -43,9 +43,9 @@ public class ChangeAltitude extends Order {
 	@Override
 	public void tick() {
 		if (this.getDelta() < 0) {
-			this.getPlane().setAltitude(this.getPlane().getAltitude() - 20.0 / Config.FRAMERATE);
+			this.getPlane().setAltitude(this.getPlane().getAltitude() - 50.0 / Config.FRAMERATE);
 		} else {
-			this.getPlane().setAltitude(this.getPlane().getAltitude() + 20.0 / Config.FRAMERATE);
+			this.getPlane().setAltitude(this.getPlane().getAltitude() + 50.0 / Config.FRAMERATE);
 		}
 	}
 
