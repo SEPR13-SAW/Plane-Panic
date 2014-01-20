@@ -248,7 +248,12 @@ public class Controls {
 	public void checkAdd(Order order) {
 		if (Plane.getSelected() != null) {
 			Plane.getSelected().addOrder(order);
+			this.resetTextBox();
 		}
+	}
+
+	public void resetTextBox() {
+		this.valueBox.setText("0");
 	}
 
 }

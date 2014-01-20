@@ -20,6 +20,6 @@ public class Config {
 	public static final int FRAMERATE = 60;
 
 	public static final boolean DEBUG = true;
-	
+
 	public static final int NUMBER_OF_PLANES = 2;
 }
