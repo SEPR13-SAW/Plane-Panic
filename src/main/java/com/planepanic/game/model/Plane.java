@@ -82,9 +82,9 @@ public final class Plane extends Image {
 
 	public void checkOutOfBounds() {
 		if ((this.getPosition().getX() < 0
-				|| this.getPosition().getX() > Game.AIRSPACE_HEIGHT
+				|| this.getPosition().getX() > Game.AIRSPACE_WIDTH
 				|| this.getPosition().getY() < 0
-				|| this.getPosition().getY() > Game.AIRSPACE_WIDTH)
+				|| this.getPosition().getY() > Game.AIRSPACE_HEIGHT)
 				&& this.orders.size() == 0) {
 			List<Waypoint> temp = new ArrayList<Waypoint>();
 			temp.addAll(this.game.getWaypointList());
