@@ -40,8 +40,7 @@ public class Timer extends TextBox {
 
 	@Override
 	public void draw3d() {
-		// TODO Auto-generated method stub
-
+		// Empty.
 	}
 
 }

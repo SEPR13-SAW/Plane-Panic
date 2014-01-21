@@ -26,7 +26,7 @@ public final class Land extends Order {
 
 	@Override
 	public void tick() {
-		// TODO
+		// TODO Implement.
 	}
 
 	@Override

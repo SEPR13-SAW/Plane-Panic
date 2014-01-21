@@ -21,14 +21,12 @@ public final class Runway extends Drawable {
 
 	@Override
 	public void draw2d() {
-		// TODO Auto-generated method stub
-
+		// TODO Draw runway.
 	}
 
 	@Override
 	public void draw3d() {
-		// TODO Auto-generated method stub
-
+		// Empty.
 	}
 
 	@Override
@@ -38,7 +36,6 @@ public final class Runway extends Drawable {
 
 	@Override
 	protected boolean keyPress(int key) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

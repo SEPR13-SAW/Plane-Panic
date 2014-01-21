@@ -47,8 +47,7 @@ public class Image extends Drawable {
 
 	@Override
 	public void draw3d() {
-		// TODO Auto-generated method stub
-
+		// Empty.
 	}
 
 	@Override
@@ -58,7 +57,6 @@ public class Image extends Drawable {
 
 	@Override
 	protected boolean keyPress(int key) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

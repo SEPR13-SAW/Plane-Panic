@@ -29,8 +29,7 @@ public class Waypoint extends SimplePointOfInterest {
 
 	@Override
 	public void draw3d() {
-		// TODO Auto-generated method stub
-
+		// Empty.
 	}
 
 	@Override

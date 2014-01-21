@@ -76,8 +76,7 @@ public final class Plane extends Image {
 
 	@Override
 	public void draw3d() {
-		// TODO Auto-generated method stub
-
+		// Empty.
 	}
 
 	public void checkOutOfBounds() {

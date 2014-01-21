@@ -20,8 +20,7 @@ public class Radar extends Image {
 
 	@Override
 	public void draw3d() {
-		// TODO Auto-generated method stub
-
+		// Empty.
 	}
 
 	@Override

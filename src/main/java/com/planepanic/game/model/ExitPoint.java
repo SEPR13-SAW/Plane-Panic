@@ -21,7 +21,6 @@ public final class ExitPoint extends Waypoint {
 	}
 
 	public void removePlane(Plane plane) {
-		// TODO make it do something
 		this.game.getPlaneList().remove(plane);
 		DrawThread.draw.removeObject(plane);
 	}
@@ -34,8 +33,7 @@ public final class ExitPoint extends Waypoint {
 
 	@Override
 	public void draw3d() {
-		// TODO Auto-generated method stub
-
+		// Empty.
 	}
 
 	@Override
@@ -52,7 +50,6 @@ public final class ExitPoint extends Waypoint {
 
 	@Override
 	protected boolean keyPress(int key) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

@@ -47,8 +47,7 @@ public class Button extends Drawable {
 
 	@Override
 	public void draw3d() {
-		// TODO Auto-generated method stub
-
+		// Empty.
 	}
 
 	@Override
@@ -61,7 +60,6 @@ public class Button extends Drawable {
 
 	@Override
 	protected boolean keyPress(int key) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

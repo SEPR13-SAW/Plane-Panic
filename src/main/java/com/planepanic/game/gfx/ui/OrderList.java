@@ -47,8 +47,7 @@ public class OrderList extends Drawable {
 
 	@Override
 	public void draw3d() {
-		// TODO Auto-generated method stub
-
+		// Empty.
 	}
 
 	@Override
@@ -71,7 +70,6 @@ public class OrderList extends Drawable {
 
 	@Override
 	protected boolean keyPress(int key) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

@@ -40,8 +40,7 @@ public class OrderPanel extends Drawable {
 
 	@Override
 	public void draw3d() {
-		// TODO Auto-generated method stub
-
+		// Empty.
 	}
 
 	public void onMove() {
@@ -50,7 +49,6 @@ public class OrderPanel extends Drawable {
 
 	@Override
 	public boolean onClick() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -60,7 +58,6 @@ public class OrderPanel extends Drawable {
 
 	@Override
 	protected boolean keyPress(int key) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

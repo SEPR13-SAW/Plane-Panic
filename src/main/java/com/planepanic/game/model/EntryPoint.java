@@ -21,8 +21,7 @@ public final class EntryPoint extends SimplePointOfInterest {
 
 	@Override
 	public void draw3d() {
-		// TODO Auto-generated method stub
-
+		// Empty.
 	}
 
 	@Override
@@ -32,7 +31,6 @@ public final class EntryPoint extends SimplePointOfInterest {
 
 	@Override
 	protected boolean keyPress(int key) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }
