@@ -242,7 +242,11 @@ public class Controls {
 	}
 
 	public int readValueBox() {
-		return Integer.parseInt(Controls.this.valueBox.getText());
+		try {
+			return Integer.parseInt(Controls.this.valueBox.getText());
+		} catch (NumberFormatException ex) {
+			return 0;
+		}
 	}
 
 	public void checkAdd(Order order) {
