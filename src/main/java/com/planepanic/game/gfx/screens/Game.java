@@ -197,7 +197,7 @@ public class Game extends Screen {
 				if (distance <= Game.exclusionZone * Game.exclusionZone) {
 					this.planeList.get(i).setViolated(true);
 					this.planeList.get(o).setViolated(true);
-					if (distance <= Game.exclusionZone * Game.exclusionZone * 0.1) {
+					if (distance <= Game.exclusionZone * Game.exclusionZone * 0.5) {
 						DrawThread.getInstance().changeScreen(new com.planepanic.game.gfx.screens.GameOver(this.getTimer().getText()));
 
 					};
