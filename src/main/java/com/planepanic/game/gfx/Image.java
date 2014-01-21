@@ -18,7 +18,7 @@ public class Image extends Drawable {
 	/**
 	 * Set to false in unit tests to prevent texture loading.
 	 */
-	public static boolean LOAD_TEXTURES;
+	public static boolean LOAD_TEXTURES = true;
 
 	private Texture texture;
 	@Getter @Setter(AccessLevel.PROTECTED) private float angle = 0;
