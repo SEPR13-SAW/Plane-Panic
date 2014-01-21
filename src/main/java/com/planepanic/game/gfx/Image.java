@@ -15,6 +15,10 @@ import com.planepanic.game.model.Vector2d;
  * @author Jonathan, Thomas
  */
 public class Image extends Drawable {
+	/**
+	 * Set to false in unit tests to prevent texture loading.
+	 */
+	public static boolean LOAD_TEXTURES;
 
 	private Texture texture;
 	@Getter @Setter(AccessLevel.PROTECTED) private float angle = 0;
@@ -25,6 +29,9 @@ public class Image extends Drawable {
 
 	public Image(Resources res, Vector2d position) {
 		super(position);
+
+		if (!LOAD_TEXTURES) return;
+
 		this.texture = res.getTexture();
 		if (this.texture != null) {
 			this.setHitboxSize(new Vector2d(this.texture.getImageWidth(), this.texture.getImageHeight()));

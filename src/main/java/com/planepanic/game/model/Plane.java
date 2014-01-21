@@ -63,6 +63,10 @@ public final class Plane extends Image {
 		this.game = game;
 	}
 
+	public Plane() {
+		this(null, PlaneType.BOEING_747_400, 100, PlaneType.BOEING_747_400.getMaxFuel(), 100, new Vector2d(1, 1), null, 0, 0);
+	}
+
 	@Override
 	public void draw2d() {
 		this.setPriority((float) -(0.1 - this.getAltitude() / 50000));
