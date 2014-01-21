@@ -16,7 +16,19 @@ public final class AbsoluteHeading extends Order {
 
 	public AbsoluteHeading(Plane plane, double delta) {
 		super(plane);
-		this.delta = delta;
+		this.delta = this.fixAbsolute(delta);
+		
+	}
+	
+	private double fixAbsolute(double delta){
+		//Here is where the magic happens. I dont know why
+		if ((0 < delta) && (delta < 180)){
+			delta = Math.PI - delta;
+		}
+		else if((180 > delta)&&(delta > (360))){
+			delta = delta - Math.PI;
+		}
+		return (delta);
 	}
 
 	@Override
@@ -33,6 +45,7 @@ public final class AbsoluteHeading extends Order {
 	public void tick() {
 		double pa = this.getPlane().getVelocity().getAngle();
 		double a = this.delta - pa;
+			
 		while (a > Math.PI) {
 			a -= Math.PI * 2;
 		}

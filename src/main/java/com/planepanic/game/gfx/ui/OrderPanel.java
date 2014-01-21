@@ -31,7 +31,7 @@ public class OrderPanel extends Drawable {
 
 	@Override
 	public void draw2d() {
-		DrawUtil.setColor(0xFFFFFF);
+		DrawUtil.setColor(0x89714F);
 		DrawUtil.drawSquare((float) this.getPosition().getX(), 75, (float) this.getHitboxSize().getX(), 150, true, this.getPriority());
 		DrawUtil.drawSquare((float) this.getPosition().getX(), DrawThread.height - 64, (float) this.getHitboxSize().getX(), 128, true, this.getPriority());
 		DrawUtil.setColor(0x000000);
