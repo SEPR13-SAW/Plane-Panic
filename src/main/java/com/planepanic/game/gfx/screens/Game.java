@@ -18,13 +18,11 @@ import com.planepanic.game.model.ExitPoint;
 import com.planepanic.game.model.Plane;
 import com.planepanic.game.model.Vector2d;
 import com.planepanic.game.model.Waypoint;
-import com.planepanic.game.model.orders.AbsoluteHeading;
 import com.planepanic.game.model.orders.ChangeAltitude;
 import com.planepanic.game.model.orders.ChangeSpeed;
 import com.planepanic.game.model.orders.FlyBy;
 import com.planepanic.game.model.orders.FlyOver;
 import com.planepanic.game.model.orders.LeaveAirspace;
-import com.planepanic.game.model.orders.RelativeHeading;
 
 /**
  * Game screen Does most of the setup and glue logic
@@ -33,8 +31,8 @@ import com.planepanic.game.model.orders.RelativeHeading;
  * 
  */
 public class Game extends Screen {
-
-	private final int[][] waypointLocations = { { 50, 50 }, { 300, 50 }, { 600, 50 }, { 600, 300 }, { 600, 600 }, { 300, 600 }, { 50, 600 }, { 50, 300 } };
+	public final static int AIRSPACE_WIDTH = 896, AIRSPACE_HEIGHT = 720;
+	private final int[][] WAYPOINT_LOCATIONS = { { 360, 100 }, { 650, 140 }, { 750, 360 }, { 500, 600 }, { 200, 600 }, { 50, 350 }, { 360, 275 }, { 850, 50 } };
 	@Getter private OrderPanel orderpanel;
 	@Getter private Timer timer;
 	private Radar radar;
@@ -54,41 +52,41 @@ public class Game extends Screen {
 		super();
 		DrawThread draw = DrawThread.getInstance();
 
-		EntryPoint entry = this.createEntryPoint(new Vector2d(50, 50));
-		EntryPoint entry2 = this.createEntryPoint(new Vector2d(50, 200));
-		this.createEntryPoint(new Vector2d(50, 500));
-		this.createEntryPoint(new Vector2d(500, 500));
-		this.createEntryPoint(new Vector2d(500, 50));
+		this.createEntryPoint(new Vector2d(100, -10));
+		this.createEntryPoint(new Vector2d(-10, 500));
+		this.createEntryPoint(new Vector2d(400, AIRSPACE_HEIGHT + 10));
+		this.createEntryPoint(new Vector2d(AIRSPACE_WIDTH + 10, 625));
 
 		for (int i = 0; i < 8; i++) {
-			this.waypointList.add(new Waypoint(new Vector2d(this.waypointLocations[i][0], this.waypointLocations[i][1]), "" + (char) (65 + i)));
+			this.waypointList.add(new Waypoint(new Vector2d(this.WAYPOINT_LOCATIONS[i][0], this.WAYPOINT_LOCATIONS[i][1]), "" + (char) (65 + i)));
 			draw.draw(this.waypointList.get(i));
 		}
 
-		Plane plane = entry2.addPlane(this);
-		this.planeList.add(plane);
-		plane.getOrders().add(new AbsoluteHeading(plane, 0));
-		plane.getOrders().add(new AbsoluteHeading(plane, -Math.PI / 2));
-		plane.getOrders().add(new RelativeHeading(plane, Math.PI / 2));
-		plane.getOrders().add(new ChangeSpeed(plane, 100));
-		plane.getOrders().add(new FlyOver(plane, this.waypointList.get(0), this.waypointList.get(2)));
-		plane.getOrders().add(new RelativeHeading(plane, Math.PI / 2));
-		draw.draw(plane);
-		plane = entry.addPlane(this);
-		this.planeList.add(plane);
-		draw.draw(plane);
 		this.radar = new Radar();
 		draw.draw(this.radar);
+
 		Airport airport = new Airport(new Vector2d(448, Config.WINDOW_HEIGHT / 2));
 		draw.draw(airport);
+
 		this.timer = new Timer(new Vector2d(448, 30));
 		draw.draw(this.timer);
-		ExitPoint exit = new ExitPoint(new Vector2d(890, 300), "e0", this);
+
+		ExitPoint exit = new ExitPoint(new Vector2d(AIRSPACE_WIDTH - 20, 200), "Exit 1", this);
 		draw.draw(exit);
 		this.exitPointList.add(exit);
-		exit = new ExitPoint(new Vector2d(350, 700), "e1", this);
+
+		exit = new ExitPoint(new Vector2d(20, 700), "Exit 2", this);
 		draw.draw(exit);
 		this.exitPointList.add(exit);
+
+		exit = new ExitPoint(new Vector2d(200, 20), "Exit 3", this);
+		draw.draw(exit);
+		this.exitPointList.add(exit);
+
+		exit = new ExitPoint(new Vector2d(AIRSPACE_WIDTH - 100, AIRSPACE_HEIGHT - 20), "Exit 4", this);
+		draw.draw(exit);
+		this.exitPointList.add(exit);
+
 		this.orderpanel = new OrderPanel(new Vector2d(896, 360));
 		draw.draw(this.orderpanel);
 	}

@@ -40,9 +40,9 @@ public class Main extends Screen {
 			}
 		});
 
-		this.exclusionNotice = (TextBox) new TextBox("Set exclusion zone size (meters)", false, false).setAlign(Align.RIGHT).setColor(0xffffff).setPriority(0.9f);
+		this.exclusionNotice = (TextBox) new TextBox("Set exclusion zone size (meters)", false, false).setAlign(Align.MIDDLE).setColor(0xffffff).setPriority(0.9f);
 
-		this.valueBox = (TextBox) new TextBox("610", true, true).setAlign(Align.RIGHT).setColor(0xffffff).setPriority(0.9f).setScrollCallback(new CallbackP<Boolean, Integer>() {
+		this.valueBox = (TextBox) new TextBox("610", true, true).setAlign(Align.MIDDLE).setColor(0xffffff).setPriority(0.9f).setScrollCallback(new CallbackP<Boolean, Integer>() {
 			@Override
 			public Boolean call(Integer param) {
 				Main.this.value += param / 6;
@@ -62,8 +62,8 @@ public class Main extends Screen {
 	public void resize() {
 		this.title.setPosition(new Vector2d(DrawThread.width / 2, DrawThread.height / 2 - 150));
 		this.startGame.setPosition(new Vector2d(DrawThread.width / 2, DrawThread.height / 2 + 150));
-		this.valueBox.setPosition(new Vector2d(DrawThread.width / 2 + 20, DrawThread.height / 2 + 50));
-		this.exclusionNotice.setPosition(new Vector2d(DrawThread.width / 5 * 4, DrawThread.height / 2));
+		this.valueBox.setPosition(new Vector2d(DrawThread.width / 2, DrawThread.height / 2 + 50));
+		this.exclusionNotice.setPosition(new Vector2d(DrawThread.width / 2, DrawThread.height / 2));
 	}
 
 }
