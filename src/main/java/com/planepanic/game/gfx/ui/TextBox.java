@@ -77,6 +77,7 @@ public class TextBox extends Drawable {
 		DrawUtil.drawString((float) x, (float) (this.getPosition().getY() - this.getHitboxSize().getY() / 2), this.text, this.color, this.size, this.getPriority());
 	}
 
+	@SuppressWarnings("incomplete-switch")
 	@Override
 	public boolean isMouseOver() {
 		int x = Mouse.getX();
