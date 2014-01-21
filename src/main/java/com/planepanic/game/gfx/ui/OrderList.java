@@ -65,7 +65,7 @@ public class OrderList extends Drawable {
 
 	@Override
 	protected boolean onClickRight() {
-		((ArrayDeque) Plane.getSelected().getOrders()).removeLast();
+		((ArrayDeque<Order>) Plane.getSelected().getOrders()).removeLast();
 		return true;
 	}
 

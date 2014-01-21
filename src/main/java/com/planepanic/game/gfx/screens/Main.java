@@ -6,7 +6,6 @@ import com.planepanic.game.gfx.CallbackP;
 import com.planepanic.game.gfx.DrawThread;
 import com.planepanic.game.gfx.ui.Align;
 import com.planepanic.game.gfx.ui.Button;
-import com.planepanic.game.gfx.ui.Controls;
 import com.planepanic.game.gfx.ui.TextBox;
 import com.planepanic.game.model.Vector2d;
 

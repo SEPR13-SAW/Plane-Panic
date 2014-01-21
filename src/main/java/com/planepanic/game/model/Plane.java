@@ -207,7 +207,7 @@ public final class Plane extends Image {
 	 * @return The distance between the points
 	 */
 	public double distanceFrom(Plane plane) {
-		return plane.getPosition().distanceFrom(this.getPosition()) + (((plane.getAltitude() - this.getAltitude()) * (plane.getAltitude() - this.getAltitude()) / Config.SCALE));
+		return plane.getPosition().distanceFrom(this.getPosition()) + (plane.getAltitude() - this.getAltitude()) * (plane.getAltitude() - this.getAltitude()) / Config.SCALE;
 	}
 
 	@Override

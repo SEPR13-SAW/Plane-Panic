@@ -108,7 +108,7 @@ public class Controls {
 				return true;
 			}
 		}));
-		
+
 		this.controls.add(this.left = new OrderButton(1180, 690, Resources.LEFT, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
@@ -118,7 +118,7 @@ public class Controls {
 				return true;
 			}
 		}));
-		
+
 		this.controls.add(this.right = new OrderButton(1244, 690, Resources.RIGHT, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
@@ -133,13 +133,12 @@ public class Controls {
 			@Override
 			public Boolean call() {
 				System.out.println("Set!");
-				Controls.this.checkAdd(new AbsoluteHeading(Plane.getSelected(), (Controls.this.readValueBox()) * Math.PI / 180));
+				Controls.this.checkAdd(new AbsoluteHeading(Plane.getSelected(), Controls.this.readValueBox() * Math.PI / 180));
 				Controls.this.setOrderState(0);
 				return true;
 			}
 		}));
 
-		
 		this.controls.add(this.up = new OrderButton(1200, 656, Resources.UP, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
@@ -149,7 +148,7 @@ public class Controls {
 				return true;
 			}
 		}));
-		
+
 		this.controls.add(this.down = new OrderButton(1200, 720, Resources.DOWN, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
@@ -159,7 +158,6 @@ public class Controls {
 				return true;
 			}
 		}));
-		
 
 		this.controls.add(this.upSpeed = new OrderButton(1200, 656, Resources.UP, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
 			@Override
@@ -170,7 +168,6 @@ public class Controls {
 				return true;
 			}
 		}));
-		
 
 		this.controls.add(this.downSpeed = new OrderButton(1200, 720, Resources.DOWN, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
 			@Override
@@ -181,7 +178,6 @@ public class Controls {
 				return true;
 			}
 		}));
-
 
 		this.controls.add(this.back = new OrderButton(1312, 656, Resources.BACK, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
 			@Override
