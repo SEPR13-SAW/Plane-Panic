@@ -49,7 +49,7 @@ public final class AbsoluteHeading extends Order {
 
 	@Override
 	public String getHumanReadable() {
-		return "Change relative Heading by " + this.getDelta() * 180 / Math.PI;
+		return "Change absolute Heading by " + this.getDelta() * 180 / Math.PI;
 	}
 
 }

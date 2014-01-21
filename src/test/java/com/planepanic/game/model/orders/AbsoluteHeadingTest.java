@@ -10,7 +10,7 @@ import com.planepanic.game.model.Plane;
 public final class AbsoluteHeadingTest {
 
 	@Test
-	public void testEastHeading() {
+	public void testOrder() {
 		double angle = -Math.PI/3;
 		Image.LOAD_TEXTURES = false;
 
