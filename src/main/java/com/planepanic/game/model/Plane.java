@@ -178,7 +178,7 @@ public final class Plane extends Image {
 	 * Converts speed in m/s and starting angle, to a Cartesian vector
 	 * 
 	 * @param angle for simpler use in other calculations
-	 * @return
+	 * @return A vector representing the plane's velocity
 	 */
 	public Vector2d convertSpeedToVelocity(double angle) {
 		return Vector2d.fromAngle(angle).mul(this.getSpeed() * 10 / Config.FRAMERATE);

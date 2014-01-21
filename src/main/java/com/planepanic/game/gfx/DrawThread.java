@@ -36,7 +36,7 @@ public class DrawThread extends Thread {
 	/**
 	 * Get a draw thread instance.
 	 * 
-	 * @return
+	 * @return An instance of DrawThread
 	 */
 	public static DrawThread getInstance() {
 		if (DrawThread.draw == null) {
