@@ -20,7 +20,7 @@ public class Timer extends TextBox {
 
 	public Timer(Vector2d position) {
 		super("0:00");
-		this.setAlign(Align.MIDDLE).setColor(0x000000).setSize(50).setPosition(position);
+		this.setAlign(Align.MIDDLE).setColor(0xFFFFFF).setSize(50).setPosition(position);
 	}
 
 	public void tick() {
