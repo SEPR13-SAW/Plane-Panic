@@ -34,9 +34,9 @@ public class Button extends Drawable {
 	@Override
 	public void draw2d() {
 		if (this.isMouseOver()) {
-			DrawUtil.setColor(0xA41CFF);
+			DrawUtil.setColor(0xC6B59D);
 		} else {
-			DrawUtil.setColor(0x7313AF);
+			DrawUtil.setColor(0x89714F);
 		}
 		DrawUtil.drawSquare((float) this.getPosition().getX(), (float) this.getPosition().getY(), (float) this.getHitboxSize().getX(), (float) this.getHitboxSize().getY(), true, this.getPriority());
 		if (this.dirtySize) {

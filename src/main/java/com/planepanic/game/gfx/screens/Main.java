@@ -4,6 +4,8 @@ import com.planepanic.game.Config;
 import com.planepanic.game.gfx.Callback;
 import com.planepanic.game.gfx.CallbackP;
 import com.planepanic.game.gfx.DrawThread;
+import com.planepanic.game.gfx.Image;
+import com.planepanic.game.gfx.Resources;
 import com.planepanic.game.gfx.ui.Align;
 import com.planepanic.game.gfx.ui.Button;
 import com.planepanic.game.gfx.ui.TextBox;
@@ -26,7 +28,6 @@ public class Main extends Screen {
 		super();
 
 		DrawThread draw = DrawThread.getInstance();
-
 		this.startGame = new Button("Start Game").setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
@@ -56,6 +57,7 @@ public class Main extends Screen {
 		draw.draw(this.startGame);
 		this.title = new TextBox("Plane Panic");
 		draw.draw(this.title);
+
 	}
 
 	@Override
