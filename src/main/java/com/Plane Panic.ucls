@@ -1,0 +1,1190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.4" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="com.planepanic.game.model.SimplePointOfInterest" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/SimplePointOfInterest.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="180" x="3132" y="1604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.planepanic.game.gfx.ui.OrderButton" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/ui/OrderButton.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="242" x="3496" y="3491"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.planepanic.game.model.ExitPoint" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/ExitPoint.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="180" x="3266" y="2586"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.planepanic.game.model.orders.TakeOff" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/orders/TakeOff.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="158" x="1379" y="1604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.planepanic.game.gfx.screens.GameOver" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/screens/GameOver.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="154" x="3865" y="2586"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="6" language="java" name="com.planepanic.game.model.PointOfInterest" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/PointOfInterest.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="63" width="129" x="2584" y="2586"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="7" language="java" name="com.planepanic.game.model.orders.Order" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/orders/Order.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="164" x="2176" y="1069"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.planepanic.game.gfx.Image" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/Image.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="162" x="3352" y="1604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.planepanic.game.Config" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/Config.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="151" x="959" y="552"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="10" language="java" name="com.planepanic.game.model.PlaneType" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/PlaneType.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="387" width="314" x="2753" y="3491"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="11" language="java" name="com.planepanic.game.gfx.CallbackP" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/CallbackP.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="118" x="2300" y="1604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="com.planepanic.game.model.Runway" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/Runway.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="197" x="1979" y="2193"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="com.planepanic.game.gfx.ui.Controls" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/ui/Controls.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="136" x="3496" y="2586"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="14" language="java" name="com.planepanic.game.StartingClass.Difficulty" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/StartingClass.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="119" x="3106" y="1069"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="15" language="java" name="com.planepanic.game.model.Waypoint" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/Waypoint.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="333" width="154" x="2681" y="2193"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="com.planepanic.game.model.orders.RelativeHeading" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/orders/RelativeHeading.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="225" width="172" x="959" y="1604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="com.planepanic.game.model.orders.ChangeAltitude" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/orders/ChangeAltitude.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="297" width="168" x="1171" y="1604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="com.planepanic.game.gfx.ui.TextBox" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/ui/TextBox.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="549" width="194" x="3825" y="3491"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="19" language="java" name="com.planepanic.game.gfx.Callback" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/Callback.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="118" x="3394" y="4080"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <enumeration id="20" language="java" name="com.planepanic.game.StartingClass.GameState" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/StartingClass.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="144" x="3265" y="1069"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="21" language="java" name="com.planepanic.game.gfx.ui.Button" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/ui/Button.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="214" x="4059" y="3491"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="com.planepanic.game.model.orders.ChangeSpeed" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/orders/ChangeSpeed.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="261" width="163" x="1775" y="1604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="com.planepanic.game.Player" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/Player.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="112" x="1600" y="552"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="com.planepanic.game.model.Vector2d" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/Vector2d.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="441" width="196" x="2260" y="4381"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="com.planepanic.game.gfx.ui.PlaneInfo" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/ui/PlaneInfo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="132" x="3672" y="2586"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="com.planepanic.game.gfx.DrawThread" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/DrawThread.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="189" x="3528" y="552"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="com.planepanic.game.model.orders.FlyBy" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/orders/FlyBy.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="183" x="2458" y="1604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="com.planepanic.game.gfx.ui.Timer" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/ui/Timer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="128" x="3226" y="4080"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="com.planepanic.game.model.orders.AbsoluteHeading" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/orders/AbsoluteHeading.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="189" width="177" x="1978" y="1604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="com.planepanic.game.model.Airport" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/Airport.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="129" x="2916" y="2193"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="com.planepanic.game.model.EntryPoint" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/EntryPoint.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="135" x="3263" y="2193"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="com.planepanic.game.gfx.ui.Radar" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/ui/Radar.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="131" x="3438" y="2193"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="33" language="java" name="com.planepanic.game.gfx.Resources" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/Resources.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="441" width="150" x="1753" y="552"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="34" language="java" name="com.planepanic.game.model.orders.FlyOver" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/orders/FlyOver.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="243" width="194" x="2681" y="1604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="com.planepanic.game.gfx.screens.Game" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/screens/Game.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="549" width="208" x="3575" y="1604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="com.planepanic.game.gfx.DrawUtil" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/DrawUtil.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="477" width="288" x="2158" y="552"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="com.planepanic.game.model.orders.LeaveAirspace" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/orders/LeaveAirspace.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="189" width="177" x="2915" y="1604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="com.planepanic.game.model.Plane" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/Plane.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="855" width="376" x="2753" y="2586"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="com.planepanic.game.Main" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/Main.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="113" x="2489" y="552"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="com.planepanic.game.gfx.ui.OrderPanel" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/ui/OrderPanel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="132" x="3672" y="2193"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="com.planepanic.game.model.orders.Land" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/model/orders/Land.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="158" x="1577" y="1604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="com.planepanic.game.gfx.Drawable" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/Drawable.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="495" width="299" x="3528" y="1069"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="com.planepanic.game.gfx.screens.Screen" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/screens/Screen.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="154" x="3867" y="1069"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="com.planepanic.game.gfx.ui.OrderList" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/ui/OrderList.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="153" x="4059" y="2586"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="com.planepanic.game.gfx.screens.Main" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/screens/Main.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="154" x="4252" y="2586"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="46" language="java" name="com.planepanic.game.gfx.ui.Align" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/gfx/ui/Align.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="128" x="3825" y="4080"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="47" language="java" name="com.planepanic.game.StartingClass" project="sepr-saw-gfx" 
+    file="/sepr-saw-gfx/src/main/java/com/planepanic/game/StartingClass.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="194" x="3185" y="552"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <generalization id="48">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <realization id="49">    
+    <bendpoint x="2885" y="2193"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <association id="50">    
+    <bendpoint x="2185" y="1604"/>    
+    <bendpoint x="2227" y="2193"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="51" name="plane"/>      
+      <multiplicity id="52" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="53">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="54" name="targetWaypoint"/>      
+      <multiplicity id="55" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="56">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <association id="57">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="58" name="type"/>      
+      <multiplicity id="59" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="60">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="61" name="orderList"/>      
+      <multiplicity id="62" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="63">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="64" name="speed"/>      
+      <multiplicity id="65" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="66">    
+    <bendpoint x="3813" y="1604"/>    
+    <end type="SOURCE" refId="40"/>    
+    <end type="TARGET" refId="42"/>  
+  </generalization>  
+  <association id="67">    
+    <bendpoint x="3211" y="2193"/>    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="68" name="game"/>      
+      <multiplicity id="69" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="70">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="71" name="upSpeed"/>      
+      <multiplicity id="72" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="73">    
+    <bendpoint x="3599" y="2193"/>    
+    <bendpoint x="3235" y="2586"/>    
+    <bendpoint x="3235" y="3491"/>    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="74" name="timer"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="76">    
+    <bendpoint x="2248" y="1604"/>    
+    <bendpoint x="2206" y="2193"/>    
+    <bendpoint x="2206" y="2586"/>    
+    <bendpoint x="2206" y="3491"/>    
+    <bendpoint x="2206" y="4080"/>    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="77" name="hitboxSize"/>      
+      <multiplicity id="78" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="79">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="80" name="altitudeDisplay"/>      
+      <multiplicity id="81" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="82">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="83" name="currentScreen"/>      
+      <multiplicity id="84" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="43" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="85">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="86">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="87" name="controls"/>      
+      <multiplicity id="88" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="89">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="90">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="91" name="left"/>      
+      <multiplicity id="92" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="93">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="94" name="targetWaypoint"/>      
+      <multiplicity id="95" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="96">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="97" name="back"/>      
+      <multiplicity id="98" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="99">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="100" name="exclusionNotice"/>      
+      <multiplicity id="101" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="102">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <association id="103">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="104" name="right"/>      
+      <multiplicity id="105" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="106">    
+    <bendpoint x="3834" y="2586"/>    
+    <bendpoint x="3834" y="2193"/>    
+    <bendpoint x="3834" y="1604"/>    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="42"/>  
+  </generalization>  
+  <generalization id="107">    
+    <bendpoint x="4415" y="2193"/>    
+    <bendpoint x="4415" y="1604"/>    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="43"/>  
+  </generalization>  
+  <association id="108">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="109" name="callback"/>      
+      <multiplicity id="110" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="111">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="112" name="focus"/>      
+      <multiplicity id="113" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="114">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="42"/>  
+  </generalization>  
+  <association id="115">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="116" name="target"/>      
+      <multiplicity id="117" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="118">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="119" name="valueBox"/>      
+      <multiplicity id="120" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="121">    
+    <bendpoint x="3169" y="2586"/>    
+    <bendpoint x="3169" y="2193"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="122">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="123" name="down"/>      
+      <multiplicity id="124" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="125">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="126">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="127" name="downSpeed"/>      
+      <multiplicity id="128" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="129">    
+    <bendpoint x="2129" y="2586"/>    
+    <bendpoint x="2129" y="3491"/>    
+    <bendpoint x="2129" y="4080"/>    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="130" name="end"/>      
+      <multiplicity id="131" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="132">    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="133" name="difficulty"/>      
+      <multiplicity id="134" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="135">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="136" name="drawObjects"/>      
+      <multiplicity id="137" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="138">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="139" name="waypoint"/>      
+      <multiplicity id="140" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="141">    
+    <bendpoint x="2574" y="3491"/>    
+    <bendpoint x="2574" y="4080"/>    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="142" name="velocity"/>      
+      <multiplicity id="143" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="144">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="145" name="draw"/>      
+      <multiplicity id="146" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="147">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="148" name="returnToMain"/>      
+      <multiplicity id="149" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="150">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <association id="151">    
+    <bendpoint x="3232" y="2193"/>    
+    <bendpoint x="3544" y="1604"/>    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="152" name="controls"/>      
+      <multiplicity id="153" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="154">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="155" name="gameOver"/>      
+      <multiplicity id="156" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="157">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="158" name="planeList"/>      
+      <multiplicity id="159" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="160">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <association id="161">    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="162" name="currentGameState"/>      
+      <multiplicity id="163" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="164">    
+    <bendpoint x="2248" y="2193"/>    
+    <bendpoint x="2206" y="1604"/>    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="165" name="orders"/>      
+      <multiplicity id="166" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="167">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="168" name="radar"/>      
+      <multiplicity id="169" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="170">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="20"/>  
+  </nesting>  
+  <association id="171">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="172" name="orderpanel"/>      
+      <multiplicity id="173" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="40" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="174">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
+  <generalization id="175">    
+    <bendpoint x="3897" y="2193"/>    
+    <bendpoint x="3855" y="1604"/>    
+    <end type="SOURCE" refId="44"/>    
+    <end type="TARGET" refId="42"/>  
+  </generalization>  
+  <generalization id="176">    
+    <end type="SOURCE" refId="41"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <generalization id="177">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <association id="178">    
+    <bendpoint x="3190" y="2193"/>    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="179" name="planeList"/>      
+      <multiplicity id="180" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="181">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="182" name="takeoff"/>      
+      <multiplicity id="183" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="184">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <generalization id="185">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="42"/>  
+  </generalization>  
+  <realization id="186">    
+    <bendpoint x="2553" y="2193"/>    
+    <bendpoint x="2553" y="2586"/>    
+    <bendpoint x="2553" y="3491"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="19"/>  
+  </realization>  
+  <association id="187">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="188" name="selected"/>      
+      <multiplicity id="189" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="190">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="191" name="runway"/>      
+      <multiplicity id="192" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="193">    
+    <bendpoint x="2269" y="1604"/>    
+    <bendpoint x="2269" y="2193"/>    
+    <bendpoint x="2269" y="2586"/>    
+    <bendpoint x="2269" y="3491"/>    
+    <bendpoint x="2269" y="4080"/>    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="194" name="position"/>      
+      <multiplicity id="195" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="196">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="197">    
+    <bendpoint x="3096" y="2193"/>    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="198">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="199" name="speedDisplay"/>      
+      <multiplicity id="200" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="201">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="43"/>  
+  </generalization>  
+  <association id="202">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="203" name="up"/>      
+      <multiplicity id="204" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="205">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="18"/>  
+  </generalization>  
+  <association id="206">    
+    <bendpoint x="3075" y="2193"/>    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="207" name="exit"/>      
+      <multiplicity id="208" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="209">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="14"/>  
+  </nesting>  
+  <association id="210">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="211" name="altitude"/>      
+      <multiplicity id="212" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="213">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="214" name="startGame"/>      
+      <multiplicity id="215" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="216">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="217" name="fuelDisplay"/>      
+      <multiplicity id="218" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="219">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="220" name="heading"/>      
+      <multiplicity id="221" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="222">    
+    <bendpoint x="4436" y="2586"/>    
+    <bendpoint x="4436" y="2193"/>    
+    <bendpoint x="4394" y="1604"/>    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="42"/>  
+  </generalization>  
+  <association id="223">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="224" name="valueBox"/>      
+      <multiplicity id="225" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="226">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="227" name="title"/>      
+      <multiplicity id="228" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="229">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <association id="230">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="231" name="exitPoint"/>      
+      <multiplicity id="232" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="233">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="234" name="align"/>      
+      <multiplicity id="235" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="236">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="237" name="position"/>      
+      <multiplicity id="238" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="239">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="240" name="temp"/>      
+      <multiplicity id="241" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="242">    
+    <bendpoint x="3620" y="2193"/>    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="243" name="exitPointList"/>      
+      <multiplicity id="244" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="245">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="246" name="planeinfo"/>      
+      <multiplicity id="247" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="248">    
+    <bendpoint x="3876" y="2193"/>    
+    <bendpoint x="3876" y="1604"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="43"/>  
+  </generalization>  
+  <association id="249">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="250" name="runway"/>      
+      <multiplicity id="251" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="252">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="253" name="waypointList"/>      
+      <multiplicity id="254" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="255">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <association id="256">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="257" name="land"/>      
+      <multiplicity id="258" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="259">    
+    <bendpoint x="2227" y="1604"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="42"/>  
+  </generalization>  
+  <association id="260">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="261" name="tempReverse"/>      
+      <multiplicity id="262" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="263">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="264" name="set"/>      
+      <multiplicity id="265" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="266">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="267" name="callback"/>      
+      <multiplicity id="268" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="269">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="270" name="score"/>      
+      <multiplicity id="271" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="272">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="273" name="waypoint"/>      
+      <multiplicity id="274" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="275">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="276" name="entryPointList"/>      
+      <multiplicity id="277" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="278">    
+    <bendpoint x="3983" y="4080"/>    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="279" name="textSize"/>      
+      <multiplicity id="280" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="281">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="282" name="scrollCallback"/>      
+      <multiplicity id="283" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="284">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="285" name="direction"/>      
+      <multiplicity id="286" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="287">    
+    <bendpoint x="3641" y="2193"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="288" name="game"/>      
+      <multiplicity id="289" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="290">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="291" name="via"/>      
+      <multiplicity id="292" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
