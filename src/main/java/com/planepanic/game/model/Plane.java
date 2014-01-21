@@ -135,10 +135,10 @@ public final class Plane extends Image {
 		this.getPosition().applyChange(this.getVelocity());
 		if (this.violated) {
 			DrawUtil.setColor(0xff0000);
-			DrawUtil.drawCircle((float) this.getPosition().getX(), (float) this.getPosition().getY(), Game.getExclusionZone(), false);
+			DrawUtil.drawCircle((float) this.getPosition().getX(), (float) this.getPosition().getY(), Game.getExclusionZone(), false, this.getPriority() + 0.01f);
 		} else if (Plane.selected == this) {
 			DrawUtil.setColor(0x00ff00);
-			DrawUtil.drawCircle((float) this.getPosition().getX(), (float) this.getPosition().getY(), Game.getExclusionZone(), false);
+			DrawUtil.drawCircle((float) this.getPosition().getX(), (float) this.getPosition().getY(), Game.getExclusionZone(), false, this.getPriority() + 0.01f);
 		}
 		this.violated = false;
 
