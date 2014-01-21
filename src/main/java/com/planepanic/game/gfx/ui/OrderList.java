@@ -38,7 +38,7 @@ public class OrderList extends Drawable {
 	}
 
 	private void drawOrder(int y, Order order) {
-		DrawUtil.setColor(0x669933);
+		DrawUtil.setColor(0xC6B59D);
 		DrawUtil.drawSquare((float) this.getPosition().getX(), y, (float) this.getHitboxSize().getX(), 99, true, this.getPriority());
 		DrawUtil.setColor(0x000000);
 		DrawUtil.drawSquare((float) this.getPosition().getX(), y + 50, (float) this.getHitboxSize().getX(), 1, true, this.getPriority());
