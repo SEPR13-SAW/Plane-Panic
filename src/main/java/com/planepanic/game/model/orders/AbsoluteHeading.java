@@ -21,14 +21,11 @@ public final class AbsoluteHeading extends Order {
 	}
 	
 	private double fixAbsolute(double delta){
-		//Here is where the magic happens. I dont know why
-		if ((0 < delta) && (delta < 180)){
+		if (0 < delta){
 			delta = Math.PI - delta;
 		}
-		else if((180 > delta)&&(delta > (360))){
-			delta = delta - Math.PI;
-		}
-		return (delta);
+
+		return delta;
 	}
 
 	@Override
