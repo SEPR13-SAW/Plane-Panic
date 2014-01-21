@@ -28,20 +28,20 @@ public class Controls {
 	private int orderState = 0;
 
 	private List<Drawable> controls = new ArrayList<Drawable>();
-	private OrderButton direction;
-	private OrderButton altitude;
-	private OrderButton heading;
-	private OrderButton speed;
-	private OrderButton land;
-	private OrderButton takeoff;
-	private OrderButton left;
-	private OrderButton right;
-	private OrderButton set;
-	private OrderButton up;
-	private OrderButton down;
-	private OrderButton upSpeed;
-	private OrderButton downSpeed;
-	private OrderButton back;
+	private ImageButton direction;
+	private ImageButton altitude;
+	private ImageButton heading;
+	private ImageButton speed;
+	private ImageButton land;
+	private ImageButton takeoff;
+	private ImageButton left;
+	private ImageButton right;
+	private ImageButton set;
+	private ImageButton up;
+	private ImageButton down;
+	private ImageButton upSpeed;
+	private ImageButton downSpeed;
+	private ImageButton back;
 	private TextBox valueBox;
 	private int value;
 
@@ -55,7 +55,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.direction = new OrderButton(1024, 656, Resources.DIRECTION, new Vector2d(128, 64)).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.direction = new ImageButton(1024, 656, Resources.DIRECTION, new Vector2d(128, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Change Direction!");
@@ -64,7 +64,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.altitude = new OrderButton(1152, 656, Resources.ALTITUDE, new Vector2d(128, 64)).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.altitude = new ImageButton(1152, 656, Resources.ALTITUDE, new Vector2d(128, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Change Altitude!");
@@ -73,7 +73,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.heading = new OrderButton(1280, 656, Resources.HEADING, new Vector2d(128, 64)).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.heading = new ImageButton(1280, 656, Resources.HEADING, new Vector2d(128, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Change Heading!");
@@ -82,7 +82,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.speed = new OrderButton(1024, 720, Resources.SPEED, new Vector2d(128, 64)).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.speed = new ImageButton(1024, 720, Resources.SPEED, new Vector2d(128, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Change Speed!");
@@ -91,7 +91,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.land = new OrderButton(1152, 720, Resources.LAND, new Vector2d(128, 64)).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.land = new ImageButton(1152, 720, Resources.LAND, new Vector2d(128, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Land!");
@@ -100,7 +100,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.takeoff = new OrderButton(1280, 720, Resources.TAKEOFF, new Vector2d(128, 64)).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.takeoff = new ImageButton(1280, 720, Resources.TAKEOFF, new Vector2d(128, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Take off!");
@@ -109,7 +109,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.left = new OrderButton(1180, 690, Resources.LEFT, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.left = new ImageButton(1180, 690, Resources.LEFT, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Turns left by number inputted");
@@ -119,7 +119,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.right = new OrderButton(1244, 690, Resources.RIGHT, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.right = new ImageButton(1244, 690, Resources.RIGHT, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Turns right by number inputted");
@@ -129,7 +129,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.set = new OrderButton(1312, 720, Resources.SET, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.set = new ImageButton(1312, 720, Resources.SET, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Set!");
@@ -139,7 +139,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.up = new OrderButton(1200, 656, Resources.UP, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.up = new ImageButton(1200, 656, Resources.UP, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Increases altitude by inputted amount");
@@ -149,7 +149,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.down = new OrderButton(1200, 720, Resources.DOWN, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.down = new ImageButton(1200, 720, Resources.DOWN, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Decreases altitude by inputted amount");
@@ -159,7 +159,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.upSpeed = new OrderButton(1200, 656, Resources.UP, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.upSpeed = new ImageButton(1200, 656, Resources.UP, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Increases speed by inputted amount");
@@ -169,7 +169,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.downSpeed = new OrderButton(1200, 720, Resources.DOWN, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.downSpeed = new ImageButton(1200, 720, Resources.DOWN, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Decreases speed by inputted amount");
@@ -179,7 +179,7 @@ public class Controls {
 			}
 		}));
 
-		this.controls.add(this.back = new OrderButton(1312, 656, Resources.BACK, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
+		this.controls.add(this.back = new ImageButton(1312, 656, Resources.BACK, new Vector2d(64, 64)).setCallback(new Callback<Boolean>() {
 			@Override
 			public Boolean call() {
 				System.out.println("Back!");

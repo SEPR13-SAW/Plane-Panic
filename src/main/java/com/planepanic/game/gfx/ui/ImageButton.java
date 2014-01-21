@@ -14,11 +14,11 @@ import com.planepanic.game.model.Vector2d;
  * @author Steven, Thomas
  * 
  */
-public class OrderButton extends Image {
+public class ImageButton extends Image {
 
 	@Accessors(chain = true) @Setter private Callback<Boolean> callback;
 
-	public OrderButton(int xPosition, int yPosition, Resources buttonType, Vector2d hitsize) {
+	public ImageButton(int xPosition, int yPosition, Resources buttonType, Vector2d hitsize) {
 		super(buttonType, new Vector2d(xPosition, yPosition));
 		this.setPriority(0.5f);
 		this.setHitboxSize(hitsize);
