@@ -26,18 +26,20 @@ public class TextBox extends Drawable {
 	@Accessors(chain = true) @Getter @Setter private int cursorPosition = 0;
 	@Accessors(chain = true) @Getter private final boolean editable;
 	@Accessors(chain = true) @Getter @Setter private boolean numbersOnly;
+	@Accessors(chain = true) @Getter @Setter private boolean forceFocus;
 
 	private boolean dirtySize = true;
 
-	public TextBox(String text, boolean editable, boolean numbersOnly) {
+	public TextBox(String text, boolean editable, boolean numbersOnly, boolean forceFocus) {
 		super();
 		this.text = text;
 		this.editable = editable;
 		this.numbersOnly = numbersOnly;
+		this.forceFocus = forceFocus;
 	}
 
 	public TextBox(String text) {
-		this(text, false, false);
+		this(text, false, false, false);
 	}
 
 	public TextBox setText(String text) {
@@ -54,6 +56,8 @@ public class TextBox extends Drawable {
 
 	@Override
 	public void draw2d() {
+		if(forceFocus)
+			DrawThread.setFocus(this);
 		if (this.dirtySize) {
 			this.setHitboxSize(DrawUtil.getSize(this.text, this.size));
 		}
