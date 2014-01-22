@@ -19,7 +19,10 @@ public abstract class SimplePointOfInterest extends Drawable implements PointOfI
 
 	@Override
 	public void draw2d() {
-		DrawUtil.setColor(0xFF4B2B);
+		if(this == Waypoint.getVia())
+			DrawUtil.setColor(0xFF4BEE);
+		else
+			DrawUtil.setColor(0xFF4B2B);
 		DrawUtil.drawCircle((float) this.getPosition().getX(), (float) this.getPosition().getY(), 10f, false, this.getPriority());
 	}
 
