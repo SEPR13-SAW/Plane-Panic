@@ -108,6 +108,16 @@
 						</configuration>
 					</execution>
 				</executions>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>com.planepanic.game.Main</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
