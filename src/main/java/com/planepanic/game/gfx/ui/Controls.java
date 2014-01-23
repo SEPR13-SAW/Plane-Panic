@@ -258,5 +258,6 @@ public class Controls {
 
 	public void resetTextBox() {
 		this.valueBox.setText("0");
+		this.valueBox.setCursorPosition(0);
 	}
 }
