@@ -58,7 +58,9 @@ public class OrderList extends Drawable {
 
 	@Override
 	protected boolean onClick() {
-		Plane.getSelected().getOrders().clear();
+		if (Plane.getSelected() != null) {
+			Plane.getSelected().getOrders().clear();
+		}
 		return true;
 	}
 
